@@ -1,4 +1,18 @@
-
+.zigzag-bottom {
+    background: none repeat scroll 0 0 #56CC9D;
+    bottom: -80px;
+    height: 165px;
+    left: -5%;
+    position: absolute;
+    transform: rotate(3deg);
+    width: 108%;
+    z-index: 9;
+}
+a:focus { outline: 0px solid }
+img {
+    max-width: 100%;
+    height: auto;
+}
 /**
 Start site-branding-area
  */
@@ -78,13 +92,13 @@ End mainmenu-area
 Start promo-area
  */
 .promo-area {
-    background: none repeat scroll 0 0 #78C2AD;
+    background: none repeat scroll 0 0 #56CC9D;
     color: #fff;
-    padding: 77px 0 200px;
-    height: 700px;
+    padding: 77px 0 50px;
+    height: 350px;
 }
 .promo-area .single-promo {
-    border: 1px solid #78C2AD;
+    border: 1px solid #56CC9D;
     font-size: 25px;
     font-weight: 200;
     padding: 20px 10px;
@@ -93,7 +107,9 @@ Start promo-area
 .single-promo i {
     font-size: 50px;
 }
-
+.promo-area a {
+    background: #56CC9D;
+}
 .single-promo:hover {color: #fff;background: #222;border-color: #222}
 /**
 End promo-area
@@ -106,6 +122,7 @@ Start maincontent-area
     padding-bottom: 170px;
     height: 700px;
 }
+
 .latest-product {
     border: 1px solid #1abc9c;
     color: #1abc9c;
@@ -233,6 +250,10 @@ End maincontent-area
 /**
 Start footer-top-area
  */
+.footer-top-area .zigzag-bottom{
+    background: #343a40;
+}
+
 .footer-top-area .zigzag-bottom {
     bottom: -153px;
     height: 200px;
@@ -295,7 +316,8 @@ Start footer-top-area
     display: inline-block;
     font-size: 18px;
     padding: 7px 20px;
-    text-transform: uppercase;border: 1px solid #56CC9D;
+    text-transform: uppercase;
+    border: 1px solid #56CC9D;
 }
 .newsletter-form input[type="submit"]:hover {
     background: #343a40;
@@ -304,6 +326,68 @@ Start footer-top-area
 .newsletter-form {
     margin-top: 25px;
 }
+.footer-top-area .zigzag-bottom {
+    bottom: -153px;
+    height: 200px;
+}
 /**
 End footer-top-area
+ */
+
+/**
+Start product-big-title-area
+ */
+.product-big-title-area {
+    background: url("img/crossword.png") repeat scroll 0 0 #56CC9D;
+}
+
+.product-bit-title h2 {
+    font-family: raleway;
+    font-size: 50px;
+    font-weight: 200;
+    margin: 0;
+    padding: 50px 0;color: #fff;
+}
+/**
+End product-big-title-area
+ */
+
+/**
+Start single-product-area
+ */
+.single-product-area {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0 130px;
+}
+
+.single-shop-product h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+.single-shop-product {
+    margin-bottom: 50px
+}
+.product-carousel-price ins {
+    color: #56CC9D;
+    font-weight: 700;
+    margin-right: 5px;
+    text-decoration: none;
+}
+.add_to_cart_button {
+    background: none repeat scroll 0 0 #56CC9D;
+    border: medium none;
+    color: #fff;
+    padding: 6px 25px;display: inline-block
+}
+.add_to_cart_button:hover {
+    background-color: #222;
+    color: #fff;
+    text-decoration: none
+}
+.product-option-shop {
+    margin-top: 15px;
+}
+/**
+End single-product-area
  */
