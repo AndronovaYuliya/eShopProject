@@ -52,12 +52,12 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="index.html">e<span>Shop</span></a></h1>
+                    <h1><a href="index.php">e<span>Shop</span></a></h1>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.html">Cart - <span class="cart-amunt">$000</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="cart.php">Cart - <span class="cart-amunt">$000</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                 </div>
             </div>
         </div>
@@ -73,10 +73,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop.html">Shop page</a>
+                    <a class="nav-link" href="shop.php">Shop page</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -90,10 +90,10 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="single-product.html">Single product</a>
+                    <a class="nav-link" href="single-product.php">Single product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.html">Cart</a>
+                    <a class="nav-link" href="cart.php">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="checkout.html">Checkout</a>
@@ -137,28 +137,28 @@
                     <h2 class="sidebar-title">Products</h2>
                     <div class="thubmnail-recent">
                         <img src="img/product-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <h2><a href="single-product.php">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
                         <img src="img/product-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <h2><a href="single-product.php">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
                         <img src="img/product-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <h2><a href="single-product.php">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
                         <img src="img/product-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <h2><a href="single-product.php">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
@@ -199,11 +199,11 @@
                                     </td>
 
                                     <td class="product-thumbnail">
-                                        <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="img/product-thumb-2.jpg"></a>
+                                        <a href="single-product.php"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="img/product-thumb-2.jpg"></a>
                                     </td>
 
                                     <td class="product-name">
-                                        <a href="single-product.html">Ship Your Idea</a>
+                                        <a href="single-product.php">Ship Your Idea</a>
                                     </td>
 
                                     <td class="product-price">
@@ -244,23 +244,23 @@
                                 <h2>You may be interested in...</h2>
                                 <ul class="products">
                                     <li class="product">
-                                        <a href="single-product.html">
+                                        <a href="single-product.php">
                                             <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-2.jpg">
                                             <h3>Ship Your Idea</h3>
                                             <span class="price"><span class="amount">£20.00</span></span>
                                         </a>
 
-                                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
+                                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.php">Select options</a>
                                     </li>
 
                                     <li class="product">
-                                        <a href="single-product.html">
+                                        <a href="single-product.php">
                                             <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-4.jpg">
                                             <h3>Ship Your Idea</h3>
                                             <span class="price"><span class="amount">£20.00</span></span>
                                         </a>
 
-                                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
+                                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.php">Select options</a>
                                     </li>
                                 </ul>
                             </div>

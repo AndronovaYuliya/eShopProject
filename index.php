@@ -48,7 +48,7 @@
     </nav>
   </div><!-- End header area -->
 
-  <!-- Modal -->
+  <!-- Start Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -78,7 +78,8 @@
         </div>
       </div>
     </div>
-  </div><!--End Modal-->
+  </div>
+  <!--End Modal-->
 
 
   <!-- Start site-branding-area -->
@@ -429,6 +430,7 @@
     </div>
   </div><!-- End maincontent-area -->
 
+  <!-- Start footer-top-area -->
   <div class="footer-top-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
@@ -486,6 +488,7 @@
           </div>
         </div>
       </div>
+    </div>
   </div><!-- End footer-top-area -->
 
 
