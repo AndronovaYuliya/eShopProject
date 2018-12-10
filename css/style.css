@@ -551,3 +551,56 @@ div.quantity input.plus, div.quantity input.minus {
 /**
  End single-product-area-big-title-area
   */
+
+/**
+Start product-big-title-area
+ */
+.product-big-title-area {
+    background: url(img/crossword.png) repeat scroll 0 0 #56CC9D;
+}
+.product-bit-title h2 {
+    font-size: 50px;
+    font-weight: 200;
+    margin: 0;
+    padding: 50px 0;color: #fff;
+}
+/**
+End product-big-title-area
+ */
+
+/**
+Start single-product-area
+ */
+.single-product-area .zigzag-bottom {
+    background-color: #343a40;
+}
+
+.single-product-area {
+    padding: 80px 0 130px;
+}
+table.shop_table {
+    border-bottom: 1px solid #888;
+    border-right: 1px solid #888;
+    margin-bottom: 50px;
+    width: 100%;
+}
+table.shop_table th, table.shop_table td {
+    border-left: 1px solid #888;
+    border-top: 1px solid #888;
+    padding: 15px;
+    text-align: center;
+}
+table.shop_table th {
+    background: none repeat scroll 0 0 #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+table.shop_table td.product-remove a {
+    display: inline-block;
+    padding: 0 5px 2px;
+    text-transform: uppercase;
+}
+
+/**
+End single-product-area
+ */
