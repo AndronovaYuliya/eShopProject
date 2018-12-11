@@ -1,14 +1,11 @@
 <?php
-
-/*
- * функция __autoload для автоматического подключения классов
- *
- */
-
-function myAutoload($classname){
-    $filename=ROOT.'/models/'.$classname.'.php';
+//define('ROOT', dirname(__FILE__));
+function classAutoload($classname){
+    $filename=dirname(__FILE__,2).'/models/'.$classname.'.php';
     include $filename;
 }
-
-//регистрируем загрузчик
-spl_autoload_register('myAutoload');
+/*function includesAutoload($includes){
+    $filename=dirname(__FILE__,2).'/resources/views/includes/'.includes.'.php';
+    include $filename;
+}*/
+spl_autoload_register('classAutoload');

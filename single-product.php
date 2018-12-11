@@ -7,11 +7,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="resources/css/bootstrap.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="resources/css/owl.carousel.css">
+    <link rel="stylesheet" href="resources/css/style.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -137,28 +137,28 @@
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
                     <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
                         <h2><a href="">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
                         <h2><a href="">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
                         <h2><a href="">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
                         <h2><a href="">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
@@ -190,14 +190,14 @@
                         <div class="col-sm-6">
                             <div class="product-images">
                                 <div class="product-main-img">
-                                    <img src="img/product-2.jpg" alt="">
+                                    <img src="resources/img/product-2.jpg" alt="">
                                 </div>
 
                                 <div class="product-gallery">
-                                    <img src="img/product-thumb-1.jpg" alt="">
-                                    <img src="img/product-thumb-2.jpg" alt="">
-                                    <img src="img/product-thumb-3.jpg" alt="">
-                                    <img src="img/product-thumb-4.jpg" alt="">
+                                    <img src="resources/img/product-thumb-1.jpg" alt="">
+                                    <img src="resources/img/product-thumb-2.jpg" alt="">
+                                    <img src="resources/img/product-thumb-3.jpg" alt="">
+                                    <img src="resources/img/product-thumb-4.jpg" alt="">
                                 </div>
                             </div>
                         </div>

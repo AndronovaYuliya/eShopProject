@@ -7,11 +7,10 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="resources/css/bootstrap.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/owl.carousel.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="resources/css/style.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,7 +19,7 @@
 </head>
 <body>
 
-  <!--Start header area-->
+  <!--Start header-area-->
   <div class="header-area">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headNavbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +45,7 @@
         </form>
       </div>
     </nav>
-  </div><!-- End header area -->
+  </div><!-- End header-area -->
 
   <!-- Start Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -112,7 +111,7 @@
             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop.html">Shop page</a>
+            <a class="nav-link"  href=shop.php>Shop page</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,7 +151,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="img/slider1.jpg" alt="First slide">
+            <img class="d-block w-100" src="resources/img/slider1.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
@@ -166,7 +165,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="img/slider2.jpg" alt="First slide">
+            <img class="d-block w-100" src="resources/img/slider2.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
@@ -180,7 +179,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="img/slider3.jpg" alt="First slide">
+            <img class="d-block w-100" src="resources/img/slider3.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
