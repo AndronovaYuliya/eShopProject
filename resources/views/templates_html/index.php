@@ -7,10 +7,10 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="resources/css/bootstrap.css">
+  <link rel="stylesheet" href="../../css/bootstrap.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -151,7 +151,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="resources/img/slider1.jpg" alt="First slide">
+            <img class="d-block w-100" src="../../img/slider1.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
@@ -165,7 +165,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="resources/img/slider2.jpg" alt="First slide">
+            <img class="d-block w-100" src="../../img/slider2.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
@@ -179,7 +179,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="resources/img/slider3.jpg" alt="First slide">
+            <img class="d-block w-100" src="../../img/slider3.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
