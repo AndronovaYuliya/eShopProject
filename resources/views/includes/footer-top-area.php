@@ -1,3 +1,5 @@
+<?php ob_start()?>
+
 <!-- Start footer-top-area -->
 <div class="footer-top-area">
     <div class="zigzag-bottom"></div>
@@ -56,4 +58,7 @@
                 </div>
             </div>
         </div>
-    </div></div><!-- End footer-top-area -->
+    </div>
+</div><!-- End footer-top-area -->
+
+<?php global $footer_top_area ; $footer_top_area=ob_get_flush();?>

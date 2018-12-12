@@ -1,3 +1,5 @@
+<?php ob_start()?>
+
 <!-- Start site-branding-area -->
 <div class="site-branding-area">
     <div class="container">
@@ -15,3 +17,5 @@
         </div>
     </div>
 </div><!-- End site-branding-area -->
+
+<?php global $site_branding_area; $site_branding_area=ob_get_flush();?>

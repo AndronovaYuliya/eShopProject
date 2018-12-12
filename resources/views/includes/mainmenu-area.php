@@ -1,3 +1,5 @@
+<?php ob_start()?>
+
 <!-- Start mainmenu-area-->
 <div class="mainmenu-area">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -39,3 +41,5 @@
         </div>
     </nav>
 </div><!-- End mainmenu-area -->
+
+<?php global $mainmenu_area; $mainmenu_area=ob_get_flush();?>

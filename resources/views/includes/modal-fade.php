@@ -1,4 +1,6 @@
-<!-- Start Modal -->
+<?php ob_start()?>
+
+    <!-- Start Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -30,3 +32,5 @@
     </div>
 </div>
 <!--End Modal-->
+
+<?php global $modal_fade; $modal_fade=ob_get_flush();?>

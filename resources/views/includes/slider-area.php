@@ -1,3 +1,5 @@
+<?php ob_start()?>
+
 <!-- Start slider-area -->
 <div class="slider-area">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -60,3 +62,5 @@
         </a>
     </div>
 </div><!-- End slider-area-->
+
+<?php global $slider_area; $slider_area=ob_get_flush();?>

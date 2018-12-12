@@ -1,4 +1,6 @@
-<!-- Start maincontent-area -->
+<?php ob_start()?>
+
+    <!-- Start maincontent-area -->
 <div class="maincontent-area">
     <div class="container">
         <h2 class="text-center">Latest Products</h2>
@@ -182,3 +184,5 @@
         </div>
     </div>
 </div><!-- End maincontent-area -->
+
+<?php global $maincontent_area; $maincontent_area=ob_get_flush();?>

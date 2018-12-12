@@ -1,3 +1,5 @@
+<?php ob_start()?>
+
 <!-- Start promo-area -->
 <div class="promo-area">
     <div class="container">
@@ -37,3 +39,5 @@
         </div>
     </div>
 </div><!-- End promo-area -->
+
+<?php global $promo_area; $promo_area=ob_get_flush();?>
