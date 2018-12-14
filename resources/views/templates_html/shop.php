@@ -1,7 +1,7 @@
 <?php
     define('ROOT', dirname(__FILE__));
-    include_once(ROOT . '/components/Autoload.php');
-    $goods=ShopGoods::getGoods();
+    include_once(ROOT . '/components/Autoloader.php');
+    $goods=ShopGoodsModel::getGoods();
 ?>
 <!doctype html>
 <html lang="en">

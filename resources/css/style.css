@@ -506,13 +506,13 @@ input[type="submit"]:hover, button[type=submit]:hover {
     width: 50px;
 }
 div.quantity input.plus, div.quantity input.minus {
-     background: none repeat scroll 0 0 #56CC9D;
-     border: medium none;
-     color: #fff;
-     height: 25px;
-     line-height: 15px;
-     width: 25px;
- }
+    background: none repeat scroll 0 0 #56CC9D;
+    border: medium none;
+    color: #fff;
+    height: 25px;
+    line-height: 15px;
+    width: 25px;
+}
 
 .product-tab {
     border-bottom: 1px solid #888;
