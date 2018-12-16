@@ -12,6 +12,7 @@ class ProductController {
     public static function all()
     {
         return ProductModel::getProducts();
+
     }
 
     //show 1 product
