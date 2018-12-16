@@ -1,6 +1,6 @@
 <?php
 require dirname(__FILE__,3).'/components/Autoloader.php';
-$goods=ShopGoodsModel::getGoods();
+$goods=ProductModel::getGoods();
 //var_dump($goods);
 ?>
 
