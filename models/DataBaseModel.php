@@ -120,21 +120,14 @@ class DataBaseModel{
 
     public static function getData($fileName):array
     {
-        self::setDB(self::$array,$fileName);
-        /*self::$data=[];*/
-        self::$data = file_get_contents($fileName);
-        self::$data = unserialize(self::$data);
-        return self::$data;
+        $data = file_get_contents($fileName);
+        return unserialize($data);
     }
 
 
     public static function setDB($array, $fileName)
     {
         self::$data = serialize($array);
-        echo 4;
-        echo $fileName;
-        echo 4;
-        die ();
         file_put_contents($fileName, self::$data);
     }
 }
