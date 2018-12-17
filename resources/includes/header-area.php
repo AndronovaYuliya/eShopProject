@@ -1,5 +1,3 @@
-<?php ob_start()?>
-
 <!--Start header-area-->
 <div class="header-area">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,5 +26,3 @@
     </nav>
 </div>
 <!-- End header-area -->
-
-<?php global $header_area; $header_area=ob_get_flush();?>

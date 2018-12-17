@@ -7,10 +7,10 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../css/bootstrap.css">
+  <link rel="stylesheet" href="../../public/css/bootstrap.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../public/css/style.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -47,57 +47,58 @@
     </nav>
   </div><!-- End header-area -->
 
-  <!-- Start Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--End Modal-->
-
-
   <!-- Start site-branding-area -->
   <div class="site-branding-area">
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
           <div class="logo">
-            <h1><a href="index.html">e<span>Shop</span></a></h1>
+            <h1><a href="../../index.php">e<span>Shop</span></a></h1>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="shopping-item">
-            <a href="cart.html">Cart - <span class="cart-amunt">$000</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+            <a href="../../index.php">Cart - <span class="cart-amunt">$000</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
           </div>
         </div>
       </div>
     </div>
   </div><!-- End site-branding-area -->
+
+
+  <!-- Start Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+                      <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                      <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--End Modal-->
+
 
   <!-- Start mainmenu-area-->
   <div class="mainmenu-area">
@@ -108,7 +109,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="../../index.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link"  href=shop.php>Shop page</a>
@@ -125,13 +126,13 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="single-product.html">Single product</a>
+            <a class="nav-link" href="../../index.php">Single product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cart.html">Cart</a>
+            <a class="nav-link" href="../../index.php">Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="checkout.html">Checkout</a>
+            <a class="nav-link" href="../../index.php">Checkout</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
@@ -151,7 +152,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="../../img/slider1.jpg" alt="First slide">
+            <img class="d-block w-100" src="../../public/img/slider1.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
@@ -165,7 +166,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="../../img/slider2.jpg" alt="First slide">
+            <img class="d-block w-100" src="../../public/img/slider2.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
@@ -179,7 +180,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="../../img/slider3.jpg" alt="First slide">
+            <img class="d-block w-100" src="../../public/img/slider3.jpg" alt="First slide">
             <div class="carousel-caption">
               <div class="jumbotron">
                 <h1 class="display-3">Hello, world!</h1>
@@ -250,6 +251,7 @@
       <h2 class="text-center">Latest Products</h2>
       <div class="row justify-content-center align-items-center">
             <div class="card-deck">
+
               <div class="product-wrap">
                 <div class="product-image">
                   <a href=""><img src="https://html5book.ru/wp-content/uploads/2015/10/flower-example-1.jpg"></a>

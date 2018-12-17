@@ -1,8 +1,3 @@
-<?php
-    define('ROOT', dirname(__FILE__));
-    include_once(ROOT . '/components/Autoloader.php');
-    $goods=ProductModel::getGoods();
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,11 +7,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="resources/css/owl.carousel.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -81,7 +76,7 @@
                     <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=shop.php>Shop page</a>
+                    <a class="nav-link" href="shop.php">Shop page</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,7 +96,7 @@
                     <a class="nav-link" href="cart.php">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="checkout.html">Checkout</a>
+                    <a class="nav-link" href="../../index.php">Checkout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -125,35 +120,113 @@
 </div>
 <!-- End product-big-title-area -->
 
-<!-- Start single-product-area -->
+<!-- Start single-product-area-big-title-area -->
 <div class="single-product-area">
+    <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
-            <?php if(!is_null($goods)):?>
-                <?php foreach ($goods as $good):?>
-                    <?php if($good['visible']):?>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="single-shop-product">
-                                <div class="product-upper">
-                                    <img src="<?php echo $good['img']?>" alt="img">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Search Products</h2>
+                    <form action="">
+                        <input type="text" placeholder="Search products...">
+                        <input type="submit" value="Search">
+                    </form>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Products</h2>
+                    <div class="thubmnail-recent">
+                        <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Recent Posts</h2>
+                    <ul>
+                        <li><a href="">Sony Smart TV - 2015</a></li>
+                        <li><a href="">Sony Smart TV - 2015</a></li>
+                        <li><a href="">Sony Smart TV - 2015</a></li>
+                        <li><a href="">Sony Smart TV - 2015</a></li>
+                        <li><a href="">Sony Smart TV - 2015</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="product-breadcroumb">
+                        <a href="">Home</a>
+                        <a href="">Category Name</a>
+                        <a href="">Sony Smart TV - 2015</a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="product-images">
+                                <div class="product-main-img">
+                                    <img src="../../public/img/product-2.jpg" alt="">
                                 </div>
-                                 <h2><a href="#"><?php echo $good['title']?></a></h2>
-                                <div class="product-carousel-price">
-                                    <ins>$<?php echo $good['new_price']?></ins> <del><?php echo $good['currency'].$good['old_price']?></del>
-                                </div>
-                                <div class="product-option-shop">
-                                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+
+                                <div class="product-gallery">
+                                    <img src="resources/img/product-thumb-1.jpg" alt="">
+                                    <img src="resources/img/product-thumb-2.jpg" alt="">
+                                    <img src="resources/img/product-thumb-3.jpg" alt="">
+                                    <img src="resources/img/product-thumb-4.jpg" alt="">
                                 </div>
                             </div>
                         </div>
-                    <?php endif;?>
-                <?php endforeach;?>
-            <?php endif;?>
+
+                        <div class="col-sm-6">
+                            <div class="product-inner">
+                                <h2 class="product-name">Sony Smart TV - 2015</h2>
+                                <div class="product-inner-price">
+                                    <ins>$700.00</ins> <del>$800.00</del>
+                                </div>
+
+                                <form action="" class="cart">
+                                    <div class="quantity">
+                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                    </div>
+                                    <button class="add_to_cart_button" type="submit">Add to cart</button>
+                                </form>
+
+                                <div class="product-inner-category">
+                                    <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<!-- End single-product-area -->
-
+</div><!-- End single-product-area-big-title-area -->
 
 <!-- Start footer-top-area -->
 <div class="footer-top-area">
@@ -216,11 +289,11 @@
     </div>
 </div><!-- End footer-top-area -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 </html>

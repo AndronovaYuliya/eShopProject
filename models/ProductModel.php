@@ -3,10 +3,6 @@
 class ProductModel{
     private static $fileName='array.txt';
 
-    public function __construct()
-    {
-    }
-
     public static function getProduct($params)
     {
         $products=self::getProducts();

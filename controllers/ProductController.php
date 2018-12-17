@@ -3,13 +3,8 @@ class ProductController {
 
     private static $data=[];
 
-    /*public function __construct()
-    {
-        $this->data=$this->getProducts();
-    }
-*/
     //show all products
-    public static function all()
+    public static function product()
     {
         return ProductModel::getProducts();
 

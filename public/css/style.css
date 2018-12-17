@@ -110,7 +110,7 @@ Start promo-area
 .promo-area a {
     background: #56CC9D;
 }
-.single-promo:hover {color: #fff;background: #222;border-color: #222}
+.single-promo:hover {color: #fff;background: #888;border-color: #888}
 /**
 End promo-area
  */
@@ -338,7 +338,7 @@ End footer-top-area
 Start product-big-title-area
  */
 .product-big-title-area {
-    background: url("img/crossword.png") repeat scroll 0 0 #56CC9D;
+    background: url("./../img/crossword.png") repeat scroll 0 0 #56CC9D;
 }
 
 .product-bit-title h2 {
@@ -558,7 +558,7 @@ div.quantity input.plus, div.quantity input.minus {
 Start product-big-title-area
  */
 .product-big-title-area {
-    background: url(img/crossword.png) repeat scroll 0 0 #56CC9D;
+    background: url(./../img/crossword.png) repeat scroll 0 0 #56CC9D;
 }
 .product-bit-title h2 {
     font-size: 50px;

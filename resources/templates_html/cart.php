@@ -7,11 +7,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="resources/css/owl.carousel.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -96,7 +96,7 @@
                     <a class="nav-link" href="cart.php">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="checkout.html">Checkout</a>
+                    <a class="nav-link" href="../../index.php">Checkout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -136,28 +136,28 @@
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
                     <div class="thubmnail-recent">
-                        <img src="../../img/product-1.jpg" class="recent-thumb" alt="">
+                        <img src="../../public/img/product-1.jpg" class="recent-thumb" alt="">
                         <h2><a href="single-product.php">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
-                        <img src="../../img/product-1.jpg" class="recent-thumb" alt="">
+                        <img src="../../public/img/product-1.jpg" class="recent-thumb" alt="">
                         <h2><a href="single-product.php">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
-                        <img src="../../img/product-1.jpg" class="recent-thumb" alt="">
+                        <img src="../../public/img/product-1.jpg" class="recent-thumb" alt="">
                         <h2><a href="single-product.php">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
-                        <img src="../../img/product-1.jpg" class="recent-thumb" alt="">
+                        <img src="../../public/img/product-1.jpg" class="recent-thumb" alt="">
                         <h2><a href="single-product.php">Sony Smart TV - 2015</a></h2>
                         <div class="product-sidebar-price">
                             <ins>$700.00</ins> <del>$800.00</del>
@@ -245,7 +245,7 @@
                                 <ul class="products">
                                     <li class="product">
                                         <a href="single-product.php">
-                                            <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="../../img/product-2.jpg">
+                                            <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="../../public/img/product-2.jpg">
                                             <h3>Ship Your Idea</h3>
                                             <span class="price"><span class="amount">£20.00</span></span>
                                         </a>
@@ -255,7 +255,7 @@
 
                                     <li class="product">
                                         <a href="single-product.php">
-                                            <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="../../img/product-4.jpg">
+                                            <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="../../public/img/product-4.jpg">
                                             <h3>Ship Your Idea</h3>
                                             <span class="price"><span class="amount">£20.00</span></span>
                                         </a>

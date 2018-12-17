@@ -8,6 +8,7 @@ class router
     private static $requestMethod;
     private static $params=[];
     private static $data=[];
+    private static $singleProduct;
     private static $query=[];
 
     static function ErrorPage404()
@@ -22,25 +23,41 @@ class router
     public static function routing()
     {
         self::parseUrl();
+        self::$data = ProductController::product();
+
         //+обработать ошибку
+        //single product
         if(self::$nameController!=='Controller')
         {
             $controller =self::$nameController;
             $action = self::$nameAction;
-            if (method_exists($controller, $action))
+            //Shop
+            $currentController=new $controller();
+            if(!self::$query)
             {
-                self::$data = $controller::$action(self::$params, self::$query);
+                $currentController->actionIndex(self::$data);
+            }
+            //напутано, переделать
+            elseif(self::$query)
+            {
+               //            elseif(method_exists($controller, self::$query))
+                self::$singleProduct = $controller::$action(self::$params, self::$query);
+                $singleProductView=new SingleproductController();
+                $singleProductView->actionIndex(self::$data,self::$singleProduct);
 
             }
+
+
+            // root
             else
             {
                 // кинуть исключение
                 self::ErrorPage404();
             }
         }
+        //all products
         else
         {
-            self::$data = ProductController::all();
             $mainView=new MainController();
             $mainView->actionIndex(self::$data);
         }
@@ -66,25 +83,9 @@ class router
             self::$query=[];
             foreach ($query as $key=>$value)
             {
-                $tmp=explode('=',$value);
-                self::$query[$tmp[0]]=$tmp[1];
+                $queryItem=explode('=',$value);
+                self::$query[$queryItem[0]]=$queryItem[1];
             }
         }
     }
-
-
-    public static function view(/*'/welcome', 'welcome', ['name' => 'Taylor']*/){}
-    //Route Prefixes
-    /*Route::prefix('admin')->group(function () {
-    Route::get('users', function () {
-        // Matches The "/admin/users" URL
-    });
-      });*/
-    /*
-     * $route = Route::current();
-
-        $name = Route::currentRouteName();
-
-        $action = Route::currentRouteAction();*/
-
 }
