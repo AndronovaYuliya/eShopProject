@@ -2,8 +2,17 @@
 
 class MainController extends Controller
 {
-    function actionIndex($data)
+    private $data=[];
+
+    public function show()
     {
-        $this->view->generate('mainView.php',$data);
+        $this->data=ProductModel::getProducts();
+        $this->actionIndex();
+    }
+
+    //view
+    public function actionIndex()
+    {
+        $this->view->generate('mainView.php',$this->data);
     }
 }

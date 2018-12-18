@@ -10,6 +10,11 @@ class Controller {
         $this->view = new View();
     }
 
+    public function show()
+    {
+
+    }
+
     // действие (action), вызываемое по умолчанию
     private function action_index()
     {

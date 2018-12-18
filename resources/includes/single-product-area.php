@@ -8,9 +8,9 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="single-shop-product">
                                 <div class="product-upper">
-                                    <img src="<?php echo $value['img']?>" alt="img">
+                                    <img src="../../public<?php echo $value['img']?>" alt="img">
                                 </div>
-                                <h2><a href="#"><?php echo $value['title']?></a></h2>
+                                <h2><a href="/product/product?id=<?php echo $value['id']?>"><?php echo $value['title']?></a></h2>
                                 <div class="product-carousel-price">
                                     <ins>$<?php echo $value['new_price']?></ins> <del><?php echo $value['currency'].$value['old_price']?></del>
                                 </div>

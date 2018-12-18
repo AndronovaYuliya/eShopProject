@@ -11,32 +11,29 @@
                         <input type="submit" value="Search">
                     </form>
                 </div>
-
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
-                        <?php if(isset($data)):?>
-                            <?php for($i=0; $i<6;$i++):?>
-                                <div class="thubmnail-recent">
-                                    <img src="resources/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                    <h2><a href=""><?php echo $data[$i]['title']?></a></h2>
-                                    <div class="product-sidebar-price">
-                                        <ins><?php echo $data[$i]['currency'].' '. $data[$i]['new_price'];?></ins> <del><?php echo $data[$i]['currency'].' '. $data[$i]['old_price'];?></del>
-                                    </div>
-                                </div>
-                            <?php endfor;?>
-                        <?php endif;?>
+                    <?php for($i=0; $i<6;$i++):?>
+                        <div class="thubmnail-recent">
+                            <img src="../../public<?php echo $data[$i]['img']?>" class="recent-thumb" alt="img">
+                            <h2><a href=""><?php echo $data[$i]['title']?></a></h2>
+                            <div class="product-sidebar-price">
+                                <ins><?php echo $data[$i]['currency'].' '. $data[$i]['new_price'];?></ins>
+                                <del><?php echo $data[$i]['currency'].' '. $data[$i]['old_price'];?></del>
+                            </div>
+                        </div>
+                    <?php endfor;?>
                 </div>
 
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Recent Posts</h2>
                     <ul>
-                        <?php if(isset($data)):?>
-                            <?php for($i=0; $i<6;$i++):?>
-                                <li><a href=""><?php echo $data[$i]['title']?></a></li>
-                            <?php endfor;?>
-                        <?php endif;?>
+                        <?php for($i=0; $i<6;$i++):?>
+                            <li><a href=""><?php echo $data[$i]['title']?></a></li>
+                        <?php endfor;?>
                     </ul>
                 </div>
+
             </div>
 
             <div class="col-md-8">
@@ -51,28 +48,24 @@
                         <div class="col-sm-6">
                             <div class="product-images">
                                 <div class="product-main-img">
-                                    <img src="../../public/img/product-2.jpg" alt="">
+                                    <img src="../../public<?php echo $singleProduct[0]['img']?>" alt="img">
                                 </div>
 
                                 <div class="product-gallery">
-                                    <img src="resources/img/product-thumb-1.jpg" alt="">
-                                    <img src="resources/img/product-thumb-2.jpg" alt="">
-                                    <img src="resources/img/product-thumb-3.jpg" alt="">
-                                    <img src="resources/img/product-thumb-4.jpg" alt="">
+                                    <img src="../../public<?php echo $singleProduct[0]['img']?>" alt="img">
+                                    <img src="../../public<?php echo $singleProduct[0]['img']?>" alt="img">
+                                    <img src="../../public<?php echo $singleProduct[0]['img']?>" alt="img">
+                                    <img src="../../public<?php echo $singleProduct[0]['img']?>" alt="img">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="product-inner">
-                                <?php if(isset($singleProduct)):?>
-
-                                <h2 class="product-name"><?php echo $singleProduct[0]['title']?></h2>
-                                <div class="product-inner-price">
-                                    <ins><?php echo $singleProduct[0]['currency'].' '. $singleProduct[0]['new_price'];?></ins> <del><?php echo $singleProduct[0]['currency'].' '. $singleProduct[0]['new_price'];?></del>
-                                </div>
-                                <?php endif;?>
-
+                                    <h2 class="product-name"><?php echo $singleProduct[0]['title']?></h2>
+                                    <div class="product-inner-price">
+                                        <ins><?php echo $singleProduct[0]['currency'].' '. $singleProduct[0]['new_price'];?></ins> <del><?php echo $singleProduct[0]['currency'].' '. $singleProduct[0]['new_price'];?></del>
+                                    </div>
                                 <form action="" class="cart">
                                     <div class="quantity">
                                         <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">

@@ -7,6 +7,9 @@ class Autoloader
     private $_needle=['model','controller', 'router'];
     private $direct;
 
+
+
+
     public function __construct($homePath='/')
     {
         if($homePath=='/')
@@ -16,6 +19,7 @@ class Autoloader
         else {
             $this->homePath=$homePath;
         }
+
         $this->register();
     }
 
@@ -32,7 +36,14 @@ class Autoloader
                 $this->direct=$value;
             }
         }
-        include $this->homePath.'/'.$this->direct.'s/'.$classname.$this->fileExtension;
+
+        //
+        try {
+           if(!file_exists($this->homePath.'/'.$this->direct.'s/'.$classname.$this->fileExtension))throw new MyException("File not found", 01);
+           include $this->homePath.'/'.$this->direct.'s/'.$classname.$this->fileExtension;
+        } catch (MyException $myException) {
+            $myException->exception_error_handler();
+        }
     }
 
 }

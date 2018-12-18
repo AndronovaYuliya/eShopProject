@@ -1,9 +1,13 @@
 <?php
 
-class ProductModel{
+class ProductModel
+{
     private static $fileName='array.txt';
 
-    public static function getProduct($params)
+    /*
+     * return array
+     */
+    public static function getProduct($params):array
     {
         $products=self::getProducts();
         $result=[];
@@ -32,8 +36,20 @@ class ProductModel{
         return $result;
     }
 
+    public static function getFileName():string {
+        return self::$fileName;
+    }
+    /*
+     * return array
+     * */
     public static function getProducts():array
     {
-        return DataBaseModel::getData(self::$fileName);
+        try{
+            return DataBaseModel::getData(/*self::$fileName*/);
+        }catch (MyException $myException){
+            return $myException->exception_error_file();
+        }
+
+
     }
 }
