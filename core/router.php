@@ -24,7 +24,6 @@ class router
     public static function routing()
     {
         self::parseUrl();
-
         //'/'
         if (self::$nameController=='Controller')
         {

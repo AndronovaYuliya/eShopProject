@@ -7,15 +7,15 @@
         <div class="collapse navbar-collapse" id="headNavbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-user"></i> My Account</a>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <a class="nav-link" href="#"><i class="fa fa-sign-in"></i>My Account</a>
+                    </button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-heart"></i> Wishlist</a>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                         <a class="nav-link" href="#"><i class="fa fa-sign-in"></i>Login</a>
                     </button>
+
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

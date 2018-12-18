@@ -11,7 +11,7 @@
                             <div class="shadow"></div>
                         </div>
                         <div class="product-list">
-                            <h3><?php echo $data[$i]['title']?></h3>
+                            <h3><a href="/product/product?id=<?php echo $data[$i]['id']?>"><?php echo $data[$i]['title']?></a></h3>
                             <div class="price"><?php echo $data[$i]['currency'].' '. $data[$i]['new_price'];?></div>
                         </div>
                     </div>

@@ -9,27 +9,6 @@ class MyException extends Exception
     const E_USER_FILE = 1;
     const E_USER_ = 2;
 
-   /*
-    *
-    * protected $message = 'Unknown exception';   // сообщение об исключении
-    private   $string;                          // свойство для __toString
-    protected $code = 0;                        // пользовательский код исключения
-    protected $file;                            // файл, в котором было выброшено исключение
-    protected $line;                            // строка, в которой было выброшено исключение
-    private   $trace;                           // трассировка вызовов методов и функций
-    private   $previous;                        // предыдущее исключение, если исключение вложенное
-   */
-
-   /*
-    *  final public  function getMessage();        // сообщение исключения
-    final public  function getCode();           // код исключения
-    final public  function getFile();           // файл, где выброшено исключение
-    final public  function getLine();           // строка, на которой выброшено исключение
-    final public  function getTrace();          // массив backtrace()
-    final public  function getPrevious();       // педыдущее исключение
-    final public  function getTraceAsString();  // отформатированная строка трассировки
-   */
-
     public function __construct($message='', $code = 0, Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);
@@ -95,6 +74,5 @@ class MyException extends Exception
 
     function exception_handler($myException) {
         $this->writeLog();
-       // header('Location: /');
-    }
+        }
 }

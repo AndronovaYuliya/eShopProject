@@ -24,10 +24,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Checkout</a>
+                    <a class="nav-link" href="/cart/show">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>

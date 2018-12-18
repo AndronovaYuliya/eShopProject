@@ -9,5 +9,6 @@ require 'components/Autoloader.php';
 ini_set('error_log', 'var/log/php_errors.log');*/
 
 $autoloader=new Autoloader();
+
 //$exception=new MyException();
 router::routing();

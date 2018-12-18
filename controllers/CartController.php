@@ -1,6 +1,6 @@
 <?php
 
-class MainController extends Controller
+class CartController extends Controller
 {
     private $data=[];
 
@@ -13,6 +13,6 @@ class MainController extends Controller
     //view
     public function actionIndex()
     {
-        $this->view->generate('mainView.php',$this->data);
+        $this->view->generate('cartView.php',$this->data);
     }
 }

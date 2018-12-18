@@ -1,13 +1,7 @@
-.zigzag-bottom {
-    background: none repeat scroll 0 0 #56CC9D;
-    bottom: -80px;
-    height: 165px;
-    left: -5%;
-    position: absolute;
-    transform: rotate(3deg);
-    width: 108%;
-    z-index: 9;
+.btn{
+    margin: 5px;
 }
+
 a:focus { outline: 0px solid }
 img {
     max-width: 100%;
@@ -119,6 +113,8 @@ End promo-area
 Start maincontent-area
  */
 .maincontent-area {
+    position: relative;
+    overflow: hidden;
     padding-bottom: 170px;
     height: 700px;
 }
@@ -259,11 +255,11 @@ Start footer-top-area
     height: 200px;
 }
 .footer-top-area {
-    padding: 35px 0 125px;
     position: relative;
     overflow: hidden;
     background: #343a40;
     background: none repeat scroll 0 0 #888;
+    padding: 35px 0 125px;
 }
 .footer-about-us, .footer-menu{
     margin-bottom: 60px;
@@ -605,4 +601,13 @@ table.shop_table td.product-remove a {
 
 /**
 End single-product-area
- */
+ */.zigzag-bottom {
+       background: none repeat scroll 0 0 #56CC9D;
+       bottom: -80px;
+       height: 165px;
+       left: -5%;
+       position: absolute;
+       transform: rotate(3deg);
+       width: 108%;
+       z-index: 9;
+   }
