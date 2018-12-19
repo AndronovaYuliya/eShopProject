@@ -10,7 +10,8 @@ class DataBaseModel{
     public static function getData($fileName='/read'):array
     {
         if($fileName=='/read')throw new MyException("File is empty",02);
-        $data = file_get_contents($fileName);
+
+        $data = file_get_contents('../'.$fileName);
 
         return unserialize($data);
     }

@@ -45,11 +45,10 @@ class ProductModel
     public static function getProducts():array
     {
         try{
-            return DataBaseModel::getData(/*self::$fileName*/);
+            return DataBaseModel::getData(self::$fileName);
         }catch (MyException $myException){
             return $myException->exception_error_file();
         }
-
 
     }
 }

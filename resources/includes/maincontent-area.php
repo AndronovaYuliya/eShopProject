@@ -7,7 +7,7 @@
                 <?php for($i=0; $i<6;$i++):?>
                     <div class="product-wrap">
                         <div class="product-image">
-                            <img src="../../public<?php echo $data[$i]['img']?>">
+                            <img src=".<?php echo $data[$i]['img']?>">
                             <div class="shadow"></div>
                         </div>
                         <div class="product-list">

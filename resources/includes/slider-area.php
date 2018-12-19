@@ -8,7 +8,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="./../../public/img/slider1.jpg" alt="First slide">
+                <img class="d-block w-100" src="/img/slider1.jpg" alt="First slide">
                 <div class="carousel-caption">
                     <div class="jumbotron">
                         <h1 class="display-3">Hello, world!</h1>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="./../../public/img/slider2.jpg" alt="First slide">
+                <img class="d-block w-100" src="/img/slider2.jpg" alt="First slide">
                 <div class="carousel-caption">
                     <div class="jumbotron">
                         <h1 class="display-3">Hello, world!</h1>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="./../../public/img/slider3.jpg" alt="First slide">
+                <img class="d-block w-100" src="/img/slider3.jpg" alt="First slide">
                 <div class="carousel-caption">
                     <div class="jumbotron">
                         <h1 class="display-3">Hello, world!</h1>

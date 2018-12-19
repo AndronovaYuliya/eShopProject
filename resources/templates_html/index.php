@@ -53,12 +53,12 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="../../index.php">e<span>Shop</span></a></h1>
+                    <h1><a href="../../public/index.php">e<span>Shop</span></a></h1>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="../../index.php">Cart - <span class="cart-amunt">$000</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="../../public/index.php">Cart - <span class="cart-amunt">$000</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                 </div>
             </div>
         </div>
@@ -109,7 +109,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../../index.php">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../../public/index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  href=shop.php>Shop page</a>
@@ -126,13 +126,13 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../index.php">Single product</a>
+                    <a class="nav-link" href="../../public/index.php">Single product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../index.php">Cart</a>
+                    <a class="nav-link" href="../../public/index.php">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../index.php">Checkout</a>
+                    <a class="nav-link" href="../../public/index.php">Checkout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
