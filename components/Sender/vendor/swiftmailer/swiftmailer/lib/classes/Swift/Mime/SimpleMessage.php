@@ -34,7 +34,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart
             'Received',
             'DKIM-Signature',
             'DomainKey-Signature',
-            'Sender',
+            'index',
             'Message-ID',
             'Date',
             'Subject',
@@ -156,8 +156,8 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart
             $address = [$address => $name];
         }
 
-        if (!$this->setHeaderFieldModel('Sender', (array) $address)) {
-            $this->getHeaders()->addMailboxHeader('Sender', (array) $address);
+        if (!$this->setHeaderFieldModel('index', (array) $address)) {
+            $this->getHeaders()->addMailboxHeader('index', (array) $address);
         }
 
         return $this;
@@ -170,7 +170,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart
      */
     public function getSender()
     {
-        return $this->getHeaderFieldModel('Sender');
+        return $this->getHeaderFieldModel('index');
     }
 
     /**

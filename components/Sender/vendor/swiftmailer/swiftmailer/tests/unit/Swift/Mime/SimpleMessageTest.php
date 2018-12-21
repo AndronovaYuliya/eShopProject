@@ -210,9 +210,9 @@ class Swift_Mime_SimpleMessageTest extends Swift_Mime_MimePartTest
         /* -- RFC 2822, 3.6.2.
      */
 
-        $sender = $this->createHeader('Sender', ['sender@domain' => 'Name']);
+        $sender = $this->createHeader('index', ['sender@domain' => 'Name']);
         $message = $this->createMessage(
-            $this->createHeaderSet(['Sender' => $sender]),
+            $this->createHeaderSet(['index' => $sender]),
             $this->createEncoder(), $this->createCache()
             );
         $this->assertEquals(['sender@domain' => 'Name'], $message->getSender());
@@ -220,7 +220,7 @@ class Swift_Mime_SimpleMessageTest extends Swift_Mime_MimePartTest
 
     public function testSenderIsSetInHeader()
     {
-        $sender = $this->createHeader('Sender', ['sender@domain' => 'Name'],
+        $sender = $this->createHeader('index', ['sender@domain' => 'Name'],
             [], false
             );
         $sender->shouldReceive('setFieldBodyModel')
@@ -228,7 +228,7 @@ class Swift_Mime_SimpleMessageTest extends Swift_Mime_MimePartTest
                ->with(['other@domain' => 'Other']);
 
         $message = $this->createMessage(
-            $this->createHeaderSet(['Sender' => $sender]),
+            $this->createHeaderSet(['index' => $sender]),
             $this->createEncoder(), $this->createCache()
             );
         $message->setSender(['other@domain' => 'Other']);
@@ -239,7 +239,7 @@ class Swift_Mime_SimpleMessageTest extends Swift_Mime_MimePartTest
         $headers = $this->createHeaderSet([], false);
         $headers->shouldReceive('addMailboxHeader')
                 ->once()
-                ->with('Sender', (array) 'sender@domain');
+                ->with('index', (array) 'sender@domain');
         $headers->shouldReceive('addMailboxHeader')
                 ->zeroOrMoreTimes();
 
@@ -254,7 +254,7 @@ class Swift_Mime_SimpleMessageTest extends Swift_Mime_MimePartTest
         $headers = $this->createHeaderSet([], false);
         $headers->shouldReceive('addMailboxHeader')
                 ->once()
-                ->with('Sender', ['sender@domain' => 'Name']);
+                ->with('index', ['sender@domain' => 'Name']);
         $headers->shouldReceive('addMailboxHeader')
                 ->zeroOrMoreTimes();
 
