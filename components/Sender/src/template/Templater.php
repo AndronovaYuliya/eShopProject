@@ -9,12 +9,10 @@ class Templater
 
     static function template($dir, $ext)
     {
-        if(is_dir($dir))
-        {
+        if(is_dir($dir)){
             self::$root=$dir;
         }
-        else
-        {
+        else{
             die("Ошибка! ".$dir." не директория!");
         }
         self::$ext=$ext;
@@ -29,5 +27,4 @@ class Templater
 
         //return file_get_contents(__DIR__.$file);
     }
-
 }

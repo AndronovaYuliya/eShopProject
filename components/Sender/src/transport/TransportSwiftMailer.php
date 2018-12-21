@@ -1,6 +1,7 @@
 <?php
 
 namespace app\transport;
+
 use Swift_SmtpTransport;
 
 class TransportSwiftMailer

@@ -1,5 +1,6 @@
 <?php
 namespace app;
+
 require 'template/Templater.php';
 
 use app\transport\TransportInterface;
