@@ -1,6 +1,6 @@
 <?php
 define('ROOT', dirname(__FILE__));
-include_once(ROOT . '/components/Autoloader.php');
+include_once(ROOT . '/Components/Autoloader.php');
 $goods=ProductModel::getGoods();
 ?>
 <!doctype html>
