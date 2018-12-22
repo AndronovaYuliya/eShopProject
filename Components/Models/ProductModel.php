@@ -17,31 +17,28 @@ class ProductModel
         $products=self::getProducts();
         $result=[];
         $flag=false;
-        foreach( $products as $key => $value )
-        {
+
+        foreach( $products as $key => $value ) {
             $flag=false;
-            foreach ($params as $keyParam => $valueParam )
-            {
-                if($value[$keyParam]==$valueParam)
-                {
+            foreach ($params as $keyParam => $valueParam ) {
+                if($value[$keyParam]==$valueParam) {
                     $flag=true;
                 }
-
-                else
-                {
+                else {
                     $flag=false;
                     break;
                 }
             }
-            if($flag)
-            {
+
+            if($flag) {
                 $result[]=$value;
             }
         }
         return $result;
     }
 
-    public static function getFileName():string {
+    public static function getFileName():string
+    {
         return self::$fileName;
     }
     /*
@@ -49,11 +46,6 @@ class ProductModel
      * */
     public static function getProducts():array
     {
-        try{
-            return DataBaseModel::getData(self::$fileName);
-        }catch (MyException $myException){
-            return $myException->exception_error_file();
-        }
-
+        return DataBaseModel::getData(self::$fileName);
     }
 }

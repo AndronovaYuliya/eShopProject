@@ -2,6 +2,10 @@
 
 namespace Components\Core;
 
+use Components\Controllers\CartController;
+use Components\Controllers\MainController;
+use Components\Controllers\ProductController;
+
 class Router
 {
     private static $_needle='Controller';
@@ -24,21 +28,22 @@ class Router
     /*
      * routing
      */
+
     public static function routing()
     {
-       echo 5;die();
         self::parseUrl();
         //'/'
-        if (self::$nameController=='Controller')
-        {
-            self::$nameController='MainController';
+        if (self::$nameController=='Controller') {
+            $controller='Components\Controllers\MainController';
+        }
+        else {
+            $controller='Components\Controllers\\'.self::$nameController;
         }
         $action = self::$nameAction;
-        $controller =self::$nameController;
+       // $controller =self::$nameController;
         $currentController=new $controller();
 
-        if(!$action)
-        {
+        if(!$action) {
             $action='show';
         }
 
@@ -46,24 +51,13 @@ class Router
         //single product
 
         //Shop
-        if(!self::$query)
-        {
+        if(!self::$query) {
             $currentController->$action();
         }
-
-        elseif(self::$query)
-        {
+        elseif(self::$query) {
             $currentController->$action(self::$query);
-                //if()
-                //elseif(method_exists($Controllers, self::$query))
-                //self::$singleProduct = $Controllers::$action(self::$query);
-                // $singleProductView=new SingleproductController();
-                // $singleProductView->actionIndex(self::$data,self::$singleProduct);
-
         }
-
-        else
-        {
+        else {
             // кинуть исключение
             self::ErrorPage404();
         }
@@ -87,14 +81,11 @@ class Router
         self::$requestMethod=$_SERVER['REQUEST_METHOD'];
 
         //Parse query
-        if(array_key_exists('query', $arrayUrl))
-        {
+        if(array_key_exists('query', $arrayUrl)) {
             $query = explode(',',$arrayUrl['query']);
-
             self::$query=[];
 
-            foreach ($query as $key=>$value)
-            {
+            foreach ($query as $key=>$value) {
                 $queryItem=explode('=',$value);
                 self::$query[$queryItem[0]]=$queryItem[1];
             }

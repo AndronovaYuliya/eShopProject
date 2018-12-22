@@ -4,7 +4,8 @@ namespace Components\Models;
 
 use Components\Core\MyException;
 
-class DataBaseModel{
+class DataBaseModel
+{
     private static $data=[];
     private static $array=[];
 
@@ -14,7 +15,9 @@ class DataBaseModel{
      * */
     public static function getData($fileName='/read'):array
     {
-        if($fileName=='/read')throw new MyException("File is empty",02);
+        if($fileName=='/read'){
+            throw new MyException("File is empty",02);
+        }
 
         $data = file_get_contents('../'.$fileName);
 
