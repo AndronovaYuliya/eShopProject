@@ -27,12 +27,11 @@ class TransportSwiftMailer
         end($_POST );
         $subject =key($_POST);
 
-        $message =(new Swift_Message())
-            ->setSubject($subject)
-            ->setTo([self::$config['email'] => self::$config['name']])
+        $message =(new Swift_Message($subject))
             ->setFrom([$_POST['email']=> $_POST['name']])
+            ->setTo([self::$config['email'] => self::$config['name']])
             ->setBody($template,'text/html');
-//
+
         return $message;
     }
 

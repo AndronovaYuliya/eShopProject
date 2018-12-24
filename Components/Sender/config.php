@@ -6,7 +6,7 @@ return ["TransportSwiftMailer"=>
                                     'port' => 587,
                                     'email' => 'andron39933993@gmail.com',
                                     'name' => 'Andronova Yuliya',
-                                    'pass' => '',
+                                    'pass' => 'RgJdNvU2018',
                                     'encryption' => 'tls',
                                     ]
 ];
