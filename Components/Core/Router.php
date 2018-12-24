@@ -40,7 +40,7 @@ class Router
             $controller='Components\Controllers\\'.self::$nameController;
         }
         $action = self::$nameAction;
-       // $controller =self::$nameController;
+
         $currentController=new $controller();
 
         if(!$action) {
