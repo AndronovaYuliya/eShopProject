@@ -14,6 +14,6 @@
     "require": {
         "monolog/monolog": "^1.24",
         "phpunit/phpunit": "^7.5",
-        "swiftmailer/swiftmailer": "^6.1"
+        "andronova-yuliya/sender-packagist": "dev-master"
     }
 }

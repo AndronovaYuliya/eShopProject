@@ -2,10 +2,16 @@
 
 namespace Components\Controllers;
 
+
+use Sender\Sender;
+
 class SenderController
 {
     public function letter()
     {
-        require dirname(__FILE__,2).'/Sender/index.php';
+        Sender::sendMsg();
+        echo "<pre>";
+        var_dump($_SERVER);
+        echo "</pre>";
     }
 }
