@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AndronovaYuliya/SenderPackagist.git",
-                "reference": "eaeb35267b9b58b3e0369105aee5dd311ad41e35"
+                "reference": "bd5d73324ce0ff2f6a0dbf950b06850a927dd125"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AndronovaYuliya/SenderPackagist/zipball/eaeb35267b9b58b3e0369105aee5dd311ad41e35",
-                "reference": "eaeb35267b9b58b3e0369105aee5dd311ad41e35",
+                "url": "https://api.github.com/repos/AndronovaYuliya/SenderPackagist/zipball/bd5d73324ce0ff2f6a0dbf950b06850a927dd125",
+                "reference": "bd5d73324ce0ff2f6a0dbf950b06850a927dd125",
                 "shasum": ""
             },
             "require": {
@@ -38,7 +38,7 @@
                 }
             ],
             "description": "TestProject",
-            "time": "2018-12-29T23:34:07+00:00"
+            "time": "2018-12-30T00:35:34+00:00"
         },
         {
             "name": "doctrine/instantiator",
