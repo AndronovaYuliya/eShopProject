@@ -12,8 +12,8 @@
         "psr-4": {"Components\\": "Components/"}
     },
     "require": {
-        "monolog/monolog": "^1.24",
         "phpunit/phpunit": "^7.5",
-        "andronova-yuliya/sender-packagist": "dev-master"
+        "andronova-yuliya/sender-packagist": "dev-master",
+        "andronova-yuliya/monolog-packagist": "dev-master"
     }
 }

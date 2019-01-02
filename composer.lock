@@ -4,8 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c114b970cd0f15385e07ad7eb30e23a9",
+    "content-hash": "a083b90cf0459c197215837e14e175ee",
     "packages": [
+        {
+            "name": "andronova-yuliya/monolog-packagist",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AndronovaYuliya/MonologPackagist.git",
+                "reference": "d9062756b7f76eb8fe00a4d6d6fa08728d66ae17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AndronovaYuliya/MonologPackagist/zipball/d9062756b7f76eb8fe00a4d6d6fa08728d66ae17",
+                "reference": "d9062756b7f76eb8fe00a4d6d6fa08728d66ae17",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "^1.24"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CostumLogger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "AndronovaYuliya",
+                    "email": "andron39933993@gmail.com"
+                }
+            ],
+            "description": "TestProject",
+            "time": "2019-01-02T11:52:27+00:00"
+        },
         {
             "name": "andronova-yuliya/sender-packagist",
             "version": "dev-master",
@@ -1807,7 +1840,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "andronova-yuliya/sender-packagist": 20
+        "andronova-yuliya/sender-packagist": 20,
+        "andronova-yuliya/monolog-packagist": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
