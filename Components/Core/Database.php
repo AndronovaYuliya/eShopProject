@@ -80,4 +80,5 @@ class Database
         $sql = file_get_contents(dirname(__FILE__,3).'/database/'.$filename.'.sql');
         $this->_pdo->exec($sql);
     }
+
 }

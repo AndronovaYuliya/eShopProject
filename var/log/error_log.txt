@@ -1,0 +1,3 @@
+2019 1 7, 8:07 pm > INFO > security is now ready [] []
+2019 1 7, 8:07 pm > WARNING > Costum warning [] []
+2019 1 7, 8:07 pm > INFO > security is now ready [] []
