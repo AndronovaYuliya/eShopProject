@@ -1,6 +1,0 @@
-2019 1 2, 1:50 pm > INFO > security is now ready [] []
-2019 1 2, 1:50 pm > WARNING > Costum warning [] []
-2019 1 2, 1:50 pm > INFO > security is now ready [] []
-2019 1 2, 1:54 pm > INFO > security is now ready [] []
-2019 1 2, 1:54 pm > WARNING > Costum warning [] []
-2019 1 2, 1:54 pm > INFO > security is now ready [] []

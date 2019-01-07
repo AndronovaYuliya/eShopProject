@@ -13,7 +13,8 @@
     },
     "require": {
         "phpunit/phpunit": "^7.5",
+        "andronova-yuliya/monolog-packagist": "dev-master",
         "andronova-yuliya/sender-packagist": "dev-master",
-        "andronova-yuliya/monolog-packagist": "dev-master"
+        "fzaninotto/faker": "^1.8"
     }
 }
