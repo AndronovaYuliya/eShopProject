@@ -11,6 +11,7 @@ use Components\Mappers\AdditionalsMapper;
 use Components\Mappers\AttributesMapper;
 use Components\Mappers\ImagesMapper;
 use Components\Mappers\KeyWordsMapper;
+use Components\Models\AttributesModel;
 
 $log=new CostumLogger();
 Router::routing();
@@ -30,3 +31,7 @@ $qr = $db->createTables();
 //AttributesMapper::addAttributes();
 //ImagesMapper::addImages();
 //KeyWordsMapper::addKeyWords();
+
+$attributesModel=new AttributesModel();
+//$attributesModel->getAttributes();
+//$attributesModel->getAttributeWhere('id',1);

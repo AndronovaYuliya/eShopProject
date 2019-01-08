@@ -6,6 +6,8 @@ use Monolog\Processor\TagProcessor;
 use PDO;
 use Components\Core\FakerData;
 use PDOException;
+use CostumLogger\CostumLogger;
+
 
 class Database
 {
@@ -85,9 +87,27 @@ class Database
         $faker = new FakerData();
         for ($i=0;$i<$count;$i++) {
             $data=$faker->$fakerMethod();
-            $stmt= Database::getConnection()->prepare($sql);
+            $stmt= self::$_pdo->prepare($sql);
             $stmt->execute($data);
             $stmt->fetchAll();
         }
+    }
+
+    public static function getData(string $sql, string $checkTable):array
+    {
+        $data=[];
+
+        $stmt=self::$_pdo->query($checkTable);
+
+        //if table Exists
+        if($stmt->fetch()){
+            try{
+                $data = self::$_pdo->query($sql)->fetchAll();
+            }catch (PDOException $PDOException){
+                $costumLog=new CostumLogger('database');
+                $costumLog->critical($PDOException->getTraceAsString());
+            }
+        };
+        return $data;
     }
 }

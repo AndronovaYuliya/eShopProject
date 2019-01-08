@@ -78,7 +78,7 @@ class MyException extends Exception
         }
     }
 
-    function exception_handler($myException) {
+    public function exception_handler($myException) {
         $this->writeLog();
         }
 }
