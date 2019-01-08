@@ -8,6 +8,9 @@ use Components\Core\Database;
 use Components\Core\FakerData;
 use Components\Mappers\ClientsMapper;
 use Components\Mappers\AdditionalsMapper;
+use Components\Mappers\AttributesMapper;
+use Components\Mappers\ImagesMapper;
+use Components\Mappers\KeyWordsMapper;
 
 $log=new CostumLogger();
 Router::routing();
@@ -22,6 +25,8 @@ $mysqli = $db->getConnection();
 
 $qr = $db->createTables();
 
-$faker = new FakerData();
-//ClientsMapper::addClients($faker);
-//AdditionalsMapper::addAdditionals($faker);
+//ClientsMapper::addClients();
+//AdditionalsMapper::addAdditionals();
+//AttributesMapper::addAttributes();
+//ImagesMapper::addImages();
+//KeyWordsMapper::addKeyWords();

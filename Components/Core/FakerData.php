@@ -58,9 +58,7 @@ class FakerData
             ':stars'                     => $this->faker->numberBetween($min = 1, $max = 10),
         ];
 
-        $this->images=[
-            ':file_name'                 => $this->faker->text,
-        ];
+
 
         $this->key_words=[
             ':name'                      => $this->faker->text,
@@ -111,8 +109,29 @@ class FakerData
             ':email'                     => $this->faker->email,
             ':phone'                     => $this->faker->phoneNumber,
             ':city'                      => $this->faker->cityPrefix,
-            ':address'                    => $this->faker->secondaryAddress,
+            ':address'                   => $this->faker->secondaryAddress,
             ':password'                  => "1111"
+        ];
+    }
+
+    public function fakerAttributes():array
+    {
+        return [
+            ':title'            => $this->faker->word
+        ];
+    }
+
+    public function fakerImages():array
+    {
+        return [
+            ':file_name'        => $this->faker->imageUrl($width = 480, $height = 640, 'technics'),
+        ];
+    }
+
+    public function fakerKeyWords():array
+    {
+        return [
+            ':name'             => $this->faker->word
         ];
     }
 }

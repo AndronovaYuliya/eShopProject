@@ -27,7 +27,7 @@ class DataBaseModel
     /*
      * write data to file
      * */
-    public static function setDB($array, $fileName)
+    public static function setDB($array, $fileName):void
     {
         self::$data = serialize($array);
         file_put_contents($fileName, self::$data);

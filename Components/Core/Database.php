@@ -5,7 +5,7 @@ namespace Components\Core;
 use Monolog\Processor\TagProcessor;
 use PDO;
 use Components\Core\FakerData;
-use Exception;
+use PDOException;
 
 class Database
 {
@@ -24,7 +24,7 @@ class Database
     ];
 
 
-    public static function getInstance()
+    public static function getInstance():Database
     {
         if(!self::$_instance) { // If no instance then make one
             self::$_instance = new self();
@@ -52,12 +52,12 @@ class Database
     }
 
     // Get mysqli connection
-    public static function getConnection()
+    public static function getConnection():PDO
     {
         return self::$_pdo;
     }
 
-    public static function createTables()
+    public static function createTables():void
     {
         self::createTable('attributes');
         self::createTable('attributes_values');
@@ -74,14 +74,20 @@ class Database
         self::createTable('products_key_words');
     }
 
-    private static function createTable($filename)
+    private static function createTable($filename):void
     {
         $sql = file_get_contents(dirname(__FILE__,3).'/database/'.$filename.'.sql');
         self::$_pdo->exec($sql);
     }
 
-
-
-
-
+    public static function addData($fakerMethod, string $sql, int $count=1):void
+    {
+        $faker = new FakerData();
+        for ($i=0;$i<$count;$i++) {
+            $data=$faker->$fakerMethod();
+            $stmt= Database::getConnection()->prepare($sql);
+            $stmt->execute($data);
+            $stmt->fetchAll();
+        }
+    }
 }
