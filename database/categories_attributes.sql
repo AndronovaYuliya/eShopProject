@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS `categories_attributes`(
   KEY `fk_sca_id_attributes_idx` (`id_attribute`),
   CONSTRAINT `fk_sca_id_attribute` FOREIGN KEY (`id_attribute`) REFERENCES `attributes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_sca_id_category` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

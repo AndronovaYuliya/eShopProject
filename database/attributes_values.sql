@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS `attributes_values`(
   PRIMARY KEY (`id`),
   KEY `fk_av_id_attribute_idx` (`attributes_id`),
   CONSTRAINT `fk_av_id_attribute` FOREIGN KEY (`attributes_id`) REFERENCES `attributes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

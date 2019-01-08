@@ -7,8 +7,8 @@
 CREATE TABLE IF NOT EXISTS `attributes`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
-  `created_at` date NOT NULL,
+  `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

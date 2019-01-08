@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS `products_images`(
   KEY `fk_spg_id_image_idx` (`id_galary`),
   CONSTRAINT `fk_spg_id_galary` FOREIGN KEY (`id_galary`) REFERENCES `images` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_spg_id_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS `categories`(
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_sc_parent_id_idx` (`parent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

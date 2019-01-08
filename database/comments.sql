@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS `comments`(
   PRIMARY KEY (`id`),
   KEY `fk_sc_id_products_id` (`id_product`),
   CONSTRAINT `fk_sc_id_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS `products`(
   `title` varchar(45) NOT NULL,
   `description` text,
   `price` double DEFAULT NULL,
-  `price_old` double DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `sku` varchar(45) DEFAULT NULL,
   `id_category` int(11) NOT NULL,
@@ -18,5 +17,5 @@ CREATE TABLE IF NOT EXISTS `products`(
   PRIMARY KEY (`id`),
   KEY `fk_sp_id_categories_idx` (`id_category`),
   CONSTRAINT `fk_sp_id_category` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

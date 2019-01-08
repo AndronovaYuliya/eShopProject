@@ -10,5 +10,5 @@ CREATE TABLE IF NOT EXISTS `images`(
   `created_at` date NOT NULL,
   `updated_at` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

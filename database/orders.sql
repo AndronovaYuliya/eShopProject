@@ -16,5 +16,5 @@ CREATE TABLE IF NOT EXISTS `orders`(
   PRIMARY KEY (`id`),
   KEY `fk_so_id_clients_idx` (`id_client`),
   CONSTRAINT `fk_so_id_client` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

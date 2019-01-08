@@ -4,18 +4,20 @@ namespace Components\Core;
 
 use Monolog\Processor\TagProcessor;
 use PDO;
+use Components\Core\FakerData;
+use Exception;
 
 class Database
 {
-    private $_pdo;
+    private static $_pdo;
     private static $_instance; //The single instance
-    private $_host;
-    private $_username;
-    private $_password;
-    private $_database;
-    private $_charset;
-    private $_dsn;
-    private $_options = [
+    private static $_host;
+    private static $_username;
+    private static $_password;
+    private static $_database;
+    private static $_charset;
+    private static $_dsn;
+    private static $_options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES   => false,
@@ -34,51 +36,52 @@ class Database
     {
         $config= parse_ini_file(dirname(__FILE__,3).'/config/config.ini');
 
-        $this->_host=$config['host'];
-        $this->_username=$config['username'];
-        $this->_password=$config['password'];
-        $this->_database=$config['database'];
-        $this->_charset=$config['charset'];
-        $this->_dsn = "mysql:host=$this->_host;dbname=$this->_database;charset=$this->_charset";
+        self::$_host=$config['host'];
+        self::$_username=$config['username'];
+        self::$_password=$config['password'];
+        self::$_database=$config['database'];
+        self::$_charset=$config['charset'];
+        self::$_dsn = "mysql:host=".self::$_host.";dbname=".self::$_database.";charset=".self::$_charset;
 
         try {
-            $this->_pdo= new PDO($this->_dsn, $this->_username, $this->_password, $this->_options);
+            self::$_pdo= new PDO(self::$_dsn, self::$_username, self::$_password, self::$_options);
         } catch (PDOException $exception) {
             die('Подключение не удалось: ' . $exception->getMessage());
         }
 
     }
 
-    // Magic method clone is empty to prevent duplication of connection
-    private function __clone() { }
-
     // Get mysqli connection
-    public function getConnection()
+    public static function getConnection()
     {
-        return $this->_pdo;
+        return self::$_pdo;
     }
 
-    public function createTables()
+    public static function createTables()
     {
-        $this->createTable('attributes');
-        $this->createTable('attributes_values');
-        $this->createTable('categories');
-        $this->createTable('categories_attributes');
-        $this->createTable('clients');
-        $this->createTable('images');
-        $this->createTable('key_words');
-        $this->createTable('orders');
-        $this->createTable('products');
-        $this->createTable('comments');
-        $this->createTable('additionals');
-        $this->createTable('products_images');
-        $this->createTable('products_key_words');
+        self::createTable('attributes');
+        self::createTable('attributes_values');
+        self::createTable('categories');
+        self::createTable('categories_attributes');
+        self::createTable('clients');
+        self::createTable('images');
+        self::createTable('key_words');
+        self::createTable('orders');
+        self::createTable('products');
+        self::createTable('comments');
+        self::createTable('additionals');
+        self::createTable('products_images');
+        self::createTable('products_key_words');
     }
 
-    private function createTable($filename)
+    private static function createTable($filename)
     {
         $sql = file_get_contents(dirname(__FILE__,3).'/database/'.$filename.'.sql');
-        $this->_pdo->exec($sql);
+        self::$_pdo->exec($sql);
     }
+
+
+
+
 
 }
