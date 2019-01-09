@@ -8,7 +8,6 @@ use Components\Core\Database;
 use Components\Models\ClientsModel;
 use Components\Models\AttributesModel;
 use Components\Models\ImagesModel;
-use Components\Models\KeyWordsModel;
 use Components\Models\AttributesValuesModel;
 use Components\Models\CategoriesModel;
 use Components\Models\ProductsModel;
@@ -38,8 +37,6 @@ $qr = $db->createTables();
 ClientsModel::addClients();
 AttributesModel::addAttributes();
 ImagesModel::addImages();
-KeyWordsModel::addKeyWords();
-
 CategoriesModel::addCategories();
 AttributesValuesModel::addAttributesValues();
 ProductsModel::addProducts();

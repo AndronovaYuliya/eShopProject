@@ -2,6 +2,7 @@
 
 namespace Components\Core;
 
+use Components\Mappers\KeyWordsMapper;
 use Components\Models\CategoriesModel;
 use Components\Models\ClientsModel;
 use Components\Models\ImagesModel;
@@ -32,60 +33,6 @@ class FakerData
     public function __construct()
     {
         $this->faker=Factory::create('en_US');
-
-
-
-        $this->categories=[
-            ':title'                     => $this->faker->word,
-            ':description'               => $this->faker->sentence,
-            ':parent_id'                 => $this->faker->numberBetween($min = 1, $max = 10),
-        ];
-
-        $this->categories_attributes=[
-            ':id_category'               => $this->faker->numberBetween($min = 1, $max = 10),
-            ':id_attribute'              => $this->faker->numberBetween($min = 1, $max = 10),
-        ];
-
-
-
-        $this->comments=[
-            ':msg'                       => $this->faker->text,
-            ':user'                      => $this->faker->userName,
-            ':id_product'                => $this->faker->numberBetween($min = 1, $max = 10),
-            ':stars'                     => $this->faker->numberBetween($min = 1, $max = 10),
-        ];
-
-
-
-        $this->key_words=[
-            ':name'                      => $this->faker->text,
-        ];
-
-        $this->orders=[
-            ':date'                      => $this->faker->dateTime,
-            ':sum'                       => $this->faker->randomFloat(),
-            ':status'                    => $this->faker->boolean,
-            ':ttn'                       => $this->faker->randomDigit,
-            ':id_client'                 => $this->faker->randomDigit,
-        ];
-
-        $this->products=[
-            ':title'                     => $this->faker->word,
-            ':description'               => $this->faker->word,
-            ':price'                     => $this->faker->randomFloat(),
-            ':url'                       => $this->faker->url,
-            ':id_category'               => $this->faker->randomDigit,
-        ];
-
-        $this->products_images=[
-            ':id_galary'                 => $this->faker->randomDigit,
-            ':id_product'                => $this->faker->randomDigit,
-        ];
-
-        $this->products_key_words=[
-            ':id_product'                => $this->faker->randomDigit,
-            ':id_key_word'               => $this->faker->randomDigit,
-        ];
     }
 
 
@@ -194,7 +141,15 @@ class FakerData
         return [
             ':id_galary'                    => rand(1, count(ImagesModel::getImages())),
             ':id_product'                   => rand(1, count(ProductsModel::getProducts())),
-            ':stars'                        => rand(1, 5),
         ];
     }
+
+    public function fakerProductsKeyWords():array
+    {
+        return [
+            ':id_product'                => rand(1, count(ProductsModel::getProducts())),
+            ':id_key_word'               => rand(1, count(KeyWordsMapper::getKeyWords())),
+        ];
+    }
+
 }

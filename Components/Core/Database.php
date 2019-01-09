@@ -68,13 +68,11 @@ class Database
         self::createTable('categories_attributes');
         self::createTable('clients');
         self::createTable('images');
-        self::createTable('key_words');
         self::createTable('orders');
         self::createTable('products');
         self::createTable('comments');
         self::createTable('additionals');
         self::createTable('products_images');
-        self::createTable('products_key_words');
     }
 
     private static function createTable($filename):void
