@@ -44,11 +44,12 @@ class Database
         self::$_database=$config['database'];
         self::$_charset=$config['charset'];
         self::$_dsn = "mysql:host=".self::$_host.";dbname=".self::$_database.";charset=".self::$_charset;
-
         try {
             self::$_pdo= new PDO(self::$_dsn, self::$_username, self::$_password, self::$_options);
         } catch (PDOException $exception) {
-            die('Подключение не удалось: ' . $exception->getMessage());
+            echo 5;
+            var_dump($exception->getTrace());
+            die('Подключение не удалось: ' . $exception->getTraceAsString());
         }
 
     }

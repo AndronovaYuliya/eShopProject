@@ -18,12 +18,17 @@ class AttributesModel
 
     }
 
-    public function getAttributes():array
+    public static function addAttributes():void
+    {
+        AttributesMapper::addAttributes();
+    }
+
+    public static function getAttributes():array
     {
         return AttributesMapper::getAttributes();
     }
 
-    public function getAttributeWhere(string $byWhat, string $name)
+    public static function getAttributeWhere(string $byWhat, string $name)
     {
         return AttributesMapper::getAttributeWhere($byWhat, $name);
     }

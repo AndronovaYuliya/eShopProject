@@ -22,13 +22,11 @@ class AttributesMapper
         return $data;
     }
 
-
-        //faker
-    public static function addAttributes():array
+    //faker
+    public static function addAttributes()
     {
         $sql = "INSERT INTO `attributes` (title, created_at, updated_at) VALUE (:title, NOW(), NOW())";
         $data = Database::addData('fakerAttributes', $sql, 10);
-        return $data;
     }
 
 }
