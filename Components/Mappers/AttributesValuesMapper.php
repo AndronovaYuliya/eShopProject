@@ -4,14 +4,26 @@ namespace Components\Mappers;
 
 use Components\Core\Database;
 
-class AttributesValuesMapper
+class AttributesValuesMapper extends AbstractTableMapper
 {
     private static $_checkTable="SHOW TABLES LIKE 'attributes_values'";
 
     //faker
-    public static function addAttributesValues():void
+    public static function addData(): void
     {
         $sql = "INSERT INTO `attributes_values` (value, created_at, updated_at, attributes_id) VALUE (:value, NOW(), NOW(), :attributes_id)";
-        $data = Database::addData('fakerAttributesValues', $sql, 10);
+        Database::addData('fakerAttributesValues', $sql, 10);
+    }
+
+    public static function getData(): array
+    {
+        $sql = "SELECT id, value, created_at, updated_at, attributes_id FROM `attributes_values`;";
+        return Database::getData($sql, self::$_checkTable);
+    }
+
+    public static function getDataWhere(string $byWhat, string $name)
+    {
+        $sql = "SELECT id, value, created_at, updated_at, attributes_id FROM `attributes_values` WHERE $byWhat=$name;";
+        return Database::getData($sql, self::$_checkTable);
     }
 }

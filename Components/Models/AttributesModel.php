@@ -4,32 +4,45 @@ namespace Components\Models;
 
 use Components\Mappers\AttributesMapper;
 
-class AttributesModel
+class AttributesModel extends AbstractTableModel
 {
-    private $_attributes=[];
-    private $_attribute;
     private $_id;
     private $_title;
     private $_created_at;
     private $_updated_at;
 
-    public function __construct()
+    public function __construct(array $data=[])
     {
-
+        if(empty(!$data)){
+            $this->_id=isset($data['id'])?$data['id']:null;
+            $this->_title=isset($data['title'])?$data['title']:null;
+            $this->_created_at=isset($data['created_at'])?$data['created_at']:null;
+            $this->_updated_at=isset($data['updated_at'])?$data['updated_at']:null;
+        }
     }
 
-    public static function addAttributes():void
+    public function addFaker():void
     {
-        AttributesMapper::addAttributes();
+        AttributesMapper::addData();
     }
 
-    public static function getAttributes():array
+    public function getData():array
     {
-        return AttributesMapper::getAttributes();
+        $attributes=[];
+        $data=AttributesMapper::getData();
+        foreach ($data as $row){
+            $attributes[]=new AttributesModel($row);
+        }
+        return $attributes;
     }
 
-    public static function getAttributeWhere(string $byWhat, string $name)
+    public function getDataWhere(string $byWhat, string $name):array
     {
-        return AttributesMapper::getAttributeWhere($byWhat, $name);
+        $attributes=[];
+        $data=AttributesMapper::getDataWhere($byWhat, $name);
+        foreach ($data as $row){
+            $attributes[]=new AttributesModel($row);
+        }
+        return $attributes;
     }
 }

@@ -32,19 +32,13 @@ $db = Database::getInstance();
 $mysqli = $db->getConnection();
 
 
-$qr = $db->createTables();
+//$qr = $db->createTables();
 
-ClientsModel::addClients();
-AttributesModel::addAttributes();
-ImagesModel::addImages();
-CategoriesModel::addCategories();
-AttributesValuesModel::addAttributesValues();
-ProductsModel::addProducts();
-OrdersModel::addOrders();
-AdditionalsModel::addAdditionals();
-CategoriesAttributesModel::addCategoriesAttributes();
-CommentsModel::addComments();
-ProductsImagesModel::addProductsImages();
+$cl=new CommentsModel();
+//$cl->addFaker();
+echo "<pre>";
+var_dump($cl->getDataWhere('id',1));
+echo "</pre>";
 
 
 

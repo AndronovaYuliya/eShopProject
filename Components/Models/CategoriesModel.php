@@ -4,20 +4,51 @@ namespace Components\Models;
 
 use Components\Mappers\CategoriesMapper;
 
-class CategoriesModel
+class CategoriesModel extends AbstractTableModel
 {
-    public static function addCategories():void
+    private $_id;
+    private $_title;
+    private $_description;
+    private $_icon;
+    private $_parent_id;
+    private $_created_at;
+    private $_updated_at;
+
+    public function __construct(array $data=[])
     {
-        CategoriesMapper::addCategories();
+        if(empty(!$data)){
+            $this->_id=isset($data['id'])?$data['id']:null;
+            $this->_title=isset($data['title'])?$data['title']:null;
+            $this->_description=isset($data['description'])?$data['description']:null;
+            $this->_icon=isset($data['icon'])?$data['icon']:null;
+            $this->_parent_id=isset($data['parent_id'])?$data['parent_id']:null;
+            $this->_created_at=isset($data['created_at'])?$data['created_at']:null;
+            $this->_updated_at=isset($data['updated_at'])?$data['updated_at']:null;
+        }
     }
 
-    public static function getCategories():array
+    public function addFaker(): void
     {
-        return CategoriesMapper::getCategories();
+        CategoriesMapper::addData();
     }
 
-    public static function getCategoryWhere(string $byWhat, string $name)
+    public function getData(): array
     {
-        return CategoriesMapper::getCategoryWhere($byWhat, $name);
+        $categories=[];
+        $data=CategoriesMapper::getData();
+        foreach ($data as $row){
+            $categories[]=new CategoriesModel($row);
+        }
+        return $categories;
+    }
+
+    public function getDataWhere(string $byWhat, string $name): array
+    {
+        $categories=[];
+        $data=CategoriesMapper::getDataWhere($byWhat, $name);
+        foreach ($data as $row){
+            $categories[]=new CategoriesModel($row);
+        }
+        return $categories;
     }
 }
