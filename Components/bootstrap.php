@@ -34,11 +34,9 @@ $mysqli = $db->getConnection();
 
 //$qr = $db->createTables();
 
-$cl=new CommentsModel();
+
 //$cl->addFaker();
-echo "<pre>";
-var_dump($cl->getDataWhere('id',1));
-echo "</pre>";
+//var_dump($cl->getDataWhere('id',1));
 
 
 

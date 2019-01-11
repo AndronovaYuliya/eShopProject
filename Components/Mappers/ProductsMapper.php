@@ -26,4 +26,13 @@ class ProductsMapper extends AbstractTableMapper
         $sql = "SELECT id, title, description, price, url, sku, id_category,  created_at, updated_at FROM `products` WHERE $byWhat=$name;";
         return Database::getData($sql, self::$_checkTable);
     }
+
+    public static function getDataWithImg():array
+    {
+        $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.sku, I.id, I.file_name 
+            FROM products as P, images as I, products_images as PI
+            WHERE P.id = PI.id_product AND I.id = PI.id_galary";
+        return Database::getData($sql, self::$_checkTable);
+    }
+
 }

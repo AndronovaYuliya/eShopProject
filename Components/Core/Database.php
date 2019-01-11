@@ -57,6 +57,7 @@ class Database
     // Get mysqli connection
     public static function getConnection():PDO
     {
+        self::getInstance();
         return self::$_pdo;
     }
 
@@ -96,7 +97,7 @@ class Database
     {
         $data=[];
 
-        $stmt=self::$_pdo->query($checkTable);
+        $stmt=self::getConnection()->query($checkTable);
 
         //if table Exists
         if($stmt->fetch()){
