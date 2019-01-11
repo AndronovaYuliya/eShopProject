@@ -28,21 +28,22 @@ class AttributesModel extends AbstractTableModel
 
     public function getData():array
     {
-        $attributes=[];
         $data=AttributesMapper::getData();
-        foreach ($data as $row){
-            $attributes[]=new AttributesModel($row);
-        }
-        return $attributes;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name):array
     {
-        $attributes=[];
         $data=AttributesMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $attributes[]=new AttributesModel($row);
+            $products[]=new AttributesModel($row);
         }
-        return $attributes;
+        return $products;
     }
 }

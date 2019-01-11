@@ -33,7 +33,28 @@ $mysqli = $db->getConnection();
 
 
 //$qr = $db->createTables();
-
+/*$attributes=new AttributesModel();
+$attributes->addFaker();
+$clients=new ClientsModel();
+$clients->addFaker();
+$attributesValues=new AttributesValuesModel();
+$attributesValues->addFaker();
+$categories=new CategoriesModel();
+$categories->addFaker();
+$categoriesAttributes=new CategoriesAttributesModel();
+$categoriesAttributes->addFaker();
+$images=new ImagesModel();
+$images->addFaker();
+$products=new ProductsModel();
+$products->addFaker();
+$orders=new OrdersModel();
+$orders->addFaker();
+$comments=new CommentsModel();
+$comments->addFaker();
+$productsImages=new ProductsImagesModel();
+$productsImages->addFaker();
+$additionals=new AdditionalsModel();
+$additionals->addFaker();*/
 
 //$cl->addFaker();
 //var_dump($cl->getDataWhere('id',1));

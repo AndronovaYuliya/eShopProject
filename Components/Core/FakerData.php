@@ -96,13 +96,6 @@ class FakerData
         ];
     }
 
-    public function fakerKeyWords():array
-    {
-        return [
-            ':name'             => $this->faker->word
-        ];
-    }
-
     public function fakerAttributesValues():array
     {
         return [
@@ -134,7 +127,7 @@ class FakerData
     public function fakerCategoriesAttributes():array
     {
         return [
-            ':id_category'                  => rand(1, count($this->categoriesAttributes->getData())),
+            ':id_category'                  => rand(1, count($this->categories->getData())),
             ':id_attribute'                 => rand(1, count($this->attributes->getData())),
         ];
     }
@@ -156,13 +149,4 @@ class FakerData
             ':id_product'                   => rand(1, count($this->products->getData())),
         ];
     }
-
-    public function fakerProductsKeyWords():array
-    {
-        return [
-            ':id_product'                => rand(1, count(ProductsModel::getProducts())),
-            ':id_key_word'               => rand(1, count(KeyWordsMapper::getKeyWords())),
-        ];
-    }
-
 }

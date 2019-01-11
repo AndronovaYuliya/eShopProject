@@ -34,21 +34,27 @@ class CategoriesModel extends AbstractTableModel
 
     public function getData(): array
     {
-        $categories=[];
         $data=CategoriesMapper::getData();
-        foreach ($data as $row){
-            $categories[]=new CategoriesModel($row);
-        }
-        return $categories;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name): array
     {
-        $categories=[];
         $data=CategoriesMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $categories[]=new CategoriesModel($row);
+            $products[]=new CategoriesModel($row);
         }
-        return $categories;
+        return $products;
+    }
+
+    public function getCategories():array
+    {
+        return CategoriesMapper::getData();
     }
 }

@@ -42,21 +42,22 @@ class ClientsModel extends AbstractTableModel
 
     public function getData(): array
     {
-        $clients=[];
         $data=ClientsMapper::getData();
-        foreach ($data as $row){
-            $clients[]=new ClientsModel($row);
-        }
-        return $clients;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name): array
     {
-        $clients=[];
         $data=ClientsMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $clients[]=new ClientsModel($row);
+            $products[]=new ClientsModel($row);
         }
-        return $clients;
+        return $products;
     }
 }

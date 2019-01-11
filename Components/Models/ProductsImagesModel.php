@@ -30,21 +30,22 @@ class ProductsImagesModel extends AbstractTableModel
 
     public function getData(): array
     {
-        $productsImages=[];
         $data=ProductsImagesMapper::getData();
-        foreach ($data as $row){
-            $productsImages[]=new ProductsImagesModel($row);
-        }
-        return $productsImages;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name): array
     {
-        $productsImages=[];
         $data=ProductsImagesMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $productsImages[]=new ProductsImagesModel($row);
+            $products[]=new ProductsImagesModel($row);
         }
-        return $productsImages;
+        return $products;
     }
 }

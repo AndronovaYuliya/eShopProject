@@ -36,21 +36,22 @@ class OrdersModel extends AbstractTableModel
 
     public function getData(): array
     {
-        $orders=[];
         $data=OrdersMapper::getData();
-        foreach ($data as $row){
-            $orders[]=new OrdersModel($row);
-        }
-        return $orders;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name): array
     {
-        $orders=[];
         $data=OrdersMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $orders[]=new OrdersModel($row);
+            $products[]=new OrdersModel($row);
         }
-        return $orders;
+        return $products;
     }
 }

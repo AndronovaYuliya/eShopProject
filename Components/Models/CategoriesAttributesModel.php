@@ -30,21 +30,22 @@ class CategoriesAttributesModel extends AbstractTableModel
 
     public function getData():array
     {
-        $categoriesAttributes=[];
         $data=CategoriesAttributesMapper::getData();
-        foreach ($data as $row){
-            $categoriesAttributes[]=new CategoriesAttributesModel($row);
-        }
-        return $categoriesAttributes;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name):array
     {
-        $categoriesAttributes=[];
         $data=CategoriesAttributesMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $categoriesAttributes[]=new CategoriesAttributesModel($row);
+            $products[]=new CategoriesAttributesModel($row);
         }
-        return $categoriesAttributes;
+        return $products;
     }
 }

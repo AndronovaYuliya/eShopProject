@@ -13,23 +13,27 @@
                 </div>
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
+
+
                     <?php for($i=0; $i<6;$i++):?>
                         <div class="thubmnail-recent">
-                            <img src="../../public<?php echo $data[$i]['img']?>" class="recent-thumb" alt="img">
-                            <h2><a href=""><?php echo $data[$i]['title']?></a></h2>
+                            <img src="<?php echo $data['products'][$i]['file_name']?>" class="recent-thumb" alt="img">
+                            <h2><a href=""><?php echo $data['products'][$i]['title']?></a></h2>
                             <div class="product-sidebar-price">
-                                <ins><?php echo $data[$i]['currency'].' '. $data[$i]['new_price'];?></ins>
-                                <del><?php echo $data[$i]['currency'].' '. $data[$i]['old_price'];?></del>
+                                <ins><?php echo $data['products'][$i]['price'].' $';?></ins>
+                                <del><?php echo $data['products'][$i]['price'].' $';?></del>
                             </div>
                         </div>
                     <?php endfor;?>
+
+
                 </div>
 
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Recent Posts</h2>
                     <ul>
                         <?php for($i=0; $i<6;$i++):?>
-                            <li><a href=""><?php echo $data[$i]['title']?></a></li>
+                            <li><a href=""><?php echo $data['products'][$i]['title']?></a></li>
                         <?php endfor;?>
                     </ul>
                 </div>
@@ -48,7 +52,7 @@
                         <div class="col-sm-6">
                             <div class="product-images">
                                 <div class="product-main-img">
-                                    <img src="../../public<?php echo $singleProduct[0]['img']?>" alt="img">
+                                    <img src="<?php echo $data['product'][$i]['file_name']?>" alt="img">
                                 </div>
 
                                 <div class="product-gallery">

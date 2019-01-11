@@ -34,21 +34,22 @@ class CommentsModel extends AbstractTableModel
 
     public function getData(): array
     {
-        $comments=[];
         $data=CommentsMapper::getData();
-        foreach ($data as $row){
-            $comments[]=new CommentsModel($row);
-        }
-        return $comments;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name): array
     {
-        $comments=[];
         $data=CommentsMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $comments[]=new CommentsModel($row);
+            $products[]=new CommentsModel($row);
         }
-        return $comments;
+        return $products;
     }
 }

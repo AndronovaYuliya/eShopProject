@@ -3,7 +3,9 @@
 namespace Components\Controllers;
 
 use Components\Core\Controller;
-use Components\Models\ProductModel;
+use Components\Models\ProductsModel;
+use Components\Models\CategoriesModel;
+
 
 class ProductController extends Controller
 {
@@ -14,15 +16,30 @@ class ProductController extends Controller
     //show 1 product
     public function product($params)
     {
-        $this->singleProduct=ProductModel::getProduct($params);
-        $this->data=ProductModel::getProducts();
+        $this->data=[];
+        $products=new ProductsModel();
+        $categories=new CategoriesModel();
+
+        $this->data['product']=$products->getProductWithImg('id', $params['id']);
+
+
+        $this->data['products']=$products->getProductsWithImg();
+        $this->data['categories']=$categories->getCategories();
+
         $this->view->generate('singleProductView.php',$this->data, $this->singleProduct);
     }
 
     //show all products
     public function show()
     {
-        $this->data=ProductModel::getProducts();
+        $this->data=[];
+        $products=new ProductsModel();
+        $categories=new CategoriesModel();
+
+        $this->data['products']=$products->getProductsWithImg();
+        $this->data['categories']=$categories->getCategories();
+
+
         $this->actionIndex();
     }
 

@@ -28,21 +28,22 @@ class ImagesModel extends AbstractTableModel
 
     public function getData(): array
     {
-        $images=[];
         $data=ImagesMapper::getData();
-        foreach ($data as $row){
-            $images[]=new ImagesModel($row);
-        }
-        return $images;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name): array
     {
-        $images=[];
         $data=ImagesMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $images[]=new ImagesModel($row);
+            $products[]=new ImagesModel($row);
         }
-        return $images;
+        return $products;
     }
 }

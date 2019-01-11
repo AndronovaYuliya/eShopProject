@@ -10,4 +10,6 @@ abstract class AbstractTableModel
 
     abstract protected function getDataWhere(string $byWhat, string $name):array;
 
+    abstract protected function toObject($data):array;
+
 }

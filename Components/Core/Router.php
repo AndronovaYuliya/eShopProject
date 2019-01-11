@@ -3,7 +3,7 @@
 namespace Components\Core;
 
 use Components\Controllers\CartController;
-use Components\Controllers\IndexController;
+use Components\Controllers\MainController;
 use Components\Controllers\ProductController;
 
 class Router
@@ -34,7 +34,7 @@ class Router
         self::parseUrl();
         //'/'
         if (self::$nameController=='Controller') {
-            $controller= 'Components\Controllers\IndexController';
+            $controller= 'Components\Controllers\MainController';
         }
         else {
             $controller='Components\Controllers\\'.self::$nameController;

@@ -34,21 +34,23 @@ class AdditionalsModel extends AbstractTableModel
 
     public function getData(): array
     {
-        $additionals=[];
         $data=AdditionalsMapper::getData();
-        foreach ($data as $row){
-            $additionals[]=new AdditionalsModel($row);
-        }
-        return $additionals;
+        return $this->toObject($data);
     }
 
     public function getDataWhere(string $byWhat, string $name): array
     {
-        $additionals=[];
         $data=AdditionalsMapper::getDataWhere($byWhat, $name);
+        return $this->toObject($data);
+
+    }
+
+    protected function toObject($data):array
+    {
+        $products=[];
         foreach ($data as $row){
-            $additionals[]=new AdditionalsModel($row);
+            $products[]=new AdditionalsModel($row);
         }
-        return $additionals;
+        return $products;
     }
 }

@@ -6,7 +6,7 @@ use Components\Core\Controller;
 use Components\Models\ProductsModel;
 use Components\Models\CategoriesModel;
 
-class IndexController extends Controller
+class MainController extends Controller
 {
     private $data=[];
 
@@ -16,8 +16,8 @@ class IndexController extends Controller
         $products=new ProductsModel();
         $categories=new CategoriesModel();
 
-        $this->data['products']=$products->getDataWithImg();
-        $this->data['categories']=$categories->getData();
+        $this->data['products']=$products->getProductsWithImg();
+        $this->data['categories']=$categories->getCategories();
 
         $this->actionIndex();
     }
