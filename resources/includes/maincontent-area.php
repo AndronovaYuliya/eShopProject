@@ -8,7 +8,7 @@
                 <?php for($i=0; $i<6; $i++):?>
                     <div class="product-wrap">
                         <div class="product-image">
-                            <img src="<?php echo $data['products'][$i]['file_name']?>">
+                            <img src="<?php echo $data['products'][$i]['file_name'][0]?>">
                             <div class="shadow"></div>
                         </div>
                         <div class="product-list">
@@ -18,6 +18,7 @@
                         </div>
                     </div>
                 <?php endfor;?>
+
             </div>
         </div>
     </div>

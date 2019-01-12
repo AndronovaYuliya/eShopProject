@@ -40,8 +40,7 @@ class ProductsMapper extends AbstractTableMapper
 
     public static function getProductWithImg(string $byWhat, string $name):array
     {
-        $sql="	SELECT result.id,result.title, result.description,result.price,result.url, result.count,
-	                C.title as category, GROUP_CONCAT(I.file_name) as file_name
+        $sql="	SELECT result.id,result.title, result.description,result.price,result.url, result.count, C.title as category, GROUP_CONCAT(I.file_name) as file_name, GROUP_CONCAT(KW.name) as key_words
                 FROM(
                     SELECT P.id, P.title, P.description, P.price, P.url, P.count, P.id_category
                     FROM products AS P
@@ -49,6 +48,8 @@ class ProductsMapper extends AbstractTableMapper
                 INNER JOIN products_images AS PI ON PI.id_product=result.id
                 INNER JOIN images AS I ON I.id=PI.id_galary
                 INNER JOIN categories as C ON C.id=result.id_category
+                INNER JOIN products_key_words as PKW ON PKW.id_product=result.id
+                INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
                 GROUP BY result.id";
         return Database::getData($sql, self::$_checkTable);
     }

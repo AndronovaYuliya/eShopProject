@@ -59,9 +59,9 @@ $productsImages=new ProductsImagesModel();
 $productsImages->addFaker();
 $additionals=new AdditionalsModel();
 $additionals->addFaker();
-$rr=new ProductsKeyWordsModel();
-$rr->addFaker();*/
+$productsKeyWordsModel=new ProductsKeyWordsModel();
+$productsKeyWordsModel->addFaker();
 
-
+*/
 
 

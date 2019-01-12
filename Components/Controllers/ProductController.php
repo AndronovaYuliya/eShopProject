@@ -21,8 +21,6 @@ class ProductController extends Controller
         $categories=new CategoriesModel();
 
         $this->data['product']=$products->getProductWithImg('id', $params['id']);
-
-
         $this->data['products']=$products->getProductsWithImg();
         $this->data['categories']=$categories->getCategories();
 

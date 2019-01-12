@@ -75,8 +75,8 @@ class ProductsModel extends AbstractTableModel
         $count=count($data);
         for($i=0; $i<$count; $i++){
             $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
+            $data[$i]['key_words']=explode(',',$data[$i]['key_words']);
         }
-        echo "<pre>";var_dump($data);
         return $data;
     }
 }
