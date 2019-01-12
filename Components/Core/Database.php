@@ -70,7 +70,9 @@ class Database
         self::createTable('clients');
         self::createTable('images');
         self::createTable('orders');
+        self::createTable('key_words');
         self::createTable('products');
+        self::createTable('products_key_words');
         self::createTable('comments');
         self::createTable('additionals');
         self::createTable('products_images');

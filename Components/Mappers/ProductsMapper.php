@@ -11,29 +11,45 @@ class ProductsMapper extends AbstractTableMapper
     //faker
     public static function addData(): void
     {
-        $sql = "INSERT INTO `products` (title, description, price, id_category, created_at, updated_at) VALUE (:title, :description, :price, :id_category, NOW(), NOW())";
+        $sql = "INSERT INTO `products` (title, description, price, count, id_category, created_at, updated_at) VALUE (:title, :description, :price, :count, :id_category, NOW(), NOW())";
         $data = Database::addData('fakerProducts', $sql, 10);
     }
 
     public static function getData(): array
     {
-        $sql = "SELECT id, title, description, price, url, sku, id_category, created_at, updated_at FROM `products`;";
+        $sql = "SELECT id, title, description, price, url, count, id_category, created_at, updated_at FROM `products`;";
         return Database::getData($sql, self::$_checkTable);
     }
 
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, title, description, price, url, sku, id_category,  created_at, updated_at FROM `products` WHERE $byWhat=$name;";
+        $sql = "SELECT id, title, description, price, url, count, id_category,  created_at, updated_at FROM `products` WHERE $byWhat=$name;";
         return Database::getData($sql, self::$_checkTable);
     }
 
     public static function getProductsWithImg():array
     {
-        //to edit!
-        $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.sku, I.id, I.file_name 
-            FROM products as P, images as I, products_images as PI
-            WHERE P.id = PI.id_product AND I.id = PI.id_galary";
+        $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.count,C.title as category, group_concat(I.file_name) as file_name
+            FROM products as P
+            inner join products_images as PI on PI.id_product=P.id
+            inner join images as I on I.id=PI.id_galary
+            inner join categories as C on C.id=P.id_category
+            group by P.id";
         return Database::getData($sql, self::$_checkTable);
     }
 
+    public static function getProductWithImg(string $byWhat, string $name):array
+    {
+        $sql="	SELECT result.id,result.title, result.description,result.price,result.url, result.count,
+	                C.title as category, GROUP_CONCAT(I.file_name) as file_name
+                FROM(
+                    SELECT P.id, P.title, P.description, P.price, P.url, P.count, P.id_category
+                    FROM products AS P
+                    WHERE P.$byWhat=$name) AS result 
+                INNER JOIN products_images AS PI ON PI.id_product=result.id
+                INNER JOIN images AS I ON I.id=PI.id_galary
+                INNER JOIN categories as C ON C.id=result.id_category
+                GROUP BY result.id";
+        return Database::getData($sql, self::$_checkTable);
+    }
 }

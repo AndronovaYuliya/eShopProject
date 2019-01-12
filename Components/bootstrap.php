@@ -16,6 +16,8 @@ use Components\Models\AdditionalsModel;
 use Components\Models\CategoriesAttributesModel;
 use Components\Models\CommentsModel;
 use Components\Models\ProductsImagesModel;
+use Components\Models\KeyWordsModel;
+use Components\Models\ProductsKeyWordsModel;
 
 $log=new CostumLogger();
 Router::routing();
@@ -31,9 +33,11 @@ $db = Database::getInstance();
 
 $mysqli = $db->getConnection();
 
-
 //$qr = $db->createTables();
-/*$attributes=new AttributesModel();
+
+/*$keyWords=new KeyWordsModel();
+$keyWords->addFaker();
+$attributes=new AttributesModel();
 $attributes->addFaker();
 $clients=new ClientsModel();
 $clients->addFaker();
@@ -54,13 +58,10 @@ $comments->addFaker();
 $productsImages=new ProductsImagesModel();
 $productsImages->addFaker();
 $additionals=new AdditionalsModel();
-$additionals->addFaker();*/
-
-//$cl->addFaker();
-//var_dump($cl->getDataWhere('id',1));
-
+$additionals->addFaker();
+$rr=new ProductsKeyWordsModel();
+$rr->addFaker();*/
 
 
-//$attributesModel=new AttributesModel();
-//$attributesModel->getAttributes();
-//$attributesModel->getAttributeWhere('id',1);
+
+

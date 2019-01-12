@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `products`(
   `description` text,
   `price` double DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
-  `sku` varchar(45) DEFAULT NULL,
+  `count` int(11) DEFAULT 1,
   `id_category` int(11) NOT NULL,
   `created_at` date NOT NULL,
   `updated_at` varchar(45) DEFAULT NULL,

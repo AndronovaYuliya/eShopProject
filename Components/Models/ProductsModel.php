@@ -50,7 +50,13 @@ class ProductsModel extends AbstractTableModel
 
     public function getProductsWithImg():array
     {
-        return ProductsMapper::getProductsWithImg();
+        $data = ProductsMapper::getProductsWithImg();
+
+        $count=count($data);
+        for($i=0; $i<$count; $i++){
+            $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
+        }
+        return $data;
     }
 
     protected function toObject($data):array
@@ -64,6 +70,13 @@ class ProductsModel extends AbstractTableModel
 
     public function getProductWithImg(string $byWhat, string $name): array
     {
-        return ProductsMapper::getDataWhere($byWhat, $name);
+        $data = ProductsMapper::getProductWithImg($byWhat,$name);
+
+        $count=count($data);
+        for($i=0; $i<$count; $i++){
+            $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
+        }
+        echo "<pre>";var_dump($data);
+        return $data;
     }
 }

@@ -12,7 +12,8 @@ use Components\Models\CommentsModel;
 use Components\Models\ImagesModel;
 use Components\Models\ProductsImagesModel;
 use Components\Models\ProductsModel;
-
+use Components\Models\KeyWordsModel;
+use Components\Models\ProductsKeyWordsModel;
 use Components\Models\OrdersModel;
 use Faker\Factory;
 use PDO;
@@ -31,6 +32,8 @@ class FakerData
     private $orders;
     private $products;
     private $productsImages;
+    private $keyWords;
+    private $productsKeyWords;
 
     public function __construct()
     {
@@ -46,6 +49,8 @@ class FakerData
         $this->orders=new OrdersModel();
         $this->products=new ProductsModel();
         $this->productsImages=new ProductsImagesModel();
+        $this->keyWords=new KeyWordsModel();
+        $this->productsKeyWords=new ProductsKeyWordsModel();
     }
 
 
@@ -110,6 +115,7 @@ class FakerData
             ':title'             => $this->faker->word,
             ':description'       => $this->faker->text,
             ':price'             => $this->faker->randomDigit,
+            ':count'             => $this->faker->randomDigit,
             ':id_category'       => rand(1, count($this->categories->getData()))
         ];
     }
@@ -147,6 +153,21 @@ class FakerData
         return [
             ':id_galary'                    => rand(1, count($this->images->getData())),
             ':id_product'                   => rand(1, count($this->products->getData())),
+        ];
+    }
+
+    public function fakerKeyWords():array
+    {
+        return [
+            ':name'                         => $this->faker->word,
+        ];
+    }
+
+    public function fakerProductsKeyWords():array
+    {
+        return [
+            ':id_product'                => rand(1, count($this->products->getData())),
+            ':id_key_word'               => rand(1, count($this->keyWords->getData())),
         ];
     }
 }
