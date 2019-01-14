@@ -34,33 +34,19 @@ $db = Database::getInstance();
 $mysqli = $db->getConnection();
 
 /*$qr = $db->createTables();
-
-$keyWords=new KeyWordsModel();
-$keyWords->addFaker();
-$attributes=new AttributesModel();
-$attributes->addFaker();
-$clients=new ClientsModel();
-$clients->addFaker();
-$attributesValues=new AttributesValuesModel();
-$attributesValues->addFaker();
-$categories=new CategoriesModel();
-$categories->addFaker();
-$categoriesAttributes=new CategoriesAttributesModel();
-$categoriesAttributes->addFaker();
-$images=new ImagesModel();
-$images->addFaker();
-$products=new ProductsModel();
-$products->addFaker();
-$orders=new OrdersModel();
-$orders->addFaker();
-$comments=new CommentsModel();
-$comments->addFaker();
-$productsImages=new ProductsImagesModel();
-$productsImages->addFaker();
-$additionals=new AdditionalsModel();
-$additionals->addFaker();
-$productsKeyWordsModel=new ProductsKeyWordsModel();
-$productsKeyWordsModel->addFaker();*/
+KeyWordsModel::addFaker();
+AttributesModel::addFaker();
+ClientsModel::addFaker();
+AttributesValuesModel::addFaker();
+CategoriesModel::addFaker();
+CategoriesAttributesModel::addFaker();
+ImagesModel::addFaker();
+ProductsModel::addFaker();
+OrdersModel::addFaker();
+CommentsModel::addFaker();
+ProductsImagesModel::addFaker();
+AdditionalsModel::addFaker();
+ProductsKeyWordsModel::addFaker();*/
 
 
 
