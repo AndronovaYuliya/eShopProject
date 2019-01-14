@@ -25,16 +25,14 @@ class KeyWordsModel extends AbstractTableModel
         KeyWordsMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
-        $data=KeyWordsMapper::getData();
-        return $this->toObject($data);
+        return KeyWordsMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
-        $data=KeyWordsMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return KeyWordsMapper::getDataWhere($byWhat, $name);
     }
 
     protected function toObject($data): array

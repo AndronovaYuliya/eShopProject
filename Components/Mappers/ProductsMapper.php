@@ -17,18 +17,6 @@ class ProductsMapper extends AbstractTableMapper
 
     public static function getData(): array
     {
-        $sql = "SELECT id, title, description, price, url, count, id_category, created_at, updated_at FROM `products`;";
-        return Database::getData($sql, self::$_checkTable);
-    }
-
-    public static function getDataWhere(string $byWhat, string $name)
-    {
-        $sql = "SELECT id, title, description, price, url, count, id_category,  created_at, updated_at FROM `products` WHERE $byWhat=$name;";
-        return Database::getData($sql, self::$_checkTable);
-    }
-
-    public static function getProductsWithImg():array
-    {
         $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.count,P.updated_at,P.id_category, C.title AS category,
                 GROUP_CONCAT(I.file_name) AS file_name, GROUP_CONCAT(KW.name) AS key_words
                 FROM products AS P
@@ -38,6 +26,12 @@ class ProductsMapper extends AbstractTableMapper
                 INNER JOIN products_key_words AS PKW ON PKW.id_product=P.id
                 INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
                 GROUP BY P.id";
+        return Database::getData($sql, self::$_checkTable);
+    }
+
+    public static function getDataWhere(string $byWhat, string $name)
+    {
+        $sql = "SELECT id, title, description, price, url, count, id_category,  created_at, updated_at FROM `products` WHERE $byWhat=$name;";
         return Database::getData($sql, self::$_checkTable);
     }
 
@@ -67,6 +61,50 @@ class ProductsMapper extends AbstractTableMapper
                  INNER JOIN products_images AS PI ON PI.id_product=result.id
                  INNER JOIN images AS I ON I.id=PI.id_galary
                  GROUP BY result.id";
+        return Database::getData($sql, self::$_checkTable);
+    }
+
+    public static function getDataLike(array $searchKey)
+    {
+        $search=$searchKey;
+
+        $sql="SELECT P.id,P.title, P.description, P.price, P.url, P.count,P.updated_at,P.id_category ,
+			GROUP_CONCAT(I.file_name) AS file_name, GROUP_CONCAT(KW.name) AS key_words
+			FROM key_words AS KW 
+			INNER JOIN products_key_words AS PKW ON PKW.id_key_word=KW.id
+			INNER JOIN products AS P ON P.id=PKW.id_product 
+			INNER JOIN products_images AS PI ON PI.id_product=P.id 
+			INNER JOIN images AS I ON I.id=PI.id_galary
+            WHERE KW.name LIKE '%".array_shift($search) ."%' ";
+        foreach ($search as $key){
+            $sql.="OR KW.name LIKE '%".$key."%' ";
+        };
+        $sql.="GROUP BY P.id
+              UNION
+            SELECT 
+                result.id
+                ,result.title
+                ,result.description
+                ,result.price
+                ,result.url
+                ,result.count
+                ,result.updated_at
+                ,result.id_category
+                ,GROUP_CONCAT(I.file_name) AS file_name
+                ,GROUP_CONCAT(KW.name) AS key_words
+            FROM
+                (SELECT P.id,P.title, P.description, P.price, P.url, P.count,P.updated_at,P.id_category 
+                FROM products AS P
+                WHERE P.title LIKE '%".array_shift($searchKey)."%' ";
+        foreach ($searchKey as $key){
+            $sql.="OR P.title LIKE '%".$key."%' ";
+        };
+        $sql.=")AS result
+            INNER JOIN products_key_words AS PKW ON PKW.id_product=result.id
+            INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
+            INNER JOIN products_images AS PI ON PI.id_product=result.id 
+            INNER JOIN images AS I ON I.id=PI.id_galary                
+            GROUP BY result.id";
         return Database::getData($sql, self::$_checkTable);
     }
 }

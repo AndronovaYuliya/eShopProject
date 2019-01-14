@@ -32,16 +32,14 @@ class AdditionalsModel extends AbstractTableModel
         AdditionalsMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
-        $data=AdditionalsMapper::getData();
-        return $this->toObject($data);
+        return AdditionalsMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
-        $data=AdditionalsMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return AdditionalsMapper::getDataWhere($byWhat, $name);
 
     }
 

@@ -12,13 +12,14 @@ class ProductController extends Controller
 {
 
     private $data=[];
-    private $singleProduct=[];
 
     //show 1 product
     public function product($params)
     {
-        $data=new ProductModel();
-        $this->data=$data->product($params);
+        $key=key($params);
+        $this->data['product']=ProductsModel::getProductWithImg($key, $params[$key]);
+        $this->data['products']=ProductsModel::getData();
+        $this->data['categories']=CategoriesModel::getData();
 
         $this->view->generate('singleProductView.php',$this->data);
     }
@@ -26,13 +27,8 @@ class ProductController extends Controller
     //show all products
     public function show()
     {
-        $this->data=[];
-        $products=new ProductsModel();
-        $categories=new CategoriesModel();
-
-        $this->data['products']=$products->getProductsWithImg();
-        $this->data['categories']=$categories->getCategories();
-
+        $this->data['products']=ProductsModel::getData();
+        $this->data['categories']=CategoriesModel::getData();
 
         $this->actionIndex();
     }
@@ -40,12 +36,8 @@ class ProductController extends Controller
     //by categories
     public function category($params)
     {
-        $this->data=[];
-        $products=new ProductsModel();
-        $categories=new CategoriesModel();
-
-        $this->data['categories']=$categories->getCategories();
-        $this->data['products']=$products->getDataByCategory('id_category', $params['id']);
+        $this->data['products']=ProductsModel::getData();
+        $this->data['categories']=CategoriesModel::getData();
 
         $this->view->generate('shopView.php',$this->data);
     }
@@ -53,15 +45,16 @@ class ProductController extends Controller
     //search
     public function search()
     {
-        $this->data=[];
-        $products=new ProductsModel();
-        $categories=new CategoriesModel();
+        $this->data['products']=ProductsModel::getData();
+        $this->data['categories']=CategoriesModel::getData();
 
-        $this->data['categories']=$categories->getCategories();
-        $this->data['products']=$products->getProductsWithImg();
+        $pattern='/\\W/';
+        $search=preg_replace($pattern, ' ', trim($_POST['search']));
+        $search=explode(' ',$search);
 
-        var_dump($this->data['products']);
-        //var_dump($_POST);die();
+        $this->data['products']=ProductsModel::getDataLike($search);
+        $this->view->generate('shopView.php',$this->data);
+
     }
 
     //view

@@ -33,11 +33,12 @@ class ProductModel
         $this->products=$this->products->getProductsWithImg();
     }
 
-    public function product($params):ProductModel
+    public function product():ProductModel
     {
         $this->products=$this->products->getProductsWithImg();
+
+        echo "<pre>";var_dump($this->products);die();
         $this->categories=$this->categories->getCategories();
-        $this->product=$this->product->getProductWithImg('id', $params['id']);
         return $this;
     }
 

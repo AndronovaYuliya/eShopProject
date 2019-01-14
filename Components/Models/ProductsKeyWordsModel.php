@@ -28,16 +28,14 @@ class ProductsKeyWordsModel extends AbstractTableModel
         ProductsKeyWordsMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
-        $data=ProductsKeyWordsMapper::getData();
-        return $this->toObject($data);
+        return ProductsKeyWordsMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
-        $data=ProductsKeyWordsMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return ProductsKeyWordsMapper::getDataWhere($byWhat, $name);
     }
 
     public function toObject($data): array

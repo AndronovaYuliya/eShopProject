@@ -34,16 +34,14 @@ class OrdersModel extends AbstractTableModel
         OrdersMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
-        $data=OrdersMapper::getData();
-        return $this->toObject($data);
+        return OrdersMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
-        $data=OrdersMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return OrdersMapper::getDataWhere($byWhat, $name);
     }
 
     protected function toObject($data):array

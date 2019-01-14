@@ -40,16 +40,14 @@ class ClientsModel extends AbstractTableModel
         ClientsMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
-        $data=ClientsMapper::getData();
-        return $this->toObject($data);
+        return ClientsMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
-        $data=ClientsMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return ClientsMapper::getDataWhere($byWhat, $name);
     }
 
     protected function toObject($data):array

@@ -28,16 +28,14 @@ class CategoriesAttributesModel extends AbstractTableModel
         CategoriesAttributesMapper::addData();
     }
 
-    public function getData():array
+    public static function getData():array
     {
-        $data=CategoriesAttributesMapper::getData();
-        return $this->toObject($data);
+        return CategoriesAttributesMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name):array
+    public static function getDataWhere(string $byWhat, string $name):array
     {
-        $data=CategoriesAttributesMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return CategoriesAttributesMapper::getDataWhere($byWhat, $name);
     }
 
     protected function toObject($data):array

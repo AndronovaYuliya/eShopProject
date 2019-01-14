@@ -26,16 +26,14 @@ class ImagesModel extends AbstractTableModel
         ImagesMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
-        $data=ImagesMapper::getData();
-        return $this->toObject($data);
+        return ImagesMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
-        $data=ImagesMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return ImagesMapper::getDataWhere($byWhat, $name);
     }
 
     protected function toObject($data):array

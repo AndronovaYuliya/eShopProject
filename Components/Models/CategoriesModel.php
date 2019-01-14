@@ -32,16 +32,14 @@ class CategoriesModel extends AbstractTableModel
         CategoriesMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
-        $data=CategoriesMapper::getData();
-        return $this->toObject($data);
+        return CategoriesMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
-        $data=CategoriesMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return CategoriesMapper::getDataWhere($byWhat, $name);
     }
 
     protected function toObject($data):array
@@ -53,9 +51,5 @@ class CategoriesModel extends AbstractTableModel
         return $products;
     }
 
-    public function getCategories():array
-    {
-        $data=CategoriesMapper::getData();
-        return $this->toObject($data);
-    }
+
 }

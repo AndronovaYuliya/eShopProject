@@ -26,16 +26,14 @@ class AttributesModel extends AbstractTableModel
         AttributesMapper::addData();
     }
 
-    public function getData():array
+    public static function getData():array
     {
-        $data=AttributesMapper::getData();
-        return $this->toObject($data);
+        return AttributesMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name):array
+    public static function getDataWhere(string $byWhat, string $name):array
     {
-        $data=AttributesMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return AttributesMapper::getDataWhere($byWhat, $name);
     }
 
     protected function toObject($data):array

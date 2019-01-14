@@ -32,16 +32,14 @@ class CommentsModel extends AbstractTableModel
         CommentsMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
-        $data=CommentsMapper::getData();
-        return $this->toObject($data);
+        return CommentsMapper::getData();
     }
 
-    public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
-        $data=CommentsMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
+        return CommentsMapper::getDataWhere($byWhat, $name);
     }
 
     protected function toObject($data):array

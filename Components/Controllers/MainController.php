@@ -13,12 +13,9 @@ class MainController extends Controller
     public function show()
     {
         $this->data=[];
-        $products=new ProductsModel();
-        $categories=new CategoriesModel();
 
-        $this->data['products']=$products->getProductsWithImg();
-        $this->data['categories']=$categories->getCategories();
-
+        $this->data['products']=ProductsModel::getData();
+        $this->data['categories']=CategoriesModel::getData();
         $this->actionIndex();
     }
 

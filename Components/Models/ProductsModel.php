@@ -36,30 +36,24 @@ class ProductsModel extends AbstractTableModel
         ProductsMapper::addData();
     }
 
-    public function getData(): array
+    public static function getData():array
     {
-        $data=ProductsMapper::getData();
-        return $this->toObject($data);
-    }
+        $data = ProductsMapper::getData();
 
-    public function getDataWhere(string $byWhat, string $name): array
-    {
-        $data=ProductsMapper::getDataWhere($byWhat, $name);
-        return $this->toObject($data);
-    }
-
-    public function getProductsWithImg():array
-    {
-        $data = ProductsMapper::getProductsWithImg();
-        return $this->toObject($data);
-
-/*        $count=count($data);
+        $count=count($data);
         for($i=0; $i<$count; $i++){
             $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
             $data[$i]['key_words']=explode(',',$data[$i]['key_words']);
         }
-        return $data;*/
+        return $data;
     }
+
+    public static function getDataWhere(string $byWhat, string $name): array
+    {
+        return ProductsMapper::getDataWhere($byWhat, $name);
+    }
+
+
 
     protected function toObject($data):array
     {
@@ -70,29 +64,38 @@ class ProductsModel extends AbstractTableModel
         return $products;
     }
 
-        public function getProductWithImg(string $byWhat, string $name): array
+    public static function getProductWithImg(string $byWhat, string $name): array
     {
         $data = ProductsMapper::getProductWithImg($byWhat,$name);
 
-        return $this->toObject($data);
-        /*$count=count($data);
+        $count=count($data);
         for($i=0; $i<$count; $i++){
             $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
             $data[$i]['key_words']=explode(',',$data[$i]['key_words']);
         }
-        return $data;*/
+        return $data;
     }
 
     public function getDataByCategory(string $byWhat, string $name): array
     {
         $data = ProductsMapper::getDataByCategory($byWhat,$name);
-        return $this->toObject($data);
 
-/*        $count=count($data);
+        $count=count($data);
 
         for($i=0; $i<$count; $i++){
             $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
         }
-        return $data;*/
+        return $data;
+    }
+
+    public static function getDataLike(array $search):array
+    {
+        $data=ProductsMapper::getDataLike($search);
+        $count=count($data);
+
+        for($i=0; $i<$count; $i++){
+            $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
+        }
+        return $data;
     }
 }

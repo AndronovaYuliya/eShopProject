@@ -5,9 +5,9 @@
             <div class="col-md-4">
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Search Products</h2>
-                    <form action="#">
-                        <input type="text" placeholder="Search products...">
-                        <input type="submit" value="Search">
+                    <form action="/product/search" method="post">
+                        <input type="text" name="search" placeholder="Search products...">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
 
