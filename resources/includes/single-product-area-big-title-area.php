@@ -28,13 +28,12 @@
 
                 </div>
             </div>
-
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="product-breadcroumb">
                         <a href="/">Home</a>
                         <a href=""><?php echo($data['product'][0]['category'])?></a>
-                        <a href="/product/product?id=<?php echo  $data['products'][$i]['id']?>"><?php echo($data['product'][0]['title'])?></a>
+                        <a href="#"><?php echo($data['product'][0]['title'])?></a>
                     </div>
 
                     <div class="row">
@@ -54,10 +53,10 @@
 
                         <div class="col-sm-6">
                             <div class="product-inner">
-                                    <h2 class="product-name"><?php echo $data['product'][0]['title']?></h2>
-                                    <div class="product-inner-price">
-                                        <ins><?php echo $data['product'][0]['price']. ' $';?></ins> <del><?php echo $data['product'][0]['price']. ' $';?></del>
-                                    </div>
+                                <h2 class="product-name"><?php echo $data['product'][0]['title']?></h2>
+                                <div class="product-inner-price">
+                                    <ins><?php echo $data['product'][0]['price']. ' $';?></ins> <del><?php echo $data['product'][0]['price']. ' $';?></del>
+                                </div>
                                 <form action="" class="cart">
                                     <div class="quantity">
                                         <input type="number" size="4" class="input-text qty text" title="Qty" value="<?php if(($data['product'][0]['count'])==0) echo 0; else echo 1;?>" name="quantity" min="1" max="<?php echo($data['product'][0]['count'])?>" step="1">
@@ -66,7 +65,7 @@
                                 </form>
 
                                 <div class="product-inner-category">
-                                    <p>Category: <a href=""><?php echo($data['product'][0]['category'])?></a>.
+                                    <p>Category: <a href="/product/category?id=<?php echo  $data['products'][0]['id_category']?>"><?php echo($data['product'][0]['category'])?></a>.
                                         Tags:
                                         <?php foreach ($data['product'][0]['key_words'] as $key_words):?>
                                             <a href=""><?php echo $key_words?></a>

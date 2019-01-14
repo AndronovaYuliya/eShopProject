@@ -25,4 +25,6 @@ class CategoriesMapper extends AbstractTableMapper
         $sql = "SELECT id, title, created_at, updated_at FROM `categories` WHERE $byWhat=$name;";
         return Database::getData($sql, self::$_checkTable);
     }
+
+
 }

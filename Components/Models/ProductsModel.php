@@ -51,12 +51,14 @@ class ProductsModel extends AbstractTableModel
     public function getProductsWithImg():array
     {
         $data = ProductsMapper::getProductsWithImg();
+        return $this->toObject($data);
 
-        $count=count($data);
+/*        $count=count($data);
         for($i=0; $i<$count; $i++){
             $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
+            $data[$i]['key_words']=explode(',',$data[$i]['key_words']);
         }
-        return $data;
+        return $data;*/
     }
 
     protected function toObject($data):array
@@ -68,15 +70,29 @@ class ProductsModel extends AbstractTableModel
         return $products;
     }
 
-    public function getProductWithImg(string $byWhat, string $name): array
+        public function getProductWithImg(string $byWhat, string $name): array
     {
         $data = ProductsMapper::getProductWithImg($byWhat,$name);
 
-        $count=count($data);
+        return $this->toObject($data);
+        /*$count=count($data);
         for($i=0; $i<$count; $i++){
             $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
             $data[$i]['key_words']=explode(',',$data[$i]['key_words']);
         }
-        return $data;
+        return $data;*/
+    }
+
+    public function getDataByCategory(string $byWhat, string $name): array
+    {
+        $data = ProductsMapper::getDataByCategory($byWhat,$name);
+        return $this->toObject($data);
+
+/*        $count=count($data);
+
+        for($i=0; $i<$count; $i++){
+            $data[$i]['file_name']=explode(',',$data[$i]['file_name']);
+        }
+        return $data;*/
     }
 }

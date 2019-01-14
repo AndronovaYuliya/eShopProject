@@ -29,19 +29,22 @@ class ProductsMapper extends AbstractTableMapper
 
     public static function getProductsWithImg():array
     {
-        $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.count,P.updated_at,C.title as category, group_concat(I.file_name) as file_name
-            FROM products as P
-            inner join products_images as PI on PI.id_product=P.id
-            inner join images as I on I.id=PI.id_galary
-            inner join categories as C on C.id=P.id_category
-            group by P.id
-            order by P.updated_at";
+        $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.count,P.updated_at,P.id_category, C.title AS category,
+                GROUP_CONCAT(I.file_name) AS file_name, GROUP_CONCAT(KW.name) AS key_words
+                FROM products AS P
+                INNER JOIN products_images AS PI ON PI.id_product=P.id
+                INNER JOIN images AS I ON I.id=PI.id_galary
+                INNER JOIN categories AS C ON C.id=P.id_category
+                INNER JOIN products_key_words AS PKW ON PKW.id_product=P.id
+                INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
+                GROUP BY P.id";
         return Database::getData($sql, self::$_checkTable);
     }
 
     public static function getProductWithImg(string $byWhat, string $name):array
     {
-        $sql="	SELECT result.id,result.title, result.description,result.price,result.url, result.count, C.title as category, GROUP_CONCAT(I.file_name) as file_name, GROUP_CONCAT(KW.name) as key_words
+        $sql="SELECT result.id,result.title, result.description,result.price,result.url, result.count,result.id_category,
+          C.title as category, GROUP_CONCAT(I.file_name) as file_name, GROUP_CONCAT(KW.name) as key_words
                 FROM(
                     SELECT P.id, P.title, P.description, P.price, P.url, P.count, P.id_category
                     FROM products AS P
@@ -52,6 +55,18 @@ class ProductsMapper extends AbstractTableMapper
                 INNER JOIN products_key_words as PKW ON PKW.id_product=result.id
                 INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
                 GROUP BY result.id";
+        return Database::getData($sql, self::$_checkTable);
+    }
+
+    public static function getDataByCategory(string $byWhat, string $name)
+    {
+        $sql="SELECT result.id, result.price,  result.count, result.id_category, result.description, 
+                result.title, result.updated_at, result.created_at, GROUP_CONCAT(I.file_name) AS file_name FROM 
+                    (SELECT P.id, P.price, P.count, P.id_category, P.description, P.title, P.updated_at, 
+                    P.created_at FROM products AS P WHERE P.$byWhat=$name)AS result 
+                 INNER JOIN products_images AS PI ON PI.id_product=result.id
+                 INNER JOIN images AS I ON I.id=PI.id_galary
+                 GROUP BY result.id";
         return Database::getData($sql, self::$_checkTable);
     }
 }

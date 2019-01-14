@@ -4,48 +4,41 @@ namespace Components\Models;
 
 use Components\Core\MyException;
 use Components\Models\DataBaseModel;
+use Components\Core\Controller;
+use Components\Models\ProductsModel;
+use Components\Models\CategoriesModel;
+
 
 class ProductModel
 {
-    private static $fileName='array.txt';
+    private $product;
+    private $products;
+    private $categories;
 
-    /*
-     * return array
-     */
-    public static function getProduct($params):array
+
+    public function __construct()
     {
-        $products=self::getProducts();
-        $result=[];
-        $flag=false;
-
-        foreach( $products as $key => $value ) {
-            $flag=false;
-            foreach ($params as $keyParam => $valueParam ) {
-                if($value[$keyParam]==$valueParam) {
-                    $flag=true;
-                }
-                else {
-                    $flag=false;
-                    break;
-                }
-            }
-
-            if($flag) {
-                $result[]=$value;
-            }
-        }
-        return $result;
+        $this->categories=new CategoriesModel();
+        $this->products=new ProductsModel();
+        $this->product=new ProductsModel();
     }
 
-    public static function getFileName():string
+    public function getCategories()
     {
-        return self::$fileName;
+        $this->categories=$this->categories->getCategories();
     }
-    /*
-     * return array
-     * */
-    public static function getProducts():array
+
+    public function getProductsWithImg()
     {
-        return DataBaseModel::getData(self::$fileName);
+        $this->products=$this->products->getProductsWithImg();
     }
+
+    public function product($params):ProductModel
+    {
+        $this->products=$this->products->getProductsWithImg();
+        $this->categories=$this->categories->getCategories();
+        $this->product=$this->product->getProductWithImg('id', $params['id']);
+        return $this;
+    }
+
 }

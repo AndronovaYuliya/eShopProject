@@ -55,6 +55,7 @@ class CategoriesModel extends AbstractTableModel
 
     public function getCategories():array
     {
-        return CategoriesMapper::getData();
+        $data=CategoriesMapper::getData();
+        return $this->toObject($data);
     }
 }

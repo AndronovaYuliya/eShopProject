@@ -3,6 +3,7 @@
 namespace Components\Controllers;
 
 use Components\Core\Controller;
+use Components\Models\ProductModel;
 use Components\Models\ProductsModel;
 use Components\Models\CategoriesModel;
 
@@ -16,15 +17,10 @@ class ProductController extends Controller
     //show 1 product
     public function product($params)
     {
-        $this->data=[];
-        $products=new ProductsModel();
-        $categories=new CategoriesModel();
+        $data=new ProductModel();
+        $this->data=$data->product($params);
 
-        $this->data['product']=$products->getProductWithImg('id', $params['id']);
-        $this->data['products']=$products->getProductsWithImg();
-        $this->data['categories']=$categories->getCategories();
-
-        $this->view->generate('singleProductView.php',$this->data, $this->singleProduct);
+        $this->view->generate('singleProductView.php',$this->data);
     }
 
     //show all products
@@ -41,9 +37,37 @@ class ProductController extends Controller
         $this->actionIndex();
     }
 
+    //by categories
+    public function category($params)
+    {
+        $this->data=[];
+        $products=new ProductsModel();
+        $categories=new CategoriesModel();
+
+        $this->data['categories']=$categories->getCategories();
+        $this->data['products']=$products->getDataByCategory('id_category', $params['id']);
+
+        $this->view->generate('shopView.php',$this->data);
+    }
+
+    //search
+    public function search()
+    {
+        $this->data=[];
+        $products=new ProductsModel();
+        $categories=new CategoriesModel();
+
+        $this->data['categories']=$categories->getCategories();
+        $this->data['products']=$products->getProductsWithImg();
+
+        var_dump($this->data['products']);
+        //var_dump($_POST);die();
+    }
+
     //view
     public function actionIndex()
     {
         $this->view->generate('shopView.php',$this->data);
     }
+
 }

@@ -33,9 +33,9 @@ $db = Database::getInstance();
 
 $mysqli = $db->getConnection();
 
-//$qr = $db->createTables();
+/*$qr = $db->createTables();
 
-/*$keyWords=new KeyWordsModel();
+$keyWords=new KeyWordsModel();
 $keyWords->addFaker();
 $attributes=new AttributesModel();
 $attributes->addFaker();
@@ -60,8 +60,7 @@ $productsImages->addFaker();
 $additionals=new AdditionalsModel();
 $additionals->addFaker();
 $productsKeyWordsModel=new ProductsKeyWordsModel();
-$productsKeyWordsModel->addFaker();
+$productsKeyWordsModel->addFaker();*/
 
-*/
 
 
