@@ -3,7 +3,8 @@
 namespace Components\Controllers;
 
 use Components\Core\Controller;
-use Components\Models\ProductModel;
+use Components\Models\ProductsModel;
+use Components\Models\CategoriesModel;
 
 class CartController extends Controller
 {
@@ -11,7 +12,14 @@ class CartController extends Controller
 
     public function show()
     {
-        $this->data=ProductModel::getProducts();
+        $this->data=[];
+        $products=new ProductsModel();
+        $categories=new CategoriesModel();
+
+        $this->data['products']=$products->getProductsWithImg();
+        $this->data['categories']=$categories->getCategories();
+
+        $this->actionIndex();
         $this->actionIndex();
     }
 

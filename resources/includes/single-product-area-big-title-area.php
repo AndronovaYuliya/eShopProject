@@ -14,11 +14,10 @@
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
 
-
                     <?php for($i=0; $i<6;$i++):?>
                         <div class="thubmnail-recent">
                             <img src="<?php echo $data['products'][$i]['file_name'][0]?>" class="recent-thumb" alt="img">
-                            <h2><a href=""><?php echo $data['products'][$i]['title']?></a></h2>
+                            <h2><a href="/product/product?id=<?php echo  $data['products'][$i]['id']?>"><?php echo $data['products'][$i]['title']?></a></h2>
                             <div class="product-sidebar-price">
                                 <ins><?php echo $data['products'][$i]['price'].' $';?></ins>
                                 <del><?php echo $data['products'][$i]['price'].' $';?></del>
@@ -28,16 +27,6 @@
 
 
                 </div>
-
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Recent Posts</h2>
-                    <ul>
-                        <?php for($i=0; $i<6;$i++):?>
-                            <li><a href=""><?php echo $data['products'][$i]['title']?></a></li>
-                        <?php endfor;?>
-                    </ul>
-                </div>
-
             </div>
 
             <div class="col-md-8">
@@ -45,7 +34,7 @@
                     <div class="product-breadcroumb">
                         <a href="/">Home</a>
                         <a href=""><?php echo($data['product'][0]['category'])?></a>
-                        <a href=""><?php echo($data['product'][0]['title'])?></a>
+                        <a href="/product/product?id=<?php echo  $data['products'][$i]['id']?>"><?php echo($data['product'][0]['title'])?></a>
                     </div>
 
                     <div class="row">

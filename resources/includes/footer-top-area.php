@@ -46,9 +46,10 @@
                     <h2 class="footer-wid-title">Newsletter</h2>
                     <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
                     <div class="newsletter-form">
-                        <form action="#">
-                            <input type="email" placeholder="Type your email">
-                            <input type="submit" value="Subscribe">
+                        <form method="post" action="/sender/letter">
+                            <input type="text" id="letterInputName" name="name" placeholder="James Bond">
+                            <input type="email" id="letterInputEmail" name="email" placeholder="Type your email">
+                            <button type="submit" name="subscribe" class="btn btn-primary">Subscribe</button>
                         </form>
                     </div>
                 </div>

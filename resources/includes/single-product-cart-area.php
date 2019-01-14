@@ -13,45 +13,17 @@
 
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
-                    <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Recent Posts</h2>
-                    <ul>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                    </ul>
+                    <?php for($i=0;$i<6; $i++):?>
+                    <div class="thubmnail-recent">
+                        <img src=<?php echo $data['products'][$i]['file_name'][0]?> class="recent-thumb" alt="img">
+                        <h2><a href="single-product.html"><?php echo $data['products'][$i]['title']?></a></h2>
+                        <div class="product-sidebar-price">
+                            <ins><?php echo $data['products'][$i]['price']?></ins> <del><?php echo $data['products'][$i]['price']?></del>
+                        </div>
+                    </div>
+                    <?php endfor;?>
+
                 </div>
             </div>
 
