@@ -7,7 +7,6 @@ use Components\Core\MyException;
 class DataBaseModel
 {
     private static $data=[];
-    private static $array=[];
 
     /*
      * return array

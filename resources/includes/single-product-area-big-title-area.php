@@ -17,14 +17,14 @@
                     <?php for($i=0; $i<6;$i++):?>
                         <div class="thubmnail-recent">
                             <img src="<?php echo $data['products'][$i]['file_name'][0]?>" class="recent-thumb" alt="img">
-                            <h2><a href="/product/product?id=<?php echo  $data['products'][$i]['id']?>"><?php echo $data['products'][$i]['title']?></a></h2>
+                            <h2><a href="/product/product?id=<?php echo  $data['products'][$i]['id']?>">
+                                    <?php echo $data['products'][$i]['title']?></a></h2>
                             <div class="product-sidebar-price">
                                 <ins><?php echo $data['products'][$i]['price'].' $';?></ins>
                                 <del><?php echo $data['products'][$i]['price'].' $';?></del>
                             </div>
                         </div>
                     <?php endfor;?>
-
 
                 </div>
             </div>

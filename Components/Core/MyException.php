@@ -3,7 +3,6 @@
 namespace Components\Core;
 
 use Exception;
-use Components\Models\ProductModel;
 use Components\Models\DataBaseModel;
 
 class MyException extends Exception

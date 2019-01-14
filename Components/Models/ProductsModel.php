@@ -46,7 +46,7 @@ class ProductsModel extends AbstractTableModel
         return $data;
     }
 
-    private static function myExploded(string $name, $data)
+    private static function myExploded(string $name, $data):array 
     {
         $count=count($data);
 

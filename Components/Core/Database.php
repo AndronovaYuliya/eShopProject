@@ -2,9 +2,7 @@
 
 namespace Components\Core;
 
-use Monolog\Processor\TagProcessor;
 use PDO;
-use Components\Core\FakerData;
 use PDOException;
 use CostumLogger\CostumLogger;
 
@@ -47,8 +45,6 @@ class Database
         try {
             self::$_pdo= new PDO(self::$_dsn, self::$_username, self::$_password, self::$_options);
         } catch (PDOException $exception) {
-            echo 5;
-            var_dump($exception->getTrace());
             die('Подключение не удалось: ' . $exception->getTraceAsString());
         }
 

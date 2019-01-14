@@ -3,10 +3,8 @@
 namespace Components\Controllers;
 
 use Components\Core\Controller;
-use Components\Models\ProductModel;
 use Components\Models\ProductsModel;
 use Components\Models\CategoriesModel;
-
 
 class ProductController extends Controller
 {
@@ -54,7 +52,6 @@ class ProductController extends Controller
 
         $this->data['products']=ProductsModel::getDataLike($search);
         $this->view->generate('shopView.php',$this->data);
-
     }
 
     //view
@@ -62,5 +59,4 @@ class ProductController extends Controller
     {
         $this->view->generate('shopView.php',$this->data);
     }
-
 }

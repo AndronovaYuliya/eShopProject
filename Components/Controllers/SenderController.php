@@ -2,7 +2,6 @@
 
 namespace Components\Controllers;
 
-
 use Sender\Sender;
 
 class SenderController

@@ -2,21 +2,14 @@
 
 namespace Components\Core;
 
-use Components\Models\AdditionalsModel;
 use Components\Models\AttributesModel;
-use Components\Models\AttributesValuesModel;
 use Components\Models\CategoriesModel;
-use Components\Models\CategoriesAttributesModel;
 use Components\Models\ClientsModel;
-use Components\Models\CommentsModel;
 use Components\Models\ImagesModel;
-use Components\Models\ProductsImagesModel;
 use Components\Models\ProductsModel;
 use Components\Models\KeyWordsModel;
-use Components\Models\ProductsKeyWordsModel;
 use Components\Models\OrdersModel;
 use Faker\Factory;
-use PDO;
 
 class FakerData
 {

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+
     <?php require dirname(__FILE__,2) . '/includes/head.php';?>
 
     <script></script>
@@ -12,6 +13,5 @@
 <body>
 
 <?php include dirname(__FILE__,2) . '/includes/header-area.php';?>
-
 <?php include dirname(__FILE__,2) . '/includes/site-branding-area.php';?>
 

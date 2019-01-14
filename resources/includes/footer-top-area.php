@@ -16,7 +16,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">User Navigation </h2>
@@ -29,18 +28,19 @@
                     </ul>
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Categories</h2>
                     <ul>
+
                         <?php for($i=0; $i<6; $i++):?>
-                            <li><a href="/product/category?id=<?php echo  $data['categories'][$i]['id']?>"><?php echo $data['categories'][$i]['title'];?></a></li>
+                            <li><a href="/product/category?id=<?php echo  $data['categories'][$i]['id']?>">
+                                    <?php echo $data['categories'][$i]['title'];?></a></li>
                         <?php endfor;?>
+
                     </ul>
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Newsletter</h2>

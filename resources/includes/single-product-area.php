@@ -9,7 +9,8 @@
                         <div class="product-upper">
                             <img src="<?php echo $product['file_name'][0]?>" alt="img">
                         </div>
-                        <h2><a href="/product/product?id=<?php echo $product['id']?>"><?php echo $product['title']?></a></h2>
+                        <h2><a href="/product/product?id=<?php echo $product['id']?>">
+                                <?php echo $product['title']?></a></h2>
                         <div class="product-carousel-price">
                             <ins>$<?php echo $product['price']?></ins> <del><?php echo $product['price']?></del>
                         </div>

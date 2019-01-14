@@ -47,9 +47,6 @@ class Router
             $action='show';
         }
 
-        //+обработать ошибку
-        //single product
-
         //Shop
         if(!self::$query) {
             $currentController->$action();
@@ -58,7 +55,6 @@ class Router
             $currentController->$action(self::$query);
         }
         else {
-            // кинуть исключение
             self::ErrorPage404();
         }
     }

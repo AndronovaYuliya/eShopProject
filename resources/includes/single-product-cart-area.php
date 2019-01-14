@@ -19,14 +19,14 @@
                         <img src=<?php echo $data['products'][$i]['file_name'][0]?> class="recent-thumb" alt="img">
                         <h2><a href="single-product.html"><?php echo $data['products'][$i]['title']?></a></h2>
                         <div class="product-sidebar-price">
-                            <ins><?php echo $data['products'][$i]['price']?></ins> <del><?php echo $data['products'][$i]['price']?></del>
+                            <ins><?php echo $data['products'][$i]['price']?></ins> <del>
+                                <?php echo $data['products'][$i]['price']?></del>
                         </div>
                     </div>
                     <?php endfor;?>
 
                 </div>
             </div>
-
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="woocommerce">
@@ -47,19 +47,15 @@
                                     <td class="product-remove">
                                         <a title="Remove this item" class="remove" href="#">×</a>
                                     </td>
-
                                     <td class="product-thumbnail">
                                         <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="img/product-thumb-2.jpg"></a>
                                     </td>
-
                                     <td class="product-name">
                                         <a href="single-product.html">Ship Your Idea</a>
                                     </td>
-
                                     <td class="product-price">
                                         <span class="amount">£15.00</span>
                                     </td>
-
                                     <td class="product-quantity">
                                         <div class="quantity buttons_added">
                                             <input type="button" class="minus" value="-">
@@ -67,37 +63,26 @@
                                             <input type="button" class="plus" value="+">
                                         </div>
                                     </td>
-
                                     <td class="product-subtotal">
                                         <span class="amount">£15.00</span>
                                     </td>
                                 </tr>
-
                                 </tbody>
                             </table>
                         </form>
-
                         <div class="cart-collaterals">
-
-
-
-
-
                             <div class="cart_totals ">
                                 <h2>Cart Totals</h2>
-
                                 <table cellspacing="0">
                                     <tbody>
                                     <tr class="cart-subtotal">
                                         <th>Cart Subtotal</th>
                                         <td><span class="amount">£15.00</span></td>
                                     </tr>
-
                                     <tr class="shipping">
                                         <th>Shipping and Handling</th>
                                         <td>Free Shipping</td>
                                     </tr>
-
                                     <tr class="order-total">
                                         <th>Order Total</th>
                                         <td><strong><span class="amount">£15.00</span></strong> </td>
@@ -105,13 +90,9 @@
                                     </tbody>
                                 </table>
                             </div>
-
-
                             <form method="post" action="#" class="shipping_calculator">
                                 <h2><a class="shipping-calculator-button" data-toggle="collapse" href="#calcalute-shipping-wrap" aria-expanded="false" aria-controls="calcalute-shipping-wrap">Calculate Shipping</a></h2>
-
                                 <section id="calcalute-shipping-wrap" class="shipping-calculator-form collapse">
-
                                     <p class="form-row form-row-wide">
                                         <select rel="calc_shipping_state" class="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
                                             <option value="">Select a country…</option>
@@ -361,18 +342,11 @@
                                             <option value="ZW">Zimbabwe</option>
                                         </select>
                                     </p>
-
                                     <p class="form-row form-row-wide"><input type="text" id="calc_shipping_state" name="calc_shipping_state" placeholder="State / county" value="" class="input-text"> </p>
-
                                     <p class="form-row form-row-wide"><input type="text" id="calc_shipping_postcode" name="calc_shipping_postcode" placeholder="Postcode / Zip" value="" class="input-text"></p>
-
-
                                     <p><button class="button" value="1" name="calc_shipping" type="submit">Update Totals</button></p>
-
                                 </section>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
