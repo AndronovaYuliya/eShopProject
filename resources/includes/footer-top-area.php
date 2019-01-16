@@ -34,7 +34,7 @@
                     <ul>
 
                         <?php for($i=0; $i<6; $i++):?>
-                            <li><a href="/product/category?id=<?php echo  $data['categories'][$i]['id']?>">
+                            <li><a href="/product/category?<?php echo  $data['categories'][$i]['url']?>">
                                     <?php echo $data['categories'][$i]['title'];?></a></li>
                         <?php endfor;?>
 

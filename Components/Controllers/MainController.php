@@ -10,18 +10,19 @@ class MainController extends Controller
 {
     private $data=[];
 
-    public function show()
+    public function indexAction()
     {
         $this->data=[];
 
-        $this->data['products']=ProductsModel::getData();
+        $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
-        $this->actionIndex();
+
+        $this->actionIndex('mainView.php');
     }
 
     //view
-    public function actionIndex()
+    private function actionIndex(string $content)
     {
-        $this->view->generate('mainView.php',$this->data);
+        $this->view->generate($content,$this->data);
     }
 }

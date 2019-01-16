@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS `categories`(
   `description` varchar(255) DEFAULT NULL,
   `icon` varchar(45) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `url` varchar(45) DEFAULT NULL,
   `created_at` date NOT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),

@@ -6,8 +6,6 @@ use Components\Core\Database;
 
 class OrdersMapper extends AbstractTableMapper
 {
-    private static $_checkTable="SHOW TABLES LIKE 'orders'";
-
     //faker
     public static function addData():void
     {
@@ -18,12 +16,12 @@ class OrdersMapper extends AbstractTableMapper
     public static function getData():array
     {
         $sql = "SELECT id, date,sum, status,ttn, id_client, created_at, updated_at FROM `orders`;";
-        return Database::getData($sql, self::$_checkTable);
+        return Database::getData($sql);
     }
 
     public static function getDataWhere(string $byWhat,string $name)
     {
         $sql = "SELECT id, date,sum, status,ttn, id_client, created_at, updated_at FROM `orders` WHERE $byWhat=$name;";
-        return Database::getData($sql, self::$_checkTable);
+        return Database::getData($sql);
     }
 }

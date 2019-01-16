@@ -6,7 +6,7 @@ use Sender\Sender;
 
 class SenderController
 {
-    public function letter()
+    public function letterAction()
     {
         Sender::sendMsg();
         header('Location: /');

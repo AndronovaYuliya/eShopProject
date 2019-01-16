@@ -12,7 +12,7 @@
                             <div class="shadow"></div>
                         </div>
                         <div class="product-list">
-                            <h3><a href="/product/product?id=<?php echo  $data['products'][$i]['id']?>">
+                            <h3><a href="/product/show?<?php echo  $data['products'][$i]['url']?>">
                                     <?php echo $data['products'][$i]['title']?></a></h3>
                             <div class="price"><?php echo $data['products'][$i]['price'];?> $</div>
                         </div>

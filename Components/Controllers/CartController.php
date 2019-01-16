@@ -10,19 +10,19 @@ class CartController extends Controller
 {
     private $data=[];
 
-    public function show()
+    public function indexAction()
     {
         $this->data=[];
 
-        $this->data['products']=ProductsModel::getData();
+        $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        $this->actionIndex();
+        $this->actionIndex('cartView.php');
     }
 
     //view
-    public function actionIndex()
+    private function actionIndex(string $content)
     {
-        $this->view->generate('cartView.php',$this->data);
+        $this->view->generate($content,$this->data);
     }
 }

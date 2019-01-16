@@ -12,38 +12,38 @@ class ProductController extends Controller
     private $data=[];
 
     //show 1 product
-    public function product($params)
+    public function showAction($params)
     {
         $key=key($params);
         $this->data['product']=ProductsModel::getProductWithImg($key, $params[$key]);
-        $this->data['products']=ProductsModel::getData();
+        $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        $this->view->generate('singleProductView.php',$this->data);
+        $this->actionIndex('singleProductView.php');
     }
 
     //show all products
-    public function show()
+    public function indexAction()
     {
-        $this->data['products']=ProductsModel::getData();
+        $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        $this->actionIndex();
+        $this->actionIndex('shopView.php');
     }
 
     //by categories
-    public function category($params)
+    public function categoryAction($params)
     {
-        $this->data['products']=ProductsModel::getData();
+        $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        $this->view->generate('shopView.php',$this->data);
+        $this->actionIndex('shopView.php');
     }
 
     //search
-    public function search()
+    public function searchAction()
     {
-        $this->data['products']=ProductsModel::getData();
+        $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
         $pattern='/\\W/';
@@ -51,12 +51,13 @@ class ProductController extends Controller
         $search=explode(' ',$search);
 
         $this->data['products']=ProductsModel::getDataLike($search);
-        $this->view->generate('shopView.php',$this->data);
+
+        $this->actionIndex('shopView.php');
     }
 
     //view
-    public function actionIndex()
+    private function actionIndex(string $content)
     {
-        $this->view->generate('shopView.php',$this->data);
+        $this->view->generate($content,$this->data);
     }
 }

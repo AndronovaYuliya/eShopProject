@@ -10,7 +10,7 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="/product/show">Shop page</a>
+                    <a class="nav-link"  href="/product/index">Shop page</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -19,14 +19,14 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                         <?php foreach ($data['categories'] as $category):?>
-                            <a class="dropdown-item" href="/product/category?id=<?php echo $category['id']?>"><?php echo $category['title'];?></a>
+                            <a class="dropdown-item" href="/product/category?<?php echo $category['url']?>"><?php echo $category['title'];?></a>
                         <?php endforeach;?>
 
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart/show">Cart</a>
+                    <a class="nav-link" href="/cart/">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>

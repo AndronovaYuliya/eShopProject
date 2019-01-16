@@ -11,9 +11,9 @@ class ProductsModel extends AbstractTableModel
         ProductsMapper::addData();
     }
 
-    public static function getData():array
+    public static function getFullData():array
     {
-        $data = ProductsMapper::getData();
+        $data = ProductsMapper::getFullData();
         $data=self::myExploded('file_name',$data);
         $data=self::myExploded('key_words',$data);
         return $data;
@@ -54,5 +54,10 @@ class ProductsModel extends AbstractTableModel
             $data[$i][$name]=explode(',',$data[$i][$name]);
         }
         return $data;
+    }
+
+    public static function getData(): array
+    {
+        return ProductsMapper::getData();
     }
 }

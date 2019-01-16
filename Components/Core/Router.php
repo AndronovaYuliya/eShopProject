@@ -5,86 +5,111 @@ namespace Components\Core;
 use Components\Controllers\CartController;
 use Components\Controllers\MainController;
 use Components\Controllers\ProductController;
+use phpDocumentor\Reflection\Types\Self_;
 
 class Router
 {
-    private static $_needle='Controller';
-    private static $nameController;
-    private static $nameAction;
-    private static $requestMethod;
-    private static $data=[];
-    private static $singleProduct;
-    private static $query=[];
+    protected static $routes = [];
+    protected static $route = [];
+    protected static $url = '';
 
-    static function ErrorPage404()
+    private static function setUrl()
     {
-        $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
-        header('HTTP/1.1 404 Not Found');
-        header("Status: 404 Not Found");
-        header('Location:'.$host);
-        //header('Location:'.$host.'404');
+        // Get the current URL, differents depending on platform/server software
+        if (!empty($_SERVER['REQUEST_URL'])) {
+            self::$url = $_SERVER['REQUEST_URL'];
+        } else {
+            self::$url = $_SERVER['REQUEST_URI'];
+        }
+        self::$url = rtrim(self::$url, '/');
+
     }
 
-    /*
-     * routing
-     */
-
-    public static function routing()
+    public static function add($regexp, $route = [])
     {
-        self::parseUrl();
-        //'/'
-        if (self::$nameController=='Controller') {
-            $controller= 'Components\Controllers\MainController';
-        }
-        else {
-            $controller='Components\Controllers\\'.self::$nameController;
-        }
-        $action = self::$nameAction;
-
-        $currentController=new $controller();
-
-        if(!$action) {
-            $action='show';
-        }
-
-        //Shop
-        if(!self::$query) {
-            $currentController->$action();
-        }
-        elseif(self::$query) {
-            $currentController->$action(self::$query);
-        }
-        else {
-            self::ErrorPage404();
-        }
+        self::$routes[$regexp] = $route;
     }
 
-    /*
-     * settings for router
-     * */
-    private static function parseUrl()
+    public static function getRoutes()
     {
-        $arrayUrl=parse_url($_SERVER['REQUEST_URI']);
+        return self::$routes;
+    }
 
-        //Parse path
-        $path=explode('/',$arrayUrl['path']);
-        array_shift($path);
+    public static function getRoute()
+    {
+        return self::$route;
+    }
 
-        self::$nameController=ucfirst(array_shift($path)).self::$_needle;
+    public static function matchRoute()
+    {
+        self::setUrl();
 
-        self::$nameAction= array_shift($path);
+        //$pattern - query, $route - controller+action
+        foreach (self::$routes as $pattern => $route) {
+            if (preg_match("~$pattern~i", self::$url)) {
+                self::$route = [];
+                foreach ($route as $key => $value) {
+                    self::$route[$key] = $value;
+                }
 
-        self::$requestMethod=$_SERVER['REQUEST_METHOD'];
+                if(!isset(self::$route['controller'])) {
+                    self::$route['controller']='MainController';
+                }else{
+                    self::$route['controller'] = self::upperCamelCase($route['controller']) . "Controller";
+                }
 
-        //Parse query
-        if(array_key_exists('query', $arrayUrl)) {
-            $query = explode(',',$arrayUrl['query']);
-            self::$query=[];
+                if(!isset(self::$route['action'])){
+                    self::$route['action']='indexAction';
+                }else{
+                    self::$route['action']=self::lowerCamelCase($route['action'])."Action";
+                }
 
-            foreach ($query as $key=>$value) {
-                $queryItem=explode('=',$value);
-                self::$query[$queryItem[0]]=$queryItem[1];
+                return true;
             }
         }
+        return false;
+    }
+
+    public static function dispatch()
+    {
+        self::setUrl();
+        $query=explode('&',$_SERVER['QUERY_STRING']);
+        $params["url"]=$query[0];
+
+        if (self::matchRoute()){
+            $controller='Components\Controllers\\'.self::$route['controller'];
+            if(class_exists($controller)){
+                $cObj=new $controller();
+                $action=self::$route['action'];
+                if(method_exists($cObj,$action)){
+                    $cObj->$action($params);
+                }
+                else{
+                    echo "BADACTION";
+                }
+            }
+            else{
+                echo "BAD";
+            }
+
+        }else{
+            http_response_code(404);
+            include dirname(__FILE__,3).'/resources/home/404.php';
+        }
+    }
+
+    private static function upperCamelCase($name):string
+    {
+        $name=str_replace('-',' ', $name);
+        $name=ucfirst($name);
+        $name=str_replace(' ','',ucfirst($name));
+        return $name;
+    }
+    private static function lowerCamelCase($name):string
+    {
+        $name=str_replace('-',' ', $name);
+        $name=ucfirst($name);
+        $name=str_replace(' ','',ucfirst($name));
+        return lcfirst($name);
     }
 }

@@ -13,7 +13,7 @@ class Controller {
         $this->view = new View();
     }
 
-    public function show()
+    public function indexAction()
     {
 
     }

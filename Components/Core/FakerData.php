@@ -35,9 +35,10 @@ class FakerData
     public function fakerCategories():array
     {
         return [
-            ':title'                     => $this->faker->word,
-            ':description'               => $this->faker->text,
-            ':parent_id'                 => 1,
+            ':title'                    => $this->faker->word,
+            ':url'                      => $this->faker->md5,
+            ':description'              => $this->faker->text,
+            ':parent_id'                => 1,
         ];
     }
 
@@ -80,6 +81,7 @@ class FakerData
     {
         return [
             ':title'             => $this->faker->word,
+            ':url'               => $this->faker->md5,
             ':description'       => $this->faker->text,
             ':price'             => $this->faker->randomDigit,
             ':count'             => $this->faker->randomDigit,

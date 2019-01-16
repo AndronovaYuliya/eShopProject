@@ -86,26 +86,25 @@ class Database
         for ($i=0;$i<$count;$i++) {
             $data=$faker->$fakerMethod();
             $stmt= self::$_pdo->prepare($sql);
-            $stmt->execute($data);
-            $stmt->fetchAll();
+            if($stmt!==false) {
+                $stmt->execute($data);
+                $stmt->fetchAll();
+            }
         }
     }
 
-    public static function getData(string $sql, string $checkTable):array
+    public static function getData(string $sql):array
     {
         $data=[];
 
-        $stmt=self::getConnection()->query($checkTable);
+        self::getInstance();
 
-        //if table Exists
-        if($stmt->fetch()){
-            try{
-                $data = self::$_pdo->query($sql)->fetchAll();
-            }catch (PDOException $PDOException){
-                $costumLog=new CostumLogger('database');
-                $costumLog->critical($PDOException->getTraceAsString());
-            }
-        };
+        try{
+            $data = self::$_pdo->query($sql)->fetchAll();
+        }catch (PDOException $PDOException){
+            $costumLog=new CostumLogger('database');
+            $costumLog->critical($PDOException->getTraceAsString());
+        }
         return $data;
     }
 }
