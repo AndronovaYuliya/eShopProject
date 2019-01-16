@@ -3,6 +3,7 @@
 namespace Components\Mappers;
 
 use Components\Core\Database;
+use Components\Core\Cache;
 
 class ProductsMapper extends AbstractTableMapper
 {
@@ -15,6 +16,9 @@ class ProductsMapper extends AbstractTableMapper
 
     public static function getFullData(): array
     {
+        $cache=new Cache();
+        $data=$cache->get('products_full_data');
+        if(!$data){
         $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.count,P.url,P.updated_at,
                 P.id_category, C.title AS category,C.url as url_category,
                 GROUP_CONCAT(I.file_name) AS file_name, GROUP_CONCAT(KW.name) AS key_words
@@ -25,7 +29,10 @@ class ProductsMapper extends AbstractTableMapper
                 INNER JOIN products_key_words AS PKW ON PKW.id_product=P.id
                 INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
                 GROUP BY P.id";
-        return Database::getData($sql);
+        $data= Database::getData($sql);
+        $cache->set('products_full_data', $data);
+        }
+        return $data;
     }
 
     public static function getDataWhere(string $byWhat, string $name)

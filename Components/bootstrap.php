@@ -5,6 +5,7 @@ require dirname(__FILE__,2). '/vendor/autoload.php';
 use CostumLogger\CostumLogger;
 use Components\Core\Router;
 use Components\Core\Database;
+use Components\Core\Cache;
 use Components\Models\ClientsModel;
 use Components\Models\AttributesModel;
 use Components\Models\ImagesModel;
@@ -20,6 +21,7 @@ use Components\Models\KeyWordsModel;
 use Components\Models\ProductsKeyWordsModel;
 
 $log=new CostumLogger();
+$cach=new Cache();
 
 
 //Router::add('^$', ['controller'=>'Main','action'=>'index']);
@@ -32,8 +34,6 @@ Router::add('^\/product\/search$', ['controller'=>'Product','action'=>'search'])
 Router::add('^\/sender\/letter$', ['controller'=>'Sender','action'=>'letter']);
 Router::add('^\/cart(\/index)?$', ['controller'=>'Cart','action'=>'index']);
 Router::dispatch();
-
-
 
 
 

@@ -12,11 +12,10 @@ class ProductsModel extends AbstractTableModel
     }
 
     public static function getFullData():array
-    {
+{
         $data = ProductsMapper::getFullData();
         $data=self::myExploded('file_name',$data);
-        $data=self::myExploded('key_words',$data);
-        return $data;
+        return self::myExploded('key_words',$data);
     }
 
     public static function getDataWhere(string $byWhat, string $name): array
@@ -28,22 +27,19 @@ class ProductsModel extends AbstractTableModel
     {
         $data = ProductsMapper::getProductWithImg($byWhat,$name);
         $data=self::myExploded('file_name',$data);
-        $data=self::myExploded('key_words',$data);
-        return $data;
+        return self::myExploded('key_words',$data);
     }
 
     public function getDataByCategory(string $byWhat, string $name): array
     {
         $data = ProductsMapper::getDataByCategory($byWhat,$name);
-        $data=self::myExploded('file_name',$data);
-        return $data;
+        return self::myExploded('file_name',$data);
     }
 
     public static function getDataLike(array $search):array
     {
         $data=ProductsMapper::getDataLike($search);
-        $data=self::myExploded('file_name',$data);
-        return $data;
+        return self::myExploded('file_name',$data);
     }
 
     private static function myExploded(string $name, $data):array 
