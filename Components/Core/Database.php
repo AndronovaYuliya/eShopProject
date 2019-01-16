@@ -9,8 +9,9 @@ use CostumLogger\CostumLogger;
 
 class Database
 {
+    use TSingletone;
+
     private static $_pdo;
-    private static $_instance; //The single instance
     private static $_host;
     private static $_username;
     private static $_password;
@@ -22,15 +23,6 @@ class Database
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES   => false,
     ];
-
-
-    public static function getInstance():Database
-    {
-        if(!self::$_instance) { // If no instance then make one
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
 
     private function __construct()
     {
