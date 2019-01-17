@@ -22,6 +22,7 @@ class ProductsMapper extends AbstractTableMapper
         $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.count,P.url,P.updated_at,
                 P.id_category, C.title AS category,C.url as url_category,
                 GROUP_CONCAT(I.file_name) AS file_name, GROUP_CONCAT(KW.name) AS key_words
+                ,GROUP_CONCAT(KW.id) AS id_key_word 
                 FROM products AS P
                 INNER JOIN products_images AS PI ON PI.id_product=P.id
                 INNER JOIN images AS I ON I.id=PI.id_galary
@@ -78,7 +79,7 @@ class ProductsMapper extends AbstractTableMapper
         $search=$searchKey;
 
         $sql="SELECT P.id,P.title, P.description, P.price, P.url, P.count,P.updated_at,P.id_category ,
-			GROUP_CONCAT(I.file_name) AS file_name, GROUP_CONCAT(KW.name) AS key_words
+			GROUP_CONCAT(I.file_name) AS file_name
 			FROM key_words AS KW 
 			INNER JOIN products_key_words AS PKW ON PKW.id_key_word=KW.id
 			INNER JOIN products AS P ON P.id=PKW.id_product 
@@ -121,6 +122,22 @@ class ProductsMapper extends AbstractTableMapper
     {
         $sql="SELECT P.id, P.price, P.count, P.id_category, P.description, P.title, P.updated_at, P.created_at
               FROM products AS P";
+        return Database::getData($sql);
+    }
+
+    public static function getKeyData(string $byWhat, string $searchKey):array
+    {
+        $sql="SELECT P.id, P.title, P.description, P.price, P.url, P.count,P.url,P.updated_at,
+		P.id_category,  KW.name, C.title AS category,C.url as url_category,
+        GROUP_CONCAT(I.file_name) AS file_name
+        FROM key_words AS KW 
+        INNER JOIN products_key_words AS PKW ON PKW.id_key_word=KW.id
+        INNER JOIN products AS P ON P.id=PKW.id_product
+        INNER JOIN categories AS C ON C.id=P.id_category
+        INNER JOIN products_images AS PI ON PI.id_product=P.id
+        INNER JOIN images AS I ON I.id=PI.id_galary
+        WHERE KW.$byWhat='$searchKey'
+        GROUP BY P.id";
         return Database::getData($sql);
     }
 }

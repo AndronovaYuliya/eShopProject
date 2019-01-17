@@ -64,6 +64,12 @@ class Router
                     self::$route['action']=self::lowerCamelCase($route['action'])."Action";
                 }
 
+                if (!isset(self::$route['prefix'])){
+                    self::$route['prefix']='';
+                }else {
+                    self::$route['prefix']=self::upperCamelCase(self::$route['prefix']).'\\';
+                }
+
                 return true;
             }
         }
@@ -77,7 +83,7 @@ class Router
         $params["url"]=$query[0];
 
         if (self::matchRoute()){
-            $controller='Components\Controllers\\'.self::$route['controller'];
+            $controller='Components\Controllers\\'.self::$route['prefix'].self::$route['controller'];
             if(class_exists($controller)){
                 $cObj=new $controller();
                 $action=self::$route['action'];

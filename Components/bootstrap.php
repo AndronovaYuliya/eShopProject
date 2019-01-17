@@ -19,6 +19,7 @@ use Components\Models\CommentsModel;
 use Components\Models\ProductsImagesModel;
 use Components\Models\KeyWordsModel;
 use Components\Models\ProductsKeyWordsModel;
+use Components\Models\UserModel;
 
 $log=new CostumLogger();
 $cach=new Cache();
@@ -30,9 +31,16 @@ Router::add('^$', ['controller'=>'Main','action'=>'index']);
 Router::add('^\/product(\/index)?$', ['controller'=>'Product','action'=>'index']);
 Router::add('^\/product\/show\?[a-z0-9-]+$', ['controller'=>'Product','action'=>'show']);
 Router::add('^\/product\/category\?[a-z0-9-]+$', ['controller'=>'Product','action'=>'category']);
+Router::add('^\/product\/key\?[a-z0-9-]+$', ['controller'=>'Product','action'=>'key']);
 Router::add('^\/product\/search$', ['controller'=>'Product','action'=>'search']);
 Router::add('^\/sender\/letter$', ['controller'=>'Sender','action'=>'letter']);
 Router::add('^\/cart(\/index)?$', ['controller'=>'Cart','action'=>'index']);
+Router::add('^\/cart(\/show)?$', ['controller'=>'Cart','action'=>'show']);
+//admin
+Router::add('^\/admin$', ['controller'=>'User','action'=>'index', 'prefix'=>'admin']);
+Router::add('^\/admin\/[a-z0-9-]+\/?([a-z0-9-]+)?$', ['prefix'=>'admin']);
+
+
 Router::dispatch();
 
 
@@ -49,7 +57,7 @@ $db = Database::getInstance();
 $mysqli = $db->getConnection();
 
 $qr = $db->createTables();
-/*KeyWordsModel::addFaker();
+KeyWordsModel::addFaker();
 AttributesModel::addFaker();
 ClientsModel::addFaker();
 AttributesValuesModel::addFaker();
@@ -62,4 +70,5 @@ CommentsModel::addFaker();
 ProductsImagesModel::addFaker();
 AdditionalsModel::addFaker();
 ProductsKeyWordsModel::addFaker();
-*/
+UserModel::addFaker();
+

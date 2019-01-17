@@ -71,8 +71,8 @@
                                     <p>Category: <a href="/product/category?<?php echo  $data['products'][0]['url_category']?>">
                                             <?php echo($data['product'][0]['category'])?></a>.
                                         Tags:
-                                        <?php foreach ($data['product'][0]['key_words'] as $key_words):?>
-                                            <a href=""><?php echo $key_words?></a>
+                                        <?php foreach($data['product'][0]['key_words'] as $key_words):?>
+                                            <a href="/product/key?<?php echo $key_words?>"><?php echo $key_words?></a>
                                         <?php endforeach;?>
 
                                     </p>

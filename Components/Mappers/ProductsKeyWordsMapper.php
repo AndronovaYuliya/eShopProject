@@ -10,7 +10,7 @@ class ProductsKeyWordsMapper extends AbstractTableMapper
     public static function addData(): void
     {
         $sql = "INSERT INTO `products_key_words` (id_product,id_key_word,created_at, updated_at) VALUE (:id_product, :id_key_word, NOW(), NOW())";
-        $data = Database::addData('fakerProductsKeyWords', $sql, 20);
+        Database::addData('fakerProductsKeyWords', $sql, 20);
     }
 
     public static function getData(): array

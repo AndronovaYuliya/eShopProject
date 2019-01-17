@@ -19,7 +19,7 @@ class ProductController extends Controller
         $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        $this->actionIndex('singleProductView.php');
+        parent::action_index('home/singleProductView.php',$this->data);
     }
 
     //show all products
@@ -28,16 +28,16 @@ class ProductController extends Controller
         $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        $this->actionIndex('shopView.php');
+        parent::action_index('home/shopView.php',$this->data);
     }
 
     //by categories
-    public function categoryAction($params)
+    public function categoryAction()
     {
         $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        $this->actionIndex('shopView.php');
+        parent::action_index('home/shopView.php',$this->data);
     }
 
     //search
@@ -52,12 +52,14 @@ class ProductController extends Controller
 
         $this->data['products']=ProductsModel::getDataLike($search);
 
-        $this->actionIndex('shopView.php');
+        parent::action_index('home/shopView.php',$this->data);
     }
 
-    //view
-    private function actionIndex(string $content)
+    public function keyAction($params)
     {
-        $this->view->generate($content,$this->data);
+        $key=key($params);
+        $this->data['products']= ProductsModel::getKeyData($params[$key]);
+        $this->data['categories']=CategoriesModel::getData();
+        parent::action_index('home/shopView.php',$this->data);
     }
 }

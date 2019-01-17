@@ -13,14 +13,8 @@ class Controller {
         $this->view = new View();
     }
 
-    public function indexAction()
+    protected function action_index(string $content, $data)
     {
-
-    }
-
-    // действие (action), вызываемое по умолчанию
-    private function action_index()
-    {
-
+        $this->view->generate($content,$data);
     }
 }

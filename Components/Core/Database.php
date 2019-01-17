@@ -64,6 +64,7 @@ class Database
         self::createTable('comments');
         self::createTable('additionals');
         self::createTable('products_images');
+        self::createTable('user');
     }
 
     private static function createTable($filename):void

@@ -139,4 +139,15 @@ class FakerData
             ':id_key_word'               => rand(1, count(KeyWordsModel::getData())),
         ];
     }
+
+    public function fakerUser():array
+    {
+        return [
+            ':login'            =>'adminYuliya',
+            ':password'         =>'1111',
+            ':email'            =>'andronovayuliyatest@gmail.com',
+            ':name'             =>'Yuliya',
+            ':role'             =>'admin',
+        ];
+    }
 }

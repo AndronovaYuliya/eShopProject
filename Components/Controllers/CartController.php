@@ -17,12 +17,6 @@ class CartController extends Controller
         $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        $this->actionIndex('cartView.php');
-    }
-
-    //view
-    private function actionIndex(string $content)
-    {
-        $this->view->generate($content,$this->data);
+        parent::action_index('home/cartView.php',$this->data);
     }
 }
