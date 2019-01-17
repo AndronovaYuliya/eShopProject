@@ -17,8 +17,10 @@
                     <?php for($i=0; $i<6;$i++):?>
                         <div class="thubmnail-recent">
                             <img src="<?php echo $data['products'][$i]['file_name'][0]?>" class="recent-thumb" alt="img">
-                            <h2><a href="/product/show?<?php echo  $data['products'][$i]['url']?>">
-                                    <?php echo $data['products'][$i]['title']?></a></h2>
+                            <h3><a href="/product/show?<?php echo  $data['products'][$i]['url']?>">
+                                    <?php echo $data['products'][$i]['title']?></a></h3>
+                            <h2><a href="/product/brand?<?php echo  $data['products'][$i]['brand']?>">
+                                    <?php echo $data['products'][$i]['brand']?></a></h2>
                             <div class="product-sidebar-price">
                                 <ins><?php echo $data['products'][$i]['price'].' $';?></ins>
                                 <del><?php echo $data['products'][$i]['price'].' $';?></del>
@@ -32,7 +34,8 @@
                 <div class="product-content-right">
                     <div class="product-breadcroumb">
                         <a href="/">Home</a>
-                        <a href=""><?php echo($data['product'][0]['category'])?></a>
+                        <a href="/product/category?<?php echo $category['url']?>"><?php echo($data['product'][0]['category'])?></a>
+                        <a href="/product/brand?<?php echo  $data['product'][0]['brand']?>"><?php echo($data['product'][0]['brand'])?></a>
                         <a href="#"><?php echo($data['product'][0]['title'])?></a>
                     </div>
 
@@ -69,7 +72,9 @@
 
                                 <div class="product-inner-category">
                                     <p>Category: <a href="/product/category?<?php echo  $data['products'][0]['url_category']?>">
-                                            <?php echo($data['product'][0]['category'])?></a>.
+                                            <?php echo($data['product'][0]['category'])?></a>
+                                        Brand: <a href="/product/brand?<?php echo  $data['products'][0]['brand']?>">
+                                            <?php echo($data['product'][0]['brand'])?></a>
                                         Tags:
                                         <?php foreach($data['product'][0]['key_words'] as $key_words):?>
                                             <a href="/product/key?<?php echo $key_words?>"><?php echo $key_words?></a>

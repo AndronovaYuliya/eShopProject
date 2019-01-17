@@ -25,6 +25,18 @@
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Brand
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <?php foreach ($data['products'] as $products):?>
+                            <a class="dropdown-item" href="/product/brand?<?php echo $products['brand']?>"><?php echo $products['brand'];?></a>
+                        <?php endforeach;?>
+
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/cart/">Cart</a>
                 </li>

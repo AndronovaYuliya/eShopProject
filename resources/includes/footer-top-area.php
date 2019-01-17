@@ -22,8 +22,6 @@
                     <ul>
                         <li><a href="#">My account</a></li>
                         <li><a href="#">Order history</a></li>
-                        <li><a href="#">Wishlist</a></li>
-                        <li><a href="#">Vendor contact</a></li>
                         <li><a href="#">Front page</a></li>
                     </ul>
                 </div>
@@ -33,10 +31,12 @@
                     <h2 class="footer-wid-title">Categories</h2>
                     <ul>
 
-                        <?php for($i=0; $i<6; $i++):?>
-                            <li><a href="/product/category?<?php echo  $data['categories'][$i]['url']?>">
-                                    <?php echo $data['categories'][$i]['title'];?></a></li>
-                        <?php endfor;?>
+                        <?php if (isset($data['categories'])):?>
+                            <?php for($i=0; $i<6; $i++):?>
+                                <li><a href="/product/category?<?php echo  $data['categories'][$i]['url']?>">
+                                        <?php echo $data['categories'][$i]['title'];?></a></li>
+                            <?php endfor;?>
+                        <?php endif;?>
 
                     </ul>
                 </div>

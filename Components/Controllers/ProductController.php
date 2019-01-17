@@ -22,6 +22,15 @@ class ProductController extends Controller
         parent::action_index('home/singleProductView.php',$this->data);
     }
 
+    //show 1 product
+    public function brandAction($params)
+    {
+        $key=key($params);
+        $this->data['products']=ProductsModel::getProductWithImg('brand', $params[$key]);
+        $this->data['categories']=CategoriesModel::getData();
+        parent::action_index('home/shopView.php',$this->data);
+    }
+
     //show all products
     public function indexAction()
     {

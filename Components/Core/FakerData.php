@@ -81,6 +81,7 @@ class FakerData
     {
         return [
             ':title'             => $this->faker->word,
+            ':brand'             => $this->faker->word,
             ':url'               => $this->faker->md5,
             ':description'       => $this->faker->text,
             ':price'             => $this->faker->randomDigit,

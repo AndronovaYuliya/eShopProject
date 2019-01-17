@@ -4,34 +4,22 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="single-promo">
-                    <i class="fa fa-refresh"></i>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                        <p>30 Days return</p>
-                    </a>
+                    <p>30 Days return</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="single-promo">
-                    <i class="fa fa-truck"></i>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                        <p>Free shipping</p>
-                    </a>
+                    <p>Free shipping</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="single-promo">
-                    <i class="fa fa-gift"></i>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                        <p>New products</p>
-                    </a>
+                    <p>New products</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="single-promo">
-                    <i class="fa fa-lock"></i>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                        <p>Secure payments</p>
-                    </a>
+                    <p>Secure payments</p>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace Components\Mappers;
 
 use Components\Core\Database;
+use Components\Core\Cache;
 
 class CategoriesMapper extends AbstractTableMapper
 {
@@ -14,8 +15,14 @@ class CategoriesMapper extends AbstractTableMapper
 
     public static function getData(): array
     {
-        $sql = "SELECT id, title, description, parent_id,url, created_at, updated_at FROM `categories`;";
-        return Database::getData($sql);
+        $cache=new Cache();
+        $data=$cache->get('categories');
+        if(!$data) {
+            $sql = "SELECT id, title, description, parent_id,url, created_at, updated_at FROM `categories`;";
+            $data= Database::getData($sql);
+            $cache->set('categories', $data);
+        }
+        return $data;
     }
 
     public static function getDataWhere(string $byWhat, string $name)

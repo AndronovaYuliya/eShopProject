@@ -7,6 +7,7 @@
 CREATE TABLE IF NOT EXISTS `products`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
+  `brand` varchar(45) NOT NULL,
   `description` text,
   `price` double DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
