@@ -146,7 +146,8 @@ class FakerData
             ':login'            =>'adminYuliya',
             ':password'         =>'1111',
             ':email'            =>'andronovayuliyatest@gmail.com',
-            ':name'             =>'Yuliya',
+            ':first_name'       =>'Yuliya',
+            ':last_name'        =>'Andronova',
             ':role'             =>'admin',
         ];
     }

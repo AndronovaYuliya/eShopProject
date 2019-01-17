@@ -36,6 +36,10 @@ Router::add('^\/product\/search$', ['controller'=>'Product','action'=>'search'])
 Router::add('^\/sender\/letter$', ['controller'=>'Sender','action'=>'letter']);
 Router::add('^\/cart(\/index)?$', ['controller'=>'Cart','action'=>'index']);
 Router::add('^\/cart(\/show)?$', ['controller'=>'Cart','action'=>'show']);
+Router::add('^\/user\/login$', ['controller'=>'User','action'=>'login']);
+Router::add('^\/user\/signup$', ['controller'=>'User','action'=>'signup']);
+Router::add('^\/user\/account', ['controller'=>'User','action'=>'account']);
+
 //admin
 Router::add('^\/admin$', ['controller'=>'User','action'=>'index', 'prefix'=>'admin']);
 Router::add('^\/admin\/[a-z0-9-]+\/?([a-z0-9-]+)?$', ['prefix'=>'admin']);
@@ -57,7 +61,7 @@ $db = Database::getInstance();
 $mysqli = $db->getConnection();
 
 $qr = $db->createTables();
-KeyWordsModel::addFaker();
+/*KeyWordsModel::addFaker();
 AttributesModel::addFaker();
 ClientsModel::addFaker();
 AttributesValuesModel::addFaker();
@@ -70,5 +74,5 @@ CommentsModel::addFaker();
 ProductsImagesModel::addFaker();
 AdditionalsModel::addFaker();
 ProductsKeyWordsModel::addFaker();
-UserModel::addFaker();
+UserModel::addFaker();*/
 

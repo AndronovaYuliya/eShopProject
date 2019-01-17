@@ -12,5 +12,4 @@ class UserController extends Controller
         parent::action_index('admin/user/index.php',$this->data);
     }
 
-
 }

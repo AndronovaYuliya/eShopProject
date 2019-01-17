@@ -44,6 +44,7 @@ class Router
     {
         self::setUrl();
 
+
         //$pattern - query, $route - controller+action
         foreach (self::$routes as $pattern => $route) {
             if (preg_match("~$pattern~i", self::$url)) {

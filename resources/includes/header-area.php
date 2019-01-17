@@ -13,7 +13,12 @@
                 </li>
                 <li class="nav-item">
                     <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal" type="submit">
-                        <a class="nav-link" href="#"><i class="fa fa-sign-in"></i>Login</a>
+                        <a class="nav-link" href=""><i class="fa fa-sign-in"></i>Login</a>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#signupModal" type="submit">
+                        <a class="nav-link" href=""><i class="fa fa-sign-in"></i>Signup</a>
                     </button>
                 </li>
                 <li class="nav-item">

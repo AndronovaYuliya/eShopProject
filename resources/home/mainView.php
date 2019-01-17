@@ -2,6 +2,7 @@
 
 <?php include dirname(__FILE__,2) . '/includes/modal-fade.php';?>
 <?php include dirname(__FILE__,2) . '/includes/modal-fade-letter.php';?>
+<?php include dirname(__FILE__,2) . '/includes/modal-fade-signup.php';?>
 <?php include dirname(__FILE__,2) . '/includes/mainmenu-area.php';?>
 <?php include dirname(__FILE__,2) . '/includes/slider-area.php';?>
 <?php include dirname(__FILE__,2) . '/includes/promo-area.php';?>
