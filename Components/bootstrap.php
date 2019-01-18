@@ -44,7 +44,8 @@ Router::add('^\/user\/account', ['controller'=>'User','action'=>'account']);
 
 //admin
 Router::add('^\/admin$', ['controller'=>'User','action'=>'index', 'prefix'=>'admin']);
-Router::add('^\/admin\/[a-z0-9-]+\/?([a-z0-9-]+)?$', ['prefix'=>'admin']);
+Router::add('^\/admin\/user$', ['controller'=>'User','action'=>'user', 'prefix'=>'admin']);
+Router::add('^\/admin\/table$', ['controller'=>'User','action'=>'table', 'prefix'=>'admin']);
 
 
 Router::dispatch();
