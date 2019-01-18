@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/user/signup">
+                <form method="post" action="/user/signup" name="signupUser">
                     <div class="form-group">
                         <label for="SignupInputName">Name</label>
                         <input type="text" class="form-control" id="signupInputName" aria-describedby="nameHelp" name="name" placeholder="James Bond">

@@ -17,6 +17,6 @@ class MainController extends Controller
         $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        parent::action_index('home/mainView.php',$this->data);
+        parent::action_index('mainView.php',$this->data);
     }
 }

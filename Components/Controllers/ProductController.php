@@ -19,7 +19,7 @@ class ProductController extends Controller
         $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        parent::action_index('home/singleProductView.php',$this->data);
+        parent::action_index('singleProductView.php',$this->data);
     }
 
     //show 1 product
@@ -28,7 +28,7 @@ class ProductController extends Controller
         $key=key($params);
         $this->data['products']=ProductsModel::getProductWithImg('brand', $params[$key]);
         $this->data['categories']=CategoriesModel::getData();
-        parent::action_index('home/shopView.php',$this->data);
+        parent::action_index('shopView.php',$this->data);
     }
 
     //show all products
@@ -37,7 +37,7 @@ class ProductController extends Controller
         $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        parent::action_index('home/shopView.php',$this->data);
+        parent::action_index('shopView.php',$this->data);
     }
 
     //by categories
@@ -46,7 +46,7 @@ class ProductController extends Controller
         $this->data['products']=ProductsModel::getFullData();
         $this->data['categories']=CategoriesModel::getData();
 
-        parent::action_index('home/shopView.php',$this->data);
+        parent::action_index('shopView.php',$this->data);
     }
 
     //search
@@ -61,7 +61,7 @@ class ProductController extends Controller
 
         $this->data['products']=ProductsModel::getDataLike($search);
 
-        parent::action_index('home/shopView.php',$this->data);
+        parent::action_index('shopView.php',$this->data);
     }
 
     public function keyAction($params)
@@ -69,6 +69,6 @@ class ProductController extends Controller
         $key=key($params);
         $this->data['products']= ProductsModel::getKeyData($params[$key]);
         $this->data['categories']=CategoriesModel::getData();
-        parent::action_index('home/shopView.php',$this->data);
+        parent::action_index('shopView.php',$this->data);
     }
 }

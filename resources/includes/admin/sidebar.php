@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="purple" data-image="../../../../public/admin/img/sidebar-5.jpg">
+<div class="sidebar" data-color="purple" data-image="public/admin/img/sidebar-5.jpg">
 
     <!--
 
@@ -10,13 +10,13 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="active">
-                <a href="user.html">
+                <a href="/admin/user">
                     <i class="pe-7s-user"></i>
                     <p>User Profile</p>
                 </a>
             </li>
             <li>
-                <a href="table.html">
+                <a href="/admin/table">
                     <i class="pe-7s-note2"></i>
                     <p>Table List</p>
                 </a>

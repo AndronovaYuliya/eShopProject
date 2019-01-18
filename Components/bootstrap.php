@@ -38,14 +38,17 @@ Router::add('^\/product\/brand', ['controller'=>'Product','action'=>'brand']);
 Router::add('^\/sender\/letter$', ['controller'=>'Sender','action'=>'letter']);
 Router::add('^\/cart(\/index)?$', ['controller'=>'Cart','action'=>'index']);
 Router::add('^\/cart(\/show)?$', ['controller'=>'Cart','action'=>'show']);
-Router::add('^\/user\/login$', ['controller'=>'User','action'=>'login']);
-Router::add('^\/user\/signup$', ['controller'=>'User','action'=>'signup']);
-Router::add('^\/user\/account', ['controller'=>'User','action'=>'account']);
+Router::add('^\/user\/login$', ['controller'=>'Clients','action'=>'login']);
+Router::add('^\/user\/signup$', ['controller'=>'Clients','action'=>'signup']);
+Router::add('^\/user\/account$', ['controller'=>'Clients','action'=>'account']);
 
 //admin
-Router::add('^\/admin$', ['controller'=>'User','action'=>'index', 'prefix'=>'admin']);
-Router::add('^\/admin\/user$', ['controller'=>'User','action'=>'user', 'prefix'=>'admin']);
-Router::add('^\/admin\/table$', ['controller'=>'User','action'=>'table', 'prefix'=>'admin']);
+Router::add('^\/admin$', ['controller'=>'Admin','action'=>'index', 'prefix'=>'admin']);
+Router::add('^\/admin\/user$', ['controller'=>'Admin','action'=>'user', 'prefix'=>'admin']);
+Router::add('^\/admin\/table$', ['controller'=>'Admin','action'=>'table', 'prefix'=>'admin']);
+Router::add('^\/admin\/login$', ['controller'=>'Admin','action'=>'login', 'prefix'=>'admin']);
+Router::add('^\/admin\/logout$', ['controller'=>'Admin','action'=>'logout', 'prefix'=>'admin']);
+Router::add('^\/admin\/signup$', ['controller'=>'Admin','action'=>'signup', 'prefix'=>'admin']);
 
 
 Router::dispatch();

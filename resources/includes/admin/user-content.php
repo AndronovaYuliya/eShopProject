@@ -60,7 +60,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>About Me</label>
-                                        <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                        <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, mollitia.</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -79,16 +79,16 @@
                     <div class="content">
                         <div class="author">
                             <a href="#">
-                                <img class="avatar border-gray" src="./../../../../public/admin/img/faces/face-3.jpg" alt="..."/>
+                                <img class="avatar border-gray" src="public/img/faces/face-3.jpg" alt="..."/>
 
-                                <h4 class="title">Mike Andrew<br />
-                                    <small>michael24</small>
+                                <h4 class="title">Andronova Yuliya<br />
+                                    <small>AndronovaYuliya</small>
                                 </h4>
                             </a>
                         </div>
-                        <p class="description text-center"> "Lamborghini Mercy <br>
-                            Your chick she so thirsty <br>
-                            I'm in that two seat Lambo"
+                        <p class="description text-center"> "Lorem ipsum <br>
+                            Lorem ipsum dolor sit amet <br>
+                            Lorem ipsum dolor sit amet"
                         </p>
                     </div>
                     <hr>

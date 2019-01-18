@@ -3,6 +3,7 @@
 namespace Components\Mappers;
 
 use Components\Core\Database;
+use Components\Core\Cache;
 
 class ClientsMapper extends AbstractTableMapper
 {
@@ -14,8 +15,14 @@ class ClientsMapper extends AbstractTableMapper
 
     public static function getData():array
     {
-        $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at FROM `clients`;";
-        return Database::getData($sql);
+        $cache=new Cache();
+        $data=$cache->get('clients');
+        if(!$data){
+            $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at FROM `clients`;";
+            $data= Database::getData($sql);
+            $cache->set('clients', $data);
+        }
+        return $data;
     }
 
     public static function getDataWhere(string $byWhat, string $name)
