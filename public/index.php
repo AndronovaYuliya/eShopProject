@@ -1,5 +1,5 @@
 <?php
-require_once '../Components/bootstrap.php';
+require_once '../App/bootstrap.php';
 
 
 

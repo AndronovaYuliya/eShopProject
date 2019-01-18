@@ -9,7 +9,11 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Components\\": "Components/"}
+        "psr-4":
+        {
+            "Core\\": "Core/",
+            "App\\": "App/"
+        }
     },
     "require": {
         "phpunit/phpunit": "^7.5",
