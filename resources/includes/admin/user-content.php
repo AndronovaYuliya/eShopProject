@@ -12,7 +12,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                        <input type="text" class="form-control" placeholder="Username">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -27,13 +27,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>First Name</label>
-                                        <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                        <input type="text" class="form-control" placeholder="Company">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                        <input type="text" class="form-control" placeholder="Last Name">
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                        <input type="text" class="form-control" placeholder="Home Address">
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>City</label>
-                                        <input type="text" class="form-control" placeholder="City" value="Mike">
+                                        <input type="text" class="form-control" placeholder="City">
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>About Me</label>
-                                        <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, mollitia.</textarea>
+                                        <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                     <div class="content">
                         <div class="author">
                             <a href="#">
-                                <img class="avatar border-gray" src="public/img/faces/face-3.jpg" alt="..."/>
+                                <img class="avatar border-gray" src="/img/admin/faces/face-3.jpg" alt="..."/>
 
                                 <h4 class="title">Andronova Yuliya<br />
                                     <small>AndronovaYuliya</small>

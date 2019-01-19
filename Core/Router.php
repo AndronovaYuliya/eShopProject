@@ -80,7 +80,6 @@ class Router
     public static function dispatch()
     {
         self::setUrl();
-        var_dump(self::$url);
         $query=explode('&',$_SERVER['QUERY_STRING']);
         $params["url"]=$query[0];
 
