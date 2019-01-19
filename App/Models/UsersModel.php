@@ -19,6 +19,6 @@ class UsersModel extends AbstractTableModel
 
     static public function getDataWhere(string $byWhat, string $name): array
     {
-        return UsersMapper::getDataWhere($byWhat,$name);
+        return UsersMapper::getDataWhere($byWhat, $name);
     }
 }

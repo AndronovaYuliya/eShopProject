@@ -30,48 +30,51 @@ class ClientsController extends Controller
     //registration
     public function signupAction()
     {
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
             //if($_POST->va)
-            $this->data['clients']=ClientsModel::getData();
+            $this->data['clients'] = ClientsModel::getData();
 
-        }
-        else{
+        } else {
             //redirect
         }
-        echo "signup"; die();
+        echo "signup";
+        die();
     }
 
     //login
     public function loginAction()
     {
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
 
         }
-        echo "login";die();
+        echo "login";
+        die();
     }
 
     //account
     public function accountAction()
     {
-        echo "account";die();
+        echo "account";
+        die();
     }
 
     //logout
     public function logoutAction()
     {
-        echo "logout"; die();
+        echo "logout";
+        die();
     }
 
-    private function validate($data):bool
+    private function validate($data): bool
     {
-      /*  $validator=new Validator($data);
-        $validator->rules($this->rules);
-        if ($validator){
-            return true;
-        }
-        else{
-            $this->errors=$validator->errors();
-            return false;
-        }*/
+        /*  $validator=new Validator($data);
+          $validator->rules($this->rules);
+          if ($validator){
+              return true;
+          }
+          else{
+              $this->errors=$validator->errors();
+              return false;
+          }*/
     }
 }

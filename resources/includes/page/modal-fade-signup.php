@@ -1,5 +1,6 @@
 <!-- Start Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,39 +13,48 @@
                 <form method="post" action="/user/signup" name="signupUser">
                     <div class="form-group">
                         <label for="SignupInputName">Name</label>
-                        <input type="text" class="form-control" id="signupInputName" aria-describedby="nameHelp" name="name" placeholder="James Bond">
+                        <input type="text" class="form-control" id="signupInputName" aria-describedby="nameHelp"
+                               name="name" placeholder="James Bond">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputPhone">Phone</label>
-                        <input type="text" class="form-control" required id="signupInputPhone" aria-describedby="nameHelp" name="lastName" placeholder="123-456-789">
+                        <input type="text" class="form-control" required id="signupInputPhone"
+                               aria-describedby="nameHelp" name="lastName" placeholder="123-456-789">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputLogin">Login</label>
-                        <input type="text" class="form-control" required id="signupInputLogin" aria-describedby="nameHelp" name="Login" placeholder="Agent007">
+                        <input type="text" class="form-control" required id="signupInputLogin"
+                               aria-describedby="nameHelp" name="Login" placeholder="Agent007">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputEmail">email</label>
-                        <input type="email" class="form-control" required id="signupInputEmail" name="email" placeholder="james@bond.com">
+                        <input type="email" class="form-control" required id="signupInputEmail" name="email"
+                               placeholder="james@bond.com">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputCity">city</label>
-                        <input type="text" class="form-control" id="signupInputCity" aria-describedby="nameHelp" name="City" placeholder="London">
+                        <input type="text" class="form-control" id="signupInputCity" aria-describedby="nameHelp"
+                               name="City" placeholder="London">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputAdress">adress</label>
-                        <input type="text" class="form-control" id="signupInputAdress" aria-describedby="nameHelp" name="Adress" placeholder="Vauxhall Cross - 85">
+                        <input type="text" class="form-control" id="signupInputAdress" aria-describedby="nameHelp"
+                               name="Adress" placeholder="Vauxhall Cross - 85">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputBorn">born</label>
-                        <input type="date" class="form-control" id="signupInputBorn" aria-describedby="nameHelp" name="Born">
+                        <input type="date" class="form-control" id="signupInputBorn" aria-describedby="nameHelp"
+                               name="Born">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputPassword">password</label>
-                        <input type="password" required class="form-control" id="signupInputPassword" aria-describedby="nameHelp" name="Password">
+                        <input type="password" required class="form-control" id="signupInputPassword"
+                               aria-describedby="nameHelp" name="Password">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputConfirmPassword">confirm password</label>
-                        <input type="password" required class="form-control" id="signupInputConfirmPassword" aria-describedby="nameHelp" name="ConfirmPassword">
+                        <input type="password" required class="form-control" id="signupInputConfirmPassword"
+                               aria-describedby="nameHelp" name="ConfirmPassword">
                     </div>
                     <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
                 </form>

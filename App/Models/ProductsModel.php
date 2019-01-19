@@ -11,12 +11,12 @@ class ProductsModel extends AbstractTableModel
         ProductsMapper::addData();
     }
 
-    public static function getFullData():array
+    public static function getFullData(): array
     {
         $data = ProductsMapper::getFullData();
-        $data=self::myExploded('file_name',$data);
-        $data=self::myExploded('key_words',$data);
-        $data=self::myExploded('id_key_word',$data);
+        $data = self::myExploded('file_name', $data);
+        $data = self::myExploded('key_words', $data);
+        $data = self::myExploded('id_key_word', $data);
         return $data;
     }
 
@@ -27,32 +27,32 @@ class ProductsModel extends AbstractTableModel
 
     public static function getProductWithImg(string $byWhat, string $name): array
     {
-        $data = ProductsMapper::getProductWithImg($byWhat,$name);
-        $data=self::myExploded('file_name',$data);
-        $data= self::myExploded('key_words',$data);
+        $data = ProductsMapper::getProductWithImg($byWhat, $name);
+        $data = self::myExploded('file_name', $data);
+        $data = self::myExploded('key_words', $data);
         return $data;
     }
 
     public function getDataByCategory(string $byWhat, string $name): array
     {
-        $data = ProductsMapper::getDataByCategory($byWhat,$name);
-        $data= self::myExploded('file_name',$data);
+        $data = ProductsMapper::getDataByCategory($byWhat, $name);
+        $data = self::myExploded('file_name', $data);
         return $data;
     }
 
-    public static function getDataLike(array $search):array
+    public static function getDataLike(array $search): array
     {
-        $data=ProductsMapper::getDataLike($search);
-        $data= self::myExploded('file_name',$data);
+        $data = ProductsMapper::getDataLike($search);
+        $data = self::myExploded('file_name', $data);
         return $data;
     }
 
-    private static function myExploded(string $name, $data):array 
+    private static function myExploded(string $name, $data): array
     {
-        $count=count($data);
+        $count = count($data);
 
-        for($i=0; $i<$count; $i++){
-            $data[$i][$name]=explode(',',$data[$i][$name]);
+        for ($i = 0; $i < $count; $i++) {
+            $data[$i][$name] = explode(',', $data[$i][$name]);
         }
         return $data;
     }
@@ -62,10 +62,10 @@ class ProductsModel extends AbstractTableModel
         return ProductsMapper::getData();
     }
 
-    public static function getKeyData($data):array
+    public static function getKeyData($data): array
     {
-        $data=ProductsMapper::getKeyData('name', $data);
-        $data= self::myExploded('file_name',$data);
+        $data = ProductsMapper::getKeyData('name', $data);
+        $data = self::myExploded('file_name', $data);
         return $data;
     }
 }

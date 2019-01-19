@@ -14,21 +14,23 @@
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
 
-                    <?php if (count($data['products']) > 0):?>
-                        <?php for($i=0;$i<6; $i++):?>
+                    <?php if (count($data['products']) > 0): ?>
+                        <?php for ($i = 0; $i < 6; $i++): ?>
                             <div class="thubmnail-recent">
-                                <img src=<?php echo $data['products'][$i]['file_name'][0]?> class="recent-thumb" alt="img">
-                                <h2><a href="/product/show?<?php echo $data['products'][$i]['url']?>">
-                                        <?php echo $data['products'][$i]['title']?></a></h2>
-                                <h3><a href="/product/brand?<?php echo $data['products'][$i]['brand']?>">
-                                        <?php echo $data['products'][$i]['title']?></a></h3>
+                                <img src=<?php echo $data['products'][$i]['file_name'][0] ?> class="recent-thumb"
+                                     alt="img">
+                                <h2><a href="/product/show?<?php echo $data['products'][$i]['url'] ?>">
+                                        <?php echo $data['products'][$i]['title'] ?></a></h2>
+                                <h3><a href="/product/brand?<?php echo $data['products'][$i]['brand'] ?>">
+                                        <?php echo $data['products'][$i]['title'] ?></a></h3>
                                 <div class="product-sidebar-price">
-                                    <ins><?php echo $data['products'][$i]['price']?></ins> <del>
-                                        <?php echo $data['products'][$i]['price']?></del>
+                                    <ins><?php echo $data['products'][$i]['price'] ?></ins>
+                                    <del>
+                                        <?php echo $data['products'][$i]['price'] ?></del>
                                 </div>
                             </div>
-                        <?php endfor;?>
-                    <?php endif;?>
+                        <?php endfor; ?>
+                    <?php endif; ?>
 
                 </div>
             </div>
@@ -53,7 +55,9 @@
                                         <a title="Remove this item" class="remove" href="#">×</a>
                                     </td>
                                     <td class="product-thumbnail">
-                                        <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="img/product-thumb-2.jpg"></a>
+                                        <a href="single-product.html"><img width="145" height="145" alt="poster_1_up"
+                                                                           class="shop_thumbnail"
+                                                                           src="img/product-thumb-2.jpg"></a>
                                     </td>
                                     <td class="product-name">
                                         <a href="single-product.html">Ship Your Idea</a>
@@ -64,7 +68,8 @@
                                     <td class="product-quantity">
                                         <div class="quantity buttons_added">
                                             <input type="button" class="minus" value="-">
-                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="1" min="0" step="1">
+                                            <input type="number" size="4" class="input-text qty text" title="Qty"
+                                                   value="1" min="0" step="1">
                                             <input type="button" class="plus" value="+">
                                         </div>
                                     </td>
@@ -90,7 +95,7 @@
                                     </tr>
                                     <tr class="order-total">
                                         <th>Order Total</th>
-                                        <td><strong><span class="amount">£15.00</span></strong> </td>
+                                        <td><strong><span class="amount">£15.00</span></strong></td>
                                     </tr>
                                     </tbody>
                                 </table>

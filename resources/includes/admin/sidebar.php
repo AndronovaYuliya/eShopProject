@@ -12,7 +12,7 @@
             <li class="active">
                 <a href="/admin/user">
                     <i class="pe-7s-user"></i>
-                    <p>User Profile</p>
+                    <p>Admin Profile</p>
                 </a>
             </li>
             <li>

@@ -65,8 +65,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="header">
@@ -127,12 +125,9 @@
                             </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

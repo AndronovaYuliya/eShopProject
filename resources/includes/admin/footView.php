@@ -1,4 +1,4 @@
-<?php include 'script.php' ?>
+<?php include 'script.php'?>
 
 </body>
 </html>

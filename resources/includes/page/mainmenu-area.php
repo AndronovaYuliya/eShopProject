@@ -1,7 +1,8 @@
 <!-- Start mainmenu-area-->
 <div class="mainmenu-area">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -10,34 +11,39 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="/product/index">Shop page</a>
+                    <a class="nav-link" href="/product/index">Shop page</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <?php if(count($data['categories']) > 0):?>
-                            <?php foreach ($data['categories'] as $category):?>
-                                <a class="dropdown-item" href="/product/category?<?php echo $category['url']?>"><?php echo $category['title'];?></a>
-                            <?php endforeach;?>
-                        <?php endif;?>
+                        <?php if (count($data['categories']) > 0): ?>
+                            <?php foreach ($data['categories'] as $category): ?>
+                                <a class="dropdown-item"
+                                   href="/product/category?<?php echo $category['url'] ?>"><?php echo $category['title']; ?></a>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Brand
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <?php if(count($data['products']) > 0):?>
-                            <?php foreach ($data['products'] as $products):?>
-                                <a class="dropdown-item" href="/product/brand?<?php echo $products['brand']?>"><?php echo $products['brand'];?></a>
-                            <?php endforeach;?>
-                        <?php endif;?>
+                        <?php if (count($data['products']) > 0): ?>
+                            <?php foreach ($data['products'] as $products): ?>
+                                <a class="dropdown-item"
+                                   href="/product/brand?<?php echo $products['brand'] ?>"><?php echo $products['brand']; ?></a>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>

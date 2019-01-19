@@ -8,7 +8,7 @@ trait TSingletone
 
     public static function getInstance()
     {
-        if(!self::$_instance) { // If no instance then make one
+        if (!self::$_instance) { // If no instance then make one
             self::$_instance = new self();
         }
         return self::$_instance;

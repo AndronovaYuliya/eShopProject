@@ -15,11 +15,11 @@ class CategoriesMapper extends AbstractTableMapper
 
     public static function getData(): array
     {
-        $cache=new Cache();
-        $data=$cache->get('categories');
-        if(!$data) {
+        $cache = new Cache();
+        $data = $cache->get('categories');
+        if (!$data) {
             $sql = "SELECT id, title, description, parent_id,url, created_at, updated_at FROM `categories`;";
-            $data= Database::getData($sql);
+            $data = Database::getData($sql);
             $cache->set('categories', $data);
         }
         return $data;

@@ -8,15 +8,15 @@ use App\Models\CategoriesModel;
 
 class MainController extends Controller
 {
-    private $data=[];
+    private $data = [];
 
     public function indexAction()
     {
-        $this->data=[];
+        $this->data = [];
 
-        $this->data['products']=ProductsModel::getFullData();
-        $this->data['categories']=CategoriesModel::getData();
+        $this->data['products'] = ProductsModel::getFullData();
+        $this->data['categories'] = CategoriesModel::getData();
 
-        parent::action_index('page/mainView.php',$this->data);
+        parent::action_index('page/mainView.php', $this->data);
     }
 }

@@ -14,6 +14,6 @@ class Controller
 
     protected function action_index(string $content, array $data)
     {
-        $this->view->generate($content,$data);
+        $this->view->generate($content, $data);
     }
 }

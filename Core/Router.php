@@ -44,7 +44,6 @@ class Router
     {
         self::setUrl();
 
-
         //$pattern - query, $route - controller+action
         foreach (self::$routes as $pattern => $route) {
             if (preg_match("~$pattern~i", self::$url)) {
@@ -53,22 +52,22 @@ class Router
                     self::$route[$key] = $value;
                 }
 
-                if(!isset(self::$route['controller'])) {
-                    self::$route['controller']='MainController';
-                }else{
+                if (!isset(self::$route['controller'])) {
+                    self::$route['controller'] = 'MainController';
+                } else {
                     self::$route['controller'] = self::upperCamelCase($route['controller']) . "Controller";
                 }
 
-                if(!isset(self::$route['action'])){
-                    self::$route['action']='indexAction';
-                }else{
-                    self::$route['action']=self::lowerCamelCase($route['action'])."Action";
+                if (!isset(self::$route['action'])) {
+                    self::$route['action'] = 'indexAction';
+                } else {
+                    self::$route['action'] = self::lowerCamelCase($route['action']) . "Action";
                 }
 
-                if (!isset(self::$route['prefix'])){
-                    self::$route['prefix']='';
-                }else {
-                    self::$route['prefix']=self::upperCamelCase(self::$route['prefix']).'\\';
+                if (!isset(self::$route['prefix'])) {
+                    self::$route['prefix'] = '';
+                } else {
+                    self::$route['prefix'] = self::upperCamelCase(self::$route['prefix']) . '\\';
                 }
 
                 return true;
@@ -80,44 +79,43 @@ class Router
     public static function dispatch()
     {
         self::setUrl();
-        $query=explode('&',$_SERVER['QUERY_STRING']);
-        $params["url"]=$query[0];
+        $query = explode('&', $_SERVER['QUERY_STRING']);
+        $params["url"] = $query[0];
 
-        if (self::matchRoute()){
-            $controller='App\Controllers\\'.self::$route['prefix'].self::$route['controller'];
+        if (self::matchRoute()) {
+            $controller = 'App\Controllers\\' . self::$route['prefix'] . self::$route['controller'];
 
-            if(class_exists($controller)){
-                $cObj=new $controller();
-                $action=self::$route['action'];
-                if(method_exists($cObj,$action)){
+            if (class_exists($controller)) {
+                $cObj = new $controller();
+                $action = self::$route['action'];
+                if (method_exists($cObj, $action)) {
                     $cObj->$action($params);
-                }
-                else{
+                } else {
                     echo "BADACTION";
                 }
-            }
-            else{
+            } else {
                 echo "BAD";
             }
 
-        }else{
+        } else {
             http_response_code(404);
-            include dirname(__FILE__,3).'/resources/home/404.php';
+            include dirname(__FILE__, 3) . '/resources/home/404.php';
         }
     }
 
-    private static function upperCamelCase($name):string
+    private static function upperCamelCase($name): string
     {
-        $name=str_replace('-',' ', $name);
-        $name=ucfirst($name);
-        $name=str_replace(' ','',ucfirst($name));
+        $name = str_replace('-', ' ', $name);
+        $name = ucfirst($name);
+        $name = str_replace(' ', '', ucfirst($name));
         return $name;
     }
-    private static function lowerCamelCase($name):string
+
+    private static function lowerCamelCase($name): string
     {
-        $name=str_replace('-',' ', $name);
-        $name=ucfirst($name);
-        $name=str_replace(' ','',ucfirst($name));
+        $name = str_replace('-', ' ', $name);
+        $name = ucfirst($name);
+        $name = str_replace(' ', '', ucfirst($name));
         return lcfirst($name);
     }
 }

@@ -13,13 +13,13 @@ class ClientsMapper extends AbstractTableMapper
         Database::addData('fakerClients', $sql, 10);
     }
 
-    public static function getData():array
+    public static function getData(): array
     {
-        $cache=new Cache();
-        $data=$cache->get('clients');
-        if(!$data){
+        $cache = new Cache();
+        $data = $cache->get('clients');
+        if (!$data) {
             $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at FROM `clients`;";
-            $data= Database::getData($sql);
+            $data = Database::getData($sql);
             $cache->set('clients', $data);
         }
         return $data;

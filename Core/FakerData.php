@@ -20,7 +20,6 @@ class FakerData
         $this->faker = Factory::create('en_US');
     }
 
-
     public function fakerAdditionals(): array
     {
         return [

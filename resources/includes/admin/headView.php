@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 
-    <?php require 'head.php';?>
+    <?php require 'head.php'; ?>
 
 </head>
-
 <body>

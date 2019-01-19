@@ -11,9 +11,11 @@ abstract class AbstractTableMapper
 
     }
 
-    abstract protected static function addData():void;
-    abstract protected static function getData():array;
-    abstract protected static function getDataWhere(string $byWhat,string $name);
+    abstract protected static function addData(): void;
+
+    abstract protected static function getData(): array;
+
+    abstract protected static function getDataWhere(string $byWhat, string $name);
 
 
 }

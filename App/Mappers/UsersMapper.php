@@ -10,7 +10,7 @@ class UsersMapper extends AbstractTableMapper
     {
         $sql = "INSERT INTO `users` (login,password,email,first_name,last_name,role,created_at, updated_at) VALUE 
             (:login, :password,:email, :first_name,:last_name,:role,NOW(), NOW())";
-        Database::addData('fakerUsers',$sql,1);
+        Database::addData('fakerUsers', $sql, 1);
     }
 
     public static function getData(): array
