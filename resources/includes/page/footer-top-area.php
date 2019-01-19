@@ -31,7 +31,7 @@
                     <h2 class="footer-wid-title">Categories</h2>
                     <ul>
 
-                        <?php if (isset($data['categories'])):?>
+                        <?php if (count($data['categories']) > 0):?>
                             <?php for($i=0; $i<6; $i++):?>
                                 <li><a href="/product/category?<?php echo  $data['categories'][$i]['url']?>">
                                         <?php echo $data['categories'][$i]['title'];?></a></li>

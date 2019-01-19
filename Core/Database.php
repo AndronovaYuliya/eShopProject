@@ -26,7 +26,7 @@ class Database
 
     private function __construct()
     {
-        $config= parse_ini_file(dirname(__FILE__,3).'/config/config.ini');
+        $config= parse_ini_file(dirname(__FILE__,2).'/config/config.ini');
 
         self::$_host=$config['host'];
         self::$_username=$config['username'];
@@ -64,12 +64,12 @@ class Database
         self::createTable('comments');
         self::createTable('additionals');
         self::createTable('products_images');
-        self::createTable('user');
+        self::createTable('users');
     }
 
     private static function createTable($filename):void
     {
-        $sql = file_get_contents(dirname(__FILE__,3).'/database/'.$filename.'.sql');
+        $sql = file_get_contents(dirname(__FILE__,2).'/database/'.$filename.'.sql');
         self::$_pdo->exec($sql);
     }
 

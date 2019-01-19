@@ -2,23 +2,23 @@
 
 namespace App\Models;
 
-use App\Mappers\UserMapper;
+use App\Mappers\UsersMapper;
 
-class UserModel extends AbstractTableModel
+class UsersModel extends AbstractTableModel
 {
 
     static public function addFaker(): void
     {
-        UserMapper::addData();
+        UsersMapper::addData();
     }
 
     static public function getData(): array
     {
-        return UserMapper::getData();
+        return UsersMapper::getData();
     }
 
     static public function getDataWhere(string $byWhat, string $name): array
     {
-        return UserMapper::getDataWhere($byWhat,$name);
+        return UsersMapper::getDataWhere($byWhat,$name);
     }
 }

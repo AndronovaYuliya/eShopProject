@@ -14,21 +14,22 @@
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
 
-                    <?php if (isset($data['products'])):?>
+                    <?php if (count($data['products']) > 0):?>
                         <?php for($i=0;$i<6; $i++):?>
-                        <div class="thubmnail-recent">
-                            <img src=<?php echo $data['products'][$i]['file_name'][0]?> class="recent-thumb" alt="img">
-                            <h2><a href="/product/show?<?php echo $data['products'][$i]['url']?>">
-                                    <?php echo $data['products'][$i]['title']?></a></h2>
-                            <h3><a href="/product/brand?<?php echo $data['products'][$i]['brand']?>">
-                                    <?php echo $data['products'][$i]['title']?></a></h3>
-                            <div class="product-sidebar-price">
-                                <ins><?php echo $data['products'][$i]['price']?></ins> <del>
-                                    <?php echo $data['products'][$i]['price']?></del>
+                            <div class="thubmnail-recent">
+                                <img src=<?php echo $data['products'][$i]['file_name'][0]?> class="recent-thumb" alt="img">
+                                <h2><a href="/product/show?<?php echo $data['products'][$i]['url']?>">
+                                        <?php echo $data['products'][$i]['title']?></a></h2>
+                                <h3><a href="/product/brand?<?php echo $data['products'][$i]['brand']?>">
+                                        <?php echo $data['products'][$i]['title']?></a></h3>
+                                <div class="product-sidebar-price">
+                                    <ins><?php echo $data['products'][$i]['price']?></ins> <del>
+                                        <?php echo $data['products'][$i]['price']?></del>
+                                </div>
                             </div>
-                        </div>
                         <?php endfor;?>
                     <?php endif;?>
+
                 </div>
             </div>
             <div class="col-md-8">

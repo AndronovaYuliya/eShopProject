@@ -140,7 +140,7 @@ class FakerData
         ];
     }
 
-    public function fakerUser(): array
+    public function fakerUsers(): array
     {
         return [
             ':login' => 'adminYuliya',

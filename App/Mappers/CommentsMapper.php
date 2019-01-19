@@ -2,7 +2,7 @@
 
 namespace App\Mappers;
 
-use Components\Core\Database;
+use Core\Database;
 
 class CommentsMapper extends AbstractTableMapper
 {

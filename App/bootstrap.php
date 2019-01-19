@@ -4,8 +4,8 @@ require dirname(__FILE__,2). '/vendor/autoload.php';
 
 use CostumLogger\CostumLogger;
 use Core\Router;
+use Core\Cache;
 use Core\Database;
-//use Core\Cache;
 use App\Models\ClientsModel;
 use App\Models\AttributesModel;
 use App\Models\ImagesModel;
@@ -19,10 +19,10 @@ use App\Models\CommentsModel;
 use App\Models\ProductsImagesModel;
 use App\Models\KeyWordsModel;
 use App\Models\ProductsKeyWordsModel;
-use App\Models\UserModel;
+use App\Models\UsersModel;
 
 $log=new CostumLogger();
-$cach=new \Core\Cache();
+$cach=new Cache();
 
 
 //Router::add('^$', ['controller'=>'Main','action'=>'index']);
@@ -66,7 +66,7 @@ $db = Database::getInstance();
 
 $mysqli = $db->getConnection();
 
-$qr = $db->createTables();
+//$qr = $db->createTables();
 /*KeyWordsModel::addFaker();
 AttributesModel::addFaker();
 ClientsModel::addFaker();
@@ -80,5 +80,5 @@ CommentsModel::addFaker();
 ProductsImagesModel::addFaker();
 AdditionalsModel::addFaker();
 ProductsKeyWordsModel::addFaker();
-UserModel::addFaker();*/
+UsersModel::addFaker();*/
 

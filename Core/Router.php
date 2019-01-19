@@ -85,7 +85,7 @@ class Router
         $params["url"]=$query[0];
 
         if (self::matchRoute()){
-            $controller='Components\Controllers\\'.self::$route['prefix'].self::$route['controller'];
+            $controller='App\Controllers\\'.self::$route['prefix'].self::$route['controller'];
 
             if(class_exists($controller)){
                 $cObj=new $controller();

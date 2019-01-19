@@ -5,7 +5,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="card-deck">
 
-                <?php if (isset($data['products'])):?>
+                <?php if (count($data['products']) > 0):?>
                     <?php for($i=0; $i<6; $i++):?>
                         <div class="product-wrap">
                             <div class="product-image">

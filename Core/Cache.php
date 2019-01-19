@@ -11,7 +11,7 @@ class Cache
 
     public function set($key, $data, $seconds=3600):bool
     {
-        $path=dirname(__FILE__,3).'/tmp/cache/';
+        $path=dirname(__FILE__,2).'/tmp/cache/';
         $content['data']=$data;
         $content['end_time']=time()+$seconds;
         if(file_put_contents($path.$key.'.txt', serialize($content))){
@@ -22,7 +22,7 @@ class Cache
 
     public function get($key)
     {
-        $file=dirname(__FILE__,3).'/tmp/cache/'.$key.'.txt';
+        $file=dirname(__FILE__,2).'/tmp/cache/'.$key.'.txt';
         if(file_exists($file)){
             $content=unserialize(file_get_contents($file));
             if(time()<=$content['end_time']){

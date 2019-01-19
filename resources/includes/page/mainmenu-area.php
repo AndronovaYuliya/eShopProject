@@ -18,9 +18,11 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <?php foreach ($data['categories'] as $category):?>
-                            <a class="dropdown-item" href="/product/category?<?php echo $category['url']?>"><?php echo $category['title'];?></a>
-                        <?php endforeach;?>
+                        <?php if(count($data['categories']) > 0):?>
+                            <?php foreach ($data['categories'] as $category):?>
+                                <a class="dropdown-item" href="/product/category?<?php echo $category['url']?>"><?php echo $category['title'];?></a>
+                            <?php endforeach;?>
+                        <?php endif;?>
 
                         <div class="dropdown-divider"></div>
                     </div>
@@ -30,10 +32,12 @@
                         Brand
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <?php foreach ($data['products'] as $products):?>
-                            <a class="dropdown-item" href="/product/brand?<?php echo $products['brand']?>"><?php echo $products['brand'];?></a>
-                        <?php endforeach;?>
 
+                        <?php if(count($data['products']) > 0):?>
+                            <?php foreach ($data['products'] as $products):?>
+                                <a class="dropdown-item" href="/product/brand?<?php echo $products['brand']?>"><?php echo $products['brand'];?></a>
+                            <?php endforeach;?>
+                        <?php endif;?>
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
