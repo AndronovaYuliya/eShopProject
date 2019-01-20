@@ -12,11 +12,6 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="">
-                        <p>Account</p>
-                    </a>
-                </li>
-                <li>
                     <a href="/admin/logout">
                         <p>Log out</p>
                     </a>

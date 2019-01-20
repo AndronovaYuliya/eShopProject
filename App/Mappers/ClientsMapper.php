@@ -7,10 +7,10 @@ use Core\Cache;
 
 class ClientsMapper extends AbstractTableMapper
 {
-    public static function addData(): void
+    public static function addFakerData(): void
     {
         $sql = "INSERT INTO `clients` (name, login, email, phone,city,address,born,password,created_at,updated_at) VALUE (:name, :login, :email, :phone, :city, :address, NOW(),:password,NOW(),NOW())";
-        Database::addData('fakerClients', $sql, 10);
+        Database::addFakerData('fakerClients', $sql, 10);
     }
 
     public static function getData(): array
@@ -29,5 +29,10 @@ class ClientsMapper extends AbstractTableMapper
     {
         $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at FROM `clients` WHERE $byWhat=$name;";
         return Database::getData($sql);
+    }
+
+    protected static function addData(): void
+    {
+        // TODO: Implement addData() method.
     }
 }

@@ -72,7 +72,7 @@ class Database
         self::$_pdo->exec($sql);
     }
 
-    public static function addData($fakerMethod, string $sql, int $count = 1): void
+    public static function addFakerData($fakerMethod, string $sql, int $count = 1): void
     {
         $faker = new FakerData();
         for ($i = 0; $i < $count; $i++) {
@@ -82,6 +82,15 @@ class Database
                 $stmt->execute($data);
                 $stmt->fetchAll();
             }
+        }
+    }
+
+    public static function addData(string $sql,array $data):void
+    {
+        $stmt = self::getConnection()->prepare($sql);
+        if ($stmt !== false) {
+            $stmt->execute($data);
+            $stmt->fetchAll();
         }
     }
 

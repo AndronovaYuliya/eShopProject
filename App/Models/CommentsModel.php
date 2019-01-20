@@ -6,9 +6,9 @@ use App\Mappers\CommentsMapper;
 
 class CommentsModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        CommentsMapper::addData();
+        CommentsMapper::addFakerData();
     }
 
     public static function getData(): array

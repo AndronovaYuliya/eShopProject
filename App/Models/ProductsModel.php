@@ -6,9 +6,9 @@ use App\Mappers\ProductsMapper;
 
 class ProductsModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        ProductsMapper::addData();
+        ProductsMapper::addFakerData();
     }
 
     public static function getFullData(): array

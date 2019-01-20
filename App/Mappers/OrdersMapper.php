@@ -7,10 +7,10 @@ use Core\Database;
 class OrdersMapper extends AbstractTableMapper
 {
     //faker
-    public static function addData(): void
+    public static function addFakerData(): void
     {
         $sql = "INSERT INTO `orders` (date,sum, status,ttn,id_client,created_at, updated_at) VALUE (NOW(),:sum,:status, :ttn,:id_client,NOW(), NOW())";
-        Database::addData('fakerOrders', $sql, 10);
+        Database::addFakerData('fakerOrders', $sql, 10);
     }
 
     public static function getData(): array
@@ -23,5 +23,10 @@ class OrdersMapper extends AbstractTableMapper
     {
         $sql = "SELECT id, date,sum, status,ttn, id_client, created_at, updated_at FROM `orders` WHERE $byWhat=$name;";
         return Database::getData($sql);
+    }
+
+    protected static function addData(): void
+    {
+        // TODO: Implement addData() method.
     }
 }

@@ -6,9 +6,9 @@ use App\Mappers\CategoriesMapper;
 
 class CategoriesModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        CategoriesMapper::addData();
+        CategoriesMapper::addFakerData();
     }
 
     public static function getData(): array

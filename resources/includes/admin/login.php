@@ -2,6 +2,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
+
+            <?php if(isset($data["errors"])):?>
+                <div class="alert alert-danger">
+                    <?php echo array_shift($data["errors"]);?>
+                </div>
+            <?php endif;?>
+
             <form method="post" action="/admin/login">
                 <div class="form-group">
                     <label for="adminInputEmail">Email address</label>

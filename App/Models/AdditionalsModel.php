@@ -6,9 +6,9 @@ use App\Mappers\AdditionalsMapper;
 
 class AdditionalsModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        AdditionalsMapper::addData();
+        AdditionalsMapper::addFakerData();
     }
 
     public static function getData(): array

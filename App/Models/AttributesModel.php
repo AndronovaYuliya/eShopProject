@@ -6,9 +6,9 @@ use App\Mappers\AttributesMapper;
 
 class AttributesModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        AttributesMapper::addData();
+        AttributesMapper::addFakerData();
     }
 
     public static function getData(): array

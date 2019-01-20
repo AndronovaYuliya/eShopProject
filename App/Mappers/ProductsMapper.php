@@ -8,10 +8,10 @@ use Core\Database;
 class ProductsMapper extends AbstractTableMapper
 {
     //faker
-    public static function addData(): void
+    public static function addFakerData(): void
     {
         $sql = "INSERT INTO `products` (title, description, brand,price, count,url, id_category, created_at, updated_at) VALUE (:title, :description,:brand, :price, :count, :url,:id_category, NOW(), NOW())";
-        $data = Database::addData('fakerProducts', $sql, 10);
+        $data = Database::addFakerData('fakerProducts', $sql, 10);
     }
 
     public static function getFullData(): array
@@ -140,5 +140,10 @@ class ProductsMapper extends AbstractTableMapper
         WHERE KW.$byWhat='$searchKey'
         GROUP BY P.id";
         return Database::getData($sql);
+    }
+
+    protected static function addData(): void
+    {
+        // TODO: Implement addData() method.
     }
 }

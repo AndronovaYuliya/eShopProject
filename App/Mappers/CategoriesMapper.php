@@ -7,10 +7,10 @@ use Core\Database;
 
 class CategoriesMapper extends AbstractTableMapper
 {
-    public static function addData(): void
+    public static function addFakerData(): void
     {
         $sql = "INSERT INTO `categories` (title, description, parent_id, url, created_at,updated_at) VALUE (:title, :description, :parent_id, :url, NOW(),NOW())";
-        Database::addData('fakerCategories', $sql, 10);
+        Database::addFakerData('fakerCategories', $sql, 10);
     }
 
     public static function getData(): array
@@ -32,4 +32,8 @@ class CategoriesMapper extends AbstractTableMapper
     }
 
 
+    protected static function addData(): void
+    {
+        // TODO: Implement addData() method.
+    }
 }

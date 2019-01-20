@@ -6,9 +6,9 @@ use App\Mappers\ImagesMapper;
 
 class ImagesModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        ImagesMapper::addData();
+        ImagesMapper::addFakerData();
     }
 
     public static function getData(): array

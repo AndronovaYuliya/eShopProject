@@ -7,9 +7,9 @@ use App\Mappers\UsersMapper;
 class UsersModel extends AbstractTableModel
 {
 
-    static public function addFaker(): void
+    static public function addFakerData(): void
     {
-        UsersMapper::addData();
+        UsersMapper::addFakerData();
     }
 
     static public function getData(): array

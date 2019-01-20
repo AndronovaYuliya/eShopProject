@@ -6,9 +6,9 @@ use App\Mappers\ProductsKeyWordsMapper;
 
 class ProductsKeyWordsModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        ProductsKeyWordsMapper::addData();
+        ProductsKeyWordsMapper::addFakerData();
     }
 
     public static function getData(): array

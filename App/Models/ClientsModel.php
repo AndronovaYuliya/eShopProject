@@ -6,9 +6,9 @@ use App\Mappers\ClientsMapper;
 
 class ClientsModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        ClientsMapper::addData();
+        ClientsMapper::addFakerData();
     }
 
     public static function getData(): array

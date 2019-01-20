@@ -6,9 +6,9 @@ use App\Mappers\OrdersMapper;
 
 class OrdersModel extends AbstractTableModel
 {
-    public static function addFaker(): void
+    public static function addFakerData(): void
     {
-        OrdersMapper::addData();
+        OrdersMapper::addFakerData();
     }
 
     public static function getData(): array

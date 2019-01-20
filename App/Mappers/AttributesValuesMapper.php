@@ -7,10 +7,10 @@ use Core\Database;
 class AttributesValuesMapper extends AbstractTableMapper
 {
     //faker
-    public static function addData(): void
+    public static function addFakerData(): void
     {
         $sql = "INSERT INTO `attributes_values` (value, created_at, updated_at, attributes_id) VALUE (:value, NOW(), NOW(), :attributes_id)";
-        Database::addData('fakerAttributesValues', $sql, 10);
+        Database::addFakerData('fakerAttributesValues', $sql, 10);
     }
 
     public static function getData(): array
@@ -23,5 +23,10 @@ class AttributesValuesMapper extends AbstractTableMapper
     {
         $sql = "SELECT id, value, created_at, updated_at, attributes_id FROM `attributes_values` WHERE $byWhat=$name;";
         return Database::getData($sql);
+    }
+
+    protected static function addData(): void
+    {
+        // TODO: Implement addData() method.
     }
 }

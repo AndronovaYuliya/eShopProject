@@ -8,7 +8,9 @@ use App\Models\Admin\AdminModel;
 class AdminController extends Controller
 {
     private $data = [];
+    private $user;
 
+    //
     public function indexAction()
     {
         parent::action_index('admin/adminView.php', $this->data);
@@ -16,7 +18,6 @@ class AdminController extends Controller
 
     public function userAction()
     {
-        //check
         parent::action_index('admin/userView.php', $this->data);
     }
 
@@ -25,18 +26,16 @@ class AdminController extends Controller
         parent::action_index('admin/tableView.php', $this->data);
     }
 
-    //logib
+    //login
     public function loginAction()
     {
         if (!empty($_POST)) {
-            $admin = new AdminModel();
-            $errors = $admin->load($_POST);
-            if (empty($errors)) {
-                parent::action_index('admin/userView.php', $this->data);
+            $this->data['admin'] = AdminModel::login($_POST);
+            if (empty($this->data['admin']['errors'])) {
+                $this->user = $this->data['admin']['user'];
+                parent::action_index('admin/userView.php', $this->data['admin']['user']);
             } else {
-                var_dump($errors);
-                die();
-                //parent::action_index('admin/userView.php', $errors);
+                parent::action_index('admin/adminView.php', $this->data['admin']);
             }
         }
     }
@@ -50,11 +49,55 @@ class AdminController extends Controller
     //registration
     public function signupAction()
     {
-        $admin = new AdminModel();
-        $errors = $admin->load($_POST);
         if (!empty($_POST)) {
+            $data = AdminModel::signup($_POST);
 
+            $this->data['admin'] = $data['user'];
+            $this->data['errors'] = $data['errors'];
+
+            if (empty($this->data['errors'])) {
+                if (AdminModel::check('login', $this->data['admin']['adminLogin'])) {
+                    $this->data['errors'] = 'This login is occupied';
+                }
+
+                if (AdminModel::check('email', $this->data['admin']['adminEmail'])) {
+                    $this->data['errors'] = 'This email is occupied';
+                }
+            } else {
+                parent::action_index('admin/userView.php', $this->data);
+            }
+            if (empty($this->data['errors'])) {
+                AdminModel::addUser($this->data['admin']);
+                parent::action_index('admin/userView.php', $this->data);
+            }
         }
+    }
+
+    //edit
+    public function editAction()
+    {
+        if (!empty($_POST)) {
+            $data = AdminModel::edit($_POST);
+
+            $this->data['admin'] = $data['user'];
+            $this->data['errors'] = $data['errors'];
+
+            //from session id
+            $id = 1;
+
+            if (empty($this->data['errors'])) {
+                AdminModel::updateUser($this->data['admin'], $id);
+                parent::action_index('admin/userView.php', $this->data);
+            }
+            //from session add admin
+            //parent::action_index('admin/userView.php', $this->data);
+        }
+    }
+
+    //delete
+    public function deleteAction()
+    {
+        echo "delete";
         die();
     }
 }
