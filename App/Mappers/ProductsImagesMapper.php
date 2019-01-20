@@ -18,6 +18,10 @@ class ProductsImagesMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, id_galary,id_product, created_at, updated_at FROM `products_images` WHERE $byWhat=$name;";

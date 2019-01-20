@@ -11,8 +11,11 @@ class ProductController extends Controller
 
     private $data = [];
 
-    //show 1 product
-    public function showAction($params)
+    /**
+     * @param array $params
+     * show 1 product
+     */
+    public function showAction(array $params)
     {
         $key = key($params);
         $this->data['product'] = ProductsModel::getProductWithImg($key, $params[$key]);
@@ -22,8 +25,11 @@ class ProductController extends Controller
         parent::action_index('page/singleProductView.php', $this->data);
     }
 
-    //show 1 product
-    public function brandAction($params)
+    /**
+     * @param array $params
+     * show 1 product
+     */
+    public function brandAction(array $params)
     {
         $key = key($params);
         $this->data['products'] = ProductsModel::getProductWithImg('brand', $params[$key]);
@@ -64,7 +70,10 @@ class ProductController extends Controller
         parent::action_index('page/shopView.php', $this->data);
     }
 
-    public function keyAction($params)
+    /**
+     * @param array $params
+     */
+    public function keyAction(array $params)
     {
         $key = key($params);
         $this->data['products'] = ProductsModel::getKeyData($params[$key]);

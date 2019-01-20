@@ -16,6 +16,10 @@ class AttributesValuesModel extends AbstractTableModel
         return AttributesValuesMapper::getData();
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return AttributesValuesMapper::getDataWhere($byWhat, $name);

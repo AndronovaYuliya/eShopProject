@@ -17,6 +17,10 @@ abstract class AbstractTableMapper
 
     abstract protected static function getData(): array;
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     abstract protected static function getDataWhere(string $byWhat, string $name);
 
 

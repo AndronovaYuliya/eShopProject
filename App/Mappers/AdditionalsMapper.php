@@ -18,6 +18,10 @@ class AdditionalsMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, id_product, id_order,count,price, created_at, updated_at FROM `additionals` WHERE $byWhat=$name;";

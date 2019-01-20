@@ -36,12 +36,20 @@ class ProductsMapper extends AbstractTableMapper
         return $data;
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, title,brand, description, price, url, count, id_category,  created_at, updated_at FROM `products` WHERE $byWhat=$name;";
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getProductWithImg(string $byWhat, string $name): array
     {
         $sql = "SELECT result.id,result.title,result.brand, result.description,result.price,result.url, result.count,
@@ -60,6 +68,10 @@ class ProductsMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataByCategory(string $byWhat, string $name)
     {
         $sql = "SELECT result.id,result.brand, result.price,  result.count, result.id_category, result.description, 
@@ -74,6 +86,9 @@ class ProductsMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param array $searchKey
+     */
     public static function getDataLike(array $searchKey)
     {
         $search = $searchKey;
@@ -126,6 +141,10 @@ class ProductsMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $searchKey
+     */
     public static function getKeyData(string $byWhat, string $searchKey): array
     {
         $sql = "SELECT P.id,P.brand, P.title, P.description, P.price, P.url, P.count,P.url,P.updated_at,

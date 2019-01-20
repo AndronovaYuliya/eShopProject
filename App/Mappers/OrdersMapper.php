@@ -19,6 +19,10 @@ class OrdersMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, date,sum, status,ttn, id_client, created_at, updated_at FROM `orders` WHERE $byWhat=$name;";

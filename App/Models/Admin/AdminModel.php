@@ -155,6 +155,9 @@ class AdminModel
         return ["errors" => self::$errors, "user" => self::$attributes];
     }
 
+    /**
+     * @param $data
+     */
     public static function addUser($data): void
     {
         AdminMappers::addUser($data);
@@ -166,6 +169,8 @@ class AdminModel
     }
 
     /*
+     *  @param string $byWhat
+     *  @param string $name
      *
      * return true if user is occupied
      * */

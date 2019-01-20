@@ -9,10 +9,11 @@ class DataBaseModel
     private static $data = [];
 
     /*
-     * return array
+     *  @param string $fileName = '/read'
+     *  return array
      * /read for test exception
      * */
-    public static function getData($fileName = '/read'): array
+    public static function getData(string $fileName = '/read'): array
     {
         if ($fileName == '/read') {
             throw new MyException("File is empty", 02);
@@ -24,9 +25,11 @@ class DataBaseModel
     }
 
     /*
+     *  @param string $fileName
+     *  @param $array
      * write data to file
      * */
-    public static function setDB($array, $fileName): void
+    public static function setDB($array, string $fileName): void
     {
         self::$data = serialize($array);
         file_put_contents($fileName, self::$data);

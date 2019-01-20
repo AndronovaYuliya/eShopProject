@@ -66,12 +66,20 @@ class Database
         self::createTable('users');
     }
 
+    /**
+     * @param $filename
+     */
     private static function createTable($filename): void
     {
         $sql = file_get_contents(dirname(__FILE__, 2) . '/database/' . $filename . '.sql');
         self::$_pdo->exec($sql);
     }
 
+    /**
+     * @param $fakerMethod
+     * @param string $sql
+     * @param int $count = 1
+     */
     public static function addFakerData($fakerMethod, string $sql, int $count = 1): void
     {
         $faker = new FakerData();
@@ -85,6 +93,10 @@ class Database
         }
     }
 
+    /**
+     * @param string $sql
+     * @param array $data
+     */
     public static function addData(string $sql,array $data):void
     {
         $stmt = self::getConnection()->prepare($sql);
@@ -94,6 +106,9 @@ class Database
         }
     }
 
+    /**
+     * @param string $sql
+     */
     public static function getData(string $sql): array
     {
         $data = [];

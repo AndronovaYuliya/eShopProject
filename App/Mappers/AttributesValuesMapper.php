@@ -19,6 +19,10 @@ class AttributesValuesMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, value, created_at, updated_at, attributes_id FROM `attributes_values` WHERE $byWhat=$name;";

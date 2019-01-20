@@ -19,6 +19,10 @@ class KeyWordsMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, name, created_at, updated_at FROM `key_words` WHERE $byWhat=$name;";

@@ -19,6 +19,10 @@ class UsersMapper extends AbstractTableMapper
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, login,password,email,first_name,last_name,role,created_at, updated_at 

@@ -16,6 +16,10 @@ class CommentsModel extends AbstractTableModel
         return CommentsMapper::getData();
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return CommentsMapper::getDataWhere($byWhat, $name);

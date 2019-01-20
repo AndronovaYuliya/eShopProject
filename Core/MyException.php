@@ -14,6 +14,11 @@ class MyException extends Exception
     const E_USER_FILE = 1;
     const E_USER_ = 2;
 
+    /**
+     * @param $message = ''
+     * @param $code = 0
+     * @param Exception $previous = null
+     */
     public function __construct($message = '', $code = 0, Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);
@@ -75,6 +80,9 @@ class MyException extends Exception
         }
     }
 
+    /**
+     * @param $myException
+     */
     public function exception_handler($myException)
     {
         $this->writeLog();

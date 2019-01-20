@@ -25,7 +25,11 @@ class Router
 
     }
 
-    public static function add($regexp, $route = [])
+    /**
+     * @param $regexp
+     * @param array $route = []
+     */
+    public static function add($regexp, array $route = [])
     {
         self::$routes[$regexp] = $route;
     }
@@ -103,6 +107,9 @@ class Router
         }
     }
 
+    /**
+     * @param $name
+     */
     private static function upperCamelCase($name): string
     {
         $name = str_replace('-', ' ', $name);
@@ -111,6 +118,9 @@ class Router
         return $name;
     }
 
+    /**
+     * @param $name
+     */
     private static function lowerCamelCase($name): string
     {
         $name = str_replace('-', ' ', $name);

@@ -12,6 +12,10 @@ class Controller
         $this->view = new View();
     }
 
+    /**
+     * @param string $content
+     * @param array $data
+     */
     protected function action_index(string $content, array $data)
     {
         $this->view->generate($content, $data);

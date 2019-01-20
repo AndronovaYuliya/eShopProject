@@ -9,6 +9,11 @@ class Cache
 
     }
 
+    /**
+     * @param $key
+     * @param $data
+     * @param $seconds
+     */
     public function set($key, $data, $seconds = 3600): bool
     {
         $path = dirname(__FILE__, 2) . '/tmp/cache/';
@@ -20,6 +25,9 @@ class Cache
         return false;
     }
 
+    /**
+     * @param $key
+     */
     public function get($key)
     {
         $file = dirname(__FILE__, 2) . '/tmp/cache/' . $key . '.txt';
@@ -34,6 +42,9 @@ class Cache
         }
     }
 
+    /**
+     * @param $key
+     */
     public function delete($key)
     {
         $file = dirname(__FILE__, 3) . '/tmp/cache/' . $key . '.txt';

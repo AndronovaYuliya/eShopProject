@@ -16,6 +16,10 @@ class KeyWordsModel extends AbstractTableModel
         return KeyWordsMapper::getData();
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return KeyWordsMapper::getDataWhere($byWhat, $name);

@@ -16,6 +16,10 @@ class OrdersModel extends AbstractTableModel
         return OrdersMapper::getData();
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return OrdersMapper::getDataWhere($byWhat, $name);

@@ -7,6 +7,9 @@ use Core\Database;
 
 class AdminMappers
 {
+    /**
+     * @param array $attributes
+     */
     public static function addUser(array $attributes)
     {
         $sql = "INSERT INTO `users` (login, password, email,first_name, last_name,role, created_at, 
@@ -15,6 +18,10 @@ class AdminMappers
         Database::addData($sql, $attributes);
     }
 
+    /**
+     * @param array $attributes
+     * @param string $id
+     */
     public static function updateUser(array $attributes,string $id)
     {
         $sql = "UPDATE `users` SET password=:adminPassword, first_name=:adminFirstName,
@@ -34,7 +41,10 @@ class AdminMappers
         return $data;
     }
 
-
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function checkUnique(string $byWhat, string $name): array
     {
         $sql = "SELECT id FROM `users` 
@@ -42,6 +52,9 @@ class AdminMappers
         return Database::getData($sql);
     }
 
+    /**
+     * @param string $email
+     */
     public static function loadProfile($email): array
     {
         $sql = "SELECT id, login, email,first_name,last_name,role,password FROM `users` 

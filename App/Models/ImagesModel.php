@@ -16,6 +16,10 @@ class ImagesModel extends AbstractTableModel
         return ImagesMapper::getData();
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return ImagesMapper::getDataWhere($byWhat, $name);

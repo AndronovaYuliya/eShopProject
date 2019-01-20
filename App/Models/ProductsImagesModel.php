@@ -16,6 +16,10 @@ class ProductsImagesModel extends AbstractTableModel
         return ProductsImagesMapper::getData();
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return ProductsImagesMapper::getDataWhere($byWhat, $name);

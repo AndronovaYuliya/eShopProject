@@ -16,6 +16,10 @@ class ClientsModel extends AbstractTableModel
         return ClientsMapper::getData();
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return ClientsMapper::getDataWhere($byWhat, $name);

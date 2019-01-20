@@ -20,11 +20,19 @@ class ProductsModel extends AbstractTableModel
         return $data;
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return ProductsMapper::getDataWhere($byWhat, $name);
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public static function getProductWithImg(string $byWhat, string $name): array
     {
         $data = ProductsMapper::getProductWithImg($byWhat, $name);
@@ -33,6 +41,10 @@ class ProductsModel extends AbstractTableModel
         return $data;
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
     public function getDataByCategory(string $byWhat, string $name): array
     {
         $data = ProductsMapper::getDataByCategory($byWhat, $name);
@@ -40,6 +52,9 @@ class ProductsModel extends AbstractTableModel
         return $data;
     }
 
+    /**
+     * @param array $search
+     */
     public static function getDataLike(array $search): array
     {
         $data = ProductsMapper::getDataLike($search);
@@ -47,6 +62,10 @@ class ProductsModel extends AbstractTableModel
         return $data;
     }
 
+    /**
+     * @param string $name
+     * @param $data
+     */
     private static function myExploded(string $name, $data): array
     {
         $count = count($data);
@@ -62,6 +81,9 @@ class ProductsModel extends AbstractTableModel
         return ProductsMapper::getData();
     }
 
+    /**
+     * @param $data
+     */
     public static function getKeyData($data): array
     {
         $data = ProductsMapper::getKeyData('name', $data);

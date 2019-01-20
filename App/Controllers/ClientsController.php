@@ -64,17 +64,4 @@ class ClientsController extends Controller
         echo "logout";
         die();
     }
-
-    private function validate($data): bool
-    {
-        /*  $validator=new Validator($data);
-          $validator->rules($this->rules);
-          if ($validator){
-              return true;
-          }
-          else{
-              $this->errors=$validator->errors();
-              return false;
-          }*/
-    }
 }
