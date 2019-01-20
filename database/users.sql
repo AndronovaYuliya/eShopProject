@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,

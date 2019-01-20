@@ -12,7 +12,7 @@ class AdminModel
 
     private static $errors = [];
 
-    public static function login($data):array
+    public static function login($data): array
     {
         self::$errors = [];
 
@@ -39,12 +39,16 @@ class AdminModel
 
         //load profile
         if (empty(self::$errors)) {
-            self::$attributes = AdminMappers::loadProfile(self::$attributes['adminEmail'], self::$attributes['adminPassword']);
+            self::$attributes = AdminMappers::loadProfile(self::$attributes['adminEmail']);
             if (empty(self::$attributes)) {
-                self::$errors['validator']="Wrong login or password";
+                self::$errors['validator'] = "Wrong login or password";
+            };
+            if (!password_verify($data['adminPassword'], self::$attributes[0]['password'])) {
+                self::$errors['validator'] = "Wrong login or password";
             }
         };
-        return ['errors'=>self::$errors,'user'=> self::$attributes];
+
+        return ['errors' => self::$errors, 'user' => self::$attributes];
     }
 
     public static function signup($data)
@@ -98,13 +102,15 @@ class AdminModel
         }
 
         if (isset($data['adminConfirmPassword'])) {
-            if (!Validator::confirmPassword($data['adminPassword'], $data['adminConfirmPassword'])) {
+            if (!Validator::confirmPassword(self::$attributes['adminPassword'], $data['adminConfirmPassword'])) {
                 self::$errors['adminConfirmPassword'] = 'Please, enter the correct Confirm Password';
+            } else {
+                self::$attributes['adminPassword'] = password_hash(self::$attributes['adminPassword'], PASSWORD_DEFAULT);
             }
         } else {
             self::$errors['adminConfirmPassword'] = 'Please, enter the Confirm Password';
         }
-        return ["errors"=>self::$errors,"user"=>self::$attributes];
+        return ["errors" => self::$errors, "user" => self::$attributes];
     }
 
     public static function edit($data)
@@ -138,31 +144,33 @@ class AdminModel
         }
 
         if (isset($data['adminConfirmPassword'])) {
-            if (!Validator::confirmPassword($data['adminPassword'], $data['adminConfirmPassword'])) {
+            if (!Validator::confirmPassword(self::$attributes['adminPassword'], $data['adminConfirmPassword'])) {
                 self::$errors['adminConfirmPassword'] = 'Please, enter the correct Confirm Password';
+            } else {
+                self::$attributes['adminPassword'] = password_hash(self::$attributes['adminPassword'], PASSWORD_DEFAULT);
             }
         } else {
             self::$errors['adminConfirmPassword'] = 'Please, enter the Confirm Password';
         }
-        return ["errors"=>self::$errors,"user"=>self::$attributes];
+        return ["errors" => self::$errors, "user" => self::$attributes];
     }
 
-    public static function addUser($data):void
+    public static function addUser($data): void
     {
         AdminMappers::addUser($data);
     }
 
-    public static function updateUser(array $data,string $id):void
+    public static function updateUser(array $data, string $id): void
     {
-        AdminMappers::updateUser($data,$id);
+        AdminMappers::updateUser($data, $id);
     }
 
     /*
      *
      * return true if user is occupied
      * */
-    public static function check(string $byWhat, string $name):bool
+    public static function checkUnique(string $byWhat, string $name): bool
     {
-        return(!empty(AdminMappers::check($byWhat,$name)));
+        return (!empty(AdminMappers::checkUnique($byWhat, $name)));
     }
 }

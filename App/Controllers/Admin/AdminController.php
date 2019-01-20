@@ -56,11 +56,11 @@ class AdminController extends Controller
             $this->data['errors'] = $data['errors'];
 
             if (empty($this->data['errors'])) {
-                if (AdminModel::check('login', $this->data['admin']['adminLogin'])) {
+                if (AdminModel::checkUnique('login', $this->data['admin']['adminLogin'])) {
                     $this->data['errors'] = 'This login is occupied';
                 }
 
-                if (AdminModel::check('email', $this->data['admin']['adminEmail'])) {
+                if (AdminModel::checkUnique('email', $this->data['admin']['adminEmail'])) {
                     $this->data['errors'] = 'This email is occupied';
                 }
             } else {

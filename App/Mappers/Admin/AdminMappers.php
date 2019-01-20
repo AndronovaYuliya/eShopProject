@@ -35,17 +35,17 @@ class AdminMappers
     }
 
 
-    public static function check(string $byWhat, string $name): array
+    public static function checkUnique(string $byWhat, string $name): array
     {
         $sql = "SELECT id FROM `users` 
           WHERE $byWhat='$name'";
         return Database::getData($sql);
     }
 
-    public static function loadProfile($email, $password): array
+    public static function loadProfile($email): array
     {
         $sql = "SELECT id, login, email,first_name,last_name,role,password FROM `users` 
-          WHERE email='$email' AND password='$password';";
+          WHERE email='$email'";
         return Database::getData($sql);
     }
 }

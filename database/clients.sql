@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `clients`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `login` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
