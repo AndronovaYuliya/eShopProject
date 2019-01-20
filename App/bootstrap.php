@@ -6,6 +6,7 @@ use CostumLogger\CostumLogger;
 use Core\Router;
 use Core\Cache;
 use Core\Database;
+use Core\Session;
 use App\Models\ClientsModel;
 use App\Models\AttributesModel;
 use App\Models\ImagesModel;
