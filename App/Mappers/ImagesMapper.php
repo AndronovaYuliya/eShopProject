@@ -12,10 +12,10 @@ class ImagesMapper extends AbstractTableMapper
         Database::addFakerData('fakerImages', $sql, 20);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT id, file_name,created_at, updated_at FROM `images`;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -25,7 +25,7 @@ class ImagesMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, file_name, created_at, updated_at FROM `images` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

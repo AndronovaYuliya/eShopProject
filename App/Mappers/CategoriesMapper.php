@@ -13,13 +13,13 @@ class CategoriesMapper extends AbstractTableMapper
         Database::addFakerData('fakerCategories', $sql, 10);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $cache = new Cache();
         $data = $cache->get('categories');
         if (!$data) {
             $sql = "SELECT id, title, description, parent_id,url, created_at, updated_at FROM `categories`;";
-            $data = Database::getData($sql);
+            $data = Database::query($sql);
             $cache->set('categories', $data);
         }
         return $data;
@@ -32,7 +32,7 @@ class CategoriesMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, title,url, created_at, updated_at FROM `categories` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
 

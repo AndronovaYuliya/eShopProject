@@ -4,6 +4,8 @@ namespace App\Controllers\Admin;
 
 use Core\Controller;
 use App\Models\Admin\AdminModel;
+use Core\Session;
+use Core\Authorization;
 
 class AdminController extends Controller
 {
@@ -29,7 +31,7 @@ class AdminController extends Controller
     //login
     public function loginAction()
     {
-        if (!empty($_POST)) {
+        if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->data['admin'] = AdminModel::login($_POST);
             if (empty($this->data['admin']['errors'])) {
                 $this->user = $this->data['admin']['user'];

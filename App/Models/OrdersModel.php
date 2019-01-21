@@ -11,9 +11,9 @@ class OrdersModel extends AbstractTableModel
         OrdersMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return OrdersMapper::getData();
+        return OrdersMapper::query();
     }
 
     /**

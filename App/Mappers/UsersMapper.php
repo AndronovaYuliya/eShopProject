@@ -13,10 +13,10 @@ class UsersMapper extends AbstractTableMapper
         Database::addFakerData('fakerUsers', $sql, 1);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT id, login,password,email,first_name,last_name,role,created_at, updated_at FROM `users`;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -27,7 +27,7 @@ class UsersMapper extends AbstractTableMapper
     {
         $sql = "SELECT id, login,password,email,first_name,last_name,role,created_at, updated_at 
         FROM `users` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

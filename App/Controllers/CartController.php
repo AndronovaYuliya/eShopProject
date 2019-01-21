@@ -15,7 +15,7 @@ class CartController extends Controller
         $this->data = [];
 
         $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::getData();
+        $this->data['categories'] = CategoriesModel::query();
 
         parent::action_index('page/cartView.php', $this->data);
     }

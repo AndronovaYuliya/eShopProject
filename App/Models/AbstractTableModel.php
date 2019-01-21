@@ -6,7 +6,7 @@ abstract class AbstractTableModel
 {
     abstract static protected function addFakerData(): void;
 
-    abstract static protected function getData(): array;
+    abstract static protected function query(): array;
 
     /**
      * @param string $byWhat

@@ -11,9 +11,9 @@ class ClientsModel extends AbstractTableModel
         ClientsMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return ClientsMapper::getData();
+        return ClientsMapper::query();
     }
 
     /**

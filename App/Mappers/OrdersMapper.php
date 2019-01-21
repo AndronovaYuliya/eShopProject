@@ -13,10 +13,10 @@ class OrdersMapper extends AbstractTableMapper
         Database::addFakerData('fakerOrders', $sql, 10);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT id, date,sum, status,ttn, id_client, created_at, updated_at FROM `orders`;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -26,7 +26,7 @@ class OrdersMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, date,sum, status,ttn, id_client, created_at, updated_at FROM `orders` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

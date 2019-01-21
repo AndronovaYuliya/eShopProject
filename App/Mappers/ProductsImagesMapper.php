@@ -12,10 +12,10 @@ class ProductsImagesMapper extends AbstractTableMapper
         Database::addFakerData('fakerProductsImages', $sql, 20);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT id, id_galary,id_product, created_at, updated_at FROM `products_images`;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -25,7 +25,7 @@ class ProductsImagesMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, id_galary,id_product, created_at, updated_at FROM `products_images` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

@@ -76,9 +76,9 @@ class ProductsModel extends AbstractTableModel
         return $data;
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return ProductsMapper::getData();
+        return ProductsMapper::query();
     }
 
     /**

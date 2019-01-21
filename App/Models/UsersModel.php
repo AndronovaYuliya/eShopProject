@@ -12,9 +12,9 @@ class UsersModel extends AbstractTableModel
         UsersMapper::addFakerData();
     }
 
-    static public function getData(): array
+    static public function query(): array
     {
-        return UsersMapper::getData();
+        return UsersMapper::query();
     }
 
     /**

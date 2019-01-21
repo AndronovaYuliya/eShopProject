@@ -11,9 +11,9 @@ class AdditionalsModel extends AbstractTableModel
         AdditionalsMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return AdditionalsMapper::getData();
+        return AdditionalsMapper::query();
     }
 
     /**

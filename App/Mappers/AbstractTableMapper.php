@@ -15,7 +15,7 @@ abstract class AbstractTableMapper
 
     abstract protected static function addFakerData(): void;
 
-    abstract protected static function getData(): array;
+    abstract protected static function query(): array;
 
     /**
      * @param string $byWhat

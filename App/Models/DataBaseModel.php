@@ -13,7 +13,7 @@ class DataBaseModel
      *  return array
      * /read for test exception
      * */
-    public static function getData(string $fileName = '/read'): array
+    public static function query(string $fileName = '/read'): array
     {
         if ($fileName == '/read') {
             throw new MyException("File is empty", 02);

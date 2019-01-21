@@ -11,9 +11,9 @@ class KeyWordsModel extends AbstractTableModel
         KeyWordsMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return KeyWordsMapper::getData();
+        return KeyWordsMapper::query();
     }
 
     /**

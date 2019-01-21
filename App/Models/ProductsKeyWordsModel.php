@@ -11,9 +11,9 @@ class ProductsKeyWordsModel extends AbstractTableModel
         ProductsKeyWordsMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return ProductsKeyWordsMapper::getData();
+        return ProductsKeyWordsMapper::query();
     }
 
     /**

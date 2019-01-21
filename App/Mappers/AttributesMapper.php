@@ -13,10 +13,10 @@ class AttributesMapper extends AbstractTableMapper
         Database::addFakerData('fakerAttributes', $sql, 10);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT id, title, created_at, updated_at FROM `attributes`;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -26,7 +26,7 @@ class AttributesMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, title, created_at, updated_at FROM `attributes` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

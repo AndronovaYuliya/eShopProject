@@ -11,9 +11,9 @@ class ImagesModel extends AbstractTableModel
         ImagesMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return ImagesMapper::getData();
+        return ImagesMapper::query();
     }
 
     /**

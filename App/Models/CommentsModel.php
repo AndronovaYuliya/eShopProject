@@ -11,9 +11,9 @@ class CommentsModel extends AbstractTableModel
         CommentsMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return CommentsMapper::getData();
+        return CommentsMapper::query();
     }
 
     /**

@@ -11,9 +11,9 @@ class ProductsImagesModel extends AbstractTableModel
         ProductsImagesMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return ProductsImagesMapper::getData();
+        return ProductsImagesMapper::query();
     }
 
     /**

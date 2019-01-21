@@ -29,13 +29,13 @@ class AdminMappers
         Database::addData($sql, $attributes);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $cache = new Cache();
         $data = $cache->get('users');
         if (!$data) {
             $sql = "SELECT id, login, email,first_name,last_name,role FROM `users`";
-            $data = Database::getData($sql);
+            $data = Database::query($sql);
             $cache->set('users', $data);
         }
         return $data;
@@ -49,7 +49,7 @@ class AdminMappers
     {
         $sql = "SELECT id FROM `users` 
           WHERE $byWhat='$name'";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -59,6 +59,6 @@ class AdminMappers
     {
         $sql = "SELECT id, login, email,first_name,last_name,role,password FROM `users` 
           WHERE email='$email'";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 }

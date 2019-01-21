@@ -13,13 +13,13 @@ class ClientsMapper extends AbstractTableMapper
         Database::addFakerData('fakerClients', $sql, 10);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $cache = new Cache();
         $data = $cache->get('clients');
         if (!$data) {
             $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at FROM `clients`;";
-            $data = Database::getData($sql);
+            $data = Database::query($sql);
             $cache->set('clients', $data);
         }
         return $data;
@@ -32,7 +32,7 @@ class ClientsMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at FROM `clients` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

@@ -11,9 +11,9 @@ class CategoriesAttributesModel extends AbstractTableModel
         CategoriesAttributesMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return CategoriesAttributesMapper::getData();
+        return CategoriesAttributesMapper::query();
     }
 
     /**

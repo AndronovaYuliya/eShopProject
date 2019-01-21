@@ -11,9 +11,9 @@ class AttributesModel extends AbstractTableModel
         AttributesMapper::addFakerData();
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
-        return AttributesMapper::getData();
+        return AttributesMapper::query();
     }
 
     /**

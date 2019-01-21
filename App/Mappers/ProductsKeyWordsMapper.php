@@ -13,10 +13,10 @@ class ProductsKeyWordsMapper extends AbstractTableMapper
         Database::addFakerData('fakerProductsKeyWords', $sql, 20);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT id, id_product,id_key_word, created_at, updated_at FROM `products_key_words`;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProductsKeyWordsMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, id_product,id_key_word, created_at, updated_at FROM `products_key_words` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

@@ -32,7 +32,7 @@ class ClientsController extends Controller
     {
         if (!empty($_POST)) {
             //if($_POST->va)
-            $this->data['clients'] = ClientsModel::getData();
+            $this->data['clients'] = ClientsModel::query();
 
         } else {
             //redirect

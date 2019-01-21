@@ -68,18 +68,18 @@ $db = Database::getInstance();
 $mysqli = $db->getConnection();
 
 //$qr = $db->createTables();
-/*KeyWordsModel::addFaker();
-AttributesModel::addFaker();
-ClientsModel::addFaker();
-AttributesValuesModel::addFaker();
-CategoriesModel::addFaker();
-CategoriesAttributesModel::addFaker();
-ImagesModel::addFaker();
-ProductsModel::addFaker();
-OrdersModel::addFaker();
-CommentsModel::addFaker();
-ProductsImagesModel::addFaker();
-AdditionalsModel::addFaker();
-ProductsKeyWordsModel::addFaker();
-UsersModel::addFaker();*/
+/*KeyWordsModel::addFakerData();
+AttributesModel::addFakerData();
+ClientsModel::addFakerData();
+AttributesValuesModel::addFakerData();
+CategoriesModel::addFakerData();
+CategoriesAttributesModel::addFakerData();
+ImagesModel::addFakerData();
+ProductsModel::addFakerData();
+OrdersModel::addFakerData();
+CommentsModel::addFakerData();
+ProductsImagesModel::addFakerData();
+AdditionalsModel::addFakerData();
+ProductsKeyWordsModel::addFakerData();
+UsersModel::addFakerData();*/
 

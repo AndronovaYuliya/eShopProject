@@ -50,6 +50,13 @@ class Database
 
     public static function createTables(): void
     {
+        /*
+         *
+         * $dbh->query("create database ".self::$_database);
+         * $dbh->query("use ".self::$_database);
+         *
+         *
+        */
         self::createTable('attributes');
         self::createTable('attributes_values');
         self::createTable('categories');
@@ -109,7 +116,7 @@ class Database
     /**
      * @param string $sql
      */
-    public static function getData(string $sql): array
+    public static function query(string $sql): array
     {
         $data = [];
 

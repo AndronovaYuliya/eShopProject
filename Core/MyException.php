@@ -42,7 +42,7 @@ class MyException extends Exception
     {
         $this->writeLog();
         $filename = ProductModel::getFileName();
-        return DataBaseModel::getData($filename);
+        return DataBaseModel::query($filename);
     }
 
     public function register()

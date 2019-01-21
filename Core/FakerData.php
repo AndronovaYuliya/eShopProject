@@ -23,8 +23,8 @@ class FakerData
     public function fakerAdditionals(): array
     {
         return [
-            ':id_product' => rand(1, count(ProductsModel::getData())),
-            ':id_order' => rand(1, count(OrdersModel::getData())),
+            ':id_product' => rand(1, count(ProductsModel::query())),
+            ':id_order' => rand(1, count(OrdersModel::query())),
             ':count' => $this->faker->numberBetween($min = 1, $max = 10),
             ':price' => $this->faker->randomFloat(),
         ];
@@ -71,7 +71,7 @@ class FakerData
     {
         return [
             ':value' => $this->faker->word,
-            ':attributes_id' => rand(1, count(AttributesModel::getData()))
+            ':attributes_id' => rand(1, count(AttributesModel::query()))
         ];
     }
 
@@ -84,7 +84,7 @@ class FakerData
             ':description' => $this->faker->text,
             ':price' => $this->faker->randomDigit,
             ':count' => $this->faker->randomDigit,
-            ':id_category' => rand(1, count(CategoriesModel::getData()))
+            ':id_category' => rand(1, count(CategoriesModel::query()))
         ];
     }
 
@@ -94,15 +94,15 @@ class FakerData
             ':sum' => $this->faker->randomDigit,
             ':status' => $this->faker->boolean,
             ':ttn' => $this->faker->randomDigit,
-            ':id_client' => rand(1, count(ClientsModel::getData()))
+            ':id_client' => rand(1, count(ClientsModel::query()))
         ];
     }
 
     public function fakerCategoriesAttributes(): array
     {
         return [
-            ':id_category' => rand(1, count(CategoriesModel::getData())),
-            ':id_attribute' => rand(1, count(AttributesModel::getData())),
+            ':id_category' => rand(1, count(CategoriesModel::query())),
+            ':id_attribute' => rand(1, count(AttributesModel::query())),
         ];
     }
 
@@ -111,7 +111,7 @@ class FakerData
         return [
             ':msg' => $this->faker->text,
             ':user' => $this->faker->word,
-            ':id_product' => rand(1, count(ProductsModel::getData())),
+            ':id_product' => rand(1, count(ProductsModel::query())),
             ':stars' => rand(1, 5),
         ];
     }
@@ -119,8 +119,8 @@ class FakerData
     public function fakerProductsImages(): array
     {
         return [
-            ':id_galary' => rand(1, count(ImagesModel::getData())),
-            ':id_product' => rand(1, count(ProductsModel::getData())),
+            ':id_galary' => rand(1, count(ImagesModel::query())),
+            ':id_product' => rand(1, count(ProductsModel::query())),
         ];
     }
 
@@ -134,8 +134,8 @@ class FakerData
     public function fakerProductsKeyWords(): array
     {
         return [
-            ':id_product' => rand(1, count(ProductsModel::getData())),
-            ':id_key_word' => rand(1, count(KeyWordsModel::getData())),
+            ':id_product' => rand(1, count(ProductsModel::query())),
+            ':id_key_word' => rand(1, count(KeyWordsModel::query())),
         ];
     }
 

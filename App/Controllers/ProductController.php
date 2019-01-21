@@ -20,7 +20,7 @@ class ProductController extends Controller
         $key = key($params);
         $this->data['product'] = ProductsModel::getProductWithImg($key, $params[$key]);
         $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::getData();
+        $this->data['categories'] = CategoriesModel::query();
 
         parent::action_index('page/singleProductView.php', $this->data);
     }
@@ -33,7 +33,7 @@ class ProductController extends Controller
     {
         $key = key($params);
         $this->data['products'] = ProductsModel::getProductWithImg('brand', $params[$key]);
-        $this->data['categories'] = CategoriesModel::getData();
+        $this->data['categories'] = CategoriesModel::query();
         parent::action_index('page/shopView.php', $this->data);
     }
 
@@ -41,7 +41,7 @@ class ProductController extends Controller
     public function indexAction()
     {
         $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::getData();
+        $this->data['categories'] = CategoriesModel::query();
 
         parent::action_index('page/shopView.php', $this->data);
     }
@@ -50,7 +50,7 @@ class ProductController extends Controller
     public function categoryAction()
     {
         $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::getData();
+        $this->data['categories'] = CategoriesModel::query();
 
         parent::action_index('page/shopView.php', $this->data);
     }
@@ -59,7 +59,7 @@ class ProductController extends Controller
     public function searchAction()
     {
         $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::getData();
+        $this->data['categories'] = CategoriesModel::query();
 
         $pattern = '/\\W/';
         $search = preg_replace($pattern, ' ', trim($_POST['search']));
@@ -77,7 +77,7 @@ class ProductController extends Controller
     {
         $key = key($params);
         $this->data['products'] = ProductsModel::getKeyData($params[$key]);
-        $this->data['categories'] = CategoriesModel::getData();
+        $this->data['categories'] = CategoriesModel::query();
         parent::action_index('page/shopView.php', $this->data);
     }
 }

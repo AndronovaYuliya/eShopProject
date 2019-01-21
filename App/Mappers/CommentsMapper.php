@@ -13,10 +13,10 @@ class CommentsMapper extends AbstractTableMapper
         Database::addFakerData('fakerComments', $sql, 10);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT id, msg,user,id_product,stars, created_at, updated_at FROM `comments`;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -26,7 +26,7 @@ class CommentsMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, msg,user,id_product,stars, created_at, updated_at FROM `comments` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

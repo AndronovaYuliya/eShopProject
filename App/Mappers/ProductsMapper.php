@@ -30,7 +30,7 @@ class ProductsMapper extends AbstractTableMapper
                 INNER JOIN products_key_words AS PKW ON PKW.id_product=P.id
                 INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
                 GROUP BY P.id";
-            $data = Database::getData($sql);
+            $data = Database::query($sql);
             $cache->set('products_full_data', $data);
         }
         return $data;
@@ -43,7 +43,7 @@ class ProductsMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, title,brand, description, price, url, count, id_category,  created_at, updated_at FROM `products` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductsMapper extends AbstractTableMapper
                 INNER JOIN products_key_words as PKW ON PKW.id_product=result.id
                 INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
                 GROUP BY result.id";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -83,7 +83,7 @@ class ProductsMapper extends AbstractTableMapper
                  INNER JOIN images AS I ON I.id=PI.id_galary
                  INNER JOIN categories AS C ON C.id=result.id_category
                  GROUP BY result.id";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -131,14 +131,14 @@ class ProductsMapper extends AbstractTableMapper
             INNER JOIN products_images AS PI ON PI.id_product=result.id 
             INNER JOIN images AS I ON I.id=PI.id_galary                
             GROUP BY result.id";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT P.id, P.price,P.brand, P.count, P.id_category, P.description, P.title, P.updated_at, P.created_at
               FROM products AS P";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -158,7 +158,7 @@ class ProductsMapper extends AbstractTableMapper
         INNER JOIN images AS I ON I.id=PI.id_galary
         WHERE KW.$byWhat='$searchKey'
         GROUP BY P.id";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void

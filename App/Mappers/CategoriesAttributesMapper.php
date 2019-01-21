@@ -13,10 +13,10 @@ class CategoriesAttributesMapper extends AbstractTableMapper
         Database::addFakerData('fakerCategoriesAttributes', $sql, 10);
     }
 
-    public static function getData(): array
+    public static function query(): array
     {
         $sql = "SELECT id, id_category, id_attribute, created_at, updated_at FROM `categories_attributes`;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoriesAttributesMapper extends AbstractTableMapper
     public static function getDataWhere(string $byWhat, string $name)
     {
         $sql = "SELECT id, id_category,id_attribute, created_at, updated_at FROM `categories_attributes` WHERE $byWhat=$name;";
-        return Database::getData($sql);
+        return Database::query($sql);
     }
 
     protected static function addData(): void
