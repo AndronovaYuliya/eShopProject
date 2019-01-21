@@ -22,13 +22,16 @@ class AdminMappers
      * @param array $attributes
      * @param string $id
      */
-    public static function updateUser(array $attributes,string $id)
+    public static function updateUser(array $attributes, string $id)
     {
         $sql = "UPDATE `users` SET password=:adminPassword, first_name=:adminFirstName,
                   last_name=:adminLastName,role=:adminRole, updated_at= NOW() WHERE id=$id";
         Database::addData($sql, $attributes);
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         $cache = new Cache();
@@ -44,6 +47,7 @@ class AdminMappers
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function checkUnique(string $byWhat, string $name): array
     {
@@ -53,7 +57,8 @@ class AdminMappers
     }
 
     /**
-     * @param string $email
+     * @param $email
+     * @return array
      */
     public static function loadProfile($email): array
     {

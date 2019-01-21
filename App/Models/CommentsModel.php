@@ -4,8 +4,15 @@ namespace App\Models;
 
 use App\Mappers\CommentsMapper;
 
+/**
+ * Class CommentsModel
+ * @package App\Models
+ */
 class CommentsModel extends AbstractTableModel
 {
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         CommentsMapper::addFakerData();
@@ -19,6 +26,7 @@ class CommentsModel extends AbstractTableModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function getDataWhere(string $byWhat, string $name): array
     {

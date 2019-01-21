@@ -4,15 +4,19 @@ namespace App\Models;
 
 use Core\MyException;
 
+/**
+ * Class DataBaseModel
+ * @package App\Models
+ */
 class DataBaseModel
 {
     private static $data = [];
 
-    /*
-     *  @param string $fileName = '/read'
-     *  return array
-     * /read for test exception
-     * */
+    /**
+     * @param string $fileName
+     * @return array
+     * @throws MyException
+     */
     public static function query(string $fileName = '/read'): array
     {
         if ($fileName == '/read') {
@@ -24,11 +28,10 @@ class DataBaseModel
         return unserialize($data);
     }
 
-    /*
-     *  @param string $fileName
-     *  @param $array
-     * write data to file
-     * */
+    /**
+     * @param $array
+     * @param string $fileName
+     */
     public static function setDB($array, string $fileName): void
     {
         self::$data = serialize($array);

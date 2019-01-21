@@ -6,6 +6,10 @@ use Core\Controller;
 use App\Models\ProductsModel;
 use App\Models\CategoriesModel;
 
+/**
+ * Class ProductController
+ * @package App\Controllers
+ */
 class ProductController extends Controller
 {
 
@@ -13,7 +17,6 @@ class ProductController extends Controller
 
     /**
      * @param array $params
-     * show 1 product
      */
     public function showAction(array $params)
     {
@@ -37,7 +40,9 @@ class ProductController extends Controller
         parent::action_index('page/shopView.php', $this->data);
     }
 
-    //show all products
+    /**
+     *
+     */
     public function indexAction()
     {
         $this->data['products'] = ProductsModel::getFullData();
@@ -46,7 +51,10 @@ class ProductController extends Controller
         parent::action_index('page/shopView.php', $this->data);
     }
 
-    //by categories
+
+    /**
+     *
+     */
     public function categoryAction()
     {
         $this->data['products'] = ProductsModel::getFullData();
@@ -55,7 +63,9 @@ class ProductController extends Controller
         parent::action_index('page/shopView.php', $this->data);
     }
 
-    //search
+    /**
+     *
+     */
     public function searchAction()
     {
         $this->data['products'] = ProductsModel::getFullData();

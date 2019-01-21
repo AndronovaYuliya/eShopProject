@@ -7,29 +7,43 @@ use App\Models\Admin\AdminModel;
 use Core\Session;
 use Core\Authorization;
 
+/**
+ * Class AdminController
+ * @package App\Controllers\Admin
+ */
 class AdminController extends Controller
 {
     private $data = [];
     private $user;
 
-    //
-    public function indexAction()
+    /**
+     * @return void
+     */
+    public function indexAction(): void
     {
         parent::action_index('admin/adminView.php', $this->data);
     }
 
-    public function userAction()
+    /**
+     * @return void
+     */
+    public function userAction(): void
     {
         parent::action_index('admin/userView.php', $this->data);
     }
 
-    public function tableAction()
+    /**
+     * @return void
+     */
+    public function tableAction(): void
     {
         parent::action_index('admin/tableView.php', $this->data);
     }
 
-    //login
-    public function loginAction()
+    /**
+     * @return void
+     */
+    public function loginAction(): void
     {
         if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->data['admin'] = AdminModel::login($_POST);
@@ -42,14 +56,18 @@ class AdminController extends Controller
         }
     }
 
-    //logout
-    public function logoutAction()
+    /**
+     * @return void
+     */
+    public function logoutAction(): void
     {
         parent::action_index('admin/adminView.php', $this->data);
     }
 
-    //registration
-    public function signupAction()
+    /**
+     * @return void
+     */
+    public function signupAction(): void
     {
         if (!empty($_POST)) {
             $data = AdminModel::signup($_POST);
@@ -75,8 +93,10 @@ class AdminController extends Controller
         }
     }
 
-    //edit
-    public function editAction()
+    /**
+     * @return void
+     */
+    public function editAction(): void
     {
         if (!empty($_POST)) {
             $data = AdminModel::edit($_POST);
@@ -96,8 +116,10 @@ class AdminController extends Controller
         }
     }
 
-    //delete
-    public function deleteAction()
+    /**
+     * @return void
+     */
+    public function deleteAction(): void
     {
         echo "delete";
         die();

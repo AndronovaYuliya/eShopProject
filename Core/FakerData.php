@@ -11,15 +11,25 @@ use App\Models\KeyWordsModel;
 use App\Models\OrdersModel;
 use Faker\Factory;
 
+/**
+ * Class FakerData
+ * @package Core
+ */
 class FakerData
 {
     private $faker;
 
+    /**
+     * FakerData constructor.
+     */
     public function __construct()
     {
         $this->faker = Factory::create('en_US');
     }
 
+    /**
+     * @return array
+     */
     public function fakerAdditionals(): array
     {
         return [
@@ -30,6 +40,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerCategories(): array
     {
         return [
@@ -40,6 +53,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerClients(): array
     {
         return [
@@ -53,6 +69,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerAttributes(): array
     {
         return [
@@ -60,6 +79,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerImages(): array
     {
         return [
@@ -67,6 +89,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerAttributesValues(): array
     {
         return [
@@ -75,6 +100,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerProducts(): array
     {
         return [
@@ -88,6 +116,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerOrders(): array
     {
         return [
@@ -98,6 +129,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerCategoriesAttributes(): array
     {
         return [
@@ -106,6 +140,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerComments(): array
     {
         return [
@@ -116,6 +153,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerProductsImages(): array
     {
         return [
@@ -124,6 +164,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerKeyWords(): array
     {
         return [
@@ -131,6 +174,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerProductsKeyWords(): array
     {
         return [
@@ -139,6 +185,9 @@ class FakerData
         ];
     }
 
+    /**
+     * @return array
+     */
     public function fakerUsers(): array
     {
         return [

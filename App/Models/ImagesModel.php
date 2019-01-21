@@ -4,13 +4,23 @@ namespace App\Models;
 
 use App\Mappers\ImagesMapper;
 
+/**
+ * Class ImagesModel
+ * @package App\Models
+ */
 class ImagesModel extends AbstractTableModel
 {
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         ImagesMapper::addFakerData();
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         return ImagesMapper::query();
@@ -19,6 +29,7 @@ class ImagesModel extends AbstractTableModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function getDataWhere(string $byWhat, string $name): array
     {

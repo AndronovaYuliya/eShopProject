@@ -5,6 +5,10 @@ namespace Core;
 use Exception;
 use App\Models\DataBaseModel;
 
+/**
+ * Class MyException
+ * @package Core
+ */
 class MyException extends Exception
 {
     private $type = 0;
@@ -15,9 +19,10 @@ class MyException extends Exception
     const E_USER_ = 2;
 
     /**
-     * @param $message = ''
-     * @param $code = 0
-     * @param Exception $previous = null
+     * MyException constructor.
+     * @param string $message
+     * @param int $code
+     * @param Exception|null $previous
      */
     public function __construct($message = '', $code = 0, Exception $previous = null)
     {
@@ -26,18 +31,27 @@ class MyException extends Exception
         $this->getType();
     }
 
-    // Переопределим строковое представление объекта.
-    public function __toString()
+    /**
+     * @return string
+     * Переопределим строковое представление объекта
+     */
+    public function __toString(): string
     {
         return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
     }
 
-    public function exception_error_handler()
+    /**
+     * @return void
+     */
+    public function exception_error_handler(): void
     {
         $this->writeLog();
         header('Location: /');
     }
 
+    /**
+     * @throws MyException
+     */
     public function exception_error_file()
     {
         $this->writeLog();
@@ -45,14 +59,20 @@ class MyException extends Exception
         return DataBaseModel::query($filename);
     }
 
-    public function register()
+    /**
+     * @return void
+     */
+    public function register(): void
     {
         set_error_handler([$this, 'exception_error_handler']);
         set_exception_handler([$this, 'exception_handler']);
 
     }
 
-    private function writeLog()
+    /**
+     * @return void
+     */
+    private function writeLog(): void
     {
         $file = fopen(dirname(__FILE__, 2) . '/var/log/php_errors.log', 'a');
         if (!empty($file)) {
@@ -66,7 +86,10 @@ class MyException extends Exception
         }
     }
 
-    private function getType()
+    /**
+     * @return void
+     */
+    private function getType(): void
     {
         switch ($this->code) {
             case 01:
@@ -76,7 +99,6 @@ class MyException extends Exception
                 $this->type = 'E_USER_FILE';
             default;
                 break;
-
         }
     }
 

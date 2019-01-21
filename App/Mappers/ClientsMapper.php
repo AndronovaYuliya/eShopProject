@@ -5,14 +5,24 @@ namespace App\Mappers;
 use Core\Database;
 use Core\Cache;
 
+/**
+ * Class ClientsMapper
+ * @package App\Mappers
+ */
 class ClientsMapper extends AbstractTableMapper
 {
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         $sql = "INSERT INTO `clients` (name, login, email, phone,city,address,born,password,created_at,updated_at) VALUE (:name, :login, :email, :phone, :city, :address, NOW(),:password,NOW(),NOW())";
         Database::addFakerData('fakerClients', $sql, 10);
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         $cache = new Cache();
@@ -28,6 +38,7 @@ class ClientsMapper extends AbstractTableMapper
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array|mixed
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
@@ -35,6 +46,9 @@ class ClientsMapper extends AbstractTableMapper
         return Database::query($sql);
     }
 
+    /**
+     * @return void
+     */
     protected static function addData(): void
     {
         // TODO: Implement addData() method.

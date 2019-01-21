@@ -4,6 +4,10 @@ namespace App\Mappers;
 
 use Core\Database;
 
+/**
+ * Class ImagesMapper
+ * @package App\Mappers
+ */
 class ImagesMapper extends AbstractTableMapper
 {
     public static function addFakerData(): void
@@ -21,6 +25,7 @@ class ImagesMapper extends AbstractTableMapper
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array|mixed
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
@@ -28,6 +33,9 @@ class ImagesMapper extends AbstractTableMapper
         return Database::query($sql);
     }
 
+    /**
+     * @return void
+     */
     protected static function addData(): void
     {
         // TODO: Implement addData() method.

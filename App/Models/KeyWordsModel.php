@@ -4,13 +4,23 @@ namespace App\Models;
 
 use App\Mappers\KeyWordsMapper;
 
+/**
+ * Class KeyWordsModel
+ * @package App\Models
+ */
 class KeyWordsModel extends AbstractTableModel
 {
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         KeyWordsMapper::addFakerData();
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         return KeyWordsMapper::query();
@@ -19,6 +29,7 @@ class KeyWordsModel extends AbstractTableModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function getDataWhere(string $byWhat, string $name): array
     {

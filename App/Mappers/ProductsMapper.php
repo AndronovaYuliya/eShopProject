@@ -5,15 +5,24 @@ namespace App\Mappers;
 use Core\Cache;
 use Core\Database;
 
+/**
+ * Class ProductsMapper
+ * @package App\Mappers
+ */
 class ProductsMapper extends AbstractTableMapper
 {
-    //faker
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         $sql = "INSERT INTO `products` (title, description, brand,price, count,url, id_category, created_at, updated_at) VALUE (:title, :description,:brand, :price, :count, :url,:id_category, NOW(), NOW())";
         $data = Database::addFakerData('fakerProducts', $sql, 10);
     }
 
+    /**
+     * @return array
+     */
     public static function getFullData(): array
     {
         $cache = new Cache();
@@ -39,6 +48,7 @@ class ProductsMapper extends AbstractTableMapper
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array|mixed
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
@@ -49,6 +59,7 @@ class ProductsMapper extends AbstractTableMapper
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function getProductWithImg(string $byWhat, string $name): array
     {
@@ -71,6 +82,7 @@ class ProductsMapper extends AbstractTableMapper
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function getDataByCategory(string $byWhat, string $name)
     {
@@ -88,6 +100,7 @@ class ProductsMapper extends AbstractTableMapper
 
     /**
      * @param array $searchKey
+     * @return array
      */
     public static function getDataLike(array $searchKey)
     {
@@ -144,6 +157,7 @@ class ProductsMapper extends AbstractTableMapper
     /**
      * @param string $byWhat
      * @param string $searchKey
+     * @return array
      */
     public static function getKeyData(string $byWhat, string $searchKey): array
     {
@@ -161,6 +175,9 @@ class ProductsMapper extends AbstractTableMapper
         return Database::query($sql);
     }
 
+    /**
+     * @return void
+     */
     protected static function addData(): void
     {
         // TODO: Implement addData() method.

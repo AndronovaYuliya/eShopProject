@@ -6,6 +6,10 @@ use PDO;
 use PDOException;
 use CostumLogger\CostumLogger;
 
+/**
+ * Class Database
+ * @package Core
+ */
 class Database
 {
     use TSingletone;
@@ -23,6 +27,9 @@ class Database
         PDO::ATTR_EMULATE_PREPARES => false,
     ];
 
+    /**
+     * Database constructor.
+     */
     private function __construct()
     {
         $config = parse_ini_file(dirname(__FILE__, 2) . '/config/config.ini');
@@ -42,19 +49,25 @@ class Database
     }
 
     // Get mysqli connection
+
+    /**
+     * @return PDO
+     */
     public static function getConnection(): PDO
     {
         self::getInstance();
         return self::$_pdo;
     }
 
+    /**
+     * @return void
+     */
     public static function createTables(): void
     {
         /*
          *
          * $dbh->query("create database ".self::$_database);
          * $dbh->query("use ".self::$_database);
-         *
          *
         */
         self::createTable('attributes');
@@ -71,6 +84,7 @@ class Database
         self::createTable('additionals');
         self::createTable('products_images');
         self::createTable('users');
+        self::createTable('sessions');
     }
 
     /**
@@ -86,6 +100,7 @@ class Database
      * @param $fakerMethod
      * @param string $sql
      * @param int $count = 1
+     * @return void
      */
     public static function addFakerData($fakerMethod, string $sql, int $count = 1): void
     {
@@ -103,8 +118,9 @@ class Database
     /**
      * @param string $sql
      * @param array $data
+     * @return void
      */
-    public static function addData(string $sql,array $data):void
+    public static function addData(string $sql, array $data): void
     {
         $stmt = self::getConnection()->prepare($sql);
         if ($stmt !== false) {
@@ -115,6 +131,7 @@ class Database
 
     /**
      * @param string $sql
+     * @return array
      */
     public static function query(string $sql): array
     {

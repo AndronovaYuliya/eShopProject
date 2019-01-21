@@ -6,11 +6,18 @@ use Core\Controller;
 use App\Models\ProductsModel;
 use App\Models\CategoriesModel;
 
+/**
+ * Class CartController
+ * @package App\Controllers
+ */
 class CartController extends Controller
 {
     private $data = [];
 
-    public function indexAction()
+    /**
+     * @return void
+     */
+    public function indexAction(): void
     {
         $this->data = [];
 

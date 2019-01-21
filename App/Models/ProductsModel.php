@@ -4,13 +4,23 @@ namespace App\Models;
 
 use App\Mappers\ProductsMapper;
 
+/**
+ * Class ProductsModel
+ * @package App\Models
+ */
 class ProductsModel extends AbstractTableModel
 {
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         ProductsMapper::addFakerData();
     }
 
+    /**
+     * @return array
+     */
     public static function getFullData(): array
     {
         $data = ProductsMapper::getFullData();
@@ -23,6 +33,7 @@ class ProductsModel extends AbstractTableModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function getDataWhere(string $byWhat, string $name): array
     {
@@ -32,6 +43,7 @@ class ProductsModel extends AbstractTableModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function getProductWithImg(string $byWhat, string $name): array
     {
@@ -44,6 +56,7 @@ class ProductsModel extends AbstractTableModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public function getDataByCategory(string $byWhat, string $name): array
     {
@@ -54,6 +67,7 @@ class ProductsModel extends AbstractTableModel
 
     /**
      * @param array $search
+     * @return array
      */
     public static function getDataLike(array $search): array
     {
@@ -65,6 +79,7 @@ class ProductsModel extends AbstractTableModel
     /**
      * @param string $name
      * @param $data
+     * @return array
      */
     private static function myExploded(string $name, $data): array
     {
@@ -76,6 +91,9 @@ class ProductsModel extends AbstractTableModel
         return $data;
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         return ProductsMapper::query();
@@ -83,6 +101,7 @@ class ProductsModel extends AbstractTableModel
 
     /**
      * @param $data
+     * @return array
      */
     public static function getKeyData($data): array
     {

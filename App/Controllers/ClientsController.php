@@ -5,6 +5,10 @@ namespace App\Controllers;
 use Core\Controller;
 use App\Models\ClientsModel;
 
+/**
+ * Class ClientsController
+ * @package App\Controllers
+ */
 class ClientsController extends Controller
 {
     private $data = [];
@@ -27,8 +31,10 @@ class ClientsController extends Controller
     ];
 
 
-    //registration
-    public function signupAction()
+    /**
+     * @return void
+     */
+    public function signupAction(): void
     {
         if (!empty($_POST)) {
             //if($_POST->va)
@@ -41,8 +47,10 @@ class ClientsController extends Controller
         die();
     }
 
-    //login
-    public function loginAction()
+    /**
+     * @return void
+     */
+    public function loginAction(): void
     {
         if (!empty($_POST)) {
 
@@ -51,15 +59,19 @@ class ClientsController extends Controller
         die();
     }
 
-    //account
-    public function accountAction()
+    /**
+     * @return void
+     */
+    public function accountAction(): void
     {
         echo "account";
         die();
     }
 
-    //logout
-    public function logoutAction()
+    /**
+     * @return
+     */
+    public function logoutAction(): void
     {
         echo "logout";
         die();

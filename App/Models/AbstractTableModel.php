@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+/**
+ * Class AbstractTableModel
+ * @package App\Models
+ */
 abstract class AbstractTableModel
 {
     abstract static protected function addFakerData(): void;
@@ -11,6 +15,7 @@ abstract class AbstractTableModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     abstract static protected function getDataWhere(string $byWhat, string $name): array;
 }

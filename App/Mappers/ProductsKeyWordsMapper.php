@@ -4,15 +4,24 @@ namespace App\Mappers;
 
 use Core\Database;
 
+/**
+ * Class ProductsKeyWordsMapper
+ * @package App\Mappers
+ */
 class ProductsKeyWordsMapper extends AbstractTableMapper
 {
-    //faker
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         $sql = "INSERT INTO `products_key_words` (id_product,id_key_word,created_at, updated_at) VALUE (:id_product, :id_key_word, NOW(), NOW())";
         Database::addFakerData('fakerProductsKeyWords', $sql, 20);
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         $sql = "SELECT id, id_product,id_key_word, created_at, updated_at FROM `products_key_words`;";
@@ -22,6 +31,7 @@ class ProductsKeyWordsMapper extends AbstractTableMapper
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array|mixed
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
@@ -29,6 +39,9 @@ class ProductsKeyWordsMapper extends AbstractTableMapper
         return Database::query($sql);
     }
 
+    /**
+     * @return void
+     */
     protected static function addData(): void
     {
         // TODO: Implement addData() method.

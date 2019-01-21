@@ -13,7 +13,10 @@ class Router
     protected static $route = [];
     protected static $url = '';
 
-    private static function setUrl()
+    /**
+     * @return void
+     */
+    private static function setUrl():void
     {
         // Get the current URL, differents depending on platform/server software
         if (!empty($_SERVER['REQUEST_URL'])) {
@@ -27,24 +30,34 @@ class Router
 
     /**
      * @param $regexp
-     * @param array $route = []
+     * @param array $route
+     * @return void
      */
-    public static function add($regexp, array $route = [])
+    public static function add($regexp, array $route = []):void
     {
         self::$routes[$regexp] = $route;
     }
 
-    public static function getRoutes()
+    /**
+     * @return array
+     */
+    public static function getRoutes():array
     {
         return self::$routes;
     }
 
-    public static function getRoute()
+    /**
+     * @return array
+     */
+    public static function getRoute():array
     {
         return self::$route;
     }
 
-    public static function matchRoute()
+    /**
+     * @return bool
+     */
+    public static function matchRoute():bool
     {
         self::setUrl();
 
@@ -80,7 +93,10 @@ class Router
         return false;
     }
 
-    public static function dispatch()
+    /**
+     * @return bool
+     */
+    public static function dispatch():bool
     {
         self::setUrl();
         $query = explode('&', $_SERVER['QUERY_STRING']);
@@ -100,7 +116,6 @@ class Router
             } else {
                 echo "BAD";
             }
-
         } else {
             http_response_code(404);
             include dirname(__FILE__, 3) . '/resources/home/404.php';
@@ -109,6 +124,7 @@ class Router
 
     /**
      * @param $name
+     * @return string
      */
     private static function upperCamelCase($name): string
     {
@@ -120,6 +136,7 @@ class Router
 
     /**
      * @param $name
+     * @return string
      */
     private static function lowerCamelCase($name): string
     {

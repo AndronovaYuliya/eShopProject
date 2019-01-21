@@ -2,17 +2,17 @@
 
 namespace Core;
 
+/**
+ * Class Cache
+ * @package Core
+ */
 class Cache
 {
-    public function __construct()
-    {
-
-    }
-
     /**
      * @param $key
      * @param $data
-     * @param $seconds
+     * @param int $seconds
+     * @return bool
      */
     public function set($key, $data, $seconds = 3600): bool
     {
@@ -27,6 +27,7 @@ class Cache
 
     /**
      * @param $key
+     * @return bool
      */
     public function get($key)
     {
@@ -44,8 +45,9 @@ class Cache
 
     /**
      * @param $key
+     * @return void
      */
-    public function delete($key)
+    public function delete($key): void
     {
         $file = dirname(__FILE__, 3) . '/tmp/cache/' . $key . '.txt';
         if (file_exists($file)) {

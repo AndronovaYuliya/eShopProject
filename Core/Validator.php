@@ -2,12 +2,17 @@
 
 namespace Core;
 
+/**
+ * Class Validator
+ * @package Core
+ */
 class Validator
 {
     /**
-     * @param $value = ""
-     * @param $min = 4
-     * @param $max = 25
+     * @param string $value
+     * @param int $min
+     * @param int $max
+     * @return string
      */
     public static function checkLength($value = "", $min = 4, $max = 25): string
     {
@@ -15,7 +20,8 @@ class Validator
     }
 
     /**
-     * @param $value = ""
+     * @param string $value
+     * @return string
      */
     public static function clean($value = ""): string
     {
@@ -29,6 +35,7 @@ class Validator
 
     /**
      * @param string $firstName
+     * @return bool
      */
     public static function validateFirstName(string $firstName): bool
     {
@@ -37,6 +44,7 @@ class Validator
 
     /**
      * @param string $lastName
+     * @return bool
      */
     public static function validateLastName(string $lastName): bool
     {
@@ -45,6 +53,7 @@ class Validator
 
     /**
      * @param string $login
+     * @return bool
      */
     public static function validateLogin(string $login): bool
     {
@@ -53,6 +62,7 @@ class Validator
 
     /**
      * @param string $password
+     * @return bool
      */
     public static function validatePassword(string $password): bool
     {
@@ -61,6 +71,7 @@ class Validator
 
     /**
      * @param string $email
+     * @return bool
      */
     public static function validateEmail(string $email): bool
     {
@@ -70,6 +81,7 @@ class Validator
     /**
      * @param string $password
      * @param string $confirmPassword
+     * @return bool
      */
     public static function confirmPassword(string $password, string $confirmPassword): bool
     {

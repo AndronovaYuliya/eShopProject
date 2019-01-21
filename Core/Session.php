@@ -4,6 +4,10 @@ namespace Core;
 
 use Core\SessionMapper;
 
+/**
+ * Class Session
+ * @package Core
+ */
 abstract class Session
 {
     private static $_sessionStarted = false;
@@ -12,9 +16,9 @@ abstract class Session
     private static $_lifeTime = 86400;
     private static $_sess_id;
 
-    /*
-    * @ Return void
-    */
+    /**
+     * @return void
+     */
     public static function start()
     {
         if (!self::$_sessionStarted) {
@@ -29,8 +33,6 @@ abstract class Session
     /**
      * @param $key
      * @param $value
-     *
-     * @ Return void
      */
     public static function set($key, $value)
     {
@@ -41,8 +43,7 @@ abstract class Session
 
     /**
      * @param $key
-     *
-     * @ Return Mixed
+     * @return null
      */
     public static function get($key)
     {
@@ -56,8 +57,7 @@ abstract class Session
 
     /**
      * @param $key
-     *
-     * @ Return void
+     * @return bool
      */
     public static function has($key)
     {
@@ -66,8 +66,6 @@ abstract class Session
 
     /**
      * @param $key
-     *
-     * @ Return void
      */
     public static function delete($key)
     {
@@ -78,9 +76,9 @@ abstract class Session
         }
     }
 
-    /*
-    * @ Return bool
-    */
+    /**
+     * @return bool
+     */
     public static function destroy(): bool
     {
         if (self::$_sessionStarted) {
@@ -94,9 +92,9 @@ abstract class Session
         return false;
     }
 
-    /*
-    * @ Return bool
-    */
+    /**
+     * @return void
+     */
     public static function display()
     {
         echo "<pre>";
@@ -104,9 +102,9 @@ abstract class Session
         echo "</pre>";
     }
 
-    /*
-    * @ Return bool
-    */
+    /**
+     * @return bool
+     */
     public static function checkCookie(): bool
     {
         if (!empty($_COOKIE[self::$_cookieName])) {
@@ -119,14 +117,17 @@ abstract class Session
         }
     }
 
+    /**
+     * @return string
+     */
     public static function sessionRead()
     {
-        $result = SessionMapper::getDataWhere( 'session_id',self::$_sess_id);
+        $result = SessionMapper::getDataWhere('session_id', self::$_sess_id);
 
         // Если данные получены, нам нужно обновить дату
         // доступа к данным:
         if (count($result) > 0) {
-            SessionMapper::updateSession('date_touched',self::$_sess_id);
+            SessionMapper::updateSession('date_touched', self::$_sess_id);
 
             return html_entity_decode($result['sess_data']);
         } else {
@@ -135,11 +136,17 @@ abstract class Session
         }
     }
 
+    /**
+     * @param $data
+     */
     public static function sessionWrite($data)
     {
-        SessionMapper::updateSessionData($data,self::$_sess_id);
+        SessionMapper::updateSessionData($data, self::$_sess_id);
     }
 
+    /**
+     * @return void
+     */
     public static function sessGB()
     {
         SessionMapper::sessGB(self::$_lifeTime);

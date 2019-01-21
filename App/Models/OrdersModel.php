@@ -4,13 +4,23 @@ namespace App\Models;
 
 use App\Mappers\OrdersMapper;
 
+/**
+ * Class OrdersModel
+ * @package App\Models
+ */
 class OrdersModel extends AbstractTableModel
 {
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         OrdersMapper::addFakerData();
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         return OrdersMapper::query();
@@ -19,6 +29,7 @@ class OrdersModel extends AbstractTableModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return array
      */
     public static function getDataWhere(string $byWhat, string $name): array
     {
