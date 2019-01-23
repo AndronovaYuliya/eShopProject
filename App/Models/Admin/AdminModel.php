@@ -19,6 +19,14 @@ class AdminModel
     private static $errors = [];
 
     /**
+     * @return array
+     */
+    public static function getUsers():array
+    {
+        return AdminMappers::query();
+    }
+
+    /**
      * @param $data
      * @return array
      */
@@ -31,7 +39,7 @@ class AdminModel
             return ['errors' => self::$errors];
         }
 
-        self::$attributes = AdminMappers::loadProfile($data['adminEmail']);
+        self::$attributes = AdminMappers::loadProfile(Validator::clean($data['adminEmail']));
 
         if (empty(self::$attributes)) {
             return ['errors' => "Wrong email"];

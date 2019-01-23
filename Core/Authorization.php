@@ -14,15 +14,6 @@ abstract class Authorization
     private static $logged = false;
 
     /**
-     * @return string
-     */
-    public static function getEmail(): string
-    {
-        return self::$email;
-    }
-
-
-    /**
      * @param $email
      * @return string
      */

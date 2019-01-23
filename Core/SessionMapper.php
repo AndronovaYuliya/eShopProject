@@ -19,7 +19,7 @@ abstract class SessionMapper
     {
         $sql = "SELECT session_id, date_touched, sess_data FROM sessions WHERE $byWhat = :name";
 
-        return Database::queryData($sql,['name'=>$name]);
+        return Database::queryData($sql, ['name' => $name]);
     }
 
     /**
@@ -31,7 +31,7 @@ abstract class SessionMapper
     {
         $sql = "UPDATE sessions SET $attributes = :newAttributes WHERE session_id=:session_id";
 
-        return Database::queryData($sql,["newAttributes"=>$newAttributes,"session_id"=>$session_id]);
+        return Database::queryData($sql, ["newAttributes" => $newAttributes, "session_id" => $session_id]);
     }
 
     /**
@@ -82,10 +82,10 @@ abstract class SessionMapper
      * @param $lifeTime
      * @return array
      */
-    public static function sessGB($lifeTime)
+    public static function sessionGB($session_id)
     {
-        $sql = "DELETE FROM sessions WHERE  date_touched + $lifeTime < NOW()";
-        return Database::query($sql);
+        $sql = "DELETE FROM sessions WHERE  session_id =:session_id";
+        return Database::queryData($sql, [':session_id' => $session_id]);
     }
 
 }

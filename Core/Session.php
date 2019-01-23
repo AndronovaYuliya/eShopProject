@@ -14,8 +14,6 @@ abstract class Session
 
     private static $_sessionStarted = false;
     private static $_cookieName = 'sid';
-    private static $_email;
-    private static $_started = false;
     private static $_sess_id;
 //response redirect
 
@@ -49,13 +47,17 @@ abstract class Session
      * @param $key
      * @return null
      */
-    public static function get($key)
+    public static function get($key,$item=null)
     {
-        if (Session::checkCookie())
+        if (Session::checkCookie()){
             if (!self::$_sessionStarted) {
                 return null;
             }
+        }
 
+        if (isset($_SESSION[$key][$item])){
+            return $_SESSION[$key][$item];
+        }
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
         }
@@ -93,7 +95,9 @@ abstract class Session
             setcookie(self::$_cookieName, '', time() - 1, '/');
             session_destroy();
             unset($_SESSION);
-            self::$_started = false;
+            self::$_sessionStarted = false;
+            self::sessionGB();
+            self::$_sess_id='';
             return true;
         }
         return false;
@@ -184,8 +188,8 @@ abstract class Session
     /**
      * @return void
      */
-    /*public static function sessGB()
+    public static function sessionGB()
     {
-        SessionMapper::sessGB(self::$_lifeTime);
-    }*/
+        SessionMapper::sessionGB(self::$_sess_id);
+    }
 }

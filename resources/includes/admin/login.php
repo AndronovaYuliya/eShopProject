@@ -12,14 +12,14 @@
             <form method="post" action="/admin/login">
                 <div class="form-group">
                     <label for="adminInputEmail">Email address</label>
-                    <input type="email" name="adminEmail" class="form-control" id="adminInputEmail" aria-describedby="emailHelp"
+                    <input type="text" required name="adminEmail" class="form-control" id="adminInputEmail" aria-describedby="emailHelp"
                            placeholder="Enter email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.
                     </small>
                 </div>
                 <div class="form-group">
                     <label for="adminInputPassword">Password</label>
-                    <input type="password" name="adminPassword" class="form-control" id="adminInputPassword" placeholder="Password">
+                    <input type="password" required name="adminPassword" class="form-control" id="adminInputPassword" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

@@ -19,14 +19,14 @@ abstract class AdminValidator
         if (!isset($data['adminEmail'])) {
             return 'Please, enter the email';
         }
-        if (!Validator::validateEmail($data['adminEmail'])) {
+        if (!Validator::validateEmail(Validator::clean($data['adminEmail']))) {
             return 'Please, enter the correct email';
         }
 
         if (!isset($data['adminPassword'])) {
             return 'Please, enter the password';
         }
-        if (!Validator::validatePassword($data['adminPassword'])) {
+        if (!Validator::validatePassword(Validator::clean($data['adminPassword']))) {
             return 'Please, enter the correct password';
         }
 
@@ -110,7 +110,19 @@ abstract class AdminValidator
                 return 'Passwords do not match';
             }
         }
-
         return true;
+    }
+
+    /**
+     * @param string $value
+     * @return string
+     */
+    public static function clean(string $value):string
+    {
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = strip_tags($value);
+        $value = htmlspecialchars($value);
+        return $value;
     }
 }

@@ -1,4 +1,4 @@
-<?php /*var_dump($_SESSION['user'])*/?>
+<?php /*var_dump($_SESSION['user'])*/ ?>
 <div class="content">
     <div class="container-fluid">
         <ul class="nav nav-tabs">
@@ -12,7 +12,8 @@
                 <a href="#edit" class="nav-link" aria-controls="edit" role="tab" data-toggle="tab">Edit</a>
             </li>
             <li class="nav-item">
-                <a href="#delete" class="nav-link disabled" aria-controls="delete" role="tab" data-toggle="tab">Delete</a>
+                <a href="#delete" class="nav-link disabled" aria-controls="delete" role="tab"
+                   data-toggle="tab">Delete</a>
             </li>
         </ul>
 
@@ -22,15 +23,16 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title"><?php echo $_SESSION['user']['role']?></h4>
+                                <h4 class="title"><?php echo $_SESSION['user']['role'] ?></h4>
                             </div>
                             <div class="content">
                                 <div class="author">
-                                        <h4 class="title"><?php echo $_SESSION['user']["first_name"]. ' '. $_SESSION['user']['last_name']?><br/>
-                                            <small><?php echo $_SESSION['user']["login"]?></small>
-                                        </h4>
+                                    <h4 class="title"><?php echo $_SESSION['user']["first_name"] . ' ' . $_SESSION['user']['last_name'] ?>
+                                        <br/>
+                                        <small><?php echo $_SESSION['user']["login"] ?></small>
+                                    </h4>
                                 </div>
-                                <p class="description text-left"><?php echo $_SESSION['user']["email"]?></p>
+                                <p class="description text-left"><?php echo $_SESSION['user']["email"] ?></p>
                             </div>
                             <hr>
                             <div class="text-center">
@@ -51,32 +53,36 @@
                                 <form method="post" action="/admin/signup">
                                     <div class="row">
 
-                                        <?php if(isset($data["errors"])):?>
+                                        <?php if (isset($data["errors"])): ?>
                                             <div class="alert alert-danger">
-                                                <?php echo array_shift($data["errors"]);?>
+                                                <?php echo array_shift($data["errors"]); ?>
                                             </div>
-                                        <?php endif;?>
+                                        <?php endif; ?>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="adminInputLogin">Login</label>
-                                                <input type="text" required name="adminLogin" name="adminLogin" id="adminInputLogin" class="form-control" placeholder="Login">
+                                                <input type="text" required name="adminLogin" name="adminLogin"
+                                                       id="adminInputLogin" class="form-control" placeholder="Login">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="adminInputEmail">Email address</label>
-                                                <input type="email" required name="adminEmail" name="adminEmail" id="adminInputEmail" class="form-control" placeholder="Email">
+                                                <input type="email" required name="adminEmail" name="adminEmail"
+                                                       id="adminInputEmail" class="form-control" placeholder="Email">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <br>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" checked type="radio" name="adminRadioRole" id="adminRadioUser" value="User">
+                                                <input class="form-check-input" checked type="radio"
+                                                       name="adminRadioRole" id="adminRadioUser" value="User">
                                                 <label class="form-check-label" for="adminRadioUser">User</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="adminRadioRole" id="adminRadioAdmin" value="Admin">
+                                                <input class="form-check-input" type="radio" name="adminRadioRole"
+                                                       id="adminRadioAdmin" value="Admin">
                                                 <label class="form-check-label" for="adminRadioAdmin">Admin</label>
                                             </div>
                                         </div>
@@ -85,13 +91,15 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="adminInputFirst">First Name</label>
-                                                <input type="text" name="adminFirstName" id="adminInputFirst" class="form-control" placeholder="First Name">
+                                                <input type="text" name="adminFirstName" id="adminInputFirst"
+                                                       class="form-control" placeholder="First Name">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="adminInputLast">Last Name</label>
-                                                <input type="text" name="adminLastName" id="adminInputLast" class="form-control" placeholder="Last Name">
+                                                <input type="text" name="adminLastName" id="adminInputLast"
+                                                       class="form-control" placeholder="Last Name">
                                             </div>
                                         </div>
                                     </div>
@@ -99,13 +107,15 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="adminInputPassword">Password</label>
-                                                <input type="password" required name="adminPassword" id="adminInputPassword" class="form-control">
+                                                <input type="password" required name="adminPassword"
+                                                       id="adminInputPassword" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="adminInputConfirmPassword">Confirm Password</label>
-                                                <input type="password" required name="adminConfirmPassword" id="adminInputConfirmPassword" class="form-control">
+                                                <input type="password" required name="adminConfirmPassword"
+                                                       id="adminInputConfirmPassword" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -130,11 +140,13 @@
                                         <div class="col-md-4">
                                             <br>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" checked type="radio" name="adminRadioRole" id="adminRadioUser" value="User">
+                                                <input class="form-check-input" checked type="radio"
+                                                       name="adminRadioRole" id="adminRadioUser" value="User">
                                                 <label class="form-check-label" for="adminRadioUser">User</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="adminRadioRole" id="adminRadioAdmin" value="Admin">
+                                                <input class="form-check-input" type="radio" name="adminRadioRole"
+                                                       id="adminRadioAdmin" value="Admin">
                                                 <label class="form-check-label" for="adminRadioAdmin">Admin</label>
                                             </div>
                                         </div>
@@ -143,13 +155,15 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="adminInputFirst">First Name</label>
-                                                <input type="text" name="adminFirstName" id="adminInputFirst" class="form-control" placeholder="First Name">
+                                                <input type="text" name="adminFirstName" id="adminInputFirst"
+                                                       class="form-control" placeholder="First Name">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="adminInputLast">Last Name</label>
-                                                <input type="text" name="adminLastName" id="adminInputLast" class="form-control" placeholder="Last Name">
+                                                <input type="text" name="adminLastName" id="adminInputLast"
+                                                       class="form-control" placeholder="Last Name">
                                             </div>
                                         </div>
                                     </div>
@@ -157,17 +171,20 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="adminInputPassword">Password</label>
-                                                <input type="password" required name="adminPassword" id="adminInputPassword" class="form-control">
+                                                <input type="password" required name="adminPassword"
+                                                       id="adminInputPassword" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="adminInputConfirmPassword">Confirm Password</label>
-                                                <input type="password" required name="adminConfirmPassword" id="adminInputConfirmPassword" class="form-control">
+                                                <input type="password" required name="adminConfirmPassword"
+                                                       id="adminInputConfirmPassword" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile
+                                    </button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -186,34 +203,37 @@
                                     </div>
                                     <form method="post" action="/admin/delete">
                                         <div class="content table-responsive table-full-width">
-                                        <table class="table table-hover table-striped">
-                                            <thead>
-                                            <th>ID</th>
-                                            <th>Login</th>
-                                            <th>email</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Role</th>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">Delete Profile</button>
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                <th>ID</th>
+                                                <th>Login</th>
+                                                <th>email</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Role</th>
+                                                </thead>
+                                                <tbody>
+
+                                                <?php if (isset($data['users'])): ?>
+                                                    <?php foreach ($data['users'] as $key => $user): ?>
+                                                        <a href="#">
+                                                            <tr>
+                                                                <td><?php echo $user['id'] ?></td>
+                                                                <td><?php echo $user['login'] ?></td>
+                                                                <td><?php echo $user['email'] ?></td>
+                                                                <td><?php echo $user['first_name'] ?></td>
+                                                                <td><?php echo $user['last_name'] ?></td>
+                                                                <td><?php echo $user['role'] ?></td>
+                                                            </tr>
+                                                        </a>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <button type="submit" class="btn btn-info btn-fill pull-right">Delete Profile
+                                        </button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
