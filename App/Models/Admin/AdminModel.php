@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Validators\AdminValidator;
 use Core\Validator;
 use App\Mappers\Admin\AdminMappers;
 use phpDocumentor\Reflection\Types\Self_;
@@ -22,41 +23,23 @@ class AdminModel
      */
     public static function login($data): array
     {
-        self::$errors = [];
+        //AdminValidator::login return errors or true
+        self::$errors = AdminValidator::login($data);
 
-        //validate $data
-        if (isset($data['adminEmail'])) {
-            if (Validator::validateEmail($data['adminEmail'])) {
-                self::$attributes['adminEmail'] = $data['adminEmail'];
-            } else {
-                self::$errors['adminEmail'] = 'Please, enter the correct email';
-            }
-        } else {
-            self::$errors['adminEmail'] = 'Please, enter the email';
+        if (self::$errors !== true) {
+            return ['errors' => self::$errors];
         }
 
-        if (isset($data['adminPassword'])) {
-            if (Validator::checkLength($data['adminPassword'])) {
-                self::$attributes['adminPassword'] = $data['adminPassword'];
-            } else {
-                self::$errors['adminPassword'] = 'Please, enter the correct password';
-            }
-        } else {
-            self::$errors['adminPassword'] = 'Please, enter the password';
-        }
+        self::$attributes = AdminMappers::loadProfile($data['adminEmail']);
 
-        //load profile
-        if (empty(self::$errors)) {
-            self::$attributes = AdminMappers::loadProfile(self::$attributes['adminEmail']);
-            if (empty(self::$attributes)) {
-                self::$errors['validator'] = "Wrong login or password";
-            };
-            if (!password_verify($data['adminPassword'], self::$attributes[0]['password'])) {
-                self::$errors['validator'] = "Wrong login or password";
-            }
+        if (empty(self::$attributes)) {
+            return ['errors' => "Wrong email"];
         };
+        if (!password_verify($data['adminPassword'], self::$attributes[0]['password'])) {
+            return ['errors' => "Wrong password"];
+        }
 
-        return ['errors' => self::$errors, 'user' => self::$attributes];
+        return ['user' => self::$attributes];
     }
 
     /**

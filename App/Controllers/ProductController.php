@@ -37,6 +37,7 @@ class ProductController extends Controller
         $key = key($params);
         $this->data['products'] = ProductsModel::getProductWithImg('brand', $params[$key]);
         $this->data['categories'] = CategoriesModel::query();
+
         parent::action_index('page/shopView.php', $this->data);
     }
 
@@ -88,6 +89,7 @@ class ProductController extends Controller
         $key = key($params);
         $this->data['products'] = ProductsModel::getKeyData($params[$key]);
         $this->data['categories'] = CategoriesModel::query();
+
         parent::action_index('page/shopView.php', $this->data);
     }
 }

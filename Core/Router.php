@@ -16,7 +16,7 @@ class Router
     /**
      * @return void
      */
-    private static function setUrl():void
+    private static function setUrl(): void
     {
         // Get the current URL, differents depending on platform/server software
         if (!empty($_SERVER['REQUEST_URL'])) {
@@ -33,7 +33,7 @@ class Router
      * @param array $route
      * @return void
      */
-    public static function add($regexp, array $route = []):void
+    public static function add($regexp, array $route = []): void
     {
         self::$routes[$regexp] = $route;
     }
@@ -41,7 +41,7 @@ class Router
     /**
      * @return array
      */
-    public static function getRoutes():array
+    public static function getRoutes(): array
     {
         return self::$routes;
     }
@@ -49,7 +49,7 @@ class Router
     /**
      * @return array
      */
-    public static function getRoute():array
+    public static function getRoute(): array
     {
         return self::$route;
     }
@@ -57,7 +57,7 @@ class Router
     /**
      * @return bool
      */
-    public static function matchRoute():bool
+    public static function matchRoute(): bool
     {
         self::setUrl();
 
@@ -86,7 +86,6 @@ class Router
                 } else {
                     self::$route['prefix'] = self::upperCamelCase(self::$route['prefix']) . '\\';
                 }
-
                 return true;
             }
         }
@@ -94,31 +93,32 @@ class Router
     }
 
     /**
-     * @return bool
+     * @return void
      */
-    public static function dispatch():bool
+    public static function dispatch(): void
     {
         self::setUrl();
         $query = explode('&', $_SERVER['QUERY_STRING']);
         $params["url"] = $query[0];
 
-        if (self::matchRoute()) {
-            $controller = 'App\Controllers\\' . self::$route['prefix'] . self::$route['controller'];
-
-            if (class_exists($controller)) {
-                $cObj = new $controller();
-                $action = self::$route['action'];
-                if (method_exists($cObj, $action)) {
-                    $cObj->$action($params);
-                } else {
-                    echo "BADACTION";
-                }
-            } else {
-                echo "BAD";
-            }
-        } else {
+        if (!self::matchRoute()) {
             http_response_code(404);
             include dirname(__FILE__, 3) . '/resources/home/404.php';
+        }
+
+        $controller = 'App\Controllers\\' . self::$route['prefix'] . self::$route['controller'];
+
+        if (!class_exists($controller)) {
+            echo "BAD";
+            die();
+        }
+
+        $cObj = new $controller();
+        $action = self::$route['action'];
+        if (method_exists($cObj, $action)) {
+            $cObj->$action($params);
+        } else {
+            echo "BADACTION";
         }
     }
 
@@ -131,6 +131,7 @@ class Router
         $name = str_replace('-', ' ', $name);
         $name = ucfirst($name);
         $name = str_replace(' ', '', ucfirst($name));
+
         return $name;
     }
 
@@ -143,6 +144,7 @@ class Router
         $name = str_replace('-', ' ', $name);
         $name = ucfirst($name);
         $name = str_replace(' ', '', ucfirst($name));
+
         return lcfirst($name);
     }
 }

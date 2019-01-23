@@ -27,6 +27,7 @@ class ProductsModel extends AbstractTableModel
         $data = self::myExploded('file_name', $data);
         $data = self::myExploded('key_words', $data);
         $data = self::myExploded('id_key_word', $data);
+
         return $data;
     }
 
@@ -50,6 +51,7 @@ class ProductsModel extends AbstractTableModel
         $data = ProductsMapper::getProductWithImg($byWhat, $name);
         $data = self::myExploded('file_name', $data);
         $data = self::myExploded('key_words', $data);
+
         return $data;
     }
 
@@ -62,6 +64,7 @@ class ProductsModel extends AbstractTableModel
     {
         $data = ProductsMapper::getDataByCategory($byWhat, $name);
         $data = self::myExploded('file_name', $data);
+
         return $data;
     }
 
@@ -73,7 +76,8 @@ class ProductsModel extends AbstractTableModel
     {
         $data = ProductsMapper::getDataLike($search);
         $data = self::myExploded('file_name', $data);
-        return $data;
+
+         $data;
     }
 
     /**
@@ -88,6 +92,7 @@ class ProductsModel extends AbstractTableModel
         for ($i = 0; $i < $count; $i++) {
             $data[$i][$name] = explode(',', $data[$i][$name]);
         }
+
         return $data;
     }
 
@@ -107,6 +112,7 @@ class ProductsModel extends AbstractTableModel
     {
         $data = ProductsMapper::getKeyData('name', $data);
         $data = self::myExploded('file_name', $data);
+
         return $data;
     }
 }

@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
-            <?php if(isset($data["errors"])):?>
+            <?php if (isset($_SESSION['errors'])):?>
                 <div class="alert alert-danger">
-                    <?php echo array_shift($data["errors"]);?>
+                    <?php echo($_SESSION['errors']);?>
                 </div>
             <?php endif;?>
 

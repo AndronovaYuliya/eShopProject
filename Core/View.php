@@ -6,14 +6,21 @@ namespace Core;
  * Class View
  * @package Core
  */
-class View
+abstract class View
 {
+    private const  PATH = '../resources/home/';
+
     /**
      * @param string $content_view
      * @param array $data
      */
-    public static function generate(string $content_view, array $data)
+    public static function generate(string $content_view, array $data = [])
     {
-        include '../resources/home/' . $content_view;
+        ob_start();
+        if (is_file(self::PATH . $content_view)) {
+            require self::PATH . $content_view;
+        }
+        extract($_SESSION);
+        ob_end_flush();
     }
 }

@@ -29,17 +29,25 @@ abstract class SessionMapper
     public static function updateSession($attributes, $sess_id)
     {
         $sql = "UPDATE sessions SET $attributes = NOW() WHERE session_id=$sess_id";
+
         return Database::query($sql);
     }
 
     /**
-     * @param $sess_id
+     * @param array $data
+     * @param string $sess_id
      * @return array
      */
-    public static function addSession($sess_id)
+    public static function addSession(string $data, string $sess_id)
     {
-        $sql = "INSERT INTO sessions SET session_id=$sess_id, date_touched=NOW()";
-        return Database::query($sql);
+        $data = [
+            ':sess_data' => $data,
+            ':session_id' => $sess_id
+        ];
+        $sql = "INSERT INTO sessions (session_id,date_touched, sess_data) values
+            (:session_id, NOW(),:sess_data)";
+
+        return Database::addData($sql, $data);
     }
 
     /**
@@ -49,9 +57,14 @@ abstract class SessionMapper
      */
     public static function updateSessionData($data, $sess_id)
     {
-        $sql = "UPDATE sessions SET date_touched=NOW(), sess_data = "
-            . htmlentities($data, ENT_QUOTES) . " WHERE  session_id= $sess_id";
-        return Database::query($sql);
+        $data = [
+            ':sess_data' => $data,
+            ':session_id' => $sess_id
+        ];
+        echo $sess_id;
+        $sql = "UPDATE sessions SET date_touched=NOW(), sess_data = :sess_data WHERE  session_id= :sess_id";
+
+        return Database::query($sql,$data);
     }
 
     /**

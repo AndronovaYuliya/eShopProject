@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Core\View;
+
 /**
  * Class Controller
  * @package Core
@@ -9,23 +11,13 @@ namespace Core;
 class Controller
 {
     public $model;
-    public $view;
-
-    /**
-     * Controller constructor.
-     */
-    function __construct()
-    {
-        $this->view = new View();
-    }
 
     /**
      * @param string $content
      * @param array $data
-     * @return void
      */
-    protected function action_index(string $content, array $data): void
+    protected function action_index(string $content, array $data=[]): void
     {
-        $this->view->generate($content, $data);
+        View::generate($content, $data);
     }
 }

@@ -44,7 +44,6 @@ Router::add('^\/user\/signup$', ['controller' => 'Clients', 'action' => 'signup'
 Router::add('^\/user\/account$', ['controller' => 'Clients', 'action' => 'account']);
 
 //admin
-Router::add('^\/admin$', ['controller' => 'Admin', 'action' => 'index', 'prefix' => 'admin']);
 Router::add('^\/admin\/user$', ['controller' => 'Admin', 'action' => 'user', 'prefix' => 'admin']);
 Router::add('^\/admin\/edit$', ['controller' => 'Admin', 'action' => 'edit', 'prefix' => 'admin']);
 Router::add('^\/admin\/table$', ['controller' => 'Admin', 'action' => 'table', 'prefix' => 'admin']);
@@ -52,6 +51,7 @@ Router::add('^\/admin\/login$', ['controller' => 'Admin', 'action' => 'login', '
 Router::add('^\/admin\/delete', ['controller' => 'Admin', 'action' => 'delete', 'prefix' => 'admin']);
 Router::add('^\/admin\/logout$', ['controller' => 'Admin', 'action' => 'logout', 'prefix' => 'admin']);
 Router::add('^\/admin\/signup$', ['controller' => 'Admin', 'action' => 'signup', 'prefix' => 'admin']);
+Router::add('^\/admin$', ['controller' => 'Admin', 'action' => 'index', 'prefix' => 'admin']);
 
 
 Router::dispatch();

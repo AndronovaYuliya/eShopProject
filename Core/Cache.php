@@ -19,10 +19,8 @@ class Cache
         $path = dirname(__FILE__, 2) . '/tmp/cache/';
         $content['data'] = $data;
         $content['end_time'] = time() + $seconds;
-        if (file_put_contents($path . $key . '.txt', serialize($content))) {
-            return true;
-        }
-        return false;
+
+        return (file_put_contents($path . $key . '.txt', serialize($content))) ? true : false;
     }
 
     /**
@@ -36,11 +34,10 @@ class Cache
             $content = unserialize(file_get_contents($file));
             if (time() <= $content['end_time']) {
                 return $content['data'];
-            } else {
-                unlink($file);
             }
-            return false;
         }
+        unlink($file);
+        return false;
     }
 
     /**

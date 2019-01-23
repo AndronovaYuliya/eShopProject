@@ -72,24 +72,6 @@ abstract class Authorization
     }
 
     /**
-     * @param $email
-     * @return bool
-     */
-    public static function checkEmail($email): bool
-    {
-        return preg_match('/^[a-z0-9]{3,20}$/i', trim($email));
-    }
-
-    /**
-     * @param $pass
-     * @return bool
-     */
-    public static function checkPass($pass): bool
-    {
-        return true;
-    }
-
-    /**
      * @return void
      */
     private static function addToSession(): void
