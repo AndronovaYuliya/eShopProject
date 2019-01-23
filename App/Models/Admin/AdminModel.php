@@ -3,6 +3,7 @@
 namespace App\Models\Admin;
 
 use App\Validators\AdminValidator;
+use Core\Session;
 use Core\Validator;
 use App\Mappers\Admin\AdminMappers;
 use phpDocumentor\Reflection\Types\Self_;
@@ -52,30 +53,30 @@ class AdminModel
             if (Validator::validateEmail($data['adminEmail'])) {
                 self::$attributes['adminEmail'] = $data['adminEmail'];
             } else {
-                self::$errors['adminEmail'] = 'Please, enter the correct email';
+                return ['errors' => "Please, enter the correct email"];
             }
         } else {
-            self::$errors['adminEmail'] = 'Please, enter the email';
+            return ['errors' => "Please, enter the email"];
         }
 
         if (isset($data['adminPassword'])) {
             if (Validator::checkLength($data['adminPassword'])) {
                 self::$attributes['adminPassword'] = $data['adminPassword'];
             } else {
-                self::$errors['adminPassword'] = 'Please, enter the correct password';
+                return ['errors' => "Please, enter the correct password"];
             }
         } else {
-            self::$errors['adminPassword'] = 'Please, enter the password';
+            return ['errors' => "Please, enter the password"];
         }
 
         if (isset($data['adminLogin'])) {
             if (Validator::validateLogin($data['adminLogin'])) {
                 self::$attributes['adminLogin'] = $data['adminLogin'];
             } else {
-                self::$errors['adminLogin'] = 'Please, enter the correct Login';
+                return ['errors' => "Please, enter the correct Login"];
             }
         } else {
-            self::$errors['adminEmail'] = 'Please, enter the Login';
+            return ['errors' => "Please, enter the Login"];
         }
 
         self::$attributes['adminRole'] = $data['adminRadioRole'];
@@ -84,7 +85,7 @@ class AdminModel
             if (Validator::validateFirstName($data['adminFirstName'])) {
                 self::$attributes['adminFirstName'] = $data['adminFirstName'];
             } else {
-                self::$errors['adminFirstName'] = 'Please, enter the correct First Name';
+                return ['errors' => "Please, enter the correct First Name"];
             }
         }
 
@@ -92,66 +93,79 @@ class AdminModel
             if (Validator::validateLastName($data['adminLastName'])) {
                 self::$attributes['adminLastName'] = $data['adminLastName'];
             } else {
-                self::$errors['adminLastName'] = 'Please, enter the correct Last Name';
+                return ['errors' => "Please, enter the correct Last Name"];
             }
         }
 
         if (isset($data['adminConfirmPassword'])) {
             if (!Validator::confirmPassword(self::$attributes['adminPassword'], $data['adminConfirmPassword'])) {
-                self::$errors['adminConfirmPassword'] = 'Please, enter the correct Confirm Password';
+                return ['errors' => "Please, enter the correct Confirm Password"];
             } else {
                 self::$attributes['adminPassword'] = password_hash(self::$attributes['adminPassword'], PASSWORD_DEFAULT);
             }
         } else {
-            self::$errors['adminConfirmPassword'] = 'Please, enter the Confirm Password';
+            return ['errors' => "Please, enter the Confirm Password"];
         }
-        return ["errors" => self::$errors, "user" => self::$attributes];
+        return ["user" => self::$attributes];
     }
 
     /**
      * @param $data
      * @return array
      */
-    public static function edit($data)
+    public static function edit($data): array
     {
-        self::$attributes['adminRole'] = $data['adminRadioRole'];
+        //AdminValidator::edit return errors or true
+        self::$errors = AdminValidator::edit($data);
+
+        if (self::$errors !== true) {
+            return ['errors' => self::$errors];
+        }
+
+        self::$attributes['role'] = $data['adminRadioRole'];
 
         if (isset($data['adminFirstName'])) {
-            if (Validator::validateFirstName($data['adminFirstName'])) {
-                self::$attributes['adminFirstName'] = $data['adminFirstName'];
-            } else {
-                self::$errors['adminFirstName'] = 'Please, enter the correct First Name';
-            }
+            self::$attributes['first_name'] = $data['adminFirstName'];
         }
 
         if (isset($data['adminLastName'])) {
-            if (Validator::validateLastName($data['adminLastName'])) {
-                self::$attributes['adminLastName'] = $data['adminLastName'];
-            } else {
-                self::$errors['adminLastName'] = 'Please, enter the correct Last Name';
-            }
+            self::$attributes['last_name'] = $data['adminLastName'];
         }
 
         if (isset($data['adminPassword'])) {
-            if (Validator::checkLength($data['adminPassword'])) {
-                self::$attributes['adminPassword'] = $data['adminPassword'];
-            } else {
-                self::$errors['adminPassword'] = 'Please, enter the correct password';
-            }
-        } else {
-            self::$errors['adminPassword'] = 'Please, enter the password';
+            self::$attributes['password'] = password_hash($data['adminPassword'], PASSWORD_DEFAULT);
         }
 
-        if (isset($data['adminConfirmPassword'])) {
-            if (!Validator::confirmPassword(self::$attributes['adminPassword'], $data['adminConfirmPassword'])) {
-                self::$errors['adminConfirmPassword'] = 'Please, enter the correct Confirm Password';
-            } else {
-                self::$attributes['adminPassword'] = password_hash(self::$attributes['adminPassword'], PASSWORD_DEFAULT);
-            }
-        } else {
-            self::$errors['adminConfirmPassword'] = 'Please, enter the Confirm Password';
+        return ["user" => self::$attributes];
+    }
+
+    /**
+     * @param $data
+     * @return array
+     */
+    public static function add($data): array
+    {
+        //AdminValidator::add return errors or true
+        self::$errors = AdminValidator::add($data);
+
+        if (self::$errors !== true) {
+            return ['errors' => self::$errors];
         }
-        return ["errors" => self::$errors, "user" => self::$attributes];
+
+        self::$attributes['role'] = $data['adminRadioRole'];
+        self::$attributes['login'] = $data['adminLogin'];
+        self::$attributes['email'] = $data['adminEmail'];
+        self::$attributes['password'] = password_hash($data['adminPassword'], PASSWORD_DEFAULT);
+
+        if (isset($data['adminFirstName'])) {
+            self::$attributes['first_name'] = $data['adminFirstName'];
+        }
+
+        if (isset($data['adminLastName'])) {
+            self::$attributes['last_name'] = $data['adminLastName'];
+        }
+
+        return ["user" => self::$attributes];
     }
 
     /**
@@ -165,20 +179,30 @@ class AdminModel
     /**
      * @param array $data
      * @param string $id
+     * @return array
      */
-    public static function updateUser(array $data, string $id): void
+    public static function updateUser(array $data, string $id): array
     {
         AdminMappers::updateUser($data, $id);
+        $diff = array_diff_key($_SESSION['user'], $data);
+        $data = array_merge($data, $diff);
+        return $data;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return bool
-     * return true if user is occupied
+     * @param array $data
+     * @return array|bool
      */
-    public static function checkUnique(string $byWhat, string $name): bool
+    public static function checkUniqueAdmin(array $data)
     {
-        return (!empty(AdminMappers::checkUnique($byWhat, $name)));
+        if (!empty(AdminMappers::checkUnique('email', $data['user']['adminEmail']))) {
+            return ["errors" => "Enter another email"];
+        }
+
+        if (!empty(AdminMappers::checkUnique('login', $data['user']['adminLogin']))) {
+            return ["errors" => "Enter another login"];
+        }
+        return true;
     }
+
 }

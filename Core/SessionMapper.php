@@ -17,8 +17,9 @@ abstract class SessionMapper
      */
     public static function getDataWhere(string $byWhat, string $name): array
     {
-        $sql = "SELECT * FROM sessions WHERE $byWhat = $name";
-        return Database::query($sql);
+        $sql = "SELECT session_id, date_touched, sess_data FROM sessions WHERE $byWhat = :name";
+
+        return Database::queryData($sql,['name'=>$name]);
     }
 
     /**
@@ -26,11 +27,11 @@ abstract class SessionMapper
      * @param $sess_id
      * @return array
      */
-    public static function updateSession($attributes, $sess_id)
+    public static function updateSession($attributes, $newAttributes, $session_id)
     {
-        $sql = "UPDATE sessions SET $attributes = NOW() WHERE session_id=$sess_id";
+        $sql = "UPDATE sessions SET $attributes = :newAttributes WHERE session_id=:session_id";
 
-        return Database::query($sql);
+        return Database::queryData($sql,["newAttributes"=>$newAttributes,"session_id"=>$session_id]);
     }
 
     /**
@@ -64,7 +65,7 @@ abstract class SessionMapper
         echo $sess_id;
         $sql = "UPDATE sessions SET date_touched=NOW(), sess_data = :sess_data WHERE  session_id= :sess_id";
 
-        return Database::query($sql,$data);
+        return Database::addData($sql, $data);
     }
 
     /**
@@ -86,4 +87,5 @@ abstract class SessionMapper
         $sql = "DELETE FROM sessions WHERE  date_touched + $lifeTime < NOW()";
         return Database::query($sql);
     }
+
 }

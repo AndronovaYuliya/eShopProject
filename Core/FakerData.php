@@ -190,9 +190,10 @@ class FakerData
      */
     public function fakerUsers(): array
     {
+        $password=password_hash(2222,PASSWORD_DEFAULT);
         return [
             ':login' => 'adminYuliya',
-            ':password' => '1111',
+            ':password' => $password,
             ':email' => 'andronovayuliyatest@gmail.com',
             ':first_name' => 'Yuliya',
             ':last_name' => 'Andronova',

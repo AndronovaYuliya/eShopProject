@@ -1,3 +1,4 @@
+<?php /*var_dump($_SESSION['user'])*/?>
 <div class="content">
     <div class="container-fluid">
         <ul class="nav nav-tabs">
@@ -21,15 +22,15 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title"><?php echo $data[0]["role"]?></h4>
+                                <h4 class="title"><?php echo $_SESSION['user']['role']?></h4>
                             </div>
                             <div class="content">
                                 <div class="author">
-                                        <h4 class="title"><?php echo $data[0]["first_name"]. ' '. $data[0]['last_name']?><br/>
-                                            <small><?php echo $data[0]["login"]?></small>
+                                        <h4 class="title"><?php echo $_SESSION['user']["first_name"]. ' '. $_SESSION['user']['last_name']?><br/>
+                                            <small><?php echo $_SESSION['user']["login"]?></small>
                                         </h4>
                                 </div>
-                                <p class="description text-left"><?php echo $data[0]["email"]?></p>
+                                <p class="description text-left"><?php echo $_SESSION['user']["email"]?></p>
                             </div>
                             <hr>
                             <div class="text-center">
@@ -59,13 +60,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="adminInputLogin">Login</label>
-                                                <input type="text" required name="adminLogin" id="adminInputLogin" class="form-control" placeholder="Login">
+                                                <input type="text" required name="adminLogin" name="adminLogin" id="adminInputLogin" class="form-control" placeholder="Login">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="adminInputEmail">Email address</label>
-                                                <input type="email" required name="adminEmail" id="adminInputEmail" class="form-control" placeholder="Email">
+                                                <input type="email" required name="adminEmail" name="adminEmail" id="adminInputEmail" class="form-control" placeholder="Email">
                                             </div>
                                         </div>
                                         <div class="col-md-4">

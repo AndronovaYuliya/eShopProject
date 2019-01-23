@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use function PHPSTORM_META\elementType;
+
 /**
  * Class Session
  * @package Core
@@ -14,8 +16,8 @@ abstract class Session
     private static $_cookieName = 'sid';
     private static $_email;
     private static $_started = false;
-    private static $_lifeTime = 86400;
     private static $_sess_id;
+//response redirect
 
     /**
      * @return void
@@ -23,13 +25,12 @@ abstract class Session
     public static function start()
     {
         if (!self::$_sessionStarted) {
-            session_set_cookie_params(self::$_lifeTime);
             session_name(self::$_cookieName);
             session_start();
-            self::$_sess_id=session_id();
+            self::$_sess_id = session_id();
             self::$_sessionStarted = true;
             self::addToSession();
-            self::sessionAdd(session_encode());
+            self::sessionRead();
         }
     }
 
@@ -41,7 +42,6 @@ abstract class Session
     {
         if (self::$_sessionStarted) {
             $_SESSION[$key] = $value;
-            self::sessionWrite(session_encode());
         }
     }
 
@@ -52,9 +52,9 @@ abstract class Session
     public static function get($key)
     {
         if (Session::checkCookie())
-        if (!self::$_sessionStarted) {
-            return null;
-        }
+            if (!self::$_sessionStarted) {
+                return null;
+            }
 
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
@@ -127,7 +127,6 @@ abstract class Session
         }
     }
 
-
     /**
      * @return void
      */
@@ -135,22 +134,25 @@ abstract class Session
     {
         Session::set('remote_addr', $_SERVER['REMOTE_ADDR']);
         Session::set('user_agent', $_SERVER['HTTP_USER_AGENT']);
-       // Session::set(self::$email, session_encode());
+        // Session::set(self::$email, session_encode());
     }
 
     /**
      * @return string
      */
-    public static function sessionRead()
+    public static function sessionRead(): string
     {
         $result = SessionMapper::getDataWhere('session_id', self::$_sess_id);
-        // Если данные получены, нам нужно обновить дату
-        // доступа к данным:
+
         if (count($result) > 0) {
-            SessionMapper::updateSession('date_touched', self::$_sess_id);
-            return html_entity_decode($result['sess_data']);
+            $date=date("Y-m-d");
+            SessionMapper::updateSession('date_touched', $date, self::$_sess_id);
+            SessionMapper::updateSession('sess_data', session_encode(), self::$_sess_id);
+
+            return $result[0]['sess_data'];
         } else {
-            SessionMapper::addSession(self::$_sess_id);
+            SessionMapper::addSession(session_encode(), self::$_sess_id);
+
             return '';
         }
     }
@@ -172,11 +174,18 @@ abstract class Session
     }
 
     /**
-     * @return void
+     * @return string
      */
-    public static function sessGB()
+    public static function sessionId()
     {
-        SessionMapper::sessGB(self::$_lifeTime);
+        return session_id();
     }
 
+    /**
+     * @return void
+     */
+    /*public static function sessGB()
+    {
+        SessionMapper::sessGB(self::$_lifeTime);
+    }*/
 }

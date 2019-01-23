@@ -11,9 +11,7 @@ use Core\Session;
 abstract class Authorization
 {
     private static $email;
-    private static $password;
     private static $logged = false;
-    private static $user = null;
 
     /**
      * @return string
@@ -23,29 +21,18 @@ abstract class Authorization
         return self::$email;
     }
 
-    /**
-     * @return string
-     */
-    private static function getPassword(): string
-    {
-        return self::$password;
-    }
 
     /**
      * @param $email
-     * @param $password
-     * @return bool
+     * @return string
      */
-    public static function login($email, $password): bool
+    public static function login($email): string
     {
-        if ($email == self::$email && password_verify($password, self::$password)) {
-            self::$logged = true;
-            self::$user = self::$email;
-            Session::start();
-            self::addToSession();
-            return true;
-        }
-        return false;
+        self::$logged = true;
+        self::$email = $email;
+        self::addToSession();
+
+        return Session::sessionRead();
     }
 
     /**
@@ -57,7 +44,6 @@ abstract class Authorization
         $data = Session::get(self::$email);
         if (!empty($data) && Session::checkCookie()) {
             self::$logged = true;
-            session_decode($data);
             return true;
         }
         return false;
@@ -78,6 +64,5 @@ abstract class Authorization
     {
         Session::set('remote_addr', $_SERVER['REMOTE_ADDR']);
         Session::set('user_agent', $_SERVER['HTTP_USER_AGENT']);
-        Session::set(self::$email, session_encode());
     }
 }

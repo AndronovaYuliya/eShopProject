@@ -20,7 +20,6 @@ abstract class View
         if (is_file(self::PATH . $content_view)) {
             require self::PATH . $content_view;
         }
-        extract($_SESSION);
         ob_end_flush();
     }
 }

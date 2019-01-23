@@ -24,9 +24,16 @@ class AdminMappers
      */
     public static function updateUser(array $attributes, string $id)
     {
-        $sql = "UPDATE `users` SET password=:adminPassword, first_name=:adminFirstName,
-                  last_name=:adminLastName,role=:adminRole, updated_at= NOW() WHERE id=$id";
-        Database::addData($sql, $attributes);
+        $data=[];
+        $sql = "UPDATE users SET ";
+        foreach ($attributes as $key=>$value){
+            $sql.=" $key = :$key,";
+            $data[":".$key]=$value;
+        }
+        $sql.=" updated_at= NOW() WHERE id=:id;";
+        $data[":id"]=$id;
+
+        Database::addData($sql, $data);
     }
 
     /**

@@ -135,16 +135,23 @@ class Database
      */
     public static function query(string $sql): array
     {
-        $data = [];
-
         self::getInstance();
+        $data = self::$_pdo->query($sql)->fetchAll();
 
-        try {
-            $data = self::$_pdo->query($sql)->fetchAll();
-        } catch (PDOException $PDOException) {
-            $costumLog = new CostumLogger('database');
-            $costumLog->critical($PDOException->getTraceAsString());
-        }
         return $data;
+    }
+
+    /**
+     * @param string $sql
+     * @param array $data
+     * @return array
+     */
+    public static function queryData(string $sql, array $data): array
+    {
+        $stmt = self::getConnection()->prepare($sql);
+        if ($stmt !== false) {
+            $stmt->execute($data);
+            return $stmt->fetchAll();
+        }
     }
 }

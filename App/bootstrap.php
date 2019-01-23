@@ -67,7 +67,7 @@ $db = Database::getInstance();
 
 $mysqli = $db->getConnection();
 
-//$qr = $db->createTables();
+$qr = $db->createTables();
 /*KeyWordsModel::addFakerData();
 AttributesModel::addFakerData();
 ClientsModel::addFakerData();
@@ -82,4 +82,3 @@ ProductsImagesModel::addFakerData();
 AdditionalsModel::addFakerData();
 ProductsKeyWordsModel::addFakerData();
 UsersModel::addFakerData();*/
-
