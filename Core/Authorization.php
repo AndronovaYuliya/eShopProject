@@ -22,7 +22,7 @@ abstract class Authorization
         self::$logged = true;
         self::$email = $email;
         self::addToSession();
-        Session::set('email',$email);
+        Session::set('email', $email);
 
         return Session::sessionRead();
     }

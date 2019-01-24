@@ -9,7 +9,7 @@ namespace App\Models;
 abstract class AbstractTableModel
 {
     /**
-     *
+     * @return void
      */
     abstract public static function addFakerData(): void;
 

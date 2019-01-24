@@ -15,7 +15,6 @@ abstract class Session
     private static $_sessionStarted = false;
     private static $_cookieName = 'sid';
     private static $_sess_id;
-//response redirect
 
     /**
      * @return void
@@ -35,8 +34,9 @@ abstract class Session
     /**
      * @param $key
      * @param $value
+     * @return void
      */
-    public static function set($key, $value)
+    public static function set($key, $value): void
     {
         if (self::$_sessionStarted) {
             $_SESSION[$key] = $value;
@@ -45,6 +45,7 @@ abstract class Session
 
     /**
      * @param $key
+     * @param null $item
      * @return null
      */
     public static function get($key, $item = null)
@@ -67,7 +68,7 @@ abstract class Session
      * @param $key
      * @return bool
      */
-    public static function has($key)
+    public static function has($key): bool
     {
         return isset($_SESSION[$key]);
     }
@@ -107,7 +108,7 @@ abstract class Session
     /**
      * @return void
      */
-    public static function display()
+    public static function display(): void
     {
         echo "<pre>";
         var_dump($_SESSION);
@@ -164,16 +165,18 @@ abstract class Session
 
     /**
      * @param $data
+     * @return void
      */
-    public static function sessionWrite($data)
+    public static function sessionWrite($data): void
     {
         SessionMapper::updateSessionData($data, self::$_sess_id);
     }
 
     /**
      * @param $data
+     * @return void
      */
-    public static function sessionAdd($data)
+    public static function sessionAdd($data): void
     {
         SessionMapper::addSession($data, self::$_sess_id);
     }
@@ -181,7 +184,7 @@ abstract class Session
     /**
      * @return string
      */
-    public static function sessionId()
+    public static function sessionId(): string
     {
         return session_id();
     }
@@ -189,7 +192,7 @@ abstract class Session
     /**
      * @return void
      */
-    public static function sessionGB()
+    public static function sessionGB():void
     {
         SessionMapper::sessionGB(self::$_sess_id);
     }

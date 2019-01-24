@@ -77,7 +77,7 @@ class ProductsModel extends AbstractTableModel
         $data = ProductsMapper::getDataLike($search);
         $data = self::myExploded('file_name', $data);
 
-         $data;
+        $data;
     }
 
     /**

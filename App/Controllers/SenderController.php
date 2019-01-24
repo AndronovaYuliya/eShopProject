@@ -11,9 +11,9 @@ use Sender\Sender;
 class SenderController
 {
     /**
-     *
+     * @return void
      */
-    public function letterAction()
+    public function letterAction(): void
     {
         Sender::sendMsg();
         header('Location: /');

@@ -15,6 +15,7 @@ class Controller
     /**
      * @param string $content
      * @param array $data
+     * @return void
      */
     protected function actionIndex(string $content, array $data = []): void
     {

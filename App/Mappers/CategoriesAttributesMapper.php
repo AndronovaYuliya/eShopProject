@@ -19,6 +19,9 @@ class CategoriesAttributesMapper extends AbstractTableMapper
         Database::addFakerData('fakerCategoriesAttributes', $sql, 10);
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         $sql = "SELECT id, id_category, id_attribute, created_at, updated_at FROM `categories_attributes`;";

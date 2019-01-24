@@ -16,9 +16,10 @@ class ProductController extends Controller
     private $data = [];
 
     /**
+     * @return void
      * @param array $params
      */
-    public function showAction(array $params)
+    public function showAction(array $params): void
     {
         $key = key($params);
         $this->data['product'] = ProductsModel::getProductWithImg($key, $params[$key]);
@@ -30,9 +31,10 @@ class ProductController extends Controller
 
     /**
      * @param array $params
+     * @return void
      * show 1 product
      */
-    public function brandAction(array $params)
+    public function brandAction(array $params): void
     {
         $key = key($params);
         $this->data['products'] = ProductsModel::getProductWithImg('brand', $params[$key]);
@@ -42,9 +44,9 @@ class ProductController extends Controller
     }
 
     /**
-     *
+     * @return void
      */
-    public function indexAction()
+    public function indexAction(): void
     {
         $this->data['products'] = ProductsModel::getFullData();
         $this->data['categories'] = CategoriesModel::query();
@@ -54,9 +56,9 @@ class ProductController extends Controller
 
 
     /**
-     *
+     * @return void
      */
-    public function categoryAction()
+    public function categoryAction(): void
     {
         $this->data['products'] = ProductsModel::getFullData();
         $this->data['categories'] = CategoriesModel::query();
@@ -65,9 +67,9 @@ class ProductController extends Controller
     }
 
     /**
-     *
+     * @return void
      */
-    public function searchAction()
+    public function searchAction(): void
     {
         $this->data['products'] = ProductsModel::getFullData();
         $this->data['categories'] = CategoriesModel::query();
@@ -83,8 +85,9 @@ class ProductController extends Controller
 
     /**
      * @param array $params
+     * @return void
      */
-    public function keyAction(array $params)
+    public function keyAction(array $params): void
     {
         $key = key($params);
         $this->data['products'] = ProductsModel::getKeyData($params[$key]);

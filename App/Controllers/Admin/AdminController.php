@@ -16,7 +16,9 @@ class AdminController extends Controller
     private $data = [];
     private $users = [];
 
-
+    /**
+     * AdminController constructor.
+     */
     public function __construct()
     {
         Session::start();
@@ -36,7 +38,7 @@ class AdminController extends Controller
     }
 
     //andronovayuliyatest@gmail.com
-    //2222
+    //1111
     /**
      * @return void
      */
@@ -158,8 +160,7 @@ class AdminController extends Controller
     /**
      * @return void
      */
-    public
-    function tableAction(): void
+    public function tableAction(): void
     {
         parent::actionIndex('admin/tableView.php', $this->data);
     }

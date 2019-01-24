@@ -1,20 +1,5 @@
 <div class="content">
     <div class="container-fluid">
-        <ul class="nav nav-tabs">
-            <li class="nav-item active">
-                <a href="#view" class="nav-link" aria-controls="view" role="tab" data-toggle="tab">Tables</a>
-            </li>
-            <li class="nav-item">
-                <a href="#add" class="nav-link" aria-controls="add" role="tab" data-toggle="tab">Add</a>
-            </li>
-            <li class="nav-item">
-                <a href="#edit" class="nav-link" aria-controls="edit" role="tab" data-toggle="tab">Edit</a>
-            </li>
-            <li class="nav-item">
-                <a href="#delete" class="nav-link disabled" aria-controls="delete" role="tab"
-                   data-toggle="tab">Delete</a>
-            </li>
-        </ul>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

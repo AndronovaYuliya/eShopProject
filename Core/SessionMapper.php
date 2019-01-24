@@ -24,10 +24,11 @@ abstract class SessionMapper
 
     /**
      * @param $attributes
-     * @param $sess_id
+     * @param $newAttributes
+     * @param $session_id
      * @return array
      */
-    public static function updateSession($attributes, $newAttributes, $session_id)
+    public static function updateSession($attributes, $newAttributes, $session_id): array
     {
         $sql = "UPDATE sessions SET $attributes = :newAttributes WHERE session_id=:session_id";
 
@@ -35,11 +36,11 @@ abstract class SessionMapper
     }
 
     /**
-     * @param array $data
+     * @param string $data
      * @param string $sess_id
-     * @return array
+     * @return void
      */
-    public static function addSession(string $data, string $sess_id)
+    public static function addSession(string $data, string $sess_id): void
     {
         $data = [
             ':sess_data' => $data,
@@ -54,9 +55,9 @@ abstract class SessionMapper
     /**
      * @param $data
      * @param $sess_id
-     * @return array
+     * @return void
      */
-    public static function updateSessionData($data, $sess_id)
+    public static function updateSessionData($data, $sess_id): void
     {
         $data = [
             ':sess_data' => $data,
@@ -72,17 +73,17 @@ abstract class SessionMapper
      * @param $sess_id
      * @return array
      */
-    public static function deleteSession($sess_id)
+    public static function deleteSession($sess_id): array
     {
         $sql = "DELETE FROM sessions WHERE session_id = $sess_id";
         return Database::query($sql);
     }
 
     /**
-     * @param $lifeTime
+     * @param $session_id
      * @return array
      */
-    public static function sessionGB($session_id)
+    public static function sessionGB($session_id): array
     {
         $sql = "DELETE FROM sessions WHERE  session_id =:session_id";
         return Database::queryData($sql, [':session_id' => $session_id]);

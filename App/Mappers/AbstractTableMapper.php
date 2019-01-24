@@ -8,26 +8,15 @@ namespace App\Mappers;
  */
 abstract class AbstractTableMapper
 {
-    /**
-     * @var
-     */
     private static $_checkTable;
 
     /**
-     * AbstractTableMapper constructor.
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
-     *
+     * @return void
      */
     abstract protected static function addData(): void;
 
     /**
-     *
+     * @return void
      */
     abstract protected static function addFakerData(): void;
 
@@ -42,6 +31,4 @@ abstract class AbstractTableMapper
      * @return mixed
      */
     abstract protected static function getDataWhere(string $byWhat, string $name);
-
-
 }

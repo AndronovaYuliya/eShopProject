@@ -9,8 +9,9 @@ class AdminMappers
 {
     /**
      * @param array $attributes
+     * @return void
      */
-    public static function addUser(array $attributes)
+    public static function addUser(array $attributes): void
     {
         $sql = "INSERT INTO `users` (login, password, email,first_name, last_name,role, created_at, 
                   updated_at) VALUE (:adminLogin, :adminPassword,:adminEmail, :adminFirstName, 
@@ -21,8 +22,9 @@ class AdminMappers
     /**
      * @param array $attributes
      * @param string $id
+     * @return void
      */
-    public static function updateUser(array $attributes, string $id)
+    public static function updateUser(array $attributes, string $id): void
     {
         $data = [];
         $sql = "UPDATE users SET ";
@@ -72,8 +74,9 @@ class AdminMappers
     /**
      * @param string $byWhat
      * @param string $name
+     * @return void
      */
-    public static function deleteProfile(string $byWhat, string $name)
+    public static function deleteProfile(string $byWhat, string $name): void
     {
         $sql = "DELETE FROM users WHERE $byWhat=:name";
         Database::queryData($sql, [':name' => $name]);

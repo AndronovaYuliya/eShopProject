@@ -45,7 +45,6 @@ class Database
         } catch (PDOException $exception) {
             die('Подключение не удалось: ' . $exception->getTraceAsString());
         }
-
     }
 
     // Get mysqli connection

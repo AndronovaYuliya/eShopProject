@@ -10,12 +10,18 @@ use Core\Database;
  */
 class ImagesMapper extends AbstractTableMapper
 {
+    /**
+     * @return void
+     */
     public static function addFakerData(): void
     {
         $sql = "INSERT INTO `images` (file_name, created_at, updated_at) VALUE (:file_name, NOW(), NOW())";
         Database::addFakerData('fakerImages', $sql, 20);
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         $sql = "SELECT id, file_name,created_at, updated_at FROM `images`;";

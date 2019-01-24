@@ -31,6 +31,7 @@ class DataBaseModel
     /**
      * @param $array
      * @param string $fileName
+     * @return void
      */
     public static function setDB($array, string $fileName): void
     {

@@ -27,7 +27,7 @@ class Cache
      * @param $key
      * @return bool
      */
-    public function get($key)
+    public function get($key): bool
     {
         $file = dirname(__FILE__, 2) . '/tmp/cache/' . $key . '.txt';
         if (file_exists($file)) {

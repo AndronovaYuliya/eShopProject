@@ -19,6 +19,9 @@ class AdditionalsMapper extends AbstractTableMapper
         Database::addFakerData('fakerAdditionals', $sql, 10);
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         $sql = "SELECT id, id_product, id_order,count,price, created_at, updated_at FROM `additionals`;";

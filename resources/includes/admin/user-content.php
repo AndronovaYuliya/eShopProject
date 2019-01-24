@@ -15,7 +15,6 @@
                    data-toggle="tab">Delete</a>
             </li>
         </ul>
-
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="view">
                 <div class="row">
@@ -218,7 +217,8 @@
                                                         <tr data-html="/admin/delete">
                                                             <td>
                                                                 <input class="form-check-input" checked type="radio"
-                                                                       name="adminUserDelete" value="<?php echo $user['id'] ?>">
+                                                                       name="adminUserDelete"
+                                                                       value="<?php echo $user['id'] ?>">
                                                             </td>
                                                             <td><?php echo $user['id'] ?></td>
                                                             <td><?php echo $user['login'] ?></td>

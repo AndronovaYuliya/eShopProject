@@ -58,7 +58,7 @@ class AdminModel
      * @param $data
      * @return array
      */
-    public static function signup($data)
+    public static function signup($data): array
     {
         if (isset($data['adminEmail'])) {
             if (Validator::validateEmail($data['adminEmail'])) {
@@ -181,6 +181,7 @@ class AdminModel
 
     /**
      * @param array $data
+     * @return void
      */
     public static function addUser(array $data): void
     {
@@ -219,8 +220,9 @@ class AdminModel
     /**
      * @param string $byWhat
      * @param string $name
+     * @return void
      */
-    public static function delete(string $byWhat, string $name='0')
+    public static function delete(string $byWhat, string $name = '0'): void
     {
         AdminMappers::deleteProfile($byWhat, $name);
     }

@@ -54,7 +54,9 @@ abstract class AdminValidator
         if (isset($data['adminPassword']) && isset($data['adminConfirmPassword'])) {
             if (!Validator::confirmPassword($data['adminPassword'], $data['adminConfirmPassword'])) {
                 return 'Passwords do not match';
-            } else return true;
+            } else {
+                return true;
+            }
         }
 
         if (isset($data['adminPassword']) || isset($data['adminConfirmPassword'])) {
