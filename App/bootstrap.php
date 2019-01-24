@@ -23,7 +23,7 @@ use App\Models\ProductsKeyWordsModel;
 use App\Models\UsersModel;
 
 $log = new CostumLogger();
-$cach = new Cache();
+$cache = new Cache();
 
 
 //Router::add('^$', ['controller'=>'Main','action'=>'index']);
@@ -45,13 +45,14 @@ Router::add('^\/user\/account$', ['controller' => 'Clients', 'action' => 'accoun
 
 //admin
 Router::add('^\/admin\/user$', ['controller' => 'Admin', 'action' => 'user', 'prefix' => 'admin']);
+Router::add('^\/admin\/index$', ['controller' => 'Admin', 'action' => 'user', 'prefix' => 'admin']);
 Router::add('^\/admin\/edit$', ['controller' => 'Admin', 'action' => 'edit', 'prefix' => 'admin']);
 Router::add('^\/admin\/table$', ['controller' => 'Admin', 'action' => 'table', 'prefix' => 'admin']);
 Router::add('^\/admin\/login$', ['controller' => 'Admin', 'action' => 'login', 'prefix' => 'admin']);
 Router::add('^\/admin\/delete', ['controller' => 'Admin', 'action' => 'delete', 'prefix' => 'admin']);
 Router::add('^\/admin\/logout$', ['controller' => 'Admin', 'action' => 'logout', 'prefix' => 'admin']);
 Router::add('^\/admin\/signup$', ['controller' => 'Admin', 'action' => 'signup', 'prefix' => 'admin']);
-Router::add('^\/admin$', ['controller' => 'Admin', 'action' => 'index', 'prefix' => 'admin']);
+Router::add('^\/admin$', ['controller' => 'Admin', 'action' => 'user', 'prefix' => 'admin']);
 
 
 Router::dispatch();

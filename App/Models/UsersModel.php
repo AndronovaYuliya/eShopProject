@@ -13,7 +13,7 @@ class UsersModel extends AbstractTableModel
     /**
      * @return void
      */
-    static public function addFakerData(): void
+    public static function addFakerData(): void
     {
         UsersMapper::addFakerData();
     }
@@ -21,7 +21,7 @@ class UsersModel extends AbstractTableModel
     /**
      * @return array
      */
-    static public function query(): array
+    public static function query(): array
     {
         return UsersMapper::query();
     }
@@ -31,7 +31,7 @@ class UsersModel extends AbstractTableModel
      * @param string $name
      * @return array
      */
-    static public function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, string $name): array
     {
         return UsersMapper::getDataWhere($byWhat, $name);
     }

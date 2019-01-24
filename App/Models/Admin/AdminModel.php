@@ -3,6 +3,7 @@
 namespace App\Models\Admin;
 
 use App\Validators\AdminValidator;
+use Core\Authorization;
 use Core\Session;
 use Core\Validator;
 use App\Mappers\Admin\AdminMappers;
@@ -21,7 +22,7 @@ class AdminModel
     /**
      * @return array
      */
-    public static function getUsers():array
+    public static function getUsers(): array
     {
         return AdminMappers::query();
     }
@@ -47,6 +48,8 @@ class AdminModel
         if (!password_verify($data['adminPassword'], self::$attributes[0]['password'])) {
             return ['errors' => "Wrong password"];
         }
+
+        Authorization::login(self::$attributes[0]['email']);
 
         return ['user' => self::$attributes];
     }
@@ -177,9 +180,9 @@ class AdminModel
     }
 
     /**
-     * @param $data
+     * @param array $data
      */
-    public static function addUser($data): void
+    public static function addUser(array $data): void
     {
         AdminMappers::addUser($data);
     }
@@ -192,8 +195,8 @@ class AdminModel
     public static function updateUser(array $data, string $id): array
     {
         AdminMappers::updateUser($data, $id);
-        $diff = array_diff_key($_SESSION['user'], $data);
-        $data = array_merge($data, $diff);
+        $diffKey = array_diff_key($_SESSION['user'], $data);
+        $data = array_merge($data, $diffKey);
         return $data;
     }
 
@@ -213,4 +216,12 @@ class AdminModel
         return true;
     }
 
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
+    public static function delete(string $byWhat, string $name='0')
+    {
+        AdminMappers::deleteProfile($byWhat, $name);
+    }
 }

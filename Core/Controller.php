@@ -16,7 +16,7 @@ class Controller
      * @param string $content
      * @param array $data
      */
-    protected function action_index(string $content, array $data=[]): void
+    protected function actionIndex(string $content, array $data = []): void
     {
         View::generate($content, $data);
     }

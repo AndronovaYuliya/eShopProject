@@ -117,7 +117,7 @@ abstract class AdminValidator
      * @param string $value
      * @return string
      */
-    public static function clean(string $value):string
+    public static function clean(string $value): string
     {
         $value = trim($value);
         $value = stripslashes($value);

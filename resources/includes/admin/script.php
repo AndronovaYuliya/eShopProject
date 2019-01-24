@@ -13,3 +13,5 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="/js/admin/demo.js"></script>
+
+<script src="/js/admin/script.js"></script>

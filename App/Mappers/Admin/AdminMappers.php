@@ -24,14 +24,14 @@ class AdminMappers
      */
     public static function updateUser(array $attributes, string $id)
     {
-        $data=[];
+        $data = [];
         $sql = "UPDATE users SET ";
-        foreach ($attributes as $key=>$value){
-            $sql.=" $key = :$key,";
-            $data[":".$key]=$value;
+        foreach ($attributes as $key => $value) {
+            $sql .= " $key = :$key,";
+            $data[":" . $key] = $value;
         }
-        $sql.=" updated_at= NOW() WHERE id=:id;";
-        $data[":id"]=$id;
+        $sql .= " updated_at= NOW() WHERE id=:id;";
+        $data[":id"] = $id;
 
         Database::addData($sql, $data);
     }
@@ -41,13 +41,8 @@ class AdminMappers
      */
     public static function query(): array
     {
-        $cache = new Cache();
-        $data = $cache->get('users');
-        if (!$data) {
-            $sql = "SELECT id, login, email,first_name,last_name,role FROM `users`";
-            $data = Database::query($sql);
-            $cache->set('users', $data);
-        }
+        $sql = "SELECT id, login, email,first_name,last_name,role FROM `users`";
+        $data = Database::query($sql);
         return $data;
     }
 
@@ -72,5 +67,15 @@ class AdminMappers
         $sql = "SELECT id, login, email,first_name,last_name,role,password FROM `users` 
           WHERE email='$email'";
         return Database::query($sql);
+    }
+
+    /**
+     * @param string $byWhat
+     * @param string $name
+     */
+    public static function deleteProfile(string $byWhat, string $name)
+    {
+        $sql = "DELETE FROM users WHERE $byWhat=:name";
+        Database::queryData($sql, [':name' => $name]);
     }
 }

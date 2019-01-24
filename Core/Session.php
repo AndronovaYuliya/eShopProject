@@ -47,15 +47,15 @@ abstract class Session
      * @param $key
      * @return null
      */
-    public static function get($key,$item=null)
+    public static function get($key, $item = null)
     {
-        if (Session::checkCookie()){
+        if (Session::checkCookie()) {
             if (!self::$_sessionStarted) {
                 return null;
             }
         }
 
-        if (isset($_SESSION[$key][$item])){
+        if (isset($item) && isset($_SESSION[$key][$item])) {
             return $_SESSION[$key][$item];
         }
         if (isset($_SESSION[$key])) {
@@ -74,6 +74,7 @@ abstract class Session
 
     /**
      * @param $key
+     * @return null
      */
     public static function delete($key)
     {
@@ -97,7 +98,7 @@ abstract class Session
             unset($_SESSION);
             self::$_sessionStarted = false;
             self::sessionGB();
-            self::$_sess_id='';
+            self::$_sess_id = '';
             return true;
         }
         return false;
@@ -149,7 +150,7 @@ abstract class Session
         $result = SessionMapper::getDataWhere('session_id', self::$_sess_id);
 
         if (count($result) > 0) {
-            $date=date("Y-m-d");
+            $date = date("Y-m-d");
             SessionMapper::updateSession('date_touched', $date, self::$_sess_id);
             SessionMapper::updateSession('sess_data', session_encode(), self::$_sess_id);
 

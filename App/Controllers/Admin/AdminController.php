@@ -14,22 +14,13 @@ use Core\Authorization;
 class AdminController extends Controller
 {
     private $data = [];
-    private $users=[];
+    private $users = [];
 
 
     public function __construct()
     {
         Session::start();
-        $this->users=AdminModel::getUsers();
-    }
-
-    /**
-     * @return void
-     */
-    public function indexAction(): void
-    {
-        //check session
-        parent::action_index('admin/adminView.php');
+        $this->users = AdminModel::getUsers();
     }
 
     /**
@@ -37,11 +28,12 @@ class AdminController extends Controller
      */
     public function userAction(): void
     {
-        //check!
-        parent::action_index('admin/userView.php', ['user'=>$this->data,'users'=>$this->users]);
+        if (!Authorization::isAuth()) {
+            parent::actionIndex('admin/adminView.php');
+        } else {
+            parent::actionIndex('admin/userView.php', ['users' => $this->users]);
+        }
     }
-
-
 
     //andronovayuliyatest@gmail.com
     //2222
@@ -50,16 +42,20 @@ class AdminController extends Controller
      */
     public function loginAction(): void
     {
+        if (Authorization::isAuth()) {
+            parent::actionIndex('admin/userView.php', ['users' => $this->users]);
+        }
+
         if (empty($_POST) && $_SERVER['REQUEST_METHOD'] != 'POST') {
             Session::set('errors', 'Enter login and password');
-            parent::action_index('/');
+            parent::actionIndex('/');
         }
 
         $this->data = AdminModel::login($_POST);
 
         if (array_key_exists('errors', $this->data)) {
             Session::set('errors', $this->data['errors']);
-            parent::action_index('admin/adminView.php');
+            parent::actionIndex('admin/adminView.php');
         }
 
         if (array_key_exists('user', $this->data)) {
@@ -69,7 +65,7 @@ class AdminController extends Controller
 
             Session::set('user', $this->data['user'][0]);
 
-            parent::action_index('admin/userView.php',['users'=>$this->users]);
+            parent::actionIndex('admin/userView.php', ['users' => $this->users]);
         }
     }
 
@@ -78,8 +74,12 @@ class AdminController extends Controller
      */
     public function logoutAction(): void
     {
-        Authorization::logout();
-        parent::action_index('admin/adminView.php');
+        if (!Authorization::isAuth()) {
+            parent::actionIndex('admin/adminView.php');
+        } else {
+            Authorization::logout();
+            parent::actionIndex('admin/adminView.php');
+        }
     }
 
     /**
@@ -87,22 +87,27 @@ class AdminController extends Controller
      */
     public function signupAction(): void
     {
-        $this->data = AdminModel::signup($_POST);
+        if (!Authorization::isAuth()) {
+            parent::actionIndex('admin/adminView.php');
+        } else {
+            $this->data = AdminModel::signup($_POST);
 
-        if (array_key_exists('errors', $this->data)) {
-            Session::set('errors', $this->data['errors']);
-            parent::action_index('admin/userView.php');
+            if (array_key_exists('errors', $this->data)) {
+                Session::set('errors', $this->data['errors']);
+                parent::actionIndex('admin/userView.php');
+            }
+            $result = AdminModel::checkUniqueAdmin($this->data);
+
+            if ($result !== true) {
+                Session::set('errors', $this->data['errors']);
+                parent::actionIndex('admin/userView.php');
+            }
+
+            $this->data ['user'] = AdminModel::addUser($this->data['user']);
+            $this->users = AdminModel::getUsers();
+
+            parent::actionIndex('admin/userView.php', ['user' => $this->data, 'users' => $this->users]);
         }
-        $result = AdminModel::checkUniqueAdmin($this->data);
-
-        if ($result !== true) {
-            Session::set('errors', $this->data['errors']);
-            parent::action_index('admin/userView.php');
-        }
-
-        $this->data ['user'] = AdminModel::addUser(['user'=>$this->data['user']]);
-
-        parent::action_index('admin/userView.php', ['user'=>$this->data,'users'=>$this->users]);
     }
 
     /**
@@ -110,19 +115,24 @@ class AdminController extends Controller
      */
     public function editAction(): void
     {
-        $this->data = AdminModel::edit($_POST);
+        if (!Authorization::isAuth()) {
+            parent::actionIndex('admin/adminView.php');
+        } else {
+            $this->data = AdminModel::edit($_POST);
 
-        if (array_key_exists('errors', $this->data)) {
-            Session::set('errors', $this->data['errors']);
-            parent::action_index('admin/userView.php',$this->users);
-        }
+            if (array_key_exists('errors', $this->data)) {
+                Session::set('errors', $this->data['errors']);
+                parent::actionIndex('admin/userView.php', $this->users);
+            }
 
-        if (array_key_exists('user', $this->data)) {
-            Session::delete('errors');
-            $this->data ['user'] = AdminModel::updateUser($this->data['user'], Session::get('user','id'));
-            Session::set('user', $this->data['user']);
-            Session::sessionRead();
-            parent::action_index('admin/userView.php',['user'=>$this->data,'users'=>$this->users]);
+            if (array_key_exists('user', $this->data)) {
+                Session::delete('errors');
+                $this->data ['user'] = AdminModel::updateUser($this->data['user'], Session::get('user', 'id'));
+                Session::set('user', $this->data['user']);
+                Session::sessionRead();
+                $this->users = AdminModel::getUsers();
+                parent::actionIndex('admin/userView.php', ['user' => $this->data, 'users' => $this->users]);
+            }
         }
     }
 
@@ -131,16 +141,26 @@ class AdminController extends Controller
      */
     public function deleteAction(): void
     {
-        var_dump($this->users);
-        echo "delete";
-        die();
+        if (!Authorization::isAuth()) {
+            parent::actionIndex('admin/adminView.php');
+        } else {
+            if (!isset($_POST)) {
+                parent::actionIndex('admin/userView.php', ['user' => $this->data, 'users' => $this->users]);
+            } else {
+                AdminModel::delete('id', $_POST["adminUserDelete"]);
+                $this->users = AdminModel::getUsers();
+
+                parent::actionIndex('admin/userView.php', ['user' => $this->data, 'users' => $this->users]);
+            }
+        }
     }
 
     /**
      * @return void
      */
-    public function tableAction(): void
+    public
+    function tableAction(): void
     {
-        parent::action_index('admin/tableView.php', $this->data);
+        parent::actionIndex('admin/tableView.php', $this->data);
     }
 }

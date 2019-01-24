@@ -8,14 +8,20 @@ namespace App\Models;
  */
 abstract class AbstractTableModel
 {
-    abstract static protected function addFakerData(): void;
+    /**
+     *
+     */
+    abstract public static function addFakerData(): void;
 
-    abstract static protected function query(): array;
+    /**
+     * @return array
+     */
+    abstract public static function query(): array;
 
     /**
      * @param string $byWhat
      * @param string $name
      * @return array
      */
-    abstract static protected function getDataWhere(string $byWhat, string $name): array;
+    abstract public static function getDataWhere(string $byWhat, string $name): array;
 }

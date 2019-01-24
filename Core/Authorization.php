@@ -22,6 +22,7 @@ abstract class Authorization
         self::$logged = true;
         self::$email = $email;
         self::addToSession();
+        Session::set('email',$email);
 
         return Session::sessionRead();
     }
@@ -31,13 +32,13 @@ abstract class Authorization
      */
     public static function isAuth(): bool
     {
-        Session::start();
-        $data = Session::get(self::$email);
-        if (!empty($data) && Session::checkCookie()) {
-            self::$logged = true;
-            return true;
+        if (!Session::get('email')) {
+            return false;
+        };
+        if (!Session::checkCookie()) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     /**

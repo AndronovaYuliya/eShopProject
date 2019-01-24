@@ -1,4 +1,3 @@
-<?php /*var_dump($_SESSION['user'])*/ ?>
 <div class="content">
     <div class="container-fluid">
         <ul class="nav nav-tabs">
@@ -201,7 +200,7 @@
                                     <div class="header">
                                         <h4 class="title">List of Users</h4>
                                     </div>
-                                    <form method="post" action="/admin/delete">
+                                    <form method="post" action="/admin/delete" name="userDelete">
                                         <div class="content table-responsive table-full-width">
                                             <table class="table table-hover table-striped">
                                                 <thead>
@@ -216,23 +215,26 @@
 
                                                 <?php if (isset($data['users'])): ?>
                                                     <?php foreach ($data['users'] as $key => $user): ?>
-                                                        <a href="#">
-                                                            <tr>
-                                                                <td><?php echo $user['id'] ?></td>
-                                                                <td><?php echo $user['login'] ?></td>
-                                                                <td><?php echo $user['email'] ?></td>
-                                                                <td><?php echo $user['first_name'] ?></td>
-                                                                <td><?php echo $user['last_name'] ?></td>
-                                                                <td><?php echo $user['role'] ?></td>
-                                                            </tr>
-                                                        </a>
+                                                        <tr data-html="/admin/delete">
+                                                            <td>
+                                                                <input class="form-check-input" checked type="radio"
+                                                                       name="adminUserDelete" value="<?php echo $user['id'] ?>">
+                                                            </td>
+                                                            <td><?php echo $user['id'] ?></td>
+                                                            <td><?php echo $user['login'] ?></td>
+                                                            <td><?php echo $user['email'] ?></td>
+                                                            <td><?php echo $user['first_name'] ?></td>
+                                                            <td><?php echo $user['last_name'] ?></td>
+                                                            <td><?php echo $user['role'] ?></td>
+                                                        </tr>
                                                     <?php endforeach; ?>
                                                 <?php endif; ?>
 
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">Delete Profile
+                                        <button type="submit" id="userDelete" class="btn btn-info btn-fill pull-right">
+                                            Delete Profile
                                         </button>
                                         <div class="clearfix"></div>
                                     </form>
