@@ -5,10 +5,15 @@ namespace App\Mappers\Admin;
 use Core\Cache;
 use Core\Database;
 
+/**
+ * Class AdminMappers
+ * @package App\Mappers\Admin
+ */
 class AdminMappers
 {
     /**
      * @param array $attributes
+     * @return void
      * @throws \Exception
      */
     public static function addUser(array $attributes): void
@@ -22,6 +27,7 @@ class AdminMappers
     /**
      * @param array $attributes
      * @param string $id
+     * @return void
      * @throws \Exception
      */
     public static function updateUser(array $attributes, string $id): void

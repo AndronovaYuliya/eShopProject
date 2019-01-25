@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Core\Controller;
+use Core\App;
 use App\Models\ProductsModel;
 use App\Models\CategoriesModel;
 
@@ -12,18 +13,12 @@ use App\Models\CategoriesModel;
  */
 class CartController extends Controller
 {
-    private $data = [];
-
-    /**
-     * @return void
-     */
-    public function indexAction(): void
+    public function cartAction(): void
     {
-        $this->data = [];
-
-        $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::query();
-
-        parent::actionIndex('page/cartView.php', $this->data);
+        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
+        $products = ProductsModel::getFullData();
+        $brands = $products;
+        $categories = CategoriesModel::query();
+        $this->set(compact('products', 'categories', 'brands'));
     }
 }

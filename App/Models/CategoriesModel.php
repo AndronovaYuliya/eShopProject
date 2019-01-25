@@ -28,10 +28,11 @@ class CategoriesModel
 
     /**
      * @param string $byWhat
-     * @param string $name
+     * @param $name
      * @return array
+     * @throws \Exception
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere(string $byWhat, $name)
     {
         return CategoriesMapper::getDataWhere($byWhat, $name);
     }

@@ -2,29 +2,29 @@
 
 namespace App\Controllers;
 
-use App\Models\CategoriesModel;
-use App\Models\ProductsModel;
-use Core\App;
 use Core\Controller;
+use Core\App;
+use App\Models\ProductsModel;
+use App\Models\CategoriesModel;
 use Core\View;
 
 /**
- * Class CategoryController
+ * Class BrandController
  * @package App\Controllers
  */
-class CategoryController extends Controller
+class BrandController extends Controller
 {
     /**
-     * @return void
      * @param string $param
+     * @return void
      */
-    public function categoryAction($param = null): void
+    public function brandAction($param = null): void
     {
         $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
         if (!$param) {
             $products = ProductsModel::getFullData();
         } else {
-            $products = ProductsModel::getDataByCategory('alias', $param);
+            $products = ProductsModel::getProductWithImg('brand', $param);
         }
         $brands = ProductsModel::query();
         $categories = CategoriesModel::query();

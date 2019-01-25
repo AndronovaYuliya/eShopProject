@@ -11,15 +11,17 @@ use Core\Database;
 class KeyWordsMapper
 {
     /**
+     * @return void
      * @throws \Exception
      */
     public static function addFakerData(): void
     {
         try {
-            $sql = "INSERT INTO `key_words` (name, created_at, updated_at) VALUE (:name, NOW(), NOW())";
+            $sql = "INSERT INTO `key_words` (name, created_at, updated_at) 
+                                      VALUE (:name, NOW(), NOW())";
             Database::addFakerData('fakerKeyWords', $sql, 20);
         } catch (PDOException $e) {
-            throw new \Exception(["Faker table key_words: {$e->getTraceAsString()}"],500);
+            throw new \Exception(["Faker table key_words: {$e->getTraceAsString()}"], 500);
         }
     }
 
@@ -28,7 +30,12 @@ class KeyWordsMapper
      */
     public static function query(): array
     {
-        $sql = "SELECT id, name, created_at, updated_at FROM `key_words`;";
+        $sql = "SELECT 
+                        id
+                        ,name
+                        ,created_at
+                        ,updated_at 
+                FROM `key_words`;";
         return Database::query($sql);
     }
 
@@ -39,7 +46,13 @@ class KeyWordsMapper
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, name, created_at, updated_at FROM `key_words` WHERE $byWhat=$name;";
+        $sql = "SELECT 
+                        id
+                        ,name
+                        ,created_at
+                        ,updated_at 
+                FROM `key_words` 
+                WHERE $byWhat=$name;";
         return Database::query($sql);
     }
 

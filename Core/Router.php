@@ -82,11 +82,15 @@ class Router
      */
     public static function dispatch($url): void
     {
+        $query = explode('?', $url);
+        $query = isset($query[1]) ? $query[1] : null;
+
         $url = self::removeQueryString($url);
 
         if (!self::matchRoute($url)) {
             throw new \Exception("Page not found", 404);
         }
+
         $controller = 'App\Controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
 
         if (!class_exists($controller)) {
@@ -94,10 +98,9 @@ class Router
         }
 
         $cObj = new $controller(self::$route);
-
         $action = self::$route['action'] . 'Action';
         if (method_exists($cObj, $action)) {
-            $cObj->$action();
+            $cObj->$action($query);
             $cObj->getView();
         } else {
             throw new \Exception("Action not found", 404);
@@ -135,7 +138,6 @@ class Router
         if (!$url) {
             return '';
         }
-
         $params = explode('?', $url, 2);
         if (false !== strpos($params[0], '=')) {
             return '';

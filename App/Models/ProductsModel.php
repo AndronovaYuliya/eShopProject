@@ -75,6 +75,7 @@ class ProductsModel
     public static function getDataLike(array $search): array
     {
         $data = ProductsMapper::getDataLike($search);
+        var_dump($data);
         $data = self::myExploded('file_name', $data);
 
         $data;

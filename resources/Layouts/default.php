@@ -44,7 +44,7 @@
                     </button>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" action="/product/search" method="post">
+            <form class="form-inline my-2 my-lg-0" action="/search" method="post">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                        name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -89,7 +89,7 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product/index">Shop page</a>
+                    <a class="nav-link" href="/shop">Shop page</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -100,7 +100,7 @@
                         <?php if ($categories > 0): ?>
                             <?php foreach ($categories as $category): ?>
                                 <a class="dropdown-item"
-                                   href="/category/<?php echo $category['alias'] ?>"><?php echo $category['title']; ?></a>
+                                   href="/category?<?php echo $category['alias'] ?>"><?php echo $category['title']; ?></a>
                             <?php endforeach; ?>
                         <?php endif; ?>
 
@@ -114,10 +114,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <?php if (count($products) > 0): ?>
-                            <?php foreach ($products as $products): ?>
+                        <?php if (count($brands) > 0): ?>
+                            <?php foreach ($brands as $brand): ?>
                                 <a class="dropdown-item"
-                                   href="/brand/<?php echo $products['brand'] ?>"><?php echo $products['brand']; ?></a>
+                                   href="/brand?<?php echo $brand['brand'] ?>"><?php echo $brand['brand']; ?></a>
                             <?php endforeach; ?>
                         <?php endif; ?>
 
@@ -125,7 +125,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart/">Cart</a>
+                    <a class="nav-link" href="/cart">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -134,7 +134,138 @@
         </div>
     </nav>
 </div><!-- End mainmenu-area -->
-
+<!-- Start Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/user/login">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" required class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" required class="form-control" id="exampleInputPassword1"
+                               placeholder="Password">
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal-->
+<!-- Start Modal -->
+<div class="modal fade" id="letterModal" tabindex="-1" role="dialog" aria-labelledby="letterModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="letterModalLabel">Subscribe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/sender/letter">
+                    <div class="form-group">
+                        <label for="letterInputName">Name</label>
+                        <input type="text" required class="form-control" id="letterInputName"
+                               aria-describedby="nameHelp" name="name" placeholder="James Bond">
+                    </div>
+                    <div class="form-group">
+                        <label for="letterInputEmail">email</label>
+                        <input type="email" required class="form-control" id="letterInputEmail" name="email"
+                               placeholder="james@bond.com">
+                    </div>
+                    <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal-->
+<!-- Start Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signupModalLabel">Signup</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/user/signup" name="signupUser">
+                    <div class="form-group">
+                        <label for="SignupInputName">Name</label>
+                        <input type="text" class="form-control" id="signupInputName" aria-describedby="nameHelp"
+                               name="name" placeholder="James Bond">
+                    </div>
+                    <div class="form-group">
+                        <label for="SignupInputPhone">Phone</label>
+                        <input type="text" class="form-control" required id="signupInputPhone"
+                               aria-describedby="nameHelp" name="lastName" placeholder="123-456-789">
+                    </div>
+                    <div class="form-group">
+                        <label for="SignupInputLogin">Login</label>
+                        <input type="text" class="form-control" required id="signupInputLogin"
+                               aria-describedby="nameHelp" name="Login" placeholder="Agent007">
+                    </div>
+                    <div class="form-group">
+                        <label for="SignupInputEmail">email</label>
+                        <input type="email" class="form-control" required id="signupInputEmail" name="email"
+                               placeholder="james@bond.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="SignupInputCity">city</label>
+                        <input type="text" class="form-control" id="signupInputCity" aria-describedby="nameHelp"
+                               name="City" placeholder="London">
+                    </div>
+                    <div class="form-group">
+                        <label for="SignupInputAdress">adress</label>
+                        <input type="text" class="form-control" id="signupInputAdress" aria-describedby="nameHelp"
+                               name="Adress" placeholder="Vauxhall Cross - 85">
+                    </div>
+                    <div class="form-group">
+                        <label for="SignupInputBorn">born</label>
+                        <input type="date" class="form-control" id="signupInputBorn" aria-describedby="nameHelp"
+                               name="Born">
+                    </div>
+                    <div class="form-group">
+                        <label for="SignupInputPassword">password</label>
+                        <input type="password" required class="form-control" id="signupInputPassword"
+                               aria-describedby="nameHelp" name="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="SignupInputConfirmPassword">confirm password</label>
+                        <input type="password" required class="form-control" id="signupInputConfirmPassword"
+                               aria-describedby="nameHelp" name="ConfirmPassword">
+                    </div>
+                    <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal-->
 
 
 <?php echo($content)?>
@@ -177,7 +308,7 @@
 
                         <?php if (count($categories) > 0): ?>
                             <?php for ($i = 0; $i < 6; $i++): ?>
-                                <li><a href="/category/<?php echo $categories[$i]['alias'] ?>">
+                                <li><a href="/category?<?php echo $categories[$i]['alias'] ?>">
                                         <?php echo $categories[$i]['title']; ?></a></li>
                             <?php endfor; ?>
                         <?php endif; ?>
@@ -192,8 +323,8 @@
                         inbox!</p>
                     <div class="newsletter-form">
                         <form method="post" action="/sender/letter">
-                            <input type="text" id="letterInputName" name="name" placeholder="James Bond">
-                            <input type="email" id="letterInputEmail" name="email" placeholder="Type your email">
+                            <input type="text" required id="letterInputName" name="name" placeholder="James Bond">
+                            <input type="email" required id="letterInputEmail" name="email" placeholder="Type your email">
                             <button type="submit" name="subscribe" class="btn btn-primary">Subscribe</button>
                         </form>
                     </div>

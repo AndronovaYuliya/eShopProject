@@ -1,135 +1,4 @@
-<!-- Start Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="/user/login">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" required class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" required class="form-control" id="exampleInputPassword1"
-                               placeholder="Password">
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End Modal-->
-<!-- Start Modal -->
-<div class="modal fade" id="letterModal" tabindex="-1" role="dialog" aria-labelledby="letterModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="letterModalLabel">Subscribe</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="/sender/letter">
-                    <div class="form-group">
-                        <label for="letterInputName">Name</label>
-                        <input type="text" required class="form-control" id="letterInputName"
-                               aria-describedby="nameHelp" name="name" placeholder="James Bond">
-                    </div>
-                    <div class="form-group">
-                        <label for="letterInputEmail">email</label>
-                        <input type="email" required class="form-control" id="letterInputEmail" name="email"
-                               placeholder="james@bond.com">
-                    </div>
-                    <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End Modal-->
-<!-- Start Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="signupModalLabel">Signup</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="/user/signup" name="signupUser">
-                    <div class="form-group">
-                        <label for="SignupInputName">Name</label>
-                        <input type="text" class="form-control" id="signupInputName" aria-describedby="nameHelp"
-                               name="name" placeholder="James Bond">
-                    </div>
-                    <div class="form-group">
-                        <label for="SignupInputPhone">Phone</label>
-                        <input type="text" class="form-control" required id="signupInputPhone"
-                               aria-describedby="nameHelp" name="lastName" placeholder="123-456-789">
-                    </div>
-                    <div class="form-group">
-                        <label for="SignupInputLogin">Login</label>
-                        <input type="text" class="form-control" required id="signupInputLogin"
-                               aria-describedby="nameHelp" name="Login" placeholder="Agent007">
-                    </div>
-                    <div class="form-group">
-                        <label for="SignupInputEmail">email</label>
-                        <input type="email" class="form-control" required id="signupInputEmail" name="email"
-                               placeholder="james@bond.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="SignupInputCity">city</label>
-                        <input type="text" class="form-control" id="signupInputCity" aria-describedby="nameHelp"
-                               name="City" placeholder="London">
-                    </div>
-                    <div class="form-group">
-                        <label for="SignupInputAdress">adress</label>
-                        <input type="text" class="form-control" id="signupInputAdress" aria-describedby="nameHelp"
-                               name="Adress" placeholder="Vauxhall Cross - 85">
-                    </div>
-                    <div class="form-group">
-                        <label for="SignupInputBorn">born</label>
-                        <input type="date" class="form-control" id="signupInputBorn" aria-describedby="nameHelp"
-                               name="Born">
-                    </div>
-                    <div class="form-group">
-                        <label for="SignupInputPassword">password</label>
-                        <input type="password" required class="form-control" id="signupInputPassword"
-                               aria-describedby="nameHelp" name="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="SignupInputConfirmPassword">confirm password</label>
-                        <input type="password" required class="form-control" id="signupInputConfirmPassword"
-                               aria-describedby="nameHelp" name="ConfirmPassword">
-                    </div>
-                    <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End Modal-->
+
 <!-- Start slider-area -->
 <div class="slider-area">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -240,11 +109,11 @@
                                 <div class="shadow"></div>
                             </div>
                             <div class="product-list">
-                                <h2><a href="/product/show?<?php echo $products[$i]['url'] ?>">
+                                <h2><a href="/shop?<?php echo $products[$i]['alias'] ?>">
                                         <?php echo $products[$i]['title'] ?></a>
                                 </h2>
                                 <h3>
-                                    <a href="/product/brand?<?php echo $products[$i]['brand'] ?>">
+                                    <a href="/brand?<?php echo $products[$i]['brand'] ?>">
                                         <?php echo $products[$i]['brand'] ?></a>
                                 </h3>
                                 <div class="price"><?php echo $products[$i]['price']; ?> $</div>

@@ -16,11 +16,11 @@ class OrdersMapper
     public static function addFakerData(): void
     {
         try {
-            $sql = "INSERT INTO `orders` (date,sum, status,ttn,id_client,created_at, updated_at) 
-            VALUE (NOW(),:sum,:status, :ttn,:id_client,NOW(), NOW())";
+            $sql = "INSERT INTO `orders` (date, sum, status,ttn,id_client,created_at, updated_at) 
+                                    VALUE (NOW(),:sum,:status, :ttn,:id_client,NOW(), NOW())";
             Database::addFakerData('fakerOrders', $sql, 10);
         } catch (PDOException $e) {
-            throw new \Exception(["Faker table orders: {$e->getTraceAsString()}"],500);
+            throw new \Exception(["Faker table orders: {$e->getTraceAsString()}"], 500);
         }
     }
 
@@ -29,7 +29,16 @@ class OrdersMapper
      */
     public static function query(): array
     {
-        $sql = "SELECT id, date,sum, status,ttn, id_client, created_at, updated_at FROM `orders`;";
+        $sql = "SELECT 
+                        id
+                        ,date
+                        ,sum
+                        ,status
+                        ,ttn
+                        ,id_client
+                        ,created_at
+                        ,updated_at 
+                FROM `orders`;";
         return Database::query($sql);
     }
 
@@ -40,8 +49,17 @@ class OrdersMapper
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, date,sum, status,ttn, id_client, created_at, updated_at FROM `orders` 
-            WHERE $byWhat=$name;";
+        $sql = "SELECT 
+                        id
+                        ,date
+                        ,sum
+                        ,status
+                        ,ttn
+                        ,id_client
+                        ,created_at
+                        ,updated_at 
+                FROM `orders` 
+                WHERE $byWhat=$name;";
         return Database::query($sql);
     }
 

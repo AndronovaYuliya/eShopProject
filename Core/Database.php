@@ -83,7 +83,7 @@ class Database
          * $dbh->query("use ".self::$_database);
          *
         */
-        self::createTable('attributes');
+        /*self::createTable('attributes');
         self::createTable('attributes_values');
         self::createTable('categories');
         self::createTable('categories_attributes');
@@ -98,6 +98,22 @@ class Database
         self::createTable('products_images');
         self::createTable('users');
         self::createTable('sessions');
+*/
+            /*KeyWordsModel::addFakerData();
+             AttributesModel::addFakerData();
+             ClientsModel::addFakerData();
+             AttributesValuesModel::addFakerData();
+             CategoriesModel::addFakerData();
+             CategoriesAttributesModel::addFakerData();
+             ImagesModel::addFakerData();
+             ProductsModel::addFakerData();
+             OrdersModel::addFakerData();
+             CommentsModel::addFakerData();
+             ProductsImagesModel::addFakerData();
+             AdditionalsModel::addFakerData();
+             ProductsKeyWordsModel::addFakerData();
+             UsersModel::addFakerData();*/
+
     }
 
     /**
@@ -112,22 +128,7 @@ class Database
         } catch (PDOException $e) {
             throw new \Exception(["Creating table {$filename}: {$e->getTraceAsString()}"], 500);
         }
-        /*
-         *   KeyWordsModel::addFakerData();
-             AttributesModel::addFakerData();
-             ClientsModel::addFakerData();
-             AttributesValuesModel::addFakerData();
-             CategoriesModel::addFakerData();
-             CategoriesAttributesModel::addFakerData();
-             ImagesModel::addFakerData();
-             ProductsModel::addFakerData();
-             OrdersModel::addFakerData();
-             CommentsModel::addFakerData();
-             ProductsImagesModel::addFakerData();
-             AdditionalsModel::addFakerData();
-             ProductsKeyWordsModel::addFakerData();
-             UsersModel::addFakerData();
-        */
+
     }
 
     /**
@@ -173,10 +174,7 @@ class Database
      */
     public static function query(string $sql): array
     {
-        self::getInstance();
-        $data = self::$_pdo->query($sql)->fetchAll();
-
-        return $data;
+        return self::getConnection()->query($sql)->fetchAll();
     }
 
     /**

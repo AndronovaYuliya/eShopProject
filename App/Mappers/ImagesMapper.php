@@ -16,10 +16,11 @@ class ImagesMapper
     public static function addFakerData(): void
     {
         try {
-            $sql = "INSERT INTO `images` (file_name, created_at, updated_at) VALUE (:file_name, NOW(), NOW())";
+            $sql = "INSERT INTO `images` (file_name, created_at, updated_at) 
+                                  VALUE (:file_name, NOW(), NOW())";
             Database::addFakerData('fakerImages', $sql, 20);
         } catch (PDOException $e) {
-            throw new \Exception(["Faker table images: {$e->getTraceAsString()}"],500);
+            throw new \Exception(["Faker table images: {$e->getTraceAsString()}"], 500);
         }
     }
 
@@ -28,7 +29,12 @@ class ImagesMapper
      */
     public static function query(): array
     {
-        $sql = "SELECT id, file_name,created_at, updated_at FROM `images`;";
+        $sql = "SELECT 
+                        id
+                        ,file_name
+                        ,created_at
+                        ,updated_at 
+                FROM `images`;";
         return Database::query($sql);
     }
 
@@ -39,7 +45,13 @@ class ImagesMapper
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, file_name, created_at, updated_at FROM `images` WHERE $byWhat=$name;";
+        $sql = "SELECT 
+                        id
+                        ,file_name
+                        ,created_at
+                        ,updated_at 
+                FROM `images` 
+                WHERE $byWhat=$name;";
         return Database::query($sql);
     }
 

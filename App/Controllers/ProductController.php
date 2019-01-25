@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Core\Controller;
+use Core\App;
 use App\Models\ProductsModel;
 use App\Models\CategoriesModel;
 
@@ -12,87 +13,16 @@ use App\Models\CategoriesModel;
  */
 class ProductController extends Controller
 {
-
-    private $data = [];
-
     /**
      * @return void
-     * @param array $params
+     * @param string $param
      */
-    public function showAction(array $params): void
+    public function showAction($param = null): void
     {
-        $key = key($params);
-        $this->data['product'] = ProductsModel::getProductWithImg($key, $params[$key]);
-        $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::query();
-
-        parent::actionIndex('page/singleProductView.php', $this->data);
-    }
-
-    /**
-     * @param array $params
-     * @return void
-     * show 1 product
-     */
-    public function brandAction(array $params): void
-    {
-        $key = key($params);
-        $this->data['products'] = ProductsModel::getProductWithImg('brand', $params[$key]);
-        $this->data['categories'] = CategoriesModel::query();
-
-        parent::actionIndex('page/shopView.php', $this->data);
-    }
-
-    /**
-     * @return void
-     */
-    public function indexAction(): void
-    {
-        $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::query();
-
-        parent::actionIndex('page/shopView.php', $this->data);
-    }
-
-
-    /**
-     * @return void
-     */
-    public function categoryAction(): void
-    {
-        $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::query();
-
-        parent::actionIndex('page/shopView.php', $this->data);
-    }
-
-    /**
-     * @return void
-     */
-    public function searchAction(): void
-    {
-        $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::query();
-
-        $pattern = '/\\W/';
-        $search = preg_replace($pattern, ' ', trim($_POST['search']));
-        $search = explode(' ', $search);
-
-        $this->data['products'] = ProductsModel::getDataLike($search);
-
-        parent::actionIndex('page/shopView.php', $this->data);
-    }
-
-    /**
-     * @param array $params
-     * @return void
-     */
-    public function keyAction(array $params): void
-    {
-        $key = key($params);
-        $this->data['products'] = ProductsModel::getKeyData($params[$key]);
-        $this->data['categories'] = CategoriesModel::query();
-
-        parent::actionIndex('page/shopView.php', $this->data);
+        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
+        $products = ProductsModel::getFullData();
+        $brands = $products;
+        $categories = CategoriesModel::query();
+        $this->set(compact('products', 'categories', 'brands', 'single'));
     }
 }

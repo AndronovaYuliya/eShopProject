@@ -23,9 +23,9 @@
                             <div class="product-upper">
                                 <img src="<?php echo $product['file_name'][0] ?>" alt="img">
                             </div>
-                            <h3><a href="/product/show?<?php echo $product['url'] ?>">
+                            <h3><a href="/shop?<?php echo $product['alias'] ?>">
                                     <?php echo $product['title'] ?></a></h3>
-                            <h2><a href="/product/brand?<?php echo $product['brand'] ?>">
+                            <h2><a href="/brand?<?php echo $product['brand'] ?>">
                                     <?php echo $product['brand'] ?></a></h2>
                             <div class="product-carousel-price">
                                 <ins>$<?php echo $product['price'] ?></ins>

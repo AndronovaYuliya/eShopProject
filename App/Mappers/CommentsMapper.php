@@ -11,16 +11,16 @@ use Core\Database;
 class CommentsMapper
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {
         try {
             $sql = "INSERT INTO `comments` (msg, user, id_product, stars, created_at,updated_at)
-              VALUE (:msg, :user, :id_product, :stars, NOW(), NOW())";
+                                    VALUE (:msg, :user, :id_product, :stars, NOW(), NOW())";
             Database::addFakerData('fakerComments', $sql, 10);
         } catch (PDOException $e) {
-            throw new \Exception(["Faker table comments: {$e->getTraceAsString()}"],500);
+            throw new \Exception(["Faker table comments: {$e->getTraceAsString()}"], 500);
         }
     }
 
@@ -29,7 +29,15 @@ class CommentsMapper
      */
     public static function query(): array
     {
-        $sql = "SELECT id, msg,user,id_product,stars, created_at, updated_at FROM `comments`;";
+        $sql = "SELECT 
+                        id
+                        ,msg
+                        ,user
+                        ,id_product
+                        ,stars
+                        ,created_at
+                        ,updated_at 
+                FROM `comments`;";
         return Database::query($sql);
     }
 
@@ -40,7 +48,16 @@ class CommentsMapper
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, msg,user,id_product,stars, created_at, updated_at FROM `comments` WHERE $byWhat=$name;";
+        $sql = "SELECT 
+                        id
+                        ,msg
+                        ,user
+                        ,id_product
+                        ,stars
+                        ,created_at
+                        ,updated_at 
+                FROM `comments` 
+                WHERE $byWhat=$name;";
         return Database::query($sql);
     }
 
