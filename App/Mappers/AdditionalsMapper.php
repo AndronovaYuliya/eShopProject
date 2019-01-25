@@ -8,15 +8,19 @@ use Core\Database;
  * Class AdditionalsMapper
  * @package App\Mappers
  */
-class AdditionalsMapper extends AbstractTableMapper
+class AdditionalsMapper
 {
     /**
-     * @return void
+     * @throws \Exception
      */
-    public static function addFakerData(): void
+    public static function addFakerData()
     {
-        $sql = "INSERT INTO `additionals` (id_product, id_order, count, price, created_at, updated_at) VALUE (:id_product, :id_order, :count, :price, NOW(), NOW())";
-        Database::addFakerData('fakerAdditionals', $sql, 10);
+        try {
+            $sql = "INSERT INTO `additionals` (id_product, id_order, count, price, created_at, updated_at) VALUE (:id_product, :id_order, :count, :price, NOW(), NOW())";
+            Database::addFakerData('fakerAdditionals', $sql, 10);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table additionals: {$e->getTraceAsString()}"], 500);
+        }
     }
 
     /**

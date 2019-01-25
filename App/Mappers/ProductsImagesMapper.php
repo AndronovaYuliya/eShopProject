@@ -8,15 +8,20 @@ use Core\Database;
  * Class ProductsImagesMapper
  * @package App\Mappers
  */
-class ProductsImagesMapper extends AbstractTableMapper
+class ProductsImagesMapper
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {
-        $sql = "INSERT INTO `products_images` (id_galary, id_product, created_at, updated_at) VALUE (:id_galary, :id_product,NOW(), NOW())";
-        Database::addFakerData('fakerProductsImages', $sql, 20);
+        try {
+            $sql = "INSERT INTO `products_images` (id_galary, id_product, created_at, updated_at)
+                VALUE (:id_galary, :id_product,NOW(), NOW())";
+            Database::addFakerData('fakerProductsImages', $sql, 20);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table products_images: {$e->getTraceAsString()}"],500);
+        }
     }
 
     /**
@@ -35,7 +40,8 @@ class ProductsImagesMapper extends AbstractTableMapper
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, id_galary,id_product, created_at, updated_at FROM `products_images` WHERE $byWhat=$name;";
+        $sql = "SELECT id, id_galary,id_product, created_at, updated_at FROM `products_images`
+              WHERE $byWhat=$name;";
         return Database::query($sql);
     }
 

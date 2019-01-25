@@ -47,7 +47,7 @@ class FakerData
     {
         return [
             ':title' => $this->faker->word,
-            ':url' => $this->faker->md5,
+            ':alias' => $this->faker->word,
             ':description' => $this->faker->text,
             ':parent_id' => 1,
         ];
@@ -108,9 +108,11 @@ class FakerData
         return [
             ':title' => $this->faker->word,
             ':brand' => $this->faker->word,
+            ':alias' => $this->faker->word,
             ':url' => $this->faker->md5,
             ':description' => $this->faker->text,
             ':price' => $this->faker->randomDigit,
+            ':old_price' => $this->faker->randomDigit,
             ':count' => $this->faker->randomDigit,
             ':id_category' => rand(1, count(CategoriesModel::query()))
         ];
@@ -123,7 +125,7 @@ class FakerData
     {
         return [
             ':sum' => $this->faker->randomDigit,
-            ':status' => $this->faker->boolean,
+            ':status' => 0,
             ':ttn' => $this->faker->randomDigit,
             ':id_client' => rand(1, count(ClientsModel::query()))
         ];
@@ -190,7 +192,7 @@ class FakerData
      */
     public function fakerUsers(): array
     {
-        $password=password_hash(2222,PASSWORD_DEFAULT);
+        $password = password_hash(2222, PASSWORD_DEFAULT);
         return [
             ':login' => 'adminYuliya',
             ':password' => $password,

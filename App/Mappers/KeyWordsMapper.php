@@ -8,15 +8,19 @@ use Core\Database;
  * Class KeyWordsMapper
  * @package App\Mappers
  */
-class KeyWordsMapper extends AbstractTableMapper
+class KeyWordsMapper
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {
-        $sql = "INSERT INTO `key_words` (name, created_at, updated_at) VALUE (:name, NOW(), NOW())";
-        Database::addFakerData('fakerKeyWords', $sql, 20);
+        try {
+            $sql = "INSERT INTO `key_words` (name, created_at, updated_at) VALUE (:name, NOW(), NOW())";
+            Database::addFakerData('fakerKeyWords', $sql, 20);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table key_words: {$e->getTraceAsString()}"],500);
+        }
     }
 
     /**

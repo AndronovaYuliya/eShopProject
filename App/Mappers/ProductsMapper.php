@@ -9,15 +9,21 @@ use Core\Database;
  * Class ProductsMapper
  * @package App\Mappers
  */
-class ProductsMapper extends AbstractTableMapper
+class ProductsMapper
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {
-        $sql = "INSERT INTO `products` (title, description, brand,price, count,url, id_category, created_at, updated_at) VALUE (:title, :description,:brand, :price, :count, :url,:id_category, NOW(), NOW())";
-        $data = Database::addFakerData('fakerProducts', $sql, 10);
+        try {
+            $sql = "INSERT INTO `products` (title, description, brand,alias,price, old_price,
+              count,url, id_category, created_at, updated_at) VALUE (:title, :description,:brand,:alias,
+              :price, :old_price, :count, :url,:id_category, NOW(), NOW())";
+            Database::addFakerData('fakerProducts', $sql, 10);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table products: {$e->getTraceAsString()}"],500);
+        }
     }
 
     /**
@@ -28,8 +34,8 @@ class ProductsMapper extends AbstractTableMapper
         $cache = new Cache();
         $data = $cache->get('products_full_data');
         if (!$data) {
-            $sql = "SELECT P.id, P.title, P.brand,P.description, P.price, P.url, P.count,P.url,P.updated_at,
-                P.id_category, C.title AS category,C.url as url_category,
+            $sql = "SELECT P.id, P.title, P.brand,P.alias,P.description, P.price,P.old_price, P.url, P.count,P.url,
+                P.updated_at, P.id_category, C.title AS category,C.alias AS category_alias,
                 GROUP_CONCAT(I.file_name) AS file_name, GROUP_CONCAT(KW.name) AS key_words
                 ,GROUP_CONCAT(KW.id) AS id_key_word 
                 FROM products AS P
@@ -52,7 +58,8 @@ class ProductsMapper extends AbstractTableMapper
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, title,brand, description, price, url, count, id_category,  created_at, updated_at FROM `products` WHERE $byWhat=$name;";
+        $sql = "SELECT id, title,brand,alias, description, price, old_price,url, count, id_category,  
+            created_at, updated_at FROM `products` WHERE $byWhat=$name;";
         return Database::query($sql);
     }
 
@@ -63,11 +70,13 @@ class ProductsMapper extends AbstractTableMapper
      */
     public static function getProductWithImg(string $byWhat, string $name): array
     {
-        $sql = "SELECT result.id,result.title,result.brand, result.description,result.price,result.url, result.count,
-              result.id_category,C.url as url_category,C.title as category, 
+        $sql = "SELECT result.id,result.title,result.brand,result.alias, result.description,
+              result.price,result.old_price,result.url, result.count, result.id_category
+              ,C.title as category, C.alias as category_alias,
               GROUP_CONCAT(I.file_name) as file_name, GROUP_CONCAT(KW.name) as key_words
                 FROM(
-                    SELECT P.id,P.brand, P.title, P.description, P.price, P.url, P.count, P.id_category
+                    SELECT P.id,P.brand, P.alias,P.title, P.description, P.price,P.old_price, P.url, P.count,
+                     P.id_category
                     FROM products AS P
                     WHERE P.$byWhat='$name') AS result 
                 INNER JOIN products_images AS PI ON PI.id_product=result.id
@@ -86,10 +95,10 @@ class ProductsMapper extends AbstractTableMapper
      */
     public static function getDataByCategory(string $byWhat, string $name)
     {
-        $sql = "SELECT result.id,result.brand, result.price,  result.count, result.id_category, result.description, 
-                result.title,result.url, result.updated_at, result.created_at, C.url as url_category
-                ,GROUP_CONCAT(I.file_name) AS file_name FROM 
-                    (SELECT P.id,P.brand, P.price, P.count, P.id_category, P.description, P.title,P.url, P.updated_at,
+        $sql = "SELECT result.id,result.brand, result.alias,result.price, result.old_price, result.count, result.id_category, 
+                result.description, result.title,result.url, result.updated_at, result.created_at,
+                 C.alias as category_alias,GROUP_CONCAT(I.file_name) AS file_name FROM 
+                    (SELECT P.id,P.brand, P.alias,P.price,P.old_price, P.count, P.id_category, P.description, P.title,P.url, P.updated_at,
                     P.created_at FROM products AS P WHERE P.$byWhat='$name')AS result 
                  INNER JOIN products_images AS PI ON PI.id_product=result.id
                  INNER JOIN images AS I ON I.id=PI.id_galary
@@ -106,7 +115,8 @@ class ProductsMapper extends AbstractTableMapper
     {
         $search = $searchKey;
 
-        $sql = "SELECT P.id,P.title, P.brand, P.description, P.price, P.url, P.count,P.updated_at,P.id_category ,
+        $sql = "SELECT P.id,P.title, P.brand, P.alias, P.description, P.price,P.old_price, P.url, P.count,
+            P.updated_at,P.id_category ,
 			GROUP_CONCAT(I.file_name) AS file_name
 			FROM key_words AS KW 
 			INNER JOIN products_key_words AS PKW ON PKW.id_key_word=KW.id
@@ -122,9 +132,11 @@ class ProductsMapper extends AbstractTableMapper
             SELECT 
                 result.id
                 ,result.brand
+                ,result.alias
                 ,result.title
                 ,result.description
                 ,result.price
+                ,result.old_price,
                 ,result.url
                 ,result.count
                 ,result.updated_at
@@ -132,7 +144,7 @@ class ProductsMapper extends AbstractTableMapper
                 ,GROUP_CONCAT(I.file_name) AS file_name
                 ,GROUP_CONCAT(KW.name) AS key_words
             FROM
-                (SELECT P.id,P.brand,P.title, P.description, P.price, P.url, P.count,P.updated_at,P.id_category 
+                (SELECT P.id,P.brand,P.alias,P.title, P.description, P.price,P.old_price, P.url, P.count,P.updated_at,P.id_category 
                 FROM products AS P
                 WHERE P.title LIKE '%" . array_shift($searchKey) . "%' ";
         foreach ($searchKey as $key) {
@@ -149,7 +161,8 @@ class ProductsMapper extends AbstractTableMapper
 
     public static function query(): array
     {
-        $sql = "SELECT P.id, P.price,P.brand, P.count, P.id_category, P.description, P.title, P.updated_at, P.created_at
+        $sql = "SELECT P.id, P.price,P.old_price,P.brand, P.alias,P.count, P.id_category, P.description, 
+            P.title, P.updated_at, P.created_at
               FROM products AS P";
         return Database::query($sql);
     }
@@ -161,8 +174,9 @@ class ProductsMapper extends AbstractTableMapper
      */
     public static function getKeyData(string $byWhat, string $searchKey): array
     {
-        $sql = "SELECT P.id,P.brand, P.title, P.description, P.price, P.url, P.count,P.url,P.updated_at,
-		P.id_category,  KW.name, C.title AS category,C.url as url_category,
+        $sql = "SELECT P.id,P.brand, P.alias,P.title, P.description, P.price, P.old_price,P.old_price,
+          P.url, P.count,P.url,P.updated_at,
+		P.id_category,  KW.name, C.title AS category,C.alias AS category_alias,
         GROUP_CONCAT(I.file_name) AS file_name
         FROM key_words AS KW 
         INNER JOIN products_key_words AS PKW ON PKW.id_key_word=KW.id

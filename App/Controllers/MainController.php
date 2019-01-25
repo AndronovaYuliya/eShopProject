@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
-use Core\Controller;
-use App\Models\ProductsModel;
 use App\Models\CategoriesModel;
+use App\Models\ProductsModel;
+use Core\App;
+use Core\Controller;
 
 /**
  * Class MainController
@@ -12,18 +13,14 @@ use App\Models\CategoriesModel;
  */
 class MainController extends Controller
 {
-    private $data = [];
-
     /**
      * @return void
      */
     public function indexAction(): void
     {
-        $this->data = [];
-
-        $this->data['products'] = ProductsModel::getFullData();
-        $this->data['categories'] = CategoriesModel::query();
-
-        parent::actionIndex('page/mainView.php', $this->data);
+        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
+        $products = ProductsModel::getFullData();
+        $categories = CategoriesModel::query();
+        $this->set(compact('products', 'categories'));
     }
 }

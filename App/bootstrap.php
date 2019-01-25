@@ -1,34 +1,39 @@
 <?php
 
 require dirname(__FILE__, 2) . '/vendor/autoload.php';
+require dirname(__FILE__, 2) . '/config/init.php';
+require dirname(__FILE__, 2) . '/config/routes.php';
 
-use CostumLogger\CostumLogger;
-use Core\Router;
-use Core\Cache;
-use Core\Database;
-use Core\Session;
-use App\Models\ClientsModel;
-use App\Models\AttributesModel;
-use App\Models\ImagesModel;
-use App\Models\AttributesValuesModel;
-use App\Models\CategoriesModel;
-use App\Models\ProductsModel;
-use App\Models\OrdersModel;
-use App\Models\AdditionalsModel;
-use App\Models\CategoriesAttributesModel;
-use App\Models\CommentsModel;
-use App\Models\ProductsImagesModel;
-use App\Models\KeyWordsModel;
-use App\Models\ProductsKeyWordsModel;
-use App\Models\UsersModel;
+use Core\App;
 
-$log = new CostumLogger();
+new App();
+
+//throw new Exception('test', 400);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*$log = new CostumLogger();
 $cache = new Cache();
 
 
 //Router::add('^$', ['controller'=>'Main','action'=>'index']);
 
-Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
 Router::add('^\/product(\/index)?$', ['controller' => 'Product', 'action' => 'index']);
 Router::add('^\/product\/show\?[a-z0-9-]+$', ['controller' => 'Product', 'action' => 'show']);
 Router::add('^\/product\/brand\?[a-z0-9-]+$', ['controller' => 'Product', 'action' => 'brand']);
@@ -54,32 +59,3 @@ Router::add('^\/admin\/logout$', ['controller' => 'Admin', 'action' => 'logout',
 Router::add('^\/admin\/signup$', ['controller' => 'Admin', 'action' => 'signup', 'prefix' => 'admin']);
 Router::add('^\/admin$', ['controller' => 'Admin', 'action' => 'user', 'prefix' => 'admin']);
 
-
-Router::dispatch();
-
-
-//$log->warning('Costum warning');
-
-
-//phpinfo();
-
-$db = Database::getInstance();
-
-
-$mysqli = $db->getConnection();
-
-$qr = $db->createTables();
-/*KeyWordsModel::addFakerData();
-AttributesModel::addFakerData();
-ClientsModel::addFakerData();
-AttributesValuesModel::addFakerData();
-CategoriesModel::addFakerData();
-CategoriesAttributesModel::addFakerData();
-ImagesModel::addFakerData();
-ProductsModel::addFakerData();
-OrdersModel::addFakerData();
-CommentsModel::addFakerData();
-ProductsImagesModel::addFakerData();
-AdditionalsModel::addFakerData();
-ProductsKeyWordsModel::addFakerData();
-UsersModel::addFakerData();*/

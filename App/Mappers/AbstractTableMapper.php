@@ -8,8 +8,6 @@ namespace App\Mappers;
  */
 abstract class AbstractTableMapper
 {
-    private static $_checkTable;
-
     /**
      * @return void
      */

@@ -27,7 +27,7 @@ abstract class Session
             self::$_sess_id = session_id();
             self::$_sessionStarted = true;
             self::addToSession();
-            self::sessionRead();
+            //self::sessionRead();
         }
     }
 

@@ -2,9 +2,24 @@
 
 namespace Core;
 
+use App\Models\AdditionalsModel;
+use App\Models\AttributesModel;
+use App\Models\AttributesValuesModel;
+use App\Models\CategoriesAttributesModel;
+use App\Models\CategoriesModel;
+use App\Models\ClientsModel;
+use App\Models\CommentsModel;
+use App\Models\ImagesModel;
+use App\Models\KeyWordsModel;
+use App\Models\OrdersModel;
+use App\Models\ProductsImagesModel;
+use App\Models\ProductsKeyWordsModel;
+use App\Models\ProductsModel;
+use App\Models\UsersModel;
 use PDO;
 use PDOException;
 use CostumLogger\CostumLogger;
+use Core\FakerData;
 
 /**
  * Class Database
@@ -32,7 +47,7 @@ class Database
      */
     private function __construct()
     {
-        $config = parse_ini_file(dirname(__FILE__, 2) . '/config/config.ini');
+        $config = App::$app->getProperies();
 
         self::$_host = $config['host'];
         self::$_username = $config['username'];
@@ -40,11 +55,10 @@ class Database
         self::$_database = $config['database'];
         self::$_charset = $config['charset'];
         self::$_dsn = "mysql:host=" . self::$_host . ";dbname=" . self::$_database . ";charset=" . self::$_charset;
-        try {
-            self::$_pdo = new PDO(self::$_dsn, self::$_username, self::$_password, self::$_options);
-        } catch (PDOException $exception) {
-            die('Подключение не удалось: ' . $exception->getTraceAsString());
+        if (!self::$_pdo = new PDO(self::$_dsn, self::$_username, self::$_password, self::$_options)) {
+            throw new \Exception("Тo connection to the database", 500);
         }
+
     }
 
     // Get mysqli connection
@@ -59,7 +73,7 @@ class Database
     }
 
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function createTables(): void
     {
@@ -88,28 +102,51 @@ class Database
 
     /**
      * @param $filename
+     * @throws \Exception
      */
     private static function createTable($filename): void
     {
-        $sql = file_get_contents(dirname(__FILE__, 2) . '/database/' . $filename . '.sql');
-        self::$_pdo->exec($sql);
+        $sql = file_get_contents(DB . '/' . $filename . '.sql');
+        try {
+            Database::getConnection()->exec($sql);
+        } catch (PDOException $e) {
+            throw new \Exception(["Creating table {$filename}: {$e->getTraceAsString()}"], 500);
+        }
+        /*
+         *   KeyWordsModel::addFakerData();
+             AttributesModel::addFakerData();
+             ClientsModel::addFakerData();
+             AttributesValuesModel::addFakerData();
+             CategoriesModel::addFakerData();
+             CategoriesAttributesModel::addFakerData();
+             ImagesModel::addFakerData();
+             ProductsModel::addFakerData();
+             OrdersModel::addFakerData();
+             CommentsModel::addFakerData();
+             ProductsImagesModel::addFakerData();
+             AdditionalsModel::addFakerData();
+             ProductsKeyWordsModel::addFakerData();
+             UsersModel::addFakerData();
+        */
     }
 
     /**
      * @param $fakerMethod
      * @param string $sql
-     * @param int $count = 1
-     * @return void
+     * @param int $count
+     * @throws \Exception
      */
     public static function addFakerData($fakerMethod, string $sql, int $count = 1): void
     {
         $faker = new FakerData();
         for ($i = 0; $i < $count; $i++) {
             $data = $faker->$fakerMethod();
-            $stmt = self::$_pdo->prepare($sql);
+            $stmt = Database::getConnection()->prepare($sql);
             if ($stmt !== false) {
                 $stmt->execute($data);
                 $stmt->fetchAll();
+            } else {
+                throw new \Exception("Sql wrong: {$sql}", 100);
             }
         }
     }
@@ -117,7 +154,7 @@ class Database
     /**
      * @param string $sql
      * @param array $data
-     * @return void
+     * @throws \Exception
      */
     public static function addData(string $sql, array $data): void
     {
@@ -125,6 +162,8 @@ class Database
         if ($stmt !== false) {
             $stmt->execute($data);
             $stmt->fetchAll();
+        } else {
+            throw new \Exception("Sql wrong: {$sql}", 100);
         }
     }
 
@@ -144,6 +183,7 @@ class Database
      * @param string $sql
      * @param array $data
      * @return array
+     * @throws \Exception
      */
     public static function queryData(string $sql, array $data): array
     {
@@ -151,6 +191,8 @@ class Database
         if ($stmt !== false) {
             $stmt->execute($data);
             return $stmt->fetchAll();
+        } else {
+            throw new \Exception("Sql wrong: {$sql}", 100);
         }
     }
 }

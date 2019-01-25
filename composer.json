@@ -17,7 +17,6 @@
     },
     "require": {
         "phpunit/phpunit": "^7.5",
-        "andronova-yuliya/monolog-packagist": "dev-master",
         "andronova-yuliya/sender-packagist": "dev-master",
         "fzaninotto/faker": "^1.8",
         "vlucas/valitron": "^1.4"

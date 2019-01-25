@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `orders`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
   `sum` double DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
+  `status` int(11) DEFAULT 0,
   `ttn` varchar(45) DEFAULT NULL,
   `id_client` int(11) DEFAULT NULL,
   `created_at` date NOT NULL,

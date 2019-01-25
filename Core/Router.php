@@ -14,21 +14,6 @@ class Router
     protected static $url = '';
 
     /**
-     * @return void
-     */
-    private static function setUrl(): void
-    {
-        // Get the current URL, differents depending on platform/server software
-        if (!empty($_SERVER['REQUEST_URL'])) {
-            self::$url = $_SERVER['REQUEST_URL'];
-        } else {
-            self::$url = $_SERVER['REQUEST_URI'];
-        }
-        self::$url = rtrim(self::$url, '/');
-
-    }
-
-    /**
      * @param $regexp
      * @param array $route
      * @return void
@@ -57,34 +42,33 @@ class Router
     /**
      * @return bool
      */
-    public static function matchRoute(): bool
+    public static function matchRoute($url): bool
     {
-        self::setUrl();
-
         //$pattern - query, $route - controller+action
         foreach (self::$routes as $pattern => $route) {
-            if (preg_match("~$pattern~i", self::$url)) {
+            if (preg_match("~$pattern~i", $url)) {
                 self::$route = [];
+
                 foreach ($route as $key => $value) {
                     self::$route[$key] = $value;
                 }
 
-                if (!isset(self::$route['controller'])) {
-                    self::$route['controller'] = 'MainController';
-                } else {
-                    self::$route['controller'] = self::upperCamelCase($route['controller']) . "Controller";
-                }
-
                 if (!isset(self::$route['action'])) {
-                    self::$route['action'] = 'indexAction';
+                    self::$route['action'] = 'index';
                 } else {
-                    self::$route['action'] = self::lowerCamelCase($route['action']) . "Action";
+                    self::$route['action'] = self::lowerCamelCase($route['action']);
                 }
 
                 if (!isset(self::$route['prefix'])) {
                     self::$route['prefix'] = '';
                 } else {
                     self::$route['prefix'] = self::upperCamelCase(self::$route['prefix']) . '\\';
+                }
+
+                if (!isset(self::$route['controller'])) {
+                    self::$route['controller'] = 'Main';
+                } else {
+                    self::$route['controller'] = self::upperCamelCase($route['controller']);
                 }
                 return true;
             }
@@ -93,32 +77,30 @@ class Router
     }
 
     /**
-     * @return void
+     * @param $url
+     * @throws \Exception
      */
-    public static function dispatch(): void
+    public static function dispatch($url): void
     {
-        self::setUrl();
-        $query = explode('&', $_SERVER['QUERY_STRING']);
-        $params["url"] = $query[0];
+        $url = self::removeQueryString($url);
 
-        if (!self::matchRoute()) {
-            http_response_code(404);
-            include dirname(__FILE__, 3) . '/resources/home/404.php';
+        if (!self::matchRoute($url)) {
+            throw new \Exception("Page not found", 404);
         }
-
-        $controller = 'App\Controllers\\' . self::$route['prefix'] . self::$route['controller'];
+        $controller = 'App\Controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
 
         if (!class_exists($controller)) {
-            echo "BAD";
-            die();
+            throw new \Exception("Controller not found", 404);
         }
 
-        $cObj = new $controller();
-        $action = self::$route['action'];
+        $cObj = new $controller(self::$route);
+
+        $action = self::$route['action'] . 'Action';
         if (method_exists($cObj, $action)) {
-            $cObj->$action($params);
+            $cObj->$action();
+            $cObj->getView();
         } else {
-            echo "BADACTION";
+            throw new \Exception("Action not found", 404);
         }
     }
 
@@ -146,5 +128,19 @@ class Router
         $name = str_replace(' ', '', ucfirst($name));
 
         return lcfirst($name);
+    }
+
+    private static function removeQueryString($url)
+    {
+        if (!$url) {
+            return '';
+        }
+
+        $params = explode('?', $url, 2);
+        if (false !== strpos($params[0], '=')) {
+            return '';
+        }
+
+        return rtrim($params[0], '/');
     }
 }

@@ -8,15 +8,19 @@ use Core\Database;
  * Class ImagesMapper
  * @package App\Mappers
  */
-class ImagesMapper extends AbstractTableMapper
+class ImagesMapper
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {
-        $sql = "INSERT INTO `images` (file_name, created_at, updated_at) VALUE (:file_name, NOW(), NOW())";
-        Database::addFakerData('fakerImages', $sql, 20);
+        try {
+            $sql = "INSERT INTO `images` (file_name, created_at, updated_at) VALUE (:file_name, NOW(), NOW())";
+            Database::addFakerData('fakerImages', $sql, 20);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table images: {$e->getTraceAsString()}"],500);
+        }
     }
 
     /**

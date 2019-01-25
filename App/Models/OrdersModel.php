@@ -8,10 +8,10 @@ use App\Mappers\OrdersMapper;
  * Class OrdersModel
  * @package App\Models
  */
-class OrdersModel extends AbstractTableModel
+class OrdersModel
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {

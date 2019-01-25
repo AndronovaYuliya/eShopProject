@@ -9,7 +9,7 @@ class AdminMappers
 {
     /**
      * @param array $attributes
-     * @return void
+     * @throws \Exception
      */
     public static function addUser(array $attributes): void
     {
@@ -22,7 +22,7 @@ class AdminMappers
     /**
      * @param array $attributes
      * @param string $id
-     * @return void
+     * @throws \Exception
      */
     public static function updateUser(array $attributes, string $id): void
     {
@@ -74,7 +74,7 @@ class AdminMappers
     /**
      * @param string $byWhat
      * @param string $name
-     * @return void
+     * @throws \Exception
      */
     public static function deleteProfile(string $byWhat, string $name): void
     {

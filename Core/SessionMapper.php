@@ -14,6 +14,7 @@ abstract class SessionMapper
      * @param string $byWhat
      * @param string $name
      * @return array
+     * @throws \Exception
      */
     public static function getDataWhere(string $byWhat, string $name): array
     {
@@ -27,6 +28,7 @@ abstract class SessionMapper
      * @param $newAttributes
      * @param $session_id
      * @return array
+     * @throws \Exception
      */
     public static function updateSession($attributes, $newAttributes, $session_id): array
     {
@@ -38,7 +40,7 @@ abstract class SessionMapper
     /**
      * @param string $data
      * @param string $sess_id
-     * @return void
+     * @throws \Exception
      */
     public static function addSession(string $data, string $sess_id): void
     {
@@ -55,7 +57,7 @@ abstract class SessionMapper
     /**
      * @param $data
      * @param $sess_id
-     * @return void
+     * @throws \Exception
      */
     public static function updateSessionData($data, $sess_id): void
     {
@@ -82,6 +84,7 @@ abstract class SessionMapper
     /**
      * @param $session_id
      * @return array
+     * @throws \Exception
      */
     public static function sessionGB($session_id): array
     {

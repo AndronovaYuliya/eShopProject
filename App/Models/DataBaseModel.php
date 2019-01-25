@@ -20,7 +20,7 @@ class DataBaseModel
     public static function query(string $fileName = '/read'): array
     {
         if ($fileName == '/read') {
-            throw new MyException("File is empty", 02);
+            throw new MyException("File is empty", 200);
         }
 
         $data = file_get_contents('../' . $fileName);

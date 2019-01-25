@@ -8,15 +8,19 @@ use Core\Database;
  * Class AttributesValuesMapper
  * @package App\Mappers
  */
-class AttributesValuesMapper extends AbstractTableMapper
+class AttributesValuesMapper
 {
     /**
-     * @return void
+     * @throws \Exception
      */
-    public static function addFakerData(): void
+    public static function addFakerData()
     {
-        $sql = "INSERT INTO `attributes_values` (value, created_at, updated_at, attributes_id) VALUE (:value, NOW(), NOW(), :attributes_id)";
-        Database::addFakerData('fakerAttributesValues', $sql, 10);
+        try {
+            $sql = "INSERT INTO `attributes_values` (value, created_at, updated_at, attributes_id) VALUE (:value, NOW(), NOW(), :attributes_id)";
+            Database::addFakerData('fakerAttributesValues', $sql, 10);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table attributes_values: {$e->getTraceAsString()}"], 500);
+        }
     }
 
     /**

@@ -8,10 +8,10 @@ use App\Mappers\UsersMapper;
  * Class UsersModel
  * @package App\Models
  */
-class UsersModel extends AbstractTableModel
+class UsersModel
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {

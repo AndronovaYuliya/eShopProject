@@ -9,15 +9,20 @@ use Core\Database;
  * Class CategoriesMapper
  * @package App\Mappers
  */
-class CategoriesMapper extends AbstractTableMapper
+class CategoriesMapper
 {
     /**
-     * @return void
+     * @throws \Exception
      */
-    public static function addFakerData(): void
+    public static function addFakerData()
     {
-        $sql = "INSERT INTO `categories` (title, description, parent_id, url, created_at,updated_at) VALUE (:title, :description, :parent_id, :url, NOW(),NOW())";
-        Database::addFakerData('fakerCategories', $sql, 10);
+        try {
+            $sql = "INSERT INTO `categories` (title, description, parent_id, alias, created_at,updated_at)
+                VALUE (:title, :description, :parent_id, :alias, NOW(),NOW())";
+            Database::addFakerData('fakerCategories', $sql, 10);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table categories: {$e->getTraceAsString()}"],500);
+        }
     }
 
     /**
@@ -28,7 +33,7 @@ class CategoriesMapper extends AbstractTableMapper
         $cache = new Cache();
         $data = $cache->get('categories');
         if (!$data) {
-            $sql = "SELECT id, title, description, parent_id,url, created_at, updated_at FROM `categories`;";
+            $sql = "SELECT id, title, description, parent_id,alias, created_at, updated_at FROM `categories`;";
             $data = Database::query($sql);
             $cache->set('categories', $data);
         }
@@ -42,7 +47,8 @@ class CategoriesMapper extends AbstractTableMapper
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, title,url, created_at, updated_at FROM `categories` WHERE $byWhat=$name;";
+        $sql = "SELECT id, title, description, parent_id,alias, created_at, updated_at
+          FROM `categories` WHERE $byWhat=$name;";
         return Database::query($sql);
     }
 

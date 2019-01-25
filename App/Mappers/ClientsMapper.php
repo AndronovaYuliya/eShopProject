@@ -9,15 +9,21 @@ use Core\Cache;
  * Class ClientsMapper
  * @package App\Mappers
  */
-class ClientsMapper extends AbstractTableMapper
+class ClientsMapper
 {
     /**
      * @return void
      */
     public static function addFakerData(): void
     {
-        $sql = "INSERT INTO `clients` (name, login, email, phone,city,address,born,password,created_at,updated_at) VALUE (:name, :login, :email, :phone, :city, :address, NOW(),:password,NOW(),NOW())";
-        Database::addFakerData('fakerClients', $sql, 10);
+        try {
+            $sql = "INSERT INTO `clients` (name, login, email, phone,city,address,born,password,
+                created_at,updated_at) VALUE (:name, :login, :email, :phone, :city, :address, NOW()
+                ,:password,NOW(),NOW())";
+            Database::addFakerData('fakerClients', $sql, 10);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table clients: {$e->getTraceAsString()}"],500);
+        }
     }
 
     /**
@@ -25,13 +31,15 @@ class ClientsMapper extends AbstractTableMapper
      */
     public static function query(): array
     {
-        $cache = new Cache();
-        $data = $cache->get('clients');
-        if (!$data) {
-            $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at FROM `clients`;";
+        //$cache = new Cache();
+       // $data = $cache->get('clients');
+       // if (!$data) {
+            $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at
+                FROM `clients`;";
             $data = Database::query($sql);
-            $cache->set('clients', $data);
-        }
+       //     $cache->set('clients', $data);
+       // }
+        var_dump(count($data));
         return $data;
     }
 
@@ -42,7 +50,8 @@ class ClientsMapper extends AbstractTableMapper
      */
     public static function getDataWhere(string $byWhat, string $name)
     {
-        $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at FROM `clients` WHERE $byWhat=$name;";
+        $sql = "SELECT id, name,login,email,phone,city,address,born,password, created_at, updated_at 
+          FROM `clients` WHERE $byWhat=$name;";
         return Database::query($sql);
     }
 

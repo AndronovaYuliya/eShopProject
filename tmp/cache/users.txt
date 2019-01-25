@@ -1,1 +1,0 @@
-a:2:{s:4:"data";a:1:{i:0;a:6:{s:2:"id";i:1;s:5:"login";s:6:"login2";s:5:"email";s:29:"andronovayuliyatest@gmail.com";s:10:"first_name";s:3:"Sff";s:9:"last_name";s:3:"Sff";s:4:"role";s:4:"User";}}s:8:"end_time";i:1548328620;}

@@ -8,10 +8,10 @@ use App\Mappers\KeyWordsMapper;
  * Class KeyWordsModel
  * @package App\Models
  */
-class KeyWordsModel extends AbstractTableModel
+class KeyWordsModel
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {

@@ -10,15 +10,56 @@ use Core\View;
  */
 class Controller
 {
+    public $route;
+    public $controller;
     public $model;
+    public $view;
+    public $prefix;
+    public $layout;
+    public $data = [];
+    public $meta = [];
 
     /**
-     * @param string $content
-     * @param array $data
-     * @return void
+     * Controller constructor.
+     * @param $route
      */
-    protected function actionIndex(string $content, array $data = []): void
+    public function __construct($route)
     {
-        View::generate($content, $data);
+        $this->route = $route;
+        $this->controller = $route['controller'];
+        $this->model = $route['controller'];
+        $this->view = $route['action'];
+        $this->prefix = $route['prefix'];
+
+        new Model();
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function getView()
+    {
+        $viewObj = new View($this->route, $this->layout, $this->view, $this->meta);
+        $viewObj->rendor($this->data);
+    }
+
+    /**
+     * @param $data
+     */
+    public function set($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * @param string $title
+     * @param string $desc
+     * @param string $keywords
+     */
+    public function setMeta($title = '', $desc = '', $keywords = '')
+    {
+        $this->meta['title'] = $title;
+        $this->meta['desc'] = $desc;
+        $this->meta['keywords'] = $keywords;
     }
 }

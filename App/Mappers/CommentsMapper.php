@@ -8,15 +8,20 @@ use Core\Database;
  * Class CommentsMapper
  * @package App\Mappers
  */
-class CommentsMapper extends AbstractTableMapper
+class CommentsMapper
 {
     /**
      * @return void
      */
     public static function addFakerData(): void
     {
-        $sql = "INSERT INTO `comments` (msg, user, id_product, stars, created_at,updated_at) VALUE (:msg, :user, :id_product, :stars, NOW(), NOW())";
-        Database::addFakerData('fakerComments', $sql, 10);
+        try {
+            $sql = "INSERT INTO `comments` (msg, user, id_product, stars, created_at,updated_at)
+              VALUE (:msg, :user, :id_product, :stars, NOW(), NOW())";
+            Database::addFakerData('fakerComments', $sql, 10);
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table comments: {$e->getTraceAsString()}"],500);
+        }
     }
 
     /**

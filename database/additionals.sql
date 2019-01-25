@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `additionals`(
   `id_product` int(11) NOT NULL,
   `id_order` int(11) NOT NULL,
   `count` int(11) NOT NULL,
-  `price` double NOT NULL,
+  `price` float NOT NULL,
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),

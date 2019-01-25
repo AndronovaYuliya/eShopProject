@@ -8,10 +8,10 @@ use App\Mappers\AdditionalsMapper;
  * Class AdditionalsModel
  * @package App\Models
  */
-class AdditionalsModel extends AbstractTableModel
+class AdditionalsModel
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public static function addFakerData(): void
     {
