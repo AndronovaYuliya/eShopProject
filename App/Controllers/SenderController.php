@@ -2,15 +2,14 @@
 
 namespace App\Controllers;
 
-use Core\Controller;
-use http\Env\Response;
 use Sender\Sender;
+use Core\View;
 
 /**
  * Class SenderController
  * @package App\Controllers
  */
-class SenderController extends Controller
+class SenderController extends AppController
 {
     /**
      * @return void
@@ -19,14 +18,14 @@ class SenderController extends Controller
     {
         Sender::sendMsg();
 //???        Response::redirect
-        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
-        $products = ProductsModel::getFullData();
-        $categories = CategoriesModel::query();
-        $this->set(compact('products', 'categories'));
+        $products = $this->products;
+        $categories = $this->categories;
+        $brands = $this->brands;
+        $this->set(compact('products', 'categories', 'brands'));
     }
 
     /**
-     * @return void
+     * @throws \Exception
      */
     public function getView(): void
     {

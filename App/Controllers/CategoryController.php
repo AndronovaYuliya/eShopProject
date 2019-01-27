@@ -2,17 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\CategoriesModel;
 use App\Models\ProductsModel;
-use Core\App;
-use Core\Controller;
 use Core\View;
 
 /**
  * Class CategoryController
  * @package App\Controllers
  */
-class CategoryController extends Controller
+class CategoryController extends AppController
 {
     /**
      * @return void
@@ -20,14 +17,13 @@ class CategoryController extends Controller
      */
     public function categoryAction($param = null): void
     {
-        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
         if (!$param) {
-            $products = ProductsModel::getFullData();
+            $products = $this->products;
         } else {
             $products = ProductsModel::getDataByCategory('alias', $param);
         }
-        $brands = ProductsModel::query();
-        $categories = CategoriesModel::query();
+        $categories = $this->categories;
+        $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
     }
 

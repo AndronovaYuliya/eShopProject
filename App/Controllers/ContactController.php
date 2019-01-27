@@ -3,15 +3,15 @@
 namespace App\Controllers;
 
 /**
- * Class CartController
+ * Class ContactController
  * @package App\Controllers
  */
-class CartController extends AppController
+class ContactController extends AppController
 {
     /**
      * @return void
      */
-    public function cartAction(): void
+    public function contactAction(): void
     {
         $products = $this->products;
         $categories = $this->categories;

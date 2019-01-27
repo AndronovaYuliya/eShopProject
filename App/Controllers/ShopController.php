@@ -2,38 +2,47 @@
 
 namespace App\Controllers;
 
-use Core\Controller;
-use Core\App;
 use App\Models\ProductsModel;
-use App\Models\CategoriesModel;
+use Core\View;
 
 /**
  * Class ShopController
  * @package App\Controllers
  */
-class ShopController extends Controller
+class ShopController extends AppController
 {
     /**
      * @return void
      */
     public function shopAction(): void
     {
-        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
-        $products = ProductsModel::getFullData();
-        $brands = $products;
-        $categories = CategoriesModel::query();
+        $products = $this->products;
+        $categories = $this->categories;
+        $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
     }
 
-    public function searchAction()
+    /**
+     * @return void
+     */
+    public function searchAction(): void
     {
-        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
-        $categories = CategoriesModel::query();
-        $brands = ProductsModel::getFullData();
+        $categories = $this->categories;
+        $brands = $this->brands;
         $pattern = '/\\W/';
         $search = preg_replace($pattern, ' ', trim($_POST['search']));
         $search = explode(' ', $search);
         $products = ProductsModel::getDataLike($search);
         $this->set(compact('products', 'categories', 'brands'));
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function getView(): void
+    {
+        $viewObj = new View(["controller" => "Shop", "action" => "shop"], 'default', 'shop');
+        $viewObj->rendor($this->data);
     }
 }

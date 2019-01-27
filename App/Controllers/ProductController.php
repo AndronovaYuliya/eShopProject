@@ -2,16 +2,13 @@
 
 namespace App\Controllers;
 
-use Core\Controller;
-use Core\App;
 use App\Models\ProductsModel;
-use App\Models\CategoriesModel;
 
 /**
  * Class ProductController
  * @package App\Controllers
  */
-class ProductController extends Controller
+class ProductController extends AppController
 {
     /**
      * @return void
@@ -19,10 +16,10 @@ class ProductController extends Controller
      */
     public function showAction($param = null): void
     {
-        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
-        $products = ProductsModel::getFullData();
-        $brands = $products;
-        $categories = CategoriesModel::query();
-        $this->set(compact('products', 'categories', 'brands', 'single'));
+        $products = $this->products;
+        $categories = $this->categories;
+        $product = ProductsModel::getProductWithImg('alias', $param);
+        $brands = $this->brands;
+        $this->set(compact('products', 'categories', 'brands', 'product'));
     }
 }

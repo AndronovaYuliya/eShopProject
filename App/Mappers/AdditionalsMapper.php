@@ -65,6 +65,7 @@ class AdditionalsMapper
     }
 
     /**
+     * @return void
      */
     protected static function addData(): void
     {

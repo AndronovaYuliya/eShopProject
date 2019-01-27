@@ -1,4 +1,3 @@
-
 <!-- Start slider-area -->
 <div class="slider-area">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -109,7 +108,7 @@
                                 <div class="shadow"></div>
                             </div>
                             <div class="product-list">
-                                <h2><a href="/shop?<?php echo $products[$i]['alias'] ?>">
+                                <h2><a href="/show?<?php echo $products[$i]['alias'] ?>">
                                         <?php echo $products[$i]['title'] ?></a>
                                 </h2>
                                 <h3>

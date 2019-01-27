@@ -2,17 +2,14 @@
 
 namespace App\Controllers;
 
-use Core\Controller;
-use Core\App;
 use App\Models\ProductsModel;
-use App\Models\CategoriesModel;
 use Core\View;
 
 /**
  * Class BrandController
  * @package App\Controllers
  */
-class BrandController extends Controller
+class BrandController extends AppController
 {
     /**
      * @param string $param
@@ -20,14 +17,13 @@ class BrandController extends Controller
      */
     public function brandAction($param = null): void
     {
-        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
         if (!$param) {
-            $products = ProductsModel::getFullData();
+            $products = $this->products;
         } else {
             $products = ProductsModel::getProductWithImg('brand', $param);
         }
-        $brands = ProductsModel::query();
-        $categories = CategoriesModel::query();
+        $categories = $this->categories;
+        $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
     }
 

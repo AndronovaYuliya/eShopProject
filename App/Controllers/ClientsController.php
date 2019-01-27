@@ -2,14 +2,13 @@
 
 namespace App\Controllers;
 
-use Core\Controller;
 use App\Models\ClientsModel;
 
 /**
  * Class ClientsController
  * @package App\Controllers
  */
-class ClientsController extends Controller
+class ClientsController extends AppController
 {
     private $data = [];
     public $errors = [];

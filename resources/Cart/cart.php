@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="product-bit-title text-center">
-                    <h2>Shop</h2>
+                    <h2>Shopping Cart</h2>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="col-md-4">
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Search Products</h2>
-                    <form action="/search?" method="post">
+                    <form action="/search" method="post">
                         <input type="text" name="search" placeholder="Search products...">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>

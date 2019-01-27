@@ -23,7 +23,7 @@ class ProductsMapper
                                             ,:count, :url,:id_category, NOW(), NOW())";
             Database::addFakerData('fakerProducts', $sql, 10);
         } catch (PDOException $e) {
-            throw new \Exception(["Faker table products: {$e->getTraceAsString()}"],500);
+            throw new \Exception(["Faker table products: {$e->getTraceAsString()}"], 500);
         }
     }
 
@@ -194,7 +194,7 @@ class ProductsMapper
                         ,P.title
                         ,P.description
                         ,P.price
-                        ,P.url
+                        ,P.alias
                         ,P.count
                         ,P.updated_at
                         ,P.id_category
@@ -217,14 +217,14 @@ class ProductsMapper
                 ,result.title
                 ,result.description
                 ,result.price
-                ,result.url
+                ,result.alias
                 ,result.count
                 ,result.updated_at
                 ,result.id_category
                 ,GROUP_CONCAT(I.file_name) AS file_name
                 ,GROUP_CONCAT(KW.name) AS key_words
             FROM
-                (SELECT P.id,P.brand,P.title, P.description, P.price, P.url, P.count,P.updated_at,P.id_category 
+                (SELECT P.id,P.brand,P.title, P.description, P.price, P.alias, P.count,P.updated_at,P.id_category 
                 FROM products AS P
                 WHERE P.title LIKE '%" . array_shift($searchKey) . "%' ";
         foreach ($searchKey as $key) {
@@ -236,10 +236,12 @@ class ProductsMapper
             INNER JOIN products_images AS PI ON PI.id_product=result.id 
             INNER JOIN images AS I ON I.id=PI.id_galary                
             GROUP BY result.id";
-        echo $sql;
         return Database::query($sql);
     }
 
+    /**
+     * @return array
+     */
     public static function query(): array
     {
         $sql = "SELECT 
@@ -302,63 +304,3 @@ class ProductsMapper
         // TODO: Implement addData() method.
     }
 }
-
-
-/*
- *
- * 		SELECT
-				 P.id
-				,P.brand
-				,P.title
-				,P.description
-				,P.price
-				,P.url
-				,P.count
-				,P.updated_at
-				,P.id_category
-				,GROUP_CONCAT(I.file_name) AS file_name
-                ,GROUP_CONCAT(KW.name) AS key_words
-		FROM key_words AS KW
-		INNER JOIN products_key_words AS PKW ON PKW.id_key_word=KW.id
-		INNER JOIN products AS P ON P.id=PKW.id_product
-		INNER JOIN products_images AS PI ON PI.id_product=P.id
-		INNER JOIN images AS I ON I.id=PI.id_galary
-		WHERE KW.name LIKE '%est%'
-		GROUP BY P.id
-UNION
-		SELECT
-				 result.id
-				,result.brand
-                ,result.title
-                ,result.description
-                ,result.price
-                ,result.url
-                ,result.count
-                ,result.updated_at
-                ,result.id_category
-                ,GROUP_CONCAT(I.file_name) AS file_name
-				,GROUP_CONCAT(KW.name) AS key_words
-		FROM (
-				select
-					P.id
-					,P.brand
-					,P.title
-					,P.description
-					,P.price
-					,P.url
-					,P.count
-					,P.updated_at
-					,P.id_category
-				FROM products AS P
-				where P.title like '%est%')AS result
-		INNER JOIN products_key_words AS PKW ON PKW.id_product=result.id
-		INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
-		INNER JOIN products_images AS PI ON PI.id_product=result.id
-		INNER JOIN images AS I ON I.id=PI.id_galary
-		GROUP BY result.id;
-
-
-
-
-
-        */

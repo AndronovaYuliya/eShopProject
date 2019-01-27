@@ -2,8 +2,10 @@
 
 namespace App\Controllers;
 
-use Core\Model;
+use App\Models\ProductsModel;
+use App\Models\CategoriesModel;
 use Core\Controller;
+use Core\App;
 
 /**
  * Class AppController
@@ -11,6 +13,10 @@ use Core\Controller;
  */
 class AppController extends Controller
 {
+    protected $categories;
+    protected $brands;
+    protected $products;
+
     /**
      * AppController constructor.
      * @param $route
@@ -18,6 +24,9 @@ class AppController extends Controller
     public function __construct($route)
     {
         parent::__construct($route);
-        new Model();
+        $this->brands = ProductsModel::query();
+        $this->categories = CategoriesModel::query();
+        $this->products = ProductsModel::getFullData();
+        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
     }
 }

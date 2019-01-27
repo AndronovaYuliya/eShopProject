@@ -20,7 +20,7 @@ class UsersMapper
                                 VALUE (:login, :password,:email, :first_name,:last_name,:role,NOW(), NOW())";
             Database::addFakerData('fakerUsers', $sql, 10);
         } catch (PDOException $e) {
-            throw new \Exception(["Faker table users: {$e->getTraceAsString()}"],500);
+            throw new \Exception(["Faker table users: {$e->getTraceAsString()}"], 500);
         }
     }
 

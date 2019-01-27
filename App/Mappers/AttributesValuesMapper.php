@@ -14,7 +14,7 @@ class AttributesValuesMapper
      * @return void
      * @throws \Exception
      */
-    public static function addFakerData():void
+    public static function addFakerData(): void
     {
         try {
             $sql = "INSERT INTO `attributes_values` (value, created_at, updated_at, attributes_id) 

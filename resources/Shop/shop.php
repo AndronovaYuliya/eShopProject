@@ -16,14 +16,14 @@
     <div class="container">
         <div class="row">
 
-            <?php if (count($data['products']) > 0): ?>
-                <?php foreach ($data['products'] as $product): ?>
+            <?php if (count($products) > 0): ?>
+                <?php foreach ($products as $product): ?>
                     <div class="col-md-3 col-sm-6">
                         <div class="single-shop-product">
                             <div class="product-upper">
                                 <img src="<?php echo $product['file_name'][0] ?>" alt="img">
                             </div>
-                            <h3><a href="/shop?<?php echo $product['alias'] ?>">
+                            <h3><a href="/show?<?php echo $product['alias'] ?>">
                                     <?php echo $product['title'] ?></a></h3>
                             <h2><a href="/brand?<?php echo $product['brand'] ?>">
                                     <?php echo $product['brand'] ?></a></h2>

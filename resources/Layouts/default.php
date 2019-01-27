@@ -128,7 +128,7 @@
                     <a class="nav-link" href="/cart">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/contact">Contact</a>
                 </li>
             </ul>
         </div>
@@ -297,7 +297,6 @@
                     <ul>
                         <li><a href="#">My account</a></li>
                         <li><a href="#">Order history</a></li>
-                        <li><a href="#">Front page</a></li>
                     </ul>
                 </div>
             </div>
