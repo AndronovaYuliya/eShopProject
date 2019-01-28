@@ -4,6 +4,7 @@ use Core\Router;
 
 //admin
 Router::add('admin\/login$', ['controller' => 'AdminMain', 'action' => 'login', 'prefix' => 'admin']);
+Router::add('admin\/logout$', ['controller' => 'AdminMain', 'action' => 'logout', 'prefix' => 'admin']);
 Router::add('admin$', ['controller' => 'AdminMain', 'action' => 'index', 'prefix' => 'admin']);
 
 //default routes

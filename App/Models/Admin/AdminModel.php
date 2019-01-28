@@ -22,7 +22,7 @@ class AdminModel
     /**
      * @return array
      */
-    public static function getUsers(): array
+    public static function getAdmins(): array
     {
         return AdminMappers::query();
     }

@@ -1,4 +1,3 @@
-
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="/img/admin/sidebar-5.jpg">
 
@@ -29,16 +28,6 @@
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/admin/user">Admin</a>
-                </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -278,6 +267,7 @@
                                                     <div class="header">
                                                         <h4 class="title">List of Users</h4>
                                                     </div>
+                                                    <?php var_dump($admins)?>
                                                     <form method="post" action="/admin/delete" name="userDelete">
                                                         <div class="content table-responsive table-full-width">
                                                             <table class="table table-hover table-striped">

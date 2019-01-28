@@ -32,7 +32,9 @@ class AdminMainController extends AdminAppController
             $this->route = ["controller" => "Admin/Page", "action" => "page"];
             $this->layout = 'Admin/default';
             $this->view = 'page';
-            // $this->set(compact('products', 'categories', 'brands'));
+            $admins = $this->admins;
+            $admin = Session::get('user');
+            $this->set(compact('admin', 'admins'));
             return;
         }
 
@@ -66,6 +68,14 @@ class AdminMainController extends AdminAppController
             $this->layout = 'Admin/default';
             $this->view = 'page';
         }
+    }
+
+    public function logoutAction(): void
+    {
+        Authorization::logout();
+        $this->route = ["controller" => "Admin/Main", "action" => "index"];
+        $this->layout = 'Admin/default';
+        $this->view = 'index';
     }
 
     /**
