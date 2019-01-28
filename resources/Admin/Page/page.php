@@ -1,3 +1,4 @@
+
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="/img/admin/sidebar-5.jpg">
 

@@ -30,6 +30,7 @@ class AdminModel
     /**
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public static function login($data): array
     {
@@ -44,12 +45,13 @@ class AdminModel
 
         if (empty(self::$attributes)) {
             return ['errors' => "Wrong email"];
-        };
+        }
+
         if (!password_verify($data['adminPassword'], self::$attributes[0]['password'])) {
             return ['errors' => "Wrong password"];
         }
 
-        Authorization::login(self::$attributes[0]['email']);
+        Authorization::login('email', self::$attributes[0]['email']);
 
         return ['user' => self::$attributes];
     }
@@ -181,7 +183,7 @@ class AdminModel
 
     /**
      * @param array $data
-     * @return void
+     * @throws \Exception
      */
     public static function addUser(array $data): void
     {
@@ -192,6 +194,7 @@ class AdminModel
      * @param array $data
      * @param string $id
      * @return array
+     * @throws \Exception
      */
     public static function updateUser(array $data, string $id): array
     {
@@ -220,7 +223,7 @@ class AdminModel
     /**
      * @param string $byWhat
      * @param string $name
-     * @return void
+     * @throws \Exception
      */
     public static function delete(string $byWhat, string $name = '0'): void
     {

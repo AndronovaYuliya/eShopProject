@@ -24,7 +24,7 @@ class AdminAppController extends Controller
         parent::__construct($route);
 
         $this->users = AdminModel::getUsers();
-        $this->tables=TableModel::query();
+        $this->tables = TableModel::query();
 
         $this->setMeta(App::$app->getProperty('title'), 'Admin');
     }

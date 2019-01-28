@@ -26,6 +26,8 @@
 </head>
 <body>
 
+<?php echo($content) ?>
+
 
 
 <!--   Core JS Files   -->

@@ -1,0 +1,501 @@
+[2019-01-28 16:27:04]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:30:22]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources//.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 62
+===================
+[2019-01-28 16:30:22]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:34:40]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:37:45]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:37:56]
+                Error: Action not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 118
+===================
+[2019-01-28 16:38:44]
+                Error: Action not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 118
+===================
+[2019-01-28 16:38:44]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:39:28]
+                Error: Action not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 118
+===================
+[2019-01-28 16:39:28]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:39:47]
+                Error: Action not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 118
+===================
+[2019-01-28 16:39:47]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:39:50]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:39:58]
+                Error: Action not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 118
+===================
+[2019-01-28 16:40:28]
+                Error: Action indexAction not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 118
+===================
+[2019-01-28 16:40:28]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:41:44]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 116
+===================
+[2019-01-28 16:41:44]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:42:25]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 116
+===================
+[2019-01-28 16:42:25]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:42:31]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 116
+===================
+[2019-01-28 16:42:31]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:44:37]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:44:37]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:44:46]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:45:01]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:45:01]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:45:53]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:45:53]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:46:15]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:46:15]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:46:35]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:46:35]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:46:43]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:46:43]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:46:48]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:46:48]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:47:01]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:47:01]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:47:18]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:47:36]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:47:36]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:47:44]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:47:44]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:47:55]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:47:55]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:48:11]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:48:34]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:48:34]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:48:49]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:48:49]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:49:00]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:49:00]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:49:24]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:49:24]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:49:36]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:49:36]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:49:47]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:49:47]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:50:03]
+                Error: Too few arguments to function Core\Authorization::login(), 1 passed in /home/NIX/phpstudent/www/eShopProject/App/Models/Admin/AdminModel.php on line 56 and exactly 2 expected | File: /home/NIX/phpstudent/www/eShopProject/Core/Authorization.php | Line: 23
+===================
+[2019-01-28 16:50:20]
+                Error: Too few arguments to function Core\Authorization::login(), 1 passed in /home/NIX/phpstudent/www/eShopProject/App/Models/Admin/AdminModel.php on line 56 and exactly 2 expected | File: /home/NIX/phpstudent/www/eShopProject/Core/Authorization.php | Line: 23
+===================
+[2019-01-28 16:50:20]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:50:38]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:50:38]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:50:48]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:51:05]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:51:20]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:51:26]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:51:44]
+                Error: Call to undefined method App\Controllers\Admin\AdminPageController::getView() | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 113
+===================
+[2019-01-28 16:53:43]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:58:05]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:58:18]
+                Error: Action loginAction not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 115
+===================
+[2019-01-28 16:59:12]
+                Error: Class 'App\Controllers\Admin\AdminModel' not found | File: /home/NIX/phpstudent/www/eShopProject/App/Controllers/Admin/AdminMainController.php | Line: 42
+===================
+[2019-01-28 16:59:12]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 16:59:25]
+                Error: Class 'App\Controllers\Admin\AdminModel' not found | File: /home/NIX/phpstudent/www/eShopProject/App/Controllers/Admin/AdminMainController.php | Line: 42
+===================
+[2019-01-28 16:59:25]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:00:17]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources//.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:00:17]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:00:19]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources//.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:00:19]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:00:28]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:00:46]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources//.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:09:10]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources//.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:09:10]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:09:56]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:11:04]
+                Error: Too few arguments to function Core\Authorization::login(), 1 passed in /home/NIX/phpstudent/www/eShopProject/App/Controllers/Admin/AdminMainController.php on line 51 and exactly 2 expected | File: /home/NIX/phpstudent/www/eShopProject/Core/Authorization.php | Line: 23
+===================
+[2019-01-28 17:11:35]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:14:02]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:21:22]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:23:21]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:23:51]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:26:34]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:26:34]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:27:18]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:27:18]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:28:13]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:28:13]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:30:08]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:30:08]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:30:55]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:36:13]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:36:13]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:37:11]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:37:11]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:37:28]
+                Error: syntax error, unexpected '{' | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 57
+===================
+[2019-01-28 17:37:28]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:37:36]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:37:36]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:38:33]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 64
+===================
+[2019-01-28 17:38:33]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:38:42]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 64
+===================
+[2019-01-28 17:38:42]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:39:01]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:39:01]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:39:38]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 64
+===================
+[2019-01-28 17:39:38]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:39:44]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 64
+===================
+[2019-01-28 17:39:44]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:41:06]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:41:06]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:41:47]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:41:47]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:43:08]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:43:08]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:43:32]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/AA/page.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:43:32]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:43:37]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:43:38]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:43:38]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:44:11]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:44:11]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:44:14]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:44:19]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:44:22]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:45:01]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:45:02]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:45:50]
+                Error: Controller not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 105
+===================
+[2019-01-28 17:45:50]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:46:05]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:46:05]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:46:35]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:46:35]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:46:38]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:46:38]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:46:54]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:46:54]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:46:59]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:47:01]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:47:29]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:47:29]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:50:56]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:50:56]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:51:13]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:51:13]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:53:18]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin/Main/index.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 17:53:18]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:53:45]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:54:04]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:55:45]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:56:17]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:57:08]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 17:58:27]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 18:00:18]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 18:12:24]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 18:13:29]
+                Error: View not found /home/NIX/phpstudent/www/eShopProject/resources/Admin\AdminMain/login.php | File: /home/NIX/phpstudent/www/eShopProject/Core/View.php | Line: 63
+===================
+[2019-01-28 18:14:05]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================
+[2019-01-28 18:14:22]
+                Error: Page not found | File: /home/NIX/phpstudent/www/eShopProject/Core/Router.php | Line: 99
+===================

@@ -2,6 +2,10 @@
 
 use Core\Router;
 
+//admin
+Router::add('admin\/login$', ['controller' => 'AdminMain', 'action' => 'login', 'prefix' => 'admin']);
+Router::add('admin$', ['controller' => 'AdminMain', 'action' => 'index', 'prefix' => 'admin']);
+
 //default routes
 Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
 Router::add('category\/?([a-z0-9-]+)?$', ['controller' => 'Category', 'action' => 'category']);
@@ -16,6 +20,3 @@ Router::add('login\/?$', ['controller' => 'Users', 'action' => 'login']);
 Router::add('signup\/?$', ['controller' => 'Users', 'action' => 'signup']);
 Router::add('logout\/?$', ['controller' => 'Users', 'action' => 'logout']);
 Router::add('account\/?$', ['controller' => 'Account', 'action' => 'account']);
-
-//admin
-Router::add('admin$', ['controller' => 'AdminMain', 'action' => 'index', 'prefix' => 'admin']);

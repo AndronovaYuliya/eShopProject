@@ -2,11 +2,14 @@
 
 namespace Core;
 
+use App\Controllers\Admin\AdminPageController;
+use App\Controllers\Admin\TestC;
 use App\Controllers\ShopController;
 use App\Controllers\UsersController;
 use App\Controllers\CartController;
 use App\Controllers\MainController;
 use App\Controllers\ProductController;
+use App\Controllers\Admin\AdminMainController;
 
 /**
  * Class Router
@@ -109,7 +112,7 @@ class Router
             $cObj->$action($query);
             $cObj->getView();
         } else {
-            throw new \Exception("Action not found", 404);
+            throw new \Exception("Action {$action} not found", 404);
         }
     }
 

@@ -79,8 +79,9 @@ class ClientsModel
     /**
      * @param $data
      * @return bool
+     * @throws \Exception
      */
-    public static function signup($data)
+    public static function signup($data): bool
     {
         $errors = ClientsValidator::signup($data);
 
@@ -128,6 +129,4 @@ class ClientsModel
     {
         ClientsMapper::addClient($data);
     }
-
-
 }

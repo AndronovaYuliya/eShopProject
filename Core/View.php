@@ -12,6 +12,7 @@ class View
     public $controller;
     public $model;
     public $view;
+    public $layout;
     public $prefix;
     public $data = [];
     public $meta = [];
@@ -53,6 +54,7 @@ class View
             extract($data);
         }
         $fileFile = RESOURCES . "/{$this->prefix}{$this->controller}/{$this->view}.php";
+
         if (is_file($fileFile)) {
             ob_start();
             require_once $fileFile;

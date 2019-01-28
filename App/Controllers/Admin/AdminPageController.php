@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Admin;
 
+use App\Models\Admin\AdminModel;
 use Core\Session;
 use Core\Authorization;
 use Core\View;
@@ -13,6 +14,7 @@ use Core\Admin\AdminAppController;
  */
 class AdminPageController extends AdminAppController
 {
+
     /**
      * @return void
      */
@@ -143,12 +145,4 @@ class AdminPageController extends AdminAppController
             }
         }
     }*/
-
-    /**
-     * @return void
-     */
-    public function tableAction(): void
-    {
-        parent::actionIndex('admin/tableView.php', $this->data);
-    }
 }

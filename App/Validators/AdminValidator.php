@@ -29,7 +29,6 @@ abstract class AdminValidator
         if (!Validator::validatePassword(Validator::clean($data['adminPassword']))) {
             return 'Please, enter the correct password';
         }
-
         return true;
     }
 
@@ -66,7 +65,6 @@ abstract class AdminValidator
         return true;
     }
 
-
     /**
      * @param $data
      * @return bool|string
@@ -76,6 +74,7 @@ abstract class AdminValidator
         if (!isset($data['adminEmail'])) {
             return 'Please, enter the email';
         }
+
         if (!Validator::validateEmail($data['adminEmail'])) {
             return 'Please, enter the correct email';
         }
@@ -83,6 +82,7 @@ abstract class AdminValidator
         if (!isset($data['adminLogin'])) {
             return 'Please, enter the login';
         }
+
         if (!Validator::validateLogin($data['adminLogin'])) {
             return 'Please, enter the correct login';
         }
@@ -112,6 +112,7 @@ abstract class AdminValidator
                 return 'Passwords do not match';
             }
         }
+
         return true;
     }
 
