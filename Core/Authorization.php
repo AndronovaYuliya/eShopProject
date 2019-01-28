@@ -10,39 +10,42 @@ use Core\Session;
  */
 abstract class Authorization
 {
-    private static $email;
-    private static $logged = false;
+    protected static $email;
+    protected static $login;
+    protected static $logged = false;
 
     /**
-     * @param $email
+     * @param $key
+     * @param $value
      * @return string
+     * @throws \Exception
      */
-    public static function login($email): string
+    public static function login($key, $value): string
     {
         self::$logged = true;
-        self::$email = $email;
         self::addToSession();
-        Session::set('email', $email);
+        Session::set($key, $value);
 
         return Session::sessionRead();
     }
 
     /**
+     * @param $key
      * @return bool
+     * @throws \Exception
      */
-    public static function isAuth(): bool
+    public static function isAuth($key): bool
     {
-        if (!Session::get('email')) {
+        if (!Session::get($key) || !Session::checkCookie()) {
             return false;
         };
-        if (!Session::checkCookie()) {
-            return false;
-        }
+
         return true;
     }
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public static function logout(): bool
     {
@@ -52,7 +55,7 @@ abstract class Authorization
     /**
      * @return void
      */
-    private static function addToSession(): void
+    protected static function addToSession(): void
     {
         Session::set('remote_addr', $_SERVER['REMOTE_ADDR']);
         Session::set('user_agent', $_SERVER['HTTP_USER_AGENT']);

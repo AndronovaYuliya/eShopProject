@@ -99,20 +99,20 @@ class Database
         self::createTable('users');
         self::createTable('sessions');
 */
-            /*KeyWordsModel::addFakerData();
-             AttributesModel::addFakerData();
-             ClientsModel::addFakerData();
-             AttributesValuesModel::addFakerData();
-             CategoriesModel::addFakerData();
-             CategoriesAttributesModel::addFakerData();
-             ImagesModel::addFakerData();
-             ProductsModel::addFakerData();
-             OrdersModel::addFakerData();
-             CommentsModel::addFakerData();
-             ProductsImagesModel::addFakerData();
-             AdditionalsModel::addFakerData();
-             ProductsKeyWordsModel::addFakerData();
-             UsersModel::addFakerData();*/
+        /*KeyWordsModel::addFakerData();
+                    AttributesModel::addFakerData();
+                    ClientsModel::addFakerData();
+                    AttributesValuesModel::addFakerData();
+                    CategoriesModel::addFakerData();
+                    CategoriesAttributesModel::addFakerData();
+                    ImagesModel::addFakerData();
+                    ProductsModel::addFakerData();
+                    OrdersModel::addFakerData();
+                    CommentsModel::addFakerData();
+                    ProductsImagesModel::addFakerData();
+                    AdditionalsModel::addFakerData();
+                    ProductsKeyWordsModel::addFakerData();
+                    UsersModel::addFakerData();*/
 
     }
 

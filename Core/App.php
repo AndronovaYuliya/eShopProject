@@ -17,6 +17,7 @@ class App
         //Database::createTables();
 
         Session::start();
+
         new MyException();
         // Get the current URL, differents depending on platform/server software
         if (!empty($_SERVER['REQUEST_URL'])) {
@@ -28,9 +29,9 @@ class App
     }
 
     /**
-     *
+     * @return void
      */
-    protected function getParams()
+    protected function getParams(): void
     {
         $params = parse_ini_file(CONF . '/config.ini');
         if (!empty($params)) {

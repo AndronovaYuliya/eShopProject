@@ -58,6 +58,7 @@ class FakerData
      */
     public function fakerClients(): array
     {
+        $password = password_hash(1111, PASSWORD_DEFAULT);
         return [
             ':name' => $this->faker->userName,
             ':login' => $this->faker->userName,
@@ -65,7 +66,7 @@ class FakerData
             ':phone' => $this->faker->phoneNumber,
             ':city' => $this->faker->cityPrefix,
             ':address' => $this->faker->secondaryAddress,
-            ':password' => "1111"
+            ':password' => $password
         ];
     }
 
@@ -192,7 +193,7 @@ class FakerData
      */
     public function fakerUsers(): array
     {
-        $password = password_hash(2222, PASSWORD_DEFAULT);
+        $password = password_hash(1111, PASSWORD_DEFAULT);
         return [
             ':login' => 'adminYuliya',
             ':password' => $password,

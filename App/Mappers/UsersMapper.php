@@ -24,6 +24,7 @@ class UsersMapper
         }
     }
 
+
     /**
      * @return array
      */
@@ -46,9 +47,10 @@ class UsersMapper
     /**
      * @param string $byWhat
      * @param string $name
-     * @return array|mixed
+     * @return array
+     * @throws \Exception
      */
-    public static function getDataWhere(string $byWhat, string $name)
+    public static function getDataWhere(string $byWhat, string $name): array
     {
         $sql = "SELECT 
                         id
@@ -60,9 +62,9 @@ class UsersMapper
                         ,role
                         ,created_at
                         ,updated_at   
-                FROM `users` 
-                WHERE $byWhat=$name;";
-        return Database::query($sql);
+                FROM users 
+                WHERE $byWhat=:name;";
+        return Database::queryData($sql, [':name' => $name]);
     }
 
     /**

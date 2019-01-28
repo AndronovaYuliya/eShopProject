@@ -29,7 +29,7 @@ class SenderController extends AppController
      */
     public function getView(): void
     {
-        $viewObj = new View(["controller" => "Main", "action" => "index"], 'default', 'index');
+        $viewObj = new View(["controller" => "Site/Main", "action" => "index"], 'Site/default', 'index');
         $viewObj->rendor($this->data);
     }
 }

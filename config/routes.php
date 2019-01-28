@@ -12,6 +12,10 @@ Router::add('cart\/?$', ['controller' => 'Cart', 'action' => 'cart']);
 Router::add('sender\/letter$', ['controller' => 'Sender', 'action' => 'letter']);
 Router::add('search$', ['controller' => 'Shop', 'action' => 'search']);
 Router::add('contact$', ['controller' => 'Contact', 'action' => 'contact']);
+Router::add('login\/?$', ['controller' => 'Users', 'action' => 'login']);
+Router::add('signup\/?$', ['controller' => 'Users', 'action' => 'signup']);
+Router::add('logout\/?$', ['controller' => 'Users', 'action' => 'logout']);
+Router::add('account\/?$', ['controller' => 'Account', 'action' => 'account']);
 
 //admin
-Router::add('admin$', ['controller' => 'Admin', 'action' => 'user', 'prefix' => 'admin']);
+Router::add('admin$', ['controller' => 'AdminMain', 'action' => 'index', 'prefix' => 'admin']);

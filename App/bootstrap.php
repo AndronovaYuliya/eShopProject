@@ -6,7 +6,6 @@ require dirname(__FILE__, 2) . '/config/routes.php';
 
 use Core\App;
 new App();
-
 //throw new Exception('test', 400);
 
 

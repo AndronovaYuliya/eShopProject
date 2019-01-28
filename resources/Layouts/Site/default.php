@@ -21,9 +21,11 @@
         <div class="collapse navbar-collapse" id="headNavbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                        <a class="nav-link" href="#"><i class="fa fa-sign-in"></i>My Account</a>
-                    </button>
+                    <form method="post" action="/account">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <a class="nav-link" href="#"><i class="fa fa-sign-in"></i>My Account</a>
+                        </button>
+                    </form>
                 </li>
                 <li class="nav-item">
                     <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"
@@ -43,6 +45,20 @@
                         <a class="nav-link" href=""><i class="fa fa-sign-in"></i>Subscribe</a>
                     </button>
                 </li>
+                <li class="nav-item">
+                    <form action="/logout" method="post">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <a class="nav-link" href=""><i class="fa fa-sign-in"></i>Logout</a>
+                        </button>
+                    </form>
+                </li>
+                <?php if (isset($session['errors'])): ?>
+                    <li class="nav-item">
+                        <div class="alert alert-danger">
+                            <?php echo($session['errors']); ?>
+                        </div>
+                    </li>
+                <?php endif; ?>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/search" method="post">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
@@ -71,9 +87,6 @@
         </div>
     </div>
 </div><!-- End site-branding-area -->
-
-
-
 
 
 <!-- Start mainmenu-area-->
@@ -146,23 +159,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/user/login">
+                <form method="post" action="/login">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" required class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.
-                        </small>
+                        <label for="userInputLogin">Login</label>
+                        <input type="text" required name="userLogin" class="form-control" id="adminInputLogin"
+                               aria-describedby="loginHelp"
+                               placeholder="Enter login">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" required class="form-control" id="exampleInputPassword1"
+                        <label for="userInputPassword">Password</label>
+                        <input type="password" required name="userPassword" class="form-control" id="userInputPassword"
                                placeholder="Password">
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <input type="checkbox" class="form-check-input" id="userCheck">
+                        <label class="form-check-label" name="userCheck" for="userCheck">Check me out</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -213,51 +224,51 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/user/signup" name="signupUser">
+                <form method="post" action="/signup" name="signupUser">
                     <div class="form-group">
                         <label for="SignupInputName">Name</label>
                         <input type="text" class="form-control" id="signupInputName" aria-describedby="nameHelp"
-                               name="name" placeholder="James Bond">
+                               name="userName" placeholder="James Bond">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputPhone">Phone</label>
                         <input type="text" class="form-control" required id="signupInputPhone"
-                               aria-describedby="nameHelp" name="lastName" placeholder="123-456-789">
+                               aria-describedby="nameHelp" name="userPhone" placeholder="123-456-789">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputLogin">Login</label>
                         <input type="text" class="form-control" required id="signupInputLogin"
-                               aria-describedby="nameHelp" name="Login" placeholder="Agent007">
+                               aria-describedby="nameHelp" name="userLogin" placeholder="Agent007">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputEmail">email</label>
-                        <input type="email" class="form-control" required id="signupInputEmail" name="email"
+                        <input type="email" class="form-control" required id="signupInputEmail" name="userEmail"
                                placeholder="james@bond.com">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputCity">city</label>
                         <input type="text" class="form-control" id="signupInputCity" aria-describedby="nameHelp"
-                               name="City" placeholder="London">
+                               name="userCity" placeholder="London">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputAdress">adress</label>
                         <input type="text" class="form-control" id="signupInputAdress" aria-describedby="nameHelp"
-                               name="Adress" placeholder="Vauxhall Cross - 85">
+                               name="userAdress" placeholder="Vauxhall Cross - 85">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputBorn">born</label>
                         <input type="date" class="form-control" id="signupInputBorn" aria-describedby="nameHelp"
-                               name="Born">
+                               name="userBorn">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputPassword">password</label>
                         <input type="password" required class="form-control" id="signupInputPassword"
-                               aria-describedby="nameHelp" name="Password">
+                               aria-describedby="nameHelp" name="userPassword">
                     </div>
                     <div class="form-group">
                         <label for="SignupInputConfirmPassword">confirm password</label>
                         <input type="password" required class="form-control" id="signupInputConfirmPassword"
-                               aria-describedby="nameHelp" name="ConfirmPassword">
+                               aria-describedby="nameHelp" name="userConfirmPassword">
                     </div>
                     <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
                 </form>
@@ -268,7 +279,7 @@
 <!--End Modal-->
 
 
-<?php echo($content)?>
+<?php echo($content) ?>
 
 <!-- Start footer-top-area -->
 <div class="footer-top-area">
@@ -323,7 +334,8 @@
                     <div class="newsletter-form">
                         <form method="post" action="/sender/letter">
                             <input type="text" required id="letterInputName" name="name" placeholder="James Bond">
-                            <input type="email" required id="letterInputEmail" name="email" placeholder="Type your email">
+                            <input type="email" required id="letterInputEmail" name="email"
+                                   placeholder="Type your email">
                             <button type="submit" name="subscribe" class="btn btn-primary">Subscribe</button>
                         </form>
                     </div>

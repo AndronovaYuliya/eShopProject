@@ -2,8 +2,6 @@
 
 namespace Core;
 
-use function PHPSTORM_META\elementType;
-
 /**
  * Class Session
  * @package Core
@@ -47,6 +45,7 @@ abstract class Session
      * @param $key
      * @param null $item
      * @return null
+     * @throws \Exception
      */
     public static function get($key, $item = null)
     {
@@ -62,6 +61,20 @@ abstract class Session
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
         }
+    }
+
+    /**
+     * @return null
+     * @throws \Exception
+     */
+    public static function getSession()
+    {
+        if (Session::checkCookie()) {
+            if (!self::$_sessionStarted) {
+                return null;
+            }
+        }
+        return $_SESSION;
     }
 
     /**
@@ -90,6 +103,7 @@ abstract class Session
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public static function destroy(): bool
     {
@@ -116,8 +130,8 @@ abstract class Session
     }
 
     /**
-     * @param $cookieName
      * @return bool
+     * @throws \Exception
      */
     public static function checkCookie(): bool
     {
@@ -145,6 +159,7 @@ abstract class Session
 
     /**
      * @return string
+     * @throws \Exception
      */
     public static function sessionRead(): string
     {
@@ -165,7 +180,7 @@ abstract class Session
 
     /**
      * @param $data
-     * @return void
+     * @throws \Exception
      */
     public static function sessionWrite($data): void
     {
@@ -174,7 +189,7 @@ abstract class Session
 
     /**
      * @param $data
-     * @return void
+     * @throws \Exception
      */
     public static function sessionAdd($data): void
     {
@@ -190,9 +205,9 @@ abstract class Session
     }
 
     /**
-     * @return void
+     * @throws \Exception
      */
-    public static function sessionGB():void
+    public static function sessionGB(): void
     {
         SessionMapper::sessionGB(self::$_sess_id);
     }

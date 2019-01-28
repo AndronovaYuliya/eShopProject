@@ -2,54 +2,41 @@
 
 namespace App\Controllers\Admin;
 
-use Core\Controller;
-use App\Models\Admin\AdminModel;
 use Core\Session;
 use Core\Authorization;
+use Core\View;
+use Core\Admin\AdminAppController;
 
 /**
  * Class AdminController
  * @package App\Controllers\Admin
  */
-class AdminController extends Controller
+class AdminPageController extends AdminAppController
 {
-    private $data = [];
-    private $users = [];
-
-    /**
-     * AdminController constructor.
-     */
-    public function __construct()
-    {
-        Session::start();
-        $this->users = AdminModel::getUsers();
-    }
-
     /**
      * @return void
      */
-    public function userAction(): void
+   /* public function indexAction(): void
     {
-        if (!Authorization::isAuth()) {
-            parent::actionIndex('admin/adminView.php');
-        } else {
-            parent::actionIndex('admin/userView.php', ['users' => $this->users]);
+        echo "ADMIN";die();
+        if (Authorization::isAuth()) {
+            //go to main
         }
-    }
+    }*/
 
     //andronovayuliyatest@gmail.com
     //1111
     /**
      * @return void
      */
-    public function loginAction(): void
+   /* public function loginAction(): void
     {
-        if (Authorization::isAuth()) {
+        if (Authorization::isAuth('email')) {
             parent::actionIndex('admin/userView.php', ['users' => $this->users]);
         }
 
         if (empty($_POST) && $_SERVER['REQUEST_METHOD'] != 'POST') {
-            Session::set('errors', 'Enter login and password');
+            Session::set('errors', 'Enter email and password');
             parent::actionIndex('/');
         }
 
@@ -69,12 +56,12 @@ class AdminController extends Controller
 
             parent::actionIndex('admin/userView.php', ['users' => $this->users]);
         }
-    }
+    }*/
 
     /**
      * @return void
      */
-    public function logoutAction(): void
+   /* public function logoutAction(): void
     {
         if (!Authorization::isAuth()) {
             parent::actionIndex('admin/adminView.php');
@@ -82,12 +69,12 @@ class AdminController extends Controller
             Authorization::logout();
             parent::actionIndex('admin/adminView.php');
         }
-    }
+    }*/
 
     /**
      * @return void
      */
-    public function signupAction(): void
+   /* public function signupAction(): void
     {
         if (!Authorization::isAuth()) {
             parent::actionIndex('admin/adminView.php');
@@ -110,12 +97,12 @@ class AdminController extends Controller
 
             parent::actionIndex('admin/userView.php', ['user' => $this->data, 'users' => $this->users]);
         }
-    }
+    }*/
 
     /**
      * @return void
      */
-    public function editAction(): void
+  /*  public function editAction(): void
     {
         if (!Authorization::isAuth()) {
             parent::actionIndex('admin/adminView.php');
@@ -136,12 +123,12 @@ class AdminController extends Controller
                 parent::actionIndex('admin/userView.php', ['user' => $this->data, 'users' => $this->users]);
             }
         }
-    }
+    }*/
 
     /**
      * @return void
      */
-    public function deleteAction(): void
+   /* public function deleteAction(): void
     {
         if (!Authorization::isAuth()) {
             parent::actionIndex('admin/adminView.php');
@@ -155,7 +142,7 @@ class AdminController extends Controller
                 parent::actionIndex('admin/userView.php', ['user' => $this->data, 'users' => $this->users]);
             }
         }
-    }
+    }*/
 
     /**
      * @return void

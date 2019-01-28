@@ -42,7 +42,7 @@ class ShopController extends AppController
      */
     public function getView(): void
     {
-        $viewObj = new View(["controller" => "Shop", "action" => "shop"], 'default', 'shop');
+        $viewObj = new View(["controller" => "Site/Shop", "action" => "shop"], 'Site/default', 'shop');
         $viewObj->rendor($this->data);
     }
 }

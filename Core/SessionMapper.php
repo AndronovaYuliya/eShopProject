@@ -8,19 +8,39 @@ use Core\Database;
  * Class SessionMapper
  * @package Core
  */
-abstract class SessionMapper
+class SessionMapper
 {
     /**
-     * @param string $byWhat
-     * @param string $name
+     * @param $byWhat
+     * @param $name
      * @return array
      * @throws \Exception
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public static function getDataWhere($byWhat, $name): array
     {
-        $sql = "SELECT session_id, date_touched, sess_data FROM sessions WHERE $byWhat = :name";
-
+        try {
+            $sql = "SELECT session_id, date_touched, sess_data FROM sessions WHERE $byWhat = :name";
+        } catch (PDOException $e) {
+            throw new \Exception(["Faker table orders: {$e->getTraceAsString()}"], 500);
+        }
         return Database::queryData($sql, ['name' => $name]);
+    }
+
+    /**
+     * @param $data
+     * @param $sess_id
+     * @throws \Exception
+     */
+    public static function addSession($data, $sess_id)
+    {
+        $datas = [
+            ':sess_data' => $data,
+            ':session_id' => $sess_id
+        ];
+        $sql = "INSERT INTO sessions (session_id,date_touched, sess_data) values
+            (:session_id, NOW(),:sess_data)";
+
+        return Database::addData($sql, $datas);
     }
 
     /**
@@ -38,37 +58,20 @@ abstract class SessionMapper
     }
 
     /**
-     * @param string $data
-     * @param string $sess_id
-     * @throws \Exception
-     */
-    public static function addSession(string $data, string $sess_id): void
-    {
-        $data = [
-            ':sess_data' => $data,
-            ':session_id' => $sess_id
-        ];
-        $sql = "INSERT INTO sessions (session_id,date_touched, sess_data) values
-            (:session_id, NOW(),:sess_data)";
-
-        return Database::addData($sql, $data);
-    }
-
-    /**
      * @param $data
      * @param $sess_id
      * @throws \Exception
      */
     public static function updateSessionData($data, $sess_id): void
     {
-        $data = [
+        $datas = [
             ':sess_data' => $data,
             ':session_id' => $sess_id
         ];
-        echo $sess_id;
+
         $sql = "UPDATE sessions SET date_touched=NOW(), sess_data = :sess_data WHERE  session_id= :sess_id";
 
-        return Database::addData($sql, $data);
+        Database::addData($sql, $datas);
     }
 
     /**
@@ -91,5 +94,4 @@ abstract class SessionMapper
         $sql = "DELETE FROM sessions WHERE  session_id =:session_id";
         return Database::queryData($sql, [':session_id' => $session_id]);
     }
-
 }

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Mappers\UsersMapper;
+use App\Validators\ClientsValidator;
+use Core\Validator;
 
 /**
  * Class UsersModel
@@ -10,6 +12,8 @@ use App\Mappers\UsersMapper;
  */
 class UsersModel
 {
+    protected static $errors;
+
     /**
      * @throws \Exception
      */
@@ -30,9 +34,12 @@ class UsersModel
      * @param string $byWhat
      * @param string $name
      * @return array
+     * @throws \Exception
      */
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return UsersMapper::getDataWhere($byWhat, $name);
     }
+
+
 }
