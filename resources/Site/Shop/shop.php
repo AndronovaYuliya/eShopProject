@@ -15,7 +15,6 @@
 <div class="single-product-area">
     <div class="container">
         <div class="row">
-
             <?php if (count($products) > 0): ?>
                 <?php foreach ($products as $product): ?>
                     <div class="col-md-3 col-sm-6">

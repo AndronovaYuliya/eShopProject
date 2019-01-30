@@ -14,7 +14,7 @@ class App
     {
         self::$app = Registry::getInstance();
         $this->getParams();
-        //Database::createTables();
+        Database::createTables();
 
         Session::start();
 

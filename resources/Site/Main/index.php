@@ -100,7 +100,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="card-deck">
 
-                <?php if (count($products > 0)): ?>
+                <?php if (count($products)> 0): ?>
                     <?php for ($i = 0; $i < 6; $i++): ?>
                         <div class="product-wrap">
                             <div class="product-image">

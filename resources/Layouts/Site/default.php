@@ -28,7 +28,7 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"
+                    <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#loginModal"
                             type="submit">
                         <a class="nav-link" href=""><i class="fa fa-sign-in"></i>Login</a>
                     </button>
@@ -148,7 +148,7 @@
     </nav>
 </div><!-- End mainmenu-area -->
 <!-- Start Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -214,7 +214,7 @@
 <!--End Modal-->
 <!-- Start Modal -->
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
-     aria-hidden="true">
+     aria-hidden="true"><?php ?>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
