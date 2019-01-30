@@ -64,12 +64,4 @@ class CategoriesAttributesMapper extends AbstractTableMapper
                 WHERE $byWhat=$name;";
         return Database::query($sql);
     }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
-    }
 }

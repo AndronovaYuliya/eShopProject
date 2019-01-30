@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\CartModel;
+use App\Models\ProductsModel;
 use Core\View;
 
 /**
@@ -29,5 +31,25 @@ class CartController extends AppController
     {
         $viewObj = new View(["controller" => "Site/Cart", "action" => "cart"], 'Site/default', 'cart');
         $viewObj->rendor($this->data);
+    }
+
+    /**
+     * @return bool
+     */
+    public function addAction()
+    {
+        $id = !empty($_POST['id']) ? (int)$_POST['id'] : 1;
+        $qty = !empty($_POST['qty']) ? (int)$_POST['qty'] : 1;
+        $product = ProductsModel::getDataWhere('id', $id);
+        if (!$product) {
+            return false;
+        }
+        $cart = new CartModel();
+        $cart->addToCart($product, $qty);
+        if ($this->isAjax()) {
+            $this->route = ["controller" => "Site/Cart", "action" => "cart"];
+            $this->layout = 'Site/default';
+            $this->view = 'cart';
+        }
     }
 }

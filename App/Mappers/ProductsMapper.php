@@ -50,6 +50,8 @@ class ProductsMapper extends AbstractTableMapper
                             ,P.id_category
                             ,C.title AS category
                             ,C.alias AS category_alias
+                            ,GROUP_CONCAT(DISTINCT A.title ORDER BY C.id) AS categories_attributes
+                            ,GROUP_CONCAT(DISTINCT AV.value ORDER BY AV.attributes_id) AS attributes_values
                             ,GROUP_CONCAT(I.file_name) AS file_name
                             ,GROUP_CONCAT(KW.name) AS key_words
                             ,GROUP_CONCAT(KW.id) AS id_key_word 
@@ -59,7 +61,11 @@ class ProductsMapper extends AbstractTableMapper
                     INNER JOIN categories AS C ON C.id=P.id_category
                     INNER JOIN products_key_words AS PKW ON PKW.id_product=P.id
                     INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
-                    GROUP BY P.id";
+                    INNER JOIN categories_attributes AS CA ON CA.id_category=C.id
+                    INNER JOIN attributes AS A ON A.id=CA.id_attribute
+                    INNER JOIN attributes_values AS AV ON AV.attributes_id=A.id
+                    GROUP BY P.id
+";
         $data = Database::query($sql);
         /*  $cache->set('products_full_data', $data);
       }*/
@@ -110,8 +116,10 @@ class ProductsMapper extends AbstractTableMapper
                         ,result.count
                         ,result.id_category
                         ,C.title as category
-                        ,C.alias as category_alias,
-                        GROUP_CONCAT(I.file_name) as file_name
+                        ,C.alias as category_alias
+                        ,GROUP_CONCAT(DISTINCT A.title ORDER BY C.id) AS categories_attributes
+                        ,GROUP_CONCAT(DISTINCT AV.value ORDER BY AV.attributes_id) AS attributes_values
+                        ,GROUP_CONCAT(I.file_name) as file_name
                         ,GROUP_CONCAT(KW.name) as key_words
                 FROM(
                       SELECT 
@@ -132,6 +140,9 @@ class ProductsMapper extends AbstractTableMapper
                 INNER JOIN categories as C ON C.id=result.id_category
                 INNER JOIN products_key_words as PKW ON PKW.id_product=result.id
                 INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
+                INNER JOIN categories_attributes AS CA ON CA.id_category=C.id
+                INNER JOIN attributes AS A ON A.id=CA.id_attribute
+				INNER JOIN attributes_values AS AV ON AV.attributes_id=A.id
                 GROUP BY result.id";
         return Database::query($sql);
     }
@@ -236,6 +247,7 @@ class ProductsMapper extends AbstractTableMapper
             INNER JOIN products_images AS PI ON PI.id_product=result.id 
             INNER JOIN images AS I ON I.id=PI.id_galary                
             GROUP BY result.id";
+        echo $sql;
         return Database::query($sql);
     }
 
