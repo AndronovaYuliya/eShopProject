@@ -61,14 +61,14 @@ class MyException
     {
         http_response_code($responce);
 
-        if ($responce == 404 && !DEBUG) {
+        if (!DEBUG) {
             require RESOURCES . '/errors/404.php';
             die();
         }
 
-        /*if (DEBUG) {
+        if ($responce == 404 && DEBUG) {
             require RESOURCES . '/errors/prod.php';
-        }*/
+        }
 
         if (DEBUG) {
             require RESOURCES . '/errors/dev.php';

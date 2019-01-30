@@ -7,7 +7,6 @@ use Core\Authorization;
 use Core\Session;
 use Core\Validator;
 use App\Mappers\Admin\AdminMappers;
-use phpDocumentor\Reflection\Types\Self_;
 
 /**
  * Class AdminModel
@@ -53,7 +52,7 @@ class AdminModel
 
         Authorization::login('email', self::$attributes[0]['email']);
 
-        return ['user' => self::$attributes];
+        return ['admin' => self::$attributes];
     }
 
     /**
@@ -62,9 +61,9 @@ class AdminModel
      */
     public static function signup($data): array
     {
-        if (isset($data['adminEmail'])) {
-            if (Validator::validateEmail($data['adminEmail'])) {
-                self::$attributes['adminEmail'] = $data['adminEmail'];
+        if (isset($data['adminAddEmail'])) {
+            if (Validator::validateEmail($data['adminAddEmail'])) {
+                self::$attributes['adminAddEmail'] = $data['adminAddEmail'];
             } else {
                 return ['errors' => "Please, enter the correct email"];
             }
@@ -72,9 +71,9 @@ class AdminModel
             return ['errors' => "Please, enter the email"];
         }
 
-        if (isset($data['adminPassword'])) {
-            if (Validator::checkLength($data['adminPassword'])) {
-                self::$attributes['adminPassword'] = $data['adminPassword'];
+        if (isset($data['adminAddPassword'])) {
+            if (Validator::checkLength($data['adminAddPassword'])) {
+                self::$attributes['adminAddPassword'] = $data['adminAddPassword'];
             } else {
                 return ['errors' => "Please, enter the correct password"];
             }
@@ -82,9 +81,9 @@ class AdminModel
             return ['errors' => "Please, enter the password"];
         }
 
-        if (isset($data['adminLogin'])) {
-            if (Validator::validateLogin($data['adminLogin'])) {
-                self::$attributes['adminLogin'] = $data['adminLogin'];
+        if (isset($data['adminAddLogin'])) {
+            if (Validator::validateLogin($data['adminAddLogin'])) {
+                self::$attributes['adminAddLogin'] = $data['adminAddLogin'];
             } else {
                 return ['errors' => "Please, enter the correct Login"];
             }
@@ -92,29 +91,29 @@ class AdminModel
             return ['errors' => "Please, enter the Login"];
         }
 
-        self::$attributes['adminRole'] = $data['adminRadioRole'];
+        self::$attributes['adminAddRole'] = $data['adminAddRadioRole'];
 
-        if (isset($data['adminFirstName'])) {
-            if (Validator::validateFirstName($data['adminFirstName'])) {
-                self::$attributes['adminFirstName'] = $data['adminFirstName'];
+        if (isset($data['adminAddFirstName'])) {
+            if (Validator::validateFirstName($data['adminAddFirstName'])) {
+                self::$attributes['adminAddFirstName'] = $data['adminAddFirstName'];
             } else {
                 return ['errors' => "Please, enter the correct First Name"];
             }
         }
 
-        if (isset($data['adminLastName'])) {
-            if (Validator::validateLastName($data['adminLastName'])) {
-                self::$attributes['adminLastName'] = $data['adminLastName'];
+        if (isset($data['adminAddLastName'])) {
+            if (Validator::validateLastName($data['adminAddLastName'])) {
+                self::$attributes['adminAddLastName'] = $data['adminAddLastName'];
             } else {
                 return ['errors' => "Please, enter the correct Last Name"];
             }
         }
 
-        if (isset($data['adminConfirmPassword'])) {
-            if (!Validator::confirmPassword(self::$attributes['adminPassword'], $data['adminConfirmPassword'])) {
+        if (isset($data['adminAddConfirmPassword'])) {
+            if (!Validator::confirmPassword(self::$attributes['adminAddPassword'], $data['adminAddConfirmPassword'])) {
                 return ['errors' => "Please, enter the correct Confirm Password"];
             } else {
-                self::$attributes['adminPassword'] = password_hash(self::$attributes['adminPassword'], PASSWORD_DEFAULT);
+                self::$attributes['adminAddPassword'] = password_hash(self::$attributes['adminAddPassword'], PASSWORD_DEFAULT);
             }
         } else {
             return ['errors' => "Please, enter the Confirm Password"];
@@ -129,10 +128,10 @@ class AdminModel
     public static function edit($data): array
     {
         //AdminValidator::edit return errors or true
-        self::$errors = AdminValidator::edit($data);
+        $errors = AdminValidator::edit($data);
 
-        if (self::$errors !== true) {
-            return ['errors' => self::$errors];
+        if ($errors !== true) {
+            return ['errors' => $errors];
         }
 
         self::$attributes['role'] = $data['adminRadioRole'];
@@ -149,12 +148,13 @@ class AdminModel
             self::$attributes['password'] = password_hash($data['adminPassword'], PASSWORD_DEFAULT);
         }
 
-        return ["user" => self::$attributes];
+        return ['admin' => self::$attributes];
     }
 
     /**
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public static function add($data): array
     {
@@ -164,30 +164,25 @@ class AdminModel
         if (self::$errors !== true) {
             return ['errors' => self::$errors];
         }
+        $result = AdminModel::checkUniqueAdmin($data);
 
-        self::$attributes['role'] = $data['adminRadioRole'];
-        self::$attributes['login'] = $data['adminLogin'];
-        self::$attributes['email'] = $data['adminEmail'];
-        self::$attributes['password'] = password_hash($data['adminPassword'], PASSWORD_DEFAULT);
+        if ($result !== true) {
+            return ['errors' => $result];
+        }
+        self::$attributes['role'] = $data['adminAddRadioRole'];
+        self::$attributes['login'] = $data['adminAddLogin'];
+        self::$attributes['email'] = $data['adminAddEmail'];
+        self::$attributes['password'] = password_hash($data['adminAddPassword'], PASSWORD_DEFAULT);
 
-        if (isset($data['adminFirstName'])) {
-            self::$attributes['first_name'] = $data['adminFirstName'];
+        if (isset($data['adminAddFirstName'])) {
+            self::$attributes['first_name'] = $data['adminAddFirstName'];
         }
 
-        if (isset($data['adminLastName'])) {
-            self::$attributes['last_name'] = $data['adminLastName'];
+        if (isset($data['adminAddLastName'])) {
+            self::$attributes['last_name'] = $data['adminAddLastName'];
         }
-
-        return ["user" => self::$attributes];
-    }
-
-    /**
-     * @param array $data
-     * @throws \Exception
-     */
-    public static function addUser(array $data): void
-    {
-        AdminMappers::addUser($data);
+        AdminMappers::addUser(self::$attributes);
+        return [];
     }
 
     /**
@@ -196,11 +191,12 @@ class AdminModel
      * @return array
      * @throws \Exception
      */
-    public static function updateUser(array $data, string $id): array
+    public static function updateAdmin(array $data, string $id): array
     {
-        AdminMappers::updateUser($data, $id);
-        $diffKey = array_diff_key($_SESSION['user'], $data);
+        AdminMappers::updateAdmin($data, $id);
+        $diffKey = array_diff_key(Session::get('admin'), $data);
         $data = array_merge($data, $diffKey);
+
         return $data;
     }
 
@@ -210,12 +206,12 @@ class AdminModel
      */
     public static function checkUniqueAdmin(array $data)
     {
-        if (!empty(AdminMappers::checkUnique('email', $data['user']['adminEmail']))) {
-            return ["errors" => "Enter another email"];
+        if (!empty(AdminMappers::checkUnique('email', $data['adminAddEmail']))) {
+            return "Enter another email";
         }
 
-        if (!empty(AdminMappers::checkUnique('login', $data['user']['adminLogin']))) {
-            return ["errors" => "Enter another login"];
+        if (!empty(AdminMappers::checkUnique('login', $data['adminAddLogin']))) {
+            return "Enter another login";
         }
         return true;
     }
@@ -228,5 +224,62 @@ class AdminModel
     public static function delete(string $byWhat, string $name = '0'): void
     {
         AdminMappers::deleteProfile($byWhat, $name);
+    }
+
+    /**
+     * @param string $email
+     * @return array
+     */
+    public static function loadProfile(string $email)
+    {
+        return AdminMappers::loadProfile($email);
+    }
+
+    /**
+     * @param array $data
+     * @param string $id
+     * @return array|string
+     */
+    public static function editTableData(array $data, string $id)
+    {
+        $table = key($data);
+        return AdminMappers::editTableData($table, $id, $data[$table]);
+    }
+
+    /**
+     * @param array $data
+     * @return bool
+     * @throws \Exception
+     */
+    public static function deleteFromTable(array $data): bool
+    {
+        $table = key($data);
+        $id = $data[$table];
+        if (self::checkDataTable($table, $id)) {
+            AdminMappers::deleteFromTable($table, $id);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param string $table
+     * @param string $id
+     * @return bool
+     * @throws \Exception
+     */
+    protected static function checkDataTable(string $table, string $id): bool
+    {
+        return count(AdminMappers::checkDataTable($table, $id)) > 0 ? true : false;
+    }
+
+    /**
+     * @param array $data
+     * @return array|string
+     */
+    public static function addTableData(array $data)
+    {
+        $table = key($data);
+        return AdminMappers::addTableData($table, $data[$table]);
     }
 }

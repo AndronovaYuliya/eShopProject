@@ -2,13 +2,14 @@
 
 namespace App\Mappers;
 
+use Core\Cache;
 use Core\Database;
 
 /**
  * Class OrdersMapper
  * @package App\Mappers
  */
-class OrdersMapper
+class OrdersMapper extends AbstractTableMapper
 {
     /**
      * @throws \Exception
@@ -29,6 +30,9 @@ class OrdersMapper
      */
     public static function query(): array
     {
+        /*  $cache = new Cache();
+          $data = $cache->get('orders');
+          if (!$data) {*/
         $sql = "SELECT 
                         id
                         ,date
@@ -39,7 +43,10 @@ class OrdersMapper
                         ,created_at
                         ,updated_at 
                 FROM `orders`;";
-        return Database::query($sql);
+        $data = Database::query($sql);
+        /*    $cache->set('orders', $data);
+        }*/
+        return $data;
     }
 
     /**
@@ -61,13 +68,5 @@ class OrdersMapper
                 FROM `orders` 
                 WHERE $byWhat=$name;";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

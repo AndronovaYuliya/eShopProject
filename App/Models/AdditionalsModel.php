@@ -34,6 +34,5 @@ class AdditionalsModel
     public static function getDataWhere(string $byWhat, string $name): array
     {
         return AdditionalsMapper::getDataWhere($byWhat, $name);
-
     }
 }

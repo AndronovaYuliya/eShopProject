@@ -2,13 +2,14 @@
 
 namespace App\Mappers;
 
+use Core\Cache;
 use Core\Database;
 
 /**
  * Class AttributesValuesMapper
  * @package App\Mappers
  */
-class AttributesValuesMapper
+class AttributesValuesMapper extends AbstractTableMapper
 {
     /**
      * @return void
@@ -30,6 +31,9 @@ class AttributesValuesMapper
      */
     public static function query(): array
     {
+        /* $cache = new Cache();
+         $data = $cache->get('attributes_values');
+         if (!$data) {*/
         $sql = "SELECT 
                         id
                         ,value
@@ -37,7 +41,10 @@ class AttributesValuesMapper
                         ,updated_at
                         ,attributes_id 
                 FROM `attributes_values`;";
-        return Database::query($sql);
+        $data = Database::query($sql);
+        /*$cache->set('attributes_values', $data);
+    }*/
+        return $data;
     }
 
     /**
@@ -56,13 +63,5 @@ class AttributesValuesMapper
                 FROM `attributes_values`
                 WHERE $byWhat=$name;";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

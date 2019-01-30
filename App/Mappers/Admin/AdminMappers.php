@@ -19,8 +19,9 @@ class AdminMappers
     public static function addUser(array $attributes): void
     {
         $sql = "INSERT INTO `users` (login, password, email,first_name, last_name,role, created_at, 
-                  updated_at) VALUE (:adminLogin, :adminPassword,:adminEmail, :adminFirstName, 
-                  :adminLastName, :adminRole, NOW(), NOW())";
+                  updated_at) VALUE (:login, :password,:email, 
+                  :first_name, 
+                  :last_name, :role, NOW(), NOW())";
         Database::addData($sql, $attributes);
     }
 
@@ -30,7 +31,7 @@ class AdminMappers
      * @return void
      * @throws \Exception
      */
-    public static function updateUser(array $attributes, string $id): void
+    public static function updateAdmin(array $attributes, string $id): void
     {
         $data = [];
         $sql = "UPDATE users SET ";
@@ -40,7 +41,6 @@ class AdminMappers
         }
         $sql .= " updated_at= NOW() WHERE id=:id;";
         $data[":id"] = $id;
-
         Database::addData($sql, $data);
     }
 
@@ -49,8 +49,13 @@ class AdminMappers
      */
     public static function query(): array
     {
-        $sql = "SELECT id, login, email,first_name,last_name,role FROM `users`";
-        $data = Database::query($sql);
+        $cache = new Cache();
+        $data = $cache->get('users');
+        if (!$data) {
+            $sql = "SELECT id, login, email,first_name,last_name,role FROM `users`";
+            $data = Database::query($sql);
+            $cache->set('users', $data);
+        }
         return $data;
     }
 
@@ -86,5 +91,66 @@ class AdminMappers
     {
         $sql = "DELETE FROM users WHERE $byWhat=:name";
         Database::queryData($sql, [':name' => $name]);
+    }
+
+    /**
+     * @param string $table
+     * @param string $id
+     * @throws \Exception
+     */
+    public static function deleteFromTable(string $table, string $id)
+    {
+        $sql = "DELETE FROM {$table} WHERE id=:id";
+        Database::queryData($sql, [':id' => $id]);
+    }
+
+    /**
+     * @param string $table
+     * @param string $id
+     * @return array
+     * @throws \Exception
+     */
+    public static function checkDataTable(string $table, string $id)
+    {
+        $sql = "SELECT id from {$table} WHERE id=:id";
+        return Database::queryData($sql, [':id' => $id]);
+    }
+
+    /**
+     * @param string $table
+     * @param array $data
+     * @return array|string
+     */
+    public static function addTableData(string $table, array $data)
+    {
+        $attributes = [];
+        $sql = "INSERT INTO {$table} (";
+        foreach ($data as $key => $value) {
+            $attributes[":{$key}"] = $value;
+            $sql .= "{$key}, ";
+        }
+        $sql .= "updated_at) VALUES (";
+        foreach ($data as $key => $value) {
+            $sql .= ":{$key},";
+        }
+        $sql .= "NOW())";
+        return Database::queryTableData($sql, $attributes);
+    }
+
+    /**
+     * @param string $table
+     * @param string $id
+     * @param array $data
+     * @return array|string
+     */
+    public static function editTableData(string $table, string $id, array $data)
+    {
+        $sql = "UPDATE users SET ";
+        foreach ($data as $key => $value) {
+            $sql .= " $key = :$key,";
+            $attributes[":" . $key] = $value;
+        }
+        $sql .= " updated_at= NOW() WHERE id={$id};";
+        return Database::queryTableData($sql, $attributes);
     }
 }

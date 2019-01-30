@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `products_images`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_galary` int(11) DEFAULT NULL,
   `id_product` int(11) DEFAULT NULL,
-  `created_at` date NOT NULL,
+  `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_spg_id_products_idx` (`id_product`),

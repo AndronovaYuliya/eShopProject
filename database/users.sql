@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `role` varchar(10) DEFAULT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `email_UNIQUE` (`email`)

@@ -50,11 +50,9 @@ class View
      */
     public function rendor($data)
     {
-        var_dump($data);die();
         if (is_array($data)) {
             extract($data);
         }
-
         $fileFile = RESOURCES . "/{$this->prefix}{$this->controller}/{$this->view}.php";
 
         if (is_file($fileFile)) {

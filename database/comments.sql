@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS `comments`(
   `user` varchar(45) DEFAULT NULL,
   `id_product` int(11) DEFAULT NULL,
   `stars` varchar(45) DEFAULT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_sc_id_products_id` (`id_product`),
   CONSTRAINT `fk_sc_id_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

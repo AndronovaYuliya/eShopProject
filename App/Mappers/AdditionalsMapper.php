@@ -2,13 +2,14 @@
 
 namespace App\Mappers;
 
+use Core\Cache;
 use Core\Database;
 
 /**
  * Class AdditionalsMapper
  * @package App\Mappers
  */
-class AdditionalsMapper
+class AdditionalsMapper extends AbstractTableMapper
 {
     /**
      * @return void
@@ -32,6 +33,9 @@ class AdditionalsMapper
      */
     public static function query(): array
     {
+        /* $cache = new Cache();
+         $data = $cache->get('additionals');
+         if (!$data) {*/
         $sql = "SELECT 
                         id
                         ,id_product
@@ -41,6 +45,9 @@ class AdditionalsMapper
                         ,created_at
                         ,updated_at
                 FROM `additionals`;";
+        $data = Database::query($sql);
+        /* $cache->set('additionals', $data);
+     }*/
         return Database::query($sql);
     }
 
@@ -62,13 +69,5 @@ class AdditionalsMapper
               FROM `additionals`
               WHERE $byWhat=$name;";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

@@ -2,13 +2,14 @@
 
 namespace App\Mappers;
 
+use Core\Cache;
 use Core\Database;
 
 /**
  * Class CommentsMapper
  * @package App\Mappers
  */
-class CommentsMapper
+class CommentsMapper extends AbstractTableMapper
 {
     /**
      * @throws \Exception
@@ -29,6 +30,9 @@ class CommentsMapper
      */
     public static function query(): array
     {
+        /*$cache = new Cache();
+        $data = $cache->get('comments');
+        if (!$data) {*/
         $sql = "SELECT 
                         id
                         ,msg
@@ -38,7 +42,10 @@ class CommentsMapper
                         ,created_at
                         ,updated_at 
                 FROM `comments`;";
-        return Database::query($sql);
+        $data = Database::query($sql);
+        /*  $cache->set('comments', $data);
+      }*/
+        return $data;
     }
 
     /**
@@ -59,13 +66,5 @@ class CommentsMapper
                 FROM `comments` 
                 WHERE $byWhat=$name;";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

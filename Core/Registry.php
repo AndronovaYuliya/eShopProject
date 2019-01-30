@@ -44,6 +44,4 @@ class Registry
     {
         return self::$properties;
     }
-
-
 }

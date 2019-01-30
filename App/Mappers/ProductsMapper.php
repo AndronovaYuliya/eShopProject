@@ -9,7 +9,7 @@ use Core\Database;
  * Class ProductsMapper
  * @package App\Mappers
  */
-class ProductsMapper
+class ProductsMapper extends AbstractTableMapper
 {
     /**
      * @throws \Exception
@@ -32,10 +32,10 @@ class ProductsMapper
      */
     public static function getFullData(): array
     {
-        $cache = new Cache();
-        $data = $cache->get('products_full_data');
-        if (!$data) {
-            $sql = "SELECT 
+        /*   $cache = new Cache();
+           $data = $cache->get('products_full_data');
+           if (!$data) {*/
+        $sql = "SELECT 
                             P.id
                             ,P.title
                             ,P.brand
@@ -60,9 +60,9 @@ class ProductsMapper
                     INNER JOIN products_key_words AS PKW ON PKW.id_product=P.id
                     INNER JOIN key_words AS KW ON KW.id=PKW.id_key_word
                     GROUP BY P.id";
-            $data = Database::query($sql);
-            $cache->set('products_full_data', $data);
-        }
+        $data = Database::query($sql);
+        /*  $cache->set('products_full_data', $data);
+      }*/
         return $data;
     }
 
@@ -244,7 +244,10 @@ class ProductsMapper
      */
     public static function query(): array
     {
-        $sql = "SELECT 
+        $cache = new Cache();
+        $data = $cache->get('products');
+        if (!$data) {
+            $sql = "SELECT 
                         P.id
                         ,P.price
                         ,P.old_price
@@ -257,7 +260,10 @@ class ProductsMapper
                         ,P.updated_at
                         ,P.created_at
                 FROM products AS P";
-        return Database::query($sql);
+            $data = Database::query($sql);
+            $cache->set('products', $data);
+        }
+        return $data;
     }
 
     /**
@@ -294,13 +300,5 @@ class ProductsMapper
                 WHERE KW.$byWhat='$searchKey'
                 GROUP BY P.id";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

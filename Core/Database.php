@@ -193,4 +193,21 @@ class Database
             throw new \Exception("Sql wrong: {$sql}", 100);
         }
     }
+
+    /**
+     * @param string $sql
+     * @param array $data
+     * @return bool|string
+     */
+    public static function queryTableData(string $sql, array $data)
+    {
+        try {
+            $stmt = self::getConnection()->prepare($sql);
+            $stmt->execute($data);
+        } catch (PDOException $ex) {
+            return "Incorrect data";
+        }
+        $stmt->fetchAll();
+        return true;
+    }
 }

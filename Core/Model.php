@@ -10,9 +10,9 @@ use Core\Database;
  */
 class Model
 {
-    public $attributes=[];
-    public $errors=[];
-    public $rules=[];
+    public $attributes = [];
+    public $errors = [];
+    public $rules = [];
 
     /**
      * Model constructor.

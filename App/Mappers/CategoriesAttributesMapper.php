@@ -2,13 +2,14 @@
 
 namespace App\Mappers;
 
+use Core\Cache;
 use Core\Database;
 
 /**
  * Class CategoriesAttributesMapper
  * @package App\Mappers
  */
-class CategoriesAttributesMapper
+class CategoriesAttributesMapper extends AbstractTableMapper
 {
     /**
      * @return void
@@ -30,6 +31,9 @@ class CategoriesAttributesMapper
      */
     public static function query(): array
     {
+        /* $cache = new Cache();
+         $data = $cache->get('categories_attributes');
+         if (!$data) {*/
         $sql = "SELECT 
                         id
                         ,id_category
@@ -37,7 +41,10 @@ class CategoriesAttributesMapper
                         ,created_at
                         ,updated_at
                 FROM `categories_attributes`;";
-        return Database::query($sql);
+        $data = Database::query($sql);
+        /*  $cache->set('categories_attributes', $data);
+      }*/
+        return $data;
     }
 
     /**

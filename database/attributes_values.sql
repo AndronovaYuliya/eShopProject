@@ -7,9 +7,9 @@
 CREATE TABLE IF NOT EXISTS `attributes_values`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` varchar(45) NOT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` date DEFAULT NULL,
   `attributes_id` int(11) NOT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_av_id_attribute_idx` (`attributes_id`),
   CONSTRAINT `fk_av_id_attribute` FOREIGN KEY (`attributes_id`) REFERENCES `attributes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

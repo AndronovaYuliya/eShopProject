@@ -8,8 +8,15 @@ use Core\Authorization;
 use Core\Session;
 use Core\View;
 
+/**
+ * Class AccountController
+ * @package App\Controllers
+ */
 class AccountController extends AppController
 {
+    /**
+     * @throws \Exception
+     */
     public function accountAction()
     {
         $products = $this->products;
@@ -28,6 +35,9 @@ class AccountController extends AppController
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
     }
 
+    /**
+     * @throws \Exception
+     */
     public function getView(): void
     {
         $viewObj = new View(["controller" => "Site/Account", "action" => "account"], 'Site/default', 'account');

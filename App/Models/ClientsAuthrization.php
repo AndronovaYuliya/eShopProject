@@ -18,7 +18,7 @@ class ClientsAuthrization extends Authorization
      * @return string
      * @throws \Exception
      */
-    public static function login($login):string
+    public static function login($login): string
     {
         self::$logged = true;
         self::$login = $login;

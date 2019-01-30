@@ -107,6 +107,7 @@ class ClientsModel
     /**
      * @param array $data
      * @return bool|string
+     * @throws \Exception
      */
     public static function checkUniqueClients(array $data)
     {

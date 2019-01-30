@@ -9,7 +9,7 @@ use Core\Cache;
  * Class ClientsMapper
  * @package App\Mappers
  */
-class ClientsMapper
+class ClientsMapper extends AbstractTableMapper
 {
     /**
      * @throws \Exception
@@ -30,10 +30,10 @@ class ClientsMapper
      */
     public static function query(): array
     {
-        $cache = new Cache();
-        $data = $cache->get('clients');
-        if (!$data) {
-            $sql = "SELECT 
+        /* $cache = new Cache();
+         $data = $cache->get('clients');
+         if (!$data) {*/
+        $sql = "SELECT 
                         id
                         ,name
                         ,login
@@ -46,9 +46,9 @@ class ClientsMapper
                         ,created_at
                         ,updated_at
                 FROM `clients`;";
-            $data = Database::query($sql);
-            $cache->set('clients', $data);
-        }
+        $data = Database::query($sql);
+        /* $cache->set('clients', $data);
+     }*/
         return $data;
     }
 
@@ -78,13 +78,11 @@ class ClientsMapper
     }
 
     /**
-     * @return void
+     * @param string $byWhat
+     * @param string $name
+     * @return array
+     * @throws \Exception
      */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
-    }
-
     public static function checkUnique(string $byWhat, string $name): array
     {
         $sql = "SELECT id FROM `clients` 
@@ -108,7 +106,5 @@ class ClientsMapper
         } catch (PDOException $e) {
             throw new \Exception(["Clients table: {$e->getTraceAsString()}"], 500);
         }
-
     }
-
 }

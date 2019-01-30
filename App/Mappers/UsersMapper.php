@@ -8,7 +8,7 @@ use Core\Database;
  * Class UsersMapper
  * @package App\Mappers
  */
-class UsersMapper
+class UsersMapper extends AbstractTableMapper
 {
     /**
      * @throws \Exception
@@ -23,7 +23,6 @@ class UsersMapper
             throw new \Exception(["Faker table users: {$e->getTraceAsString()}"], 500);
         }
     }
-
 
     /**
      * @return array
@@ -65,13 +64,5 @@ class UsersMapper
                 FROM users 
                 WHERE $byWhat=:name;";
         return Database::queryData($sql, [':name' => $name]);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addFakerData() method.
     }
 }

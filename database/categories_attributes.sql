@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `categories_attributes`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_category` int(11) NOT NULL,
   `id_attribute` int(11) NOT NULL,
-  `created_at` date NOT NULL,
+  `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_shop_categories_attributes_1_idx` (`id_category`),

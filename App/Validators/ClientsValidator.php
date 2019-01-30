@@ -35,17 +35,16 @@ class ClientsValidator
 
     /**
      * @param $data
-     * @return bool|string
+     * @return bool
      */
     public static function signup($data)
     {
-
         if (!isset($data['userName'])) {
             $data['userName'] = '';
         }
         if (isset($data['userName'])) {
             if (!Validator::validateFirstName($data['userName'])) {
-                return 'Please, enter the correct First name';
+                return 'Please, enter the correct Name';
             }
         }
 

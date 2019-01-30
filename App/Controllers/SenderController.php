@@ -17,7 +17,6 @@ class SenderController extends AppController
     public function letterAction(): void
     {
         Sender::sendMsg();
-//???        Response::redirect
         $products = $this->products;
         $categories = $this->categories;
         $brands = $this->brands;

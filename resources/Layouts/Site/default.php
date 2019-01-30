@@ -281,6 +281,8 @@
 
 <?php echo($content) ?>
 
+<div class="clearfix"></div>
+
 <!-- Start footer-top-area -->
 <div class="footer-top-area">
     <div class="zigzag-bottom"></div>

@@ -2,27 +2,14 @@
 
 namespace App\Mappers\Admin;
 
-use App\Mappers\AbstractTableMapper;
+use Core\Database;
 
-class TableMapper extends AbstractTableMapper
+/**
+ * Class TableMapper
+ * @package App\Mappers\Admin
+ */
+class TableMapper
 {
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addFakerData(): void
-    {
-        // TODO: Implement addFakerData() method.
-    }
-
     /**
      * @return array
      */
@@ -43,12 +30,11 @@ class TableMapper extends AbstractTableMapper
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return mixed
+     * @return array
      */
-    protected static function getDataWhere(string $byWhat, string $name)
+    public static function getTables(): array
     {
-        // TODO: Implement getDataWhere() method.
+        $sql = "SHOW tables";
+        return Database::query($sql);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Mappers;
 
+use Core\Cache;
 use Core\Database;
 
 /**
@@ -29,6 +30,9 @@ class ProductsKeyWordsMapper extends AbstractTableMapper
      */
     public static function query(): array
     {
+        /*  $cache = new Cache();
+          $data = $cache->get('products_key_words');
+          if (!$data) {*/
         $sql = "SELECT 
                         id
                         ,id_product
@@ -36,7 +40,10 @@ class ProductsKeyWordsMapper extends AbstractTableMapper
                         ,created_at
                         ,updated_at 
                 FROM `products_key_words`;";
-        return Database::query($sql);
+        $data = Database::query($sql);
+        /* $cache->set('products_key_words', $data);
+     }*/
+        return $data;
     }
 
     /**
@@ -55,13 +62,5 @@ class ProductsKeyWordsMapper extends AbstractTableMapper
                 FROM `products_key_words`
                 WHERE $byWhat=$name;";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

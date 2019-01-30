@@ -7,8 +7,8 @@
 CREATE TABLE IF NOT EXISTS `images`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;

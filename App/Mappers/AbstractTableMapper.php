@@ -11,11 +11,6 @@ abstract class AbstractTableMapper
     /**
      * @return void
      */
-    abstract protected static function addData(): void;
-
-    /**
-     * @return void
-     */
     abstract protected static function addFakerData(): void;
 
     /**

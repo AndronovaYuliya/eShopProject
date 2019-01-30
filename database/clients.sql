@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `clients`(
   `city` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
   `born` varchar(45) DEFAULT NULL,
-  `created_at` date NULL,
+  `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;

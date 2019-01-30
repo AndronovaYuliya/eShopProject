@@ -5,6 +5,12 @@ use Core\Router;
 //admin
 Router::add('admin\/login$', ['controller' => 'AdminMain', 'action' => 'login', 'prefix' => 'admin']);
 Router::add('admin\/logout$', ['controller' => 'AdminMain', 'action' => 'logout', 'prefix' => 'admin']);
+Router::add('admin\/signup$', ['controller' => 'AdminMain', 'action' => 'signup', 'prefix' => 'admin']);
+Router::add('admin\/edit$', ['controller' => 'AdminMain', 'action' => 'edit', 'prefix' => 'admin']);
+Router::add('admin\/delete$', ['controller' => 'AdminMain', 'action' => 'delete', 'prefix' => 'admin']);
+Router::add('admin\/tableDelete$', ['controller' => 'AdminMain', 'action' => 'tableDelete', 'prefix' => 'admin']);
+Router::add('admin\/tableAdd$', ['controller' => 'AdminMain', 'action' => 'tableAdd', 'prefix' => 'admin']);
+Router::add('admin\/tableEdit$', ['controller' => 'AdminMain', 'action' => 'tableEdit', 'prefix' => 'admin']);
 Router::add('admin$', ['controller' => 'AdminMain', 'action' => 'index', 'prefix' => 'admin']);
 
 //default routes

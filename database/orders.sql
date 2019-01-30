@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS `orders`(
   `status` int(11) DEFAULT 0,
   `ttn` varchar(45) DEFAULT NULL,
   `id_client` int(11) DEFAULT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_so_id_clients_idx` (`id_client`),
   CONSTRAINT `fk_so_id_client` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

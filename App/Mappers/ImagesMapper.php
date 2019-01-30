@@ -2,13 +2,14 @@
 
 namespace App\Mappers;
 
+use Core\Cache;
 use Core\Database;
 
 /**
  * Class ImagesMapper
  * @package App\Mappers
  */
-class ImagesMapper
+class ImagesMapper extends AbstractTableMapper
 {
     /**
      * @throws \Exception
@@ -29,13 +30,19 @@ class ImagesMapper
      */
     public static function query(): array
     {
+        /* $cache = new Cache();
+         $data = $cache->get('images');
+         if (!$data) {*/
         $sql = "SELECT 
                         id
                         ,file_name
                         ,created_at
                         ,updated_at 
                 FROM `images`;";
-        return Database::query($sql);
+        $data = Database::query($sql);
+        /*   $cache->set('images', $data);
+       }*/
+        return $data;
     }
 
     /**
@@ -53,13 +60,5 @@ class ImagesMapper
                 FROM `images` 
                 WHERE $byWhat=$name;";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

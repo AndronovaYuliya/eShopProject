@@ -2,6 +2,7 @@
 
 namespace App\Mappers;
 
+use Core\Cache;
 use Core\Database;
 
 /**
@@ -30,13 +31,19 @@ class AttributesMapper extends AbstractTableMapper
      */
     public static function query(): array
     {
+        /* $cache = new Cache();
+         $data = $cache->get('attributes');
+         if (!$data) {*/
         $sql = "SELECT 
                         id
                         ,title
                         ,created_at
                         ,updated_at 
                 FROM `attributes`;";
-        return Database::query($sql);
+        $data = Database::query($sql);
+        /* $cache->set('attributes', $data);
+     }*/
+        return $data;
     }
 
     /**
@@ -54,13 +61,5 @@ class AttributesMapper extends AbstractTableMapper
                 FROM `attributes` 
                 WHERE $byWhat=$name;";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

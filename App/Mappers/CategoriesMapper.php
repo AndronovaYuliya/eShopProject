@@ -30,10 +30,10 @@ class CategoriesMapper
      */
     public static function query(): array
     {
-        $cache = new Cache();
-        $data = $cache->get('categories');
-        if (!$data) {
-            $sql = "SELECT 
+        /* $cache = new Cache();
+         $data = $cache->get('categories');
+         if (!$data) {*/
+        $sql = "SELECT 
                             id
                             ,title
                             ,description
@@ -42,9 +42,9 @@ class CategoriesMapper
                             ,created_at
                             ,updated_at
                     FROM `categories`;";
-            $data = Database::query($sql);
-            $cache->set('categories', $data);
-        }
+        $data = Database::query($sql);
+        /*   $cache->set('categories', $data);
+       }*/
         return $data;
     }
 
@@ -67,13 +67,5 @@ class CategoriesMapper
                 FROM `categories` 
                 WHERE $byWhat=:name;";
         return Database::queryData($sql, [':name' => $name]);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }
