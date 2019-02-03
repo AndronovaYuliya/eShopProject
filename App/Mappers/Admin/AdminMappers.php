@@ -49,13 +49,13 @@ class AdminMappers
      */
     public static function query(): array
     {
-        $cache = new Cache();
+        /*$cache = new Cache();
         $data = $cache->get('users');
-        if (!$data) {
-            $sql = "SELECT id, login, email,first_name,last_name,role FROM `users`";
-            $data = Database::query($sql);
-            $cache->set('users', $data);
-        }
+        if (!$data) {*/
+        $sql = "SELECT id, login, email,first_name,last_name,role FROM `users`";
+        $data = Database::query($sql);
+        /*$cache->set('users', $data);
+    }*/
         return $data;
     }
 
@@ -86,6 +86,7 @@ class AdminMappers
      * @param string $byWhat
      * @param string $name
      * @throws \Exception
+     * @return void
      */
     public static function deleteProfile(string $byWhat, string $name): void
     {
@@ -97,8 +98,9 @@ class AdminMappers
      * @param string $table
      * @param string $id
      * @throws \Exception
+     * @return void
      */
-    public static function deleteFromTable(string $table, string $id)
+    public static function deleteFromTable(string $table, string $id): void
     {
         $sql = "DELETE FROM {$table} WHERE id=:id";
         Database::queryData($sql, [':id' => $id]);
@@ -129,11 +131,11 @@ class AdminMappers
             $attributes[":{$key}"] = $value;
             $sql .= "{$key}, ";
         }
-        $sql .= "updated_at) VALUES (";
+        $sql .= "created_at,updated_at) VALUES (";
         foreach ($data as $key => $value) {
             $sql .= ":{$key},";
         }
-        $sql .= "NOW())";
+        $sql .= "NOW(),NOW())";
         return Database::queryTableData($sql, $attributes);
     }
 
@@ -145,10 +147,10 @@ class AdminMappers
      */
     public static function editTableData(string $table, string $id, array $data)
     {
-        $sql = "UPDATE users SET ";
+        $sql = "UPDATE {$table} SET ";
         foreach ($data as $key => $value) {
             $sql .= " $key = :$key,";
-            $attributes[":" . $key] = $value;
+            $attributes[":" . $key] = "'" . $value . "'";
         }
         $sql .= " updated_at= NOW() WHERE id={$id};";
         return Database::queryTableData($sql, $attributes);

@@ -204,10 +204,11 @@ class Database
         try {
             $stmt = self::getConnection()->prepare($sql);
             $stmt->execute($data);
+            $stmt->fetchAll();
+            return true;
         } catch (PDOException $ex) {
             return "Incorrect data";
         }
-        $stmt->fetchAll();
-        return true;
+
     }
 }

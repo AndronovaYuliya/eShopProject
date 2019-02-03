@@ -100,9 +100,9 @@ class SessionMapper
      */
     public static function query(): array
     {
-        $cache = new Cache();
+       /* $cache = new Cache();
         $data = $cache->get('sessions');
-        if (!$data) {
+        if (!$data) {*/
             $sql = "SELECT 
                         id
                         ,session_id
@@ -110,8 +110,8 @@ class SessionMapper
                         ,sess_data 
                 FROM `sessions`;";
             $data = Database::query($sql);
-            $cache->set('sessions', $data);
-        }
+           /* $cache->set('sessions', $data);
+        }*/
         return $data;
     }
 }

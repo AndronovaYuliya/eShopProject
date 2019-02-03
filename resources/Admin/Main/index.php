@@ -1,5 +1,4 @@
-<?php echo password_hash(2222, PASSWORD_DEFAULT);
-?><!-- Start Signup -->
+<!-- Start Signup -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">

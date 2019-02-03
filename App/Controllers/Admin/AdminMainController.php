@@ -36,7 +36,7 @@ class AdminMainController extends AdminAppController
     /**
      * @throws \Exception
      */
-    public function indexAction()
+    public function indexAction(): void
     {
         $this->settingsIndex();
         $errors = Session::get('errors');
@@ -47,9 +47,9 @@ class AdminMainController extends AdminAppController
     /**
      * @throws \Exception
      */
-    public function loginAction()
+    public function loginAction(): void
     {
-        if (isset($_POST['enterSubmit']) || Authorization::isAuth('email')) {
+        if ((isset($_POST['enterSubmit']) && Authorization::isAuth('admin')) || Authorization::isAuth('admin')) {
             $this->sendDataWithoutErrors();
             return;
         }
@@ -73,8 +73,8 @@ class AdminMainController extends AdminAppController
 
         if (array_key_exists('admin', $this->data)) {
             Session::delete('errors');
-            Authorization::login('email', $this->data['admin'][0]['email']);
-            Session::set('admin', $this->data['admin'][0]);
+            Authorization::login('admin', $this->data['admin'][0]);
+            //Session::set('admin', $this->data['admin'][0]);
 
             $this->sendDataWithoutErrors();
         }
@@ -102,10 +102,11 @@ class AdminMainController extends AdminAppController
 
     /**
      * @throws \Exception
+     * @return void
      */
-    public function editAction()
+    public function editAction(): void
     {
-        if (!Authorization::isAuth('email')) {
+        if (!Authorization::isAuth('admin')) {
             Session::set('errors', 'Enter email and password');
             $this->settingsIndex();
             $session = Session::sessionRead();
@@ -130,10 +131,11 @@ class AdminMainController extends AdminAppController
 
     /**
      * @throws \Exception
+     * @return void
      */
-    public function signupAction()
+    public function signupAction(): void
     {
-        if (!Authorization::isAuth('email')) {
+        if (!Authorization::isAuth('admin')) {
             Session::set('errors', 'Enter email and password');
             $this->settingsIndex();
 
@@ -144,7 +146,8 @@ class AdminMainController extends AdminAppController
         $result = AdminModel::add($_POST);
 
         if (isset($result['errors'])) {
-            $errors = $result['errors'];
+            $this->sendDataWithErrors($result['errors']);
+            return;
         }
 
         $this->sendDataWithoutErrors();
@@ -152,85 +155,94 @@ class AdminMainController extends AdminAppController
 
     /**
      * @throws \Exception
+     * @return void
      */
-    public function deleteAction()
+    public function deleteAction(): void
     {
-        if (!Authorization::isAuth('email') || !isset($_POST)) {
-            Session::set('errors', 'Enter email and password');
-            $this->settingsIndex();
-
-            $this->set(compact('session'));
+        if (!$this->checkAuthorization()) {
             return;
         }
+
         AdminModel::delete('id', $_POST["adminUserDelete"]);
         $this->sendDataWithoutErrors();
     }
 
     /**
      * @throws \Exception
+     * @return void
      */
-    public function tableDeleteAction()
+    public function tableDeleteAction(): void
     {
-        if (!Authorization::isAuth('email') || !isset($_POST)) {
-            Session::set('errors', 'Enter email and password');
-            $this->settingsIndex();
-
-            $this->set(compact('session'));
+        if (!$this->checkAuthorization()) {
             return;
         }
+
         foreach ($_POST as $key => $value) {
-            $data = stristr($key, '?');
+            $data = stristr($key, 'adminTable?');
             if ($data) {
-                $table[substr($data, 1)] = $value;
+                $keyTable = explode('?', $data)[1];
+                $table[$keyTable] = $value;
+                break;
             }
         }
         if (!AdminModel::deleteFromTable($table)) {
             $errors = "Nothing to delete";
+            $this->sendDataWithErrors($errors);
+            return;
         }
-
-        $this->sendDataWithErrors($errors);
+        $this->sendDataWithoutErrors();
     }
 
     /**
      * @throws \Exception
+     * @return void
      */
-    public function tableAddAction()
+    public function tableAddAction(): void
     {
-        if (!Authorization::isAuth('email') || !isset($_POST)) {
-            Session::set('errors', 'Enter email and password');
-            $this->settingsIndex();
-
-            $this->set(compact('session'));
+        if (!$this->checkAuthorization()) {
             return;
         }
-        $data = self::explodeData($_POST);
-        $result = AdminModel::addTableData($data);
-        if ($result !== true) {
-            $errors = $result;
-        }
-        $this->sendDataWithErrors($errors);
-    }
 
-    /**
-     * @throws \Exception
-     */
-    public function tableEditAction()
-    {
-        if (!Authorization::isAuth('email') || !isset($_POST)) {
-            Session::set('errors', 'Enter email and password');
-            $this->settingsIndex();
-
-            $this->set(compact('session'));
-            return;
-        }
-        unset($_POST['tableEdit']);
         foreach ($_POST as $key => $value) {
             $data = stristr($key, '?');
             if ($data) {
                 $tableKey = substr($data, 1);
                 $table[$tableKey] = [];
-                $id = $value;
                 unset($_POST[$key]);
+                break;
+            }
+        }
+        foreach ($_POST as $key => $value) {
+            $table[$tableKey][$key] = $value;
+        }
+        $result = AdminModel::addTableData($table);
+        if ($result !== true) {
+            $errors = $result;
+            $this->sendDataWithErrors($errors);
+            return;
+        }
+        $this->sendDataWithoutErrors();
+    }
+
+    /**
+     * @throws \Exception
+     * @return void
+     */
+    public function tableEditAction(): void
+    {
+        if (!$this->checkAuthorization()) {
+            return;
+        }
+
+        foreach ($_POST as $key => $value) {
+            $data = stristr($key, '?');
+            if ($data) {
+                $tableKey = substr($data, 1);
+                $table[$tableKey] = [];
+                $id = $_POST['id'];
+                unset($_POST[$key]);
+                unset($_POST['id']);
+                break;
             }
         }
         foreach ($_POST as $key => $value) {
@@ -240,29 +252,18 @@ class AdminMainController extends AdminAppController
 
         if ($result !== true) {
             $errors = $result;
+            $this->sendDataWithErrors($errors);
+            return;
         }
-        $this->sendDataWithErrors($errors);
-    }
-
-    /**
-     * @param array $data
-     * @return array
-     */
-    private function explodeData(array $data): array
-    {
-        $name = explode('?', key($_POST))[0];
-        $table[$name][] = 0;
-        foreach ($_POST as $key => $value) {
-            $table[$name][explode('?', $key)[1]] = $value;
-        }
-        return $table;
+        $this->sendDataWithoutErrors();
     }
 
     /**
      * @param $errors
      * @throws \Exception
+     * @return void
      */
-    private function sendDataWithErrors($errors)
+    private function sendDataWithErrors($errors): void
     {
         $this->settingsPage();
         $this->updateDatas();
@@ -294,14 +295,14 @@ class AdminMainController extends AdminAppController
 
     /**
      * @throws \Exception
+     * @return void
      */
-    private function sendDataWithoutErrors()
+    private function sendDataWithoutErrors(): void
     {
         $this->settingsPage();
         $this->updateDatas();
 
         $admins = $this->admins;
-        $this->admin = Session::get('admin');
         $admin = $this->admin;
         $tables = $this->tables;
         $additionals = $this->additionals;
@@ -323,5 +324,21 @@ class AdminMainController extends AdminAppController
             'attributes_values', 'categories', 'categories_attributes', 'clients', 'comments',
             'images', 'key_words', 'orders', 'products', 'products_images', 'products_key_words',
             'sessions', 'users'));
+    }
+
+    /**
+     * @return bool
+     * @throws \Exception
+     */
+    private function checkAuthorization(): bool
+    {
+        if (!Authorization::isAuth('admin') || !isset($_POST)) {
+            Session::set('errors', 'Enter email and password');
+            $this->settingsIndex();
+
+            $this->set(compact('session'));
+            return false;
+        }
+        return true;
     }
 }

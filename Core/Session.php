@@ -150,7 +150,7 @@ abstract class Session
     /**
      * @return void
      */
-    private static function addToSession(): void
+    public static function addToSession(): void
     {
         Session::set('remote_addr', $_SERVER['REMOTE_ADDR']);
         Session::set('user_agent', $_SERVER['HTTP_USER_AGENT']);
