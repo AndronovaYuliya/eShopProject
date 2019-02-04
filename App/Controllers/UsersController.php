@@ -42,14 +42,14 @@ class UsersController extends AppController
     {
         if (empty($_POST) && $_SERVER['REQUEST_METHOD'] != 'POST') {
             Session::set('errors', 'Enter data');
+            echo json_encode(Session::get('errors'));
         }
         ClientsModel::signup($_POST);
-        $products = $this->products;
-        $categories = $this->categories;
-        $brands = $this->brands;
-        $session = Session::getSession();
-        $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
-        $this->getView();
+        if (Session::get('errors')) {
+            echo json_encode(Session::get('errors'));
+        } else {
+            echo json_encode("Welcome!");
+        }
     }
 
     /**

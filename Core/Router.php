@@ -110,7 +110,6 @@ class Router
         $action = self::$route['action'] . 'Action';
         if (method_exists($cObj, $action)) {
             $cObj->$action($query);
-            //$cObj->getView();
         } else {
             throw new \Exception("Action {$action} not found", 404);
         }

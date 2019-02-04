@@ -17,11 +17,8 @@ class SenderController extends AppController
     public function letterAction(): void
     {
         Sender::sendMsg();
-        $products = $this->products;
-        $categories = $this->categories;
-        $brands = $this->brands;
-        $this->set(compact('products', 'categories', 'brands'));
-        $this->getView();
+        echo json_encode("Sent!");
+
     }
 
     /**

@@ -29,7 +29,7 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"
+                    <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#loginModal"
                             type="submit">
                         <a class="nav-link" href=""><i class="fa fa-sign-in"></i>Login</a>
                     </button>
@@ -53,13 +53,10 @@
                         </button>
                     </form>
                 </li>
-                <?php if (isset($session['errors'])): ?>
-                    <li class="nav-item">
-                        <div class="alert alert-danger">
-                            <?php echo($session['errors']); ?>
-                        </div>
-                    </li>
-                <?php endif; ?>
+                <li class="nav-item">
+                    <div class="alert alert-danger collapse" id="dangerSignup">
+                    </div>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/search" method="post">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
@@ -149,12 +146,12 @@
     </nav>
 </div><!-- End mainmenu-area -->
 <!-- Start Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="loginModalLabel">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -176,7 +173,7 @@
                         <input type="checkbox" class="form-check-input" id="userCheck">
                         <label class="form-check-label" name="userCheck" for="userCheck">Check me out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="loginClient" class="btn btn-primary loginClient">Submit</button>
                 </form>
             </div>
         </div>
@@ -195,7 +192,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/sender/letter">
+                <form method="post">
                     <div class="form-group">
                         <label for="letterInputName">Name</label>
                         <input type="text" required class="form-control" id="letterInputName"
@@ -206,7 +203,7 @@
                         <input type="email" required class="form-control" id="letterInputEmail" name="email"
                                placeholder="james@bond.com">
                     </div>
-                    <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="subscribe" class="btn btn-primary client-subscribe">Submit</button>
                 </form>
             </div>
         </div>
@@ -225,7 +222,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/signup" name="signupUser">
+                <form method="post" name="signupUser">
                     <div class="form-group">
                         <label for="SignupInputName">Name</label>
                         <input type="text" class="form-control" id="signupInputName" aria-describedby="nameHelp"
@@ -271,7 +268,7 @@
                         <input type="password" required class="form-control" id="signupInputConfirmPassword"
                                aria-describedby="nameHelp" name="userConfirmPassword">
                     </div>
-                    <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="signupClient" class="btn btn-primary signupClient">Submit</button>
                 </form>
             </div>
         </div>
@@ -327,21 +324,6 @@
                         <?php endif; ?>
 
                     </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">Newsletter</h2>
-                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your
-                        inbox!</p>
-                    <div class="newsletter-form">
-                        <form method="post" action="/sender/letter">
-                            <input type="text" required id="letterInputName" name="name" placeholder="James Bond">
-                            <input type="email" required id="letterInputEmail" name="email"
-                                   placeholder="Type your email">
-                            <button type="submit" name="subscribe" class="btn btn-primary">Subscribe</button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>

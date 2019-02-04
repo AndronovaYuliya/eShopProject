@@ -42,10 +42,26 @@ class ClientsValidator
         if (!isset($data['userName'])) {
             $data['userName'] = '';
         }
-        if (isset($data['userName'])) {
+        if (isset($data['userName'])&&$data['userName']!='') {
             if (!Validator::validateFirstName($data['userName'])) {
                 return 'Please, enter the correct Name';
             }
+        }
+
+        if (!isset($data['userCity'])) {
+            $data['userCity'] = '';
+        }
+
+        if (!isset($data['userAdress'])) {
+            $data['userAdress'] = '';
+        }
+
+        if (!isset($data['userBorn'])) {
+            $data['userBorn'] = '';
+        }
+
+        if (!isset($data['userPhone'])) {
+            $data['userPhone'] = '';
         }
 
         if (!isset($data['userLogin'])) {
@@ -70,26 +86,6 @@ class ClientsValidator
 
         if (!Validator::validatePassword(Validator::clean($data['userPassword']))) {
             return 'Please, enter the correct password';
-        }
-
-        if (!isset($data['userName'])) {
-            $data['userName'] = '';
-        }
-
-        if (!isset($data['userCity'])) {
-            $data['userCity'] = '';
-        }
-
-        if (!isset($data['userAdress'])) {
-            $data['userAdress'] = '';
-        }
-
-        if (!isset($data['userBorn'])) {
-            $data['userBorn'] = '';
-        }
-
-        if (!isset($data['userPhone'])) {
-            $data['userPhone'] = '';
         }
 
         return true;
