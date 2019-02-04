@@ -12,20 +12,6 @@ use Core\Database;
 class CategoriesMapper
 {
     /**
-     * @throws \Exception
-     */
-    public static function addFakerData()
-    {
-        try {
-            $sql = "INSERT INTO `categories` (title, description, parent_id, alias, created_at,updated_at)
-                                      VALUE (:title, :description, :parent_id, :alias, NOW(),NOW())";
-            Database::addFakerData('fakerCategories', $sql, 10);
-        } catch (PDOException $e) {
-            throw new \Exception(["Faker table categories: {$e->getTraceAsString()}"], 500);
-        }
-    }
-
-    /**
      * @return array
      */
     public static function query(): array

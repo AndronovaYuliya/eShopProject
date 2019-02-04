@@ -9,11 +9,6 @@ namespace App\Mappers;
 abstract class AbstractTableMapper
 {
     /**
-     * @return void
-     */
-    abstract protected static function addFakerData(): void;
-
-    /**
      * @return array
      */
     abstract protected static function query(): array;

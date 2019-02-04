@@ -12,8 +12,8 @@ use Core\View;
 class CategoryController extends AppController
 {
     /**
-     * @return void
-     * @param string $param
+     * @param null $param
+     * @throws \Exception
      */
     public function categoryAction($param = null): void
     {
@@ -25,6 +25,7 @@ class CategoryController extends AppController
         $categories = $this->categories;
         $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
+        $this->getView();
     }
 
     /**

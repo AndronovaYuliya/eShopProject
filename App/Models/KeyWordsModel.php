@@ -8,16 +8,8 @@ use App\Mappers\KeyWordsMapper;
  * Class KeyWordsModel
  * @package App\Models
  */
-class KeyWordsModel
+class KeyWordsModel extends AbstractTableModel
 {
-    /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        KeyWordsMapper::addFakerData();
-    }
-
     /**
      * @return array
      */

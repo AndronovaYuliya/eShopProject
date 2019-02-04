@@ -42,6 +42,7 @@ class AdminMainController extends AdminAppController
         $errors = Session::get('errors');
         $admin = $this->admin;
         $this->set(compact('errors', 'admin'));
+        $this->getView();
     }
 
     /**
@@ -51,14 +52,13 @@ class AdminMainController extends AdminAppController
     {
         if ((isset($_POST['enterSubmit']) && Authorization::isAuth('admin')) || Authorization::isAuth('admin')) {
             $this->sendDataWithoutErrors();
-            return;
         }
 
         if (empty($_POST) && $_SERVER['REQUEST_METHOD'] != 'POST') {
             $this->settingsIndex();
             $session = Session::sessionRead();
             $this->set(compact('session'));
-            return;
+            $this->getView();
         }
 
         $this->data = AdminModel::login($_POST);
@@ -68,7 +68,7 @@ class AdminMainController extends AdminAppController
             $this->settingsIndex();
             $errors = Session::get('errors');
             $this->set(compact('errors'));
-            return;
+            $this->getView();
         }
 
         if (array_key_exists('admin', $this->data)) {
@@ -111,7 +111,7 @@ class AdminMainController extends AdminAppController
             $this->settingsIndex();
             $session = Session::sessionRead();
             $this->set(compact('session'));
-            return;
+            $this->getView();
         }
 
         $data = AdminModel::edit($_POST);
@@ -119,7 +119,7 @@ class AdminMainController extends AdminAppController
         if (array_key_exists('errors', $data)) {
             Session::set('errors', $data['errors']);
             $this->sendDataWithErrors($data['errors']);
-            return;
+            $this->getView();
         }
 
         Session::delete('errors');
@@ -141,13 +141,12 @@ class AdminMainController extends AdminAppController
 
             $session = Session::sessionRead();
             $this->set(compact('session'));
-            return;
+            $this->getView();
         }
         $result = AdminModel::add($_POST);
 
         if (isset($result['errors'])) {
             $this->sendDataWithErrors($result['errors']);
-            return;
         }
 
         $this->sendDataWithoutErrors();
@@ -160,7 +159,7 @@ class AdminMainController extends AdminAppController
     public function deleteAction(): void
     {
         if (!$this->checkAuthorization()) {
-            return;
+            $this->getView();
         }
 
         AdminModel::delete('id', $_POST["adminUserDelete"]);
@@ -174,7 +173,7 @@ class AdminMainController extends AdminAppController
     public function tableDeleteAction(): void
     {
         if (!$this->checkAuthorization()) {
-            return;
+            $this->getView();
         }
 
         foreach ($_POST as $key => $value) {
@@ -188,7 +187,6 @@ class AdminMainController extends AdminAppController
         if (!AdminModel::deleteFromTable($table)) {
             $errors = "Nothing to delete";
             $this->sendDataWithErrors($errors);
-            return;
         }
         $this->sendDataWithoutErrors();
     }
@@ -200,7 +198,7 @@ class AdminMainController extends AdminAppController
     public function tableAddAction(): void
     {
         if (!$this->checkAuthorization()) {
-            return;
+            $this->getView();
         }
 
         foreach ($_POST as $key => $value) {
@@ -219,7 +217,6 @@ class AdminMainController extends AdminAppController
         if ($result !== true) {
             $errors = $result;
             $this->sendDataWithErrors($errors);
-            return;
         }
         $this->sendDataWithoutErrors();
     }
@@ -231,7 +228,7 @@ class AdminMainController extends AdminAppController
     public function tableEditAction(): void
     {
         if (!$this->checkAuthorization()) {
-            return;
+            $this->getView();
         }
 
         foreach ($_POST as $key => $value) {
@@ -253,7 +250,6 @@ class AdminMainController extends AdminAppController
         if ($result !== true) {
             $errors = $result;
             $this->sendDataWithErrors($errors);
-            return;
         }
         $this->sendDataWithoutErrors();
     }
@@ -291,6 +287,7 @@ class AdminMainController extends AdminAppController
             'attributes_values', 'categories', 'categories_attributes', 'clients', 'comments',
             'images', 'key_words', 'orders', 'products', 'products_images', 'products_key_words',
             'sessions', 'users', 'errors'));
+        $this->getView();
     }
 
     /**
@@ -324,6 +321,7 @@ class AdminMainController extends AdminAppController
             'attributes_values', 'categories', 'categories_attributes', 'clients', 'comments',
             'images', 'key_words', 'orders', 'products', 'products_images', 'products_key_words',
             'sessions', 'users'));
+        $this->getView();
     }
 
     /**

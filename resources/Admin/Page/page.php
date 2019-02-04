@@ -426,7 +426,6 @@
                                         </button>
                                     </div>
                                 </form>
-
                                 <form method="post" action="/admin/tableAdd">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -468,6 +467,13 @@
                                     </div>
                                 </form>
                             </div>
+                            <br>
+                            <form action="#" class="faker" method="post">
+                                <button type="submit" class="btn btn-info btn-fill pull-right faker"
+                                        name="<?php echo $table ?>">
+                                    Add Faker <?php echo $table ?>
+                                </button>
+                            </form>
                         </div>
                     <?php endforeach; ?>
 

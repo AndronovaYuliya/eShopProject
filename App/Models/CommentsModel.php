@@ -8,16 +8,8 @@ use App\Mappers\CommentsMapper;
  * Class CommentsModel
  * @package App\Models
  */
-class CommentsModel
+class CommentsModel extends AbstractTableModel
 {
-    /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        CommentsMapper::addFakerData();
-    }
-
     /**
      * @return array
      */

@@ -2,24 +2,9 @@
 
 namespace Core;
 
-use App\Models\AdditionalsModel;
-use App\Models\AttributesModel;
-use App\Models\AttributesValuesModel;
-use App\Models\CategoriesAttributesModel;
-use App\Models\CategoriesModel;
-use App\Models\ClientsModel;
-use App\Models\CommentsModel;
-use App\Models\ImagesModel;
-use App\Models\KeyWordsModel;
-use App\Models\OrdersModel;
-use App\Models\ProductsImagesModel;
-use App\Models\ProductsKeyWordsModel;
-use App\Models\ProductsModel;
-use App\Models\UsersModel;
 use PDO;
 use PDOException;
 use CostumLogger\CostumLogger;
-use Core\FakerData;
 
 /**
  * Class Database
@@ -77,43 +62,7 @@ class Database
      */
     public static function createTables(): void
     {
-        /*
-         *
-         * $dbh->query("create database ".self::$_database);
-         * $dbh->query("use ".self::$_database);
-         *
-        */
-        /*self::createTable('attributes');
-        self::createTable('attributes_values');
-        self::createTable('categories');
-        self::createTable('categories_attributes');
-        self::createTable('clients');
-        self::createTable('images');
-        self::createTable('orders');
-        self::createTable('key_words');
-        self::createTable('products');
-        self::createTable('products_key_words');
-        self::createTable('comments');
-        self::createTable('additionals');
-        self::createTable('products_images');
-        self::createTable('users');
-        self::createTable('sessions');
-*/
-        /*KeyWordsModel::addFakerData();
-                    AttributesModel::addFakerData();
-                    ClientsModel::addFakerData();
-                    AttributesValuesModel::addFakerData();
-                    CategoriesModel::addFakerData();
-                    CategoriesAttributesModel::addFakerData();
-                    ImagesModel::addFakerData();
-                    ProductsModel::addFakerData();
-                    OrdersModel::addFakerData();
-                    CommentsModel::addFakerData();
-                    ProductsImagesModel::addFakerData();
-                    AdditionalsModel::addFakerData();
-                    ProductsKeyWordsModel::addFakerData();
-                    UsersModel::addFakerData();*/
-
+        self::createTable('andronova_db');
     }
 
     /**
@@ -129,27 +78,6 @@ class Database
             throw new \Exception(["Creating table {$filename}: {$e->getTraceAsString()}"], 500);
         }
 
-    }
-
-    /**
-     * @param $fakerMethod
-     * @param string $sql
-     * @param int $count
-     * @throws \Exception
-     */
-    public static function addFakerData($fakerMethod, string $sql, int $count = 1): void
-    {
-        $faker = new FakerData();
-        for ($i = 0; $i < $count; $i++) {
-            $data = $faker->$fakerMethod();
-            $stmt = Database::getConnection()->prepare($sql);
-            if ($stmt !== false) {
-                $stmt->execute($data);
-                $stmt->fetchAll();
-            } else {
-                throw new \Exception("Sql wrong: {$sql}", 100);
-            }
-        }
     }
 
     /**

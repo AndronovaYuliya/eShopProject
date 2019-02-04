@@ -12,7 +12,7 @@ use Core\View;
 class SenderController extends AppController
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public function letterAction(): void
     {
@@ -21,6 +21,7 @@ class SenderController extends AppController
         $categories = $this->categories;
         $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
+        $this->getView();
     }
 
     /**

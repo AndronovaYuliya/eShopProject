@@ -12,6 +12,7 @@ Router::add('admin\/tableDelete$', ['controller' => 'AdminMain', 'action' => 'ta
 Router::add('admin\/tableAdd$', ['controller' => 'AdminMain', 'action' => 'tableAdd', 'prefix' => 'admin']);
 Router::add('admin\/tableEdit$', ['controller' => 'AdminMain', 'action' => 'tableEdit', 'prefix' => 'admin']);
 Router::add('admin$', ['controller' => 'AdminMain', 'action' => 'index', 'prefix' => 'admin']);
+Router::add('admin\/faker$', ['controller' => 'Faker', 'action' => 'addData']);
 
 //default routes
 Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
@@ -28,3 +29,4 @@ Router::add('login\/?$', ['controller' => 'Users', 'action' => 'login']);
 Router::add('signup\/?$', ['controller' => 'Users', 'action' => 'signup']);
 Router::add('logout\/?$', ['controller' => 'Users', 'action' => 'logout']);
 Router::add('account\/?$', ['controller' => 'Account', 'action' => 'account']);
+

@@ -35,6 +35,7 @@ class CartController extends AppController
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public function addAction()
     {
@@ -51,5 +52,6 @@ class CartController extends AppController
             $this->layout = 'Site/default';
             $this->view = 'cart';
         }
+        $this->getView();
     }
 }

@@ -12,17 +12,9 @@ use Core\Validator;
  * Class ClientsModel
  * @package App\Models
  */
-class ClientsModel
+class ClientsModel extends AbstractTableModel
 {
     protected static $errors;
-
-    /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        ClientsMapper::addFakerData();
-    }
 
     /**
      * @return array

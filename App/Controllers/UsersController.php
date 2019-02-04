@@ -32,6 +32,7 @@ class UsersController extends AppController
         $brands = $this->brands;
         $session = Session::getSession();
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
+        $this->getView();
     }
 
     /**
@@ -48,6 +49,7 @@ class UsersController extends AppController
         $brands = $this->brands;
         $session = Session::getSession();
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
+        $this->getView();
     }
 
     /**
@@ -75,5 +77,6 @@ class UsersController extends AppController
         $brands = $this->brands;
         $session = Session::getSession();
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
+        $this->getView();
     }
 }

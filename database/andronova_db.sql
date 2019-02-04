@@ -51,9 +51,6 @@ CREATE TABLE IF NOT EXISTS `attributes`(
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
---
--- Table structure for table `attributes_values`
---
 
 --
 -- Table structure for table `attributes_values`
@@ -64,9 +61,9 @@ CREATE TABLE IF NOT EXISTS `attributes`(
 CREATE TABLE IF NOT EXISTS `attributes_values`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` varchar(45) NOT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` date DEFAULT NULL,
   `attributes_id` int(11) NOT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_av_id_attribute_idx` (`attributes_id`),
   CONSTRAINT `fk_av_id_attribute` FOREIGN KEY (`attributes_id`) REFERENCES `attributes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -85,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `categories`(
   `description` varchar(255) DEFAULT NULL,
   `alias` varchar(45) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
-  `created_at` date NOT NULL,
+   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_sc_parent_id_idx` (`parent_id`)
@@ -102,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `categories_attributes`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_category` int(11) NOT NULL,
   `id_attribute` int(11) NOT NULL,
-  `created_at` date NOT NULL,
+  `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_shop_categories_attributes_1_idx` (`id_category`),
@@ -111,6 +108,7 @@ CREATE TABLE IF NOT EXISTS `categories_attributes`(
   CONSTRAINT `fk_sca_id_category` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `clients`
@@ -128,11 +126,12 @@ CREATE TABLE IF NOT EXISTS `clients`(
   `city` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
   `born` varchar(45) DEFAULT NULL,
-  `created_at` date NULL,
+  `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `comments`
@@ -146,13 +145,14 @@ CREATE TABLE IF NOT EXISTS `comments`(
   `user` varchar(45) DEFAULT NULL,
   `id_product` int(11) DEFAULT NULL,
   `stars` varchar(45) DEFAULT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_sc_id_products_id` (`id_product`),
   CONSTRAINT `fk_sc_id_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `images`
@@ -163,11 +163,13 @@ CREATE TABLE IF NOT EXISTS `comments`(
 CREATE TABLE IF NOT EXISTS `images`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 --
 -- Table structure for table `key_words`
 --
@@ -176,11 +178,12 @@ CREATE TABLE IF NOT EXISTS `images`(
 CREATE TABLE IF NOT EXISTS `key_words`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `orders`
@@ -192,11 +195,11 @@ CREATE TABLE IF NOT EXISTS `orders`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
   `sum` double DEFAULT NULL,
-  `status` bit DEFAULT 0,
+  `status` int(11) DEFAULT 0,
   `ttn` varchar(45) DEFAULT NULL,
   `id_client` int(11) DEFAULT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_so_id_clients_idx` (`id_client`),
   CONSTRAINT `fk_so_id_client` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -220,13 +223,16 @@ CREATE TABLE IF NOT EXISTS `products`(
   `url` varchar(255) DEFAULT NULL,
   `count` int(11) DEFAULT 1,
   `id_category` int(11) NOT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_sp_id_categories_idx` (`id_category`),
   CONSTRAINT `fk_sp_id_category` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
 --
 -- Table structure for table `products_images`
 --
@@ -237,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `products_images`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_galary` int(11) DEFAULT NULL,
   `id_product` int(11) DEFAULT NULL,
-  `created_at` date NOT NULL,
+  `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_spg_id_products_idx` (`id_product`),
@@ -246,6 +252,7 @@ CREATE TABLE IF NOT EXISTS `products_images`(
   CONSTRAINT `fk_spg_id_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `products_key_words`
@@ -256,8 +263,8 @@ CREATE TABLE IF NOT EXISTS `products_key_words`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_product` int(11) DEFAULT NULL,
   `id_key_word` int(11) DEFAULT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_pkw_id_product_idx` (`id_product`),
   KEY `fk_pkw_id_key_word_idx` (`id_key_word`),
@@ -265,6 +272,7 @@ CREATE TABLE IF NOT EXISTS `products_key_words`(
   CONSTRAINT `fk_pkw_id_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `sessions`
@@ -275,18 +283,20 @@ CREATE TABLE IF NOT EXISTS `products_key_words`(
 CREATE TABLE IF NOT EXISTS `sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `session_id` varchar(255) NOT NULL,
-  `date_touched` date NOT NULL,
   `sess_data` text NOT NULL,
+  `date_touched` date NOT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `session_id_UNIQUE` (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-
 --
 -- Table structure for table `users`
 --
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `users` (
@@ -297,13 +307,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `role` varchar(10) DEFAULT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` varchar(45) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -20,6 +20,7 @@ use App\Models\SessionModel;
 use Core\Controller;
 use Core\App;
 use App\Models\Admin\AdminModel;
+use Core\Model;
 use Core\Session;
 
 /**
@@ -59,6 +60,8 @@ class AdminAppController extends Controller
         $this->updateDatas();
         Session::addToSession();
         $this->setMeta(App::$app->getProperty('title'), 'Admin', 'admin');
+
+        //new Model();
     }
 
     /**

@@ -12,20 +12,6 @@ use Core\Database;
 class ProductsKeyWordsMapper extends AbstractTableMapper
 {
     /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        try {
-            $sql = "INSERT INTO `products_key_words` (id_product,id_key_word,created_at, updated_at) 
-                                              VALUE (:id_product, :id_key_word, NOW(), NOW())";
-            Database::addFakerData('fakerProductsKeyWords', $sql, 20);
-        } catch (PDOException $e) {
-            throw new \Exception(["Faker table products_key_words: {$e->getTraceAsString()}"], 500);
-        }
-    }
-
-    /**
      * @return array
      */
     public static function query(): array
