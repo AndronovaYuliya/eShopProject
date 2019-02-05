@@ -275,6 +275,42 @@
     </div>
 </div>
 <!--End Modal-->
+<!--Start Modal-->
+<div class="modal fade" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="CartModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Brand</th>
+                            <th>Count</th>
+                            <th>Price</th>
+                            <th>Sum</th>
+                            <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-cart">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="cart/" type="button" class="btn btn-primary">Checkout cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal-->
 
 
 <?php echo($content) ?>

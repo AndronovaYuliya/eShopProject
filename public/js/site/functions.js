@@ -5,7 +5,10 @@ $('body').on('click', '.add-to-cart-button', function (e) {
         qty = $('.quantity input').val() ? $('.quantity input').val() : 1;
     jQuery.ajax({
         url: '/cart/add',
-        data: {id: id, qty: qty},
+        data: {
+            id: id
+            , qty: qty
+        },
         type: 'POST',
         success: function (res) {
             showCart(res);
@@ -17,7 +20,8 @@ $('body').on('click', '.add-to-cart-button', function (e) {
 });
 
 function showCart(cart) {
-    alert(cart);
+    $("tbody.table-cart").html(jQuery.parseJSON(cart));
+    $("#CartModal").modal('show');
 };
 
 $('body').on('click', '#getCart', function (e) {

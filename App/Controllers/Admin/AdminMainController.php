@@ -74,7 +74,6 @@ class AdminMainController extends AdminAppController
         if (array_key_exists('admin', $this->data)) {
             Session::delete('errors');
             Authorization::login('admin', $this->data['admin'][0]);
-            //Session::set('admin', $this->data['admin'][0]);
 
             $this->sendDataWithoutErrors();
         }

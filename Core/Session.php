@@ -43,6 +43,17 @@ abstract class Session
 
     /**
      * @param $key
+     * @return array
+     */
+    public static function addData($id, $key, $value)
+    {
+        if (self::$_sessionStarted) {
+            $_SESSION['cart'][$id][$key]=$value;
+        }
+    }
+
+    /**
+     * @param $key
      * @param null $item
      * @return null
      * @throws \Exception
