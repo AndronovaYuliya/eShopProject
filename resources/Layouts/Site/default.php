@@ -169,10 +169,6 @@
                         <input type="password" required name="userPassword" class="form-control" id="userInputPassword"
                                placeholder="Password">
                     </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="userCheck">
-                        <label class="form-check-label" name="userCheck" for="userCheck">Check me out</label>
-                    </div>
                     <button type="submit" name="loginClient" class="btn btn-primary loginClient">Submit</button>
                 </form>
             </div>
