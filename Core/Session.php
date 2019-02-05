@@ -45,10 +45,10 @@ abstract class Session
      * @param $key
      * @return array
      */
-    public static function addData($id, $key, $value)
+    public static function addData($part, $id, $key, $value)
     {
         if (self::$_sessionStarted) {
-            $_SESSION['cart'][$id][$key]=$value;
+            $_SESSION[$part][$id][$key] = $value;
         }
     }
 
@@ -72,6 +72,26 @@ abstract class Session
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
         }
+    }
+
+    /**
+     * @param $key
+     * @param $item
+     * @return null
+     * @throws \Exception
+     */
+    public static function getData($key, $item)
+    {
+        if (Session::checkCookie()) {
+            if (!self::$_sessionStarted) {
+                return null;
+            }
+        }
+
+        if (isset($item) && isset($_SESSION[$key][$item])) {
+            return $_SESSION[$key][$item];
+        }
+        return null;
     }
 
     /**

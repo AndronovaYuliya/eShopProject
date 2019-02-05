@@ -24,33 +24,30 @@ class CartModel
         $alias = $product[0]['alias'];
         $brand = $product[0]['brand'];
 
-        if (!Session::get('cart', $ID)) {
-            Session::set('cart',
-                [$ID => [
-                    'qty' => $qty
-                    , 'title' => $title
-                    , 'price' => $price
-                    , 'alias' => $alias
-                    , 'brand' => $brand
-                ]]);
-            Session::addData($ID, 'sum', $price * $qty);
+        if (!Session::getData('cart', $ID)) {
+            Session::addData('cart', $ID, 'qty', $qty);
+            Session::addData('cart', $ID, 'title', $title);
+            Session::addData('cart', $ID, 'price', $price);
+            Session::addData('cart', $ID, 'alias', $alias);
+            Session::addData('cart', $ID, 'brand', $brand);
+            Session::addData('cart', $ID, 'sum', $price * $qty);
         } else {
-            $currentQty = Session::get('cart', $ID)['qty'] + $qty;
-            Session::addData($ID, 'qty', $currentQty);
-            $currentSum = Session::get('cart', $ID)['sum'] + $qty * $price;
-            Session::addData($ID, 'sum', $currentSum);
+            $currentQty = Session::getData('cart', $ID)['qty'] + $qty;
+            Session::addData('cart', $ID, 'qty', $currentQty);
+            $currentSum = Session::getData('cart', $ID)['sum'] + $qty * $price;
+            Session::addData('cart', $ID, 'sum', $currentSum);
         }
         $total = 0;
         $qtyTotal = 0;
         foreach (Session::get('cart') as $key => $value) {
-            $total += Session::get('cart', $key)['sum'];
-            $qtyTotal += Session::get('cart', $key)['qty'];
+            $total += Session::getData('cart', $key)['sum'];
+            $qtyTotal += Session::getData('cart', $key)['qty'];
         }
-        Session::addData('cart', 'total', $total);
-        Session::addData('cart', 'qtyTotal', $qtyTotal);
+        Session::addData('cart', 0, 'total', $total);
+        Session::addData('cart', 0, 'qtyTotal', $qtyTotal);
         $table = [];
         foreach (Session::get('cart') as $key => $item) {
-            if (is_numeric($key)) {
+            if ($key) {
                 $table[] = <<<HTML
                     <tr>
                         <td><a href="/show?{$item['alias']}">{$item['title']}</a></td>
