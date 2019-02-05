@@ -14,7 +14,7 @@ use Core\View;
 class CartController extends AppController
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public function cartAction(): void
     {
@@ -22,6 +22,7 @@ class CartController extends AppController
         $categories = $this->categories;
         $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
+        $this->getView();
     }
 
     /**
@@ -41,7 +42,7 @@ class CartController extends AppController
     public function addAction()
     {
         $id = !empty($_POST['id']) ? (int)$_POST['id'] : null;
-        $qty = !empty($_POST['qty']) ? (int)$_POST['qty'] : null;
+        $qty = !empty($_POST['qty']) ? (int)$_POST['qty'] : 1;
         if ($id) {
             $product = ProductsModel::getDataWhere('id', $id);
         }

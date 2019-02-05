@@ -42,10 +42,10 @@ class CartModel
         }
         $total = 0;
         $qtyTotal = 0;
-        /*foreach (Session::get('cart') as $key => $value) {
+        foreach (Session::get('cart') as $key => $value) {
             $total += Session::get('cart', $key)['sum'];
             $qtyTotal += Session::get('cart', $key)['qty'];
-        }*/
+        }
         Session::addData('cart', 'total', $total);
         Session::addData('cart', 'qtyTotal', $qtyTotal);
         $table = [];
@@ -67,11 +67,11 @@ HTML;
         $table[] = <<<HTML
                 <tr>
                     <td>Count</td>
-                    <td colspan="4" class="text-right cart-qty">{$total}</td>
+                    <td colspan="4" class="text-right cart-qty">{$qtyTotal}</td>
                 </tr>
                 <tr>
                     <td>Total</td>
-                    <td colspan="4" class="text-right cart-sum">{$qtyTotal} $</td>
+                    <td colspan="4" class="text-right cart-sum">{$total} $</td>
                 </tr>
 HTML;
         return $table;
