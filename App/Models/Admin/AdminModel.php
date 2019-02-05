@@ -159,7 +159,7 @@ class AdminModel
     public static function add($data): array
     {
         //AdminValidator::add return errors or true
-        self::$errors = AdminValidator::add($data);
+        self::$errors = AdminValidator::addUser($data);
 
         if (self::$errors !== true) {
             return ['errors' => self::$errors];
@@ -220,6 +220,7 @@ class AdminModel
      * @param string $byWhat
      * @param string $name
      * @throws \Exception
+     * @return void
      */
     public static function delete(string $byWhat, string $name = '0'): void
     {
@@ -230,7 +231,7 @@ class AdminModel
      * @param string $email
      * @return array
      */
-    public static function loadProfile(string $email)
+    public static function loadProfile(string $email): array
     {
         return AdminMappers::loadProfile($email);
     }
@@ -238,12 +239,17 @@ class AdminModel
     /**
      * @param array $data
      * @param string $id
-     * @return array|string
+     * @return array|bool|string
+     * @throws \Exception
      */
     public static function editTableData(array $data, string $id)
     {
         $table = key($data);
-        return AdminMappers::editTableData($table, $id, $data[$table]);
+
+        if (self::checkDataTable($table, $id)) {
+            return AdminMappers::editTableData($table, $id, $data[$table]);
+        }
+        return "Incorrect data";
     }
 
     /**
@@ -280,6 +286,7 @@ class AdminModel
     public static function addTableData(array $data)
     {
         $table = key($data);
+
         return AdminMappers::addTableData($table, $data[$table]);
     }
 }

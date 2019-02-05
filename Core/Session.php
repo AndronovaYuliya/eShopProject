@@ -43,6 +43,17 @@ abstract class Session
 
     /**
      * @param $key
+     * @return array
+     */
+    public static function addData($part, $id, $key, $value)
+    {
+        if (self::$_sessionStarted) {
+            $_SESSION[$part][$id][$key] = $value;
+        }
+    }
+
+    /**
+     * @param $key
      * @param null $item
      * @return null
      * @throws \Exception
@@ -61,6 +72,26 @@ abstract class Session
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
         }
+    }
+
+    /**
+     * @param $key
+     * @param $item
+     * @return null
+     * @throws \Exception
+     */
+    public static function getData($key, $item)
+    {
+        if (Session::checkCookie()) {
+            if (!self::$_sessionStarted) {
+                return null;
+            }
+        }
+
+        if (isset($item) && isset($_SESSION[$key][$item])) {
+            return $_SESSION[$key][$item];
+        }
+        return null;
     }
 
     /**
@@ -150,7 +181,7 @@ abstract class Session
     /**
      * @return void
      */
-    private static function addToSession(): void
+    public static function addToSession(): void
     {
         Session::set('remote_addr', $_SERVER['REMOTE_ADDR']);
         Session::set('user_agent', $_SERVER['HTTP_USER_AGENT']);

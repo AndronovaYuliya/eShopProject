@@ -125,15 +125,16 @@
                                                             <br>
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" checked type="radio"
-                                                                       name="adminAddRadioRole" id="adminRadioUser"
+                                                                       name="adminAddRadioRole" id="adminRadioUserAdd"
                                                                        value="User">
-                                                                <label class="form-check-label" for="adminRadioUser">User</label>
+                                                                <label class="form-check-label" for="adminRadioUserAdd">User</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="radio"
                                                                        name="adminAddRadioRole"
-                                                                       id="adminRadioAdmin" value="Admin">
-                                                                <label class="form-check-label" for="adminRadioAdmin">Admin</label>
+                                                                       id="adminRadioAdminAdd" value="Admin">
+                                                                <label class="form-check-label"
+                                                                       for="adminRadioAdminAdd">Admin</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -165,10 +166,10 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label for="adminInputConfirmPassword">Confirm
+                                                                <label for="adminInputConfirmPasswordSignup">Confirm
                                                                     Password</label>
                                                                 <input type="password" name="adminAddConfirmPassword"
-                                                                       id="adminInputConfirmPassword"
+                                                                       id="adminInputConfirmPasswordSignup"
                                                                        class="form-control">
                                                             </div>
                                                         </div>
@@ -214,9 +215,9 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label for="adminInputFirst">First Name</label>
+                                                                    <label for="adminInputFirstEdit">First Name</label>
                                                                     <input type="text" name="adminFirstName"
-                                                                           id="adminInputFirst"
+                                                                           id="adminInputFirstEdit"
                                                                            class="form-control"
                                                                            placeholder="First Name"
                                                                            value="<?php echo $admin["first_name"] ?>">
@@ -224,9 +225,9 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label for="adminInputLast">Last Name</label>
+                                                                    <label for="adminInputLastEdit">Last Name</label>
                                                                     <input type="text" name="adminLastName"
-                                                                           id="adminInputLast"
+                                                                           id="adminInputLastEdit"
                                                                            class="form-control"
                                                                            placeholder="Last Name"
                                                                            value="<?php echo $admin["last_name"] ?>">
@@ -236,9 +237,10 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
-                                                                    <label for="adminInputPassword">Password</label>
+                                                                    <label for="adminInputPasswordEdit">Password</label>
                                                                     <input type="password" name="adminEditPassword"
-                                                                           id="adminInputPassword" class="form-control">
+                                                                           id="adminInputPasswordEdit"
+                                                                           class="form-control">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -323,7 +325,7 @@
                     <?php foreach ($tables as $table): ?>
                         <div role="tabpanel" class="tab-pane" id="<?php echo $table ?>">
                             <div class="row">
-                                <form method="post" action="/admin/tableDelete" id="form_table">
+                                <form method="post" action="/admin/tableDelete">
                                     <div class="col-md-12">
                                         <?php $name = $table;
                                         echo $name ?>
@@ -378,15 +380,50 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                            <button type="submit" name="tableEdit"
-                                                    class="btn btn-info btn-fill pull-right edit-table-admin">
-                                                Edit Data
-                                            </button>
-                                            <button type="submit" name="tableDelete"
-                                                    class="btn btn-info btn-fill pull-right delete-table-admin">Delete
-                                                Data
+                                            <button type="submit" class="btn btn-info btn-fill pull-right">
+                                                Delete Data
                                             </button>
                                         </div>
+                                    </div>
+                                </form>
+                                <form method="post" action="/admin/tableEdit">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="header">
+                                                <h4 class="title">Edit data</h4>
+                                            </div>
+                                            <div class="content table-responsive table-full-width">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-striped table-condensed">
+                                                        <thead>
+                                                        <?php foreach ($keys as $key): ?>
+                                                            <?php if ($key != 'created_at' && $key != 'updated_at' && $key != 'date_touched'): ?>
+                                                                <th><?php echo $key ?></th>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                        </thead>
+                                                        <tbody>
+                                                        <?php $currentKeys = $keys; ?>
+                                                        <tr>
+                                                            <?php foreach ($currentKeys as $key): ?>
+                                                                <?php if ($key != 'created_at' && $key != 'updated_at' && $key != 'date_touched'): ?>
+                                                                    <td>
+                                                                        <input name="<?php echo $key ?>"
+                                                                               type="text"
+                                                                               placeholder="<?php echo $key ?>">
+                                                                    </td>
+                                                                <?php endif; ?>
+                                                            <?php endforeach; ?>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-info btn-fill pull-right"
+                                                name="<?php echo 'table?' . $table ?>">
+                                            Edit Data
+                                        </button>
                                     </div>
                                 </form>
                                 <form method="post" action="/admin/tableAdd">
@@ -411,7 +448,7 @@
                                                             <?php foreach ($currentKeys as $key): ?>
                                                                 <?php if ($key != 'created_at' && $key != 'updated_at' && $key != 'id'): ?>
                                                                     <td>
-                                                                        <input name="<?php echo $table . '?' . $key ?>"
+                                                                        <input name="<?php echo $key ?>"
                                                                                type="text"
                                                                                placeholder="<?php echo $key ?>">
                                                                     </td>
@@ -423,12 +460,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-info btn-fill pull-right add-table-admin">
+                                        <button type="submit" class="btn btn-info btn-fill pull-right"
+                                                name="<?php echo 'table?' . $table ?>">
                                             Add Data
                                         </button>
                                     </div>
                                 </form>
                             </div>
+                            <br>
+                            <form action="#" class="faker" method="post">
+                                <button type="submit" class="btn btn-info btn-fill pull-right faker"
+                                        name="<?php echo $table ?>">
+                                    Add Faker <?php echo $table ?>
+                                </button>
+                            </form>
                         </div>
                     <?php endforeach; ?>
 

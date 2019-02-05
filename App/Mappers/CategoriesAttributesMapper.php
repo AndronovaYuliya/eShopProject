@@ -12,21 +12,6 @@ use Core\Database;
 class CategoriesAttributesMapper extends AbstractTableMapper
 {
     /**
-     * @return void
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        try {
-            $sql = "INSERT INTO `categories_attributes` (id_category, id_attribute, created_at, updated_at) 
-                                                  VALUE (:id_category, :id_attribute, NOW(), NOW())";
-            Database::addFakerData('fakerCategoriesAttributes', $sql, 10);
-        } catch (PDOException $e) {
-            throw new \Exception(["Faker table categories_attributes: {$e->getTraceAsString()}"], 500);
-        }
-    }
-
-    /**
      * @return array
      */
     public static function query(): array
@@ -63,13 +48,5 @@ class CategoriesAttributesMapper extends AbstractTableMapper
                 FROM `categories_attributes`
                 WHERE $byWhat=$name;";
         return Database::query($sql);
-    }
-
-    /**
-     * @return void
-     */
-    protected static function addData(): void
-    {
-        // TODO: Implement addData() method.
     }
 }

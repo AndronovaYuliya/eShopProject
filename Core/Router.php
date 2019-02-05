@@ -96,13 +96,13 @@ class Router
         $url = self::removeQueryString($url);
 
         if (!self::matchRoute($url)) {
-            throw new \Exception("Page not found", 404);
+            throw new \Exception("Page {$url} not found", 404);
         }
 
         $controller = 'App\Controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
 
         if (!class_exists($controller)) {
-            throw new \Exception("Controller not found", 404);
+            throw new \Exception("Controller {$controller} not found", 404);
         }
 
         $cObj = new $controller(self::$route);
@@ -110,7 +110,6 @@ class Router
         $action = self::$route['action'] . 'Action';
         if (method_exists($cObj, $action)) {
             $cObj->$action($query);
-            $cObj->getView();
         } else {
             throw new \Exception("Action {$action} not found", 404);
         }

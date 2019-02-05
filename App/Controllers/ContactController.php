@@ -11,7 +11,7 @@ use Core\View;
 class ContactController extends AppController
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public function contactAction(): void
     {
@@ -19,6 +19,7 @@ class ContactController extends AppController
         $categories = $this->categories;
         $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
+        $this->getView();
     }
 
     /**

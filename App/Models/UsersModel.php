@@ -10,17 +10,9 @@ use Core\Validator;
  * Class UsersModel
  * @package App\Models
  */
-class UsersModel
+class UsersModel extends AbstractTableModel
 {
     protected static $errors;
-
-    /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        UsersMapper::addFakerData();
-    }
 
     /**
      * @return array

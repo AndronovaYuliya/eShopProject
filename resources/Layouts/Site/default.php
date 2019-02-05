@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php echo $this->getMeta() ?>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/page/style.css">        <!-- Custom CSS -->
@@ -28,7 +29,7 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"
+                    <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#loginModal"
                             type="submit">
                         <a class="nav-link" href=""><i class="fa fa-sign-in"></i>Login</a>
                     </button>
@@ -52,13 +53,10 @@
                         </button>
                     </form>
                 </li>
-                <?php if (isset($session['errors'])): ?>
-                    <li class="nav-item">
-                        <div class="alert alert-danger">
-                            <?php echo($session['errors']); ?>
-                        </div>
-                    </li>
-                <?php endif; ?>
+                <li class="nav-item">
+                    <div class="alert alert-danger collapse" id="dangerSignup">
+                    </div>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/search" method="post">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
@@ -80,8 +78,8 @@
             </div>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="/Cart/index">Cart - <span class="cart-amunt">$000</span>
-                        <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="/cart">Cart - <span class="cart-amunt">$000</span>
+                        <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
                 </div>
             </div>
         </div>
@@ -148,12 +146,12 @@
     </nav>
 </div><!-- End mainmenu-area -->
 <!-- Start Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="loginModalLabel">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -171,11 +169,7 @@
                         <input type="password" required name="userPassword" class="form-control" id="userInputPassword"
                                placeholder="Password">
                     </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="userCheck">
-                        <label class="form-check-label" name="userCheck" for="userCheck">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="loginClient" class="btn btn-primary loginClient">Submit</button>
                 </form>
             </div>
         </div>
@@ -194,7 +188,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/sender/letter">
+                <form method="post">
                     <div class="form-group">
                         <label for="letterInputName">Name</label>
                         <input type="text" required class="form-control" id="letterInputName"
@@ -205,7 +199,7 @@
                         <input type="email" required class="form-control" id="letterInputEmail" name="email"
                                placeholder="james@bond.com">
                     </div>
-                    <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="subscribe" class="btn btn-primary client-subscribe">Submit</button>
                 </form>
             </div>
         </div>
@@ -224,7 +218,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/signup" name="signupUser">
+                <form method="post" name="signupUser">
                     <div class="form-group">
                         <label for="SignupInputName">Name</label>
                         <input type="text" class="form-control" id="signupInputName" aria-describedby="nameHelp"
@@ -270,8 +264,45 @@
                         <input type="password" required class="form-control" id="signupInputConfirmPassword"
                                aria-describedby="nameHelp" name="userConfirmPassword">
                     </div>
-                    <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="signupClient" class="btn btn-primary signupClient">Submit</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal-->
+<!--Start Modal-->
+<div class="modal fade modal-lg" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="CartModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Brand</th>
+                            <th>Count</th>
+                            <th>Price</th>
+                            <th>Sum</th>
+                            <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-cart">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                <a href="cart/" type="button" class="btn btn-primary">Checkout cart</a>
             </div>
         </div>
     </div>
@@ -328,34 +359,19 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">Newsletter</h2>
-                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your
-                        inbox!</p>
-                    <div class="newsletter-form">
-                        <form method="post" action="/sender/letter">
-                            <input type="text" required id="letterInputName" name="name" placeholder="James Bond">
-                            <input type="email" required id="letterInputEmail" name="email"
-                                   placeholder="Type your email">
-                            <button type="submit" name="subscribe" class="btn btn-primary">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div><!-- End footer-top-area -->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+<script src="/js/site/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+<script src="/js/site/functions.js"></script>
+
 </body>
 </html>

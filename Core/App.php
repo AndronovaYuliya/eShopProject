@@ -2,9 +2,12 @@
 
 namespace Core;
 
+use App\Models\FakerModel;
+
 class App
 {
     public static $app;
+    public $faker;
 
     /**
      * App constructor.
@@ -14,8 +17,6 @@ class App
     {
         self::$app = Registry::getInstance();
         $this->getParams();
-        //Database::createTables();
-
         Session::start();
 
         new MyException();

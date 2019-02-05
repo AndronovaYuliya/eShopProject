@@ -69,7 +69,7 @@ abstract class AdminValidator
      * @param $data
      * @return bool|string
      */
-    public static function add($data)
+    public static function addUser($data)
     {
         if (!isset($data['adminAddEmail'])) {
             return 'Please, enter the email';

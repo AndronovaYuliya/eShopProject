@@ -8,16 +8,8 @@ use App\Mappers\CategoriesMapper;
  * Class CategoriesModel
  * @package App\Models
  */
-class CategoriesModel
+class CategoriesModel extends AbstractTableModel
 {
-    /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        CategoriesMapper::addFakerData();
-    }
-
     /**
      * @return array
      */
@@ -28,11 +20,11 @@ class CategoriesModel
 
     /**
      * @param string $byWhat
-     * @param $name
+     * @param string $name
      * @return array
      * @throws \Exception
      */
-    public static function getDataWhere(string $byWhat, $name)
+    public static function getDataWhere(string $byWhat, string $name): array
     {
         return CategoriesMapper::getDataWhere($byWhat, $name);
     }

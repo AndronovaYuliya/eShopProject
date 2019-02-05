@@ -12,7 +12,7 @@ use Core\View;
 class ShopController extends AppController
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public function shopAction(): void
     {
@@ -20,10 +20,11 @@ class ShopController extends AppController
         $categories = $this->categories;
         $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
+        $this->getView();
     }
 
     /**
-     * @return void
+     * @throws \Exception
      */
     public function searchAction(): void
     {
@@ -34,6 +35,7 @@ class ShopController extends AppController
         $search = explode(' ', $search);
         $products = ProductsModel::getDataLike($search);
         $this->set(compact('products', 'categories', 'brands'));
+        $this->getView();
     }
 
     /**

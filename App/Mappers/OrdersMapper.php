@@ -12,20 +12,6 @@ use Core\Database;
 class OrdersMapper extends AbstractTableMapper
 {
     /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        try {
-            $sql = "INSERT INTO `orders` (date, sum, status,ttn,id_client,created_at, updated_at) 
-                                    VALUE (NOW(),:sum,:status, :ttn,:id_client,NOW(), NOW())";
-            Database::addFakerData('fakerOrders', $sql, 10);
-        } catch (PDOException $e) {
-            throw new \Exception(["Faker table orders: {$e->getTraceAsString()}"], 500);
-        }
-    }
-
-    /**
      * @return array
      */
     public static function query(): array

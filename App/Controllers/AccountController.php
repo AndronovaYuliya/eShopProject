@@ -33,6 +33,7 @@ class AccountController extends AppController
         $session = Session::getSession();
 
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
+        $this->getView();
     }
 
     /**

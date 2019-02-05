@@ -12,15 +12,13 @@ use Core\View;
 class SenderController extends AppController
 {
     /**
-     * @return void
+     * @throws \Exception
      */
     public function letterAction(): void
     {
         Sender::sendMsg();
-        $products = $this->products;
-        $categories = $this->categories;
-        $brands = $this->brands;
-        $this->set(compact('products', 'categories', 'brands'));
+        echo json_encode("Sent!");
+
     }
 
     /**

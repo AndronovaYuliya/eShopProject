@@ -12,20 +12,6 @@ use Core\Database;
 class ProductsImagesMapper extends AbstractTableMapper
 {
     /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        try {
-            $sql = "INSERT INTO `products_images` (id_galary, id_product, created_at, updated_at)
-                                            VALUE (:id_galary, :id_product,NOW(), NOW())";
-            Database::addFakerData('fakerProductsImages', $sql, 20);
-        } catch (PDOException $e) {
-            throw new \Exception(["Faker table products_images: {$e->getTraceAsString()}"], 500);
-        }
-    }
-
-    /**
      * @return array
      */
     public static function query(): array

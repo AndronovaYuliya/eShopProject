@@ -20,6 +20,7 @@ use App\Models\SessionModel;
 use Core\Controller;
 use Core\App;
 use App\Models\Admin\AdminModel;
+use Core\Model;
 use Core\Session;
 
 /**
@@ -57,12 +58,14 @@ class AdminAppController extends Controller
         parent::__construct($route);
         $this->layout = 'Admin/default';
         $this->updateDatas();
-
+        Session::addToSession();
         $this->setMeta(App::$app->getProperty('title'), 'Admin', 'admin');
+
+        //new Model();
     }
 
     /**
-     * @return void
+     * @throws \Exception
      */
     protected function updateDatas(): void
     {
@@ -83,5 +86,6 @@ class AdminAppController extends Controller
         $this->products_key_words = ProductsKeyWordsModel::query();
         $this->sessions = SessionModel::query();
         $this->users = $this->admins;
+        $this->admin=Session::get('admin');
     }
 }

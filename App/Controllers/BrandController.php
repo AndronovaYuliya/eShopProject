@@ -12,8 +12,8 @@ use Core\View;
 class BrandController extends AppController
 {
     /**
-     * @param string $param
-     * @return void
+     * @param null $param
+     * @throws \Exception
      */
     public function brandAction($param = null): void
     {
@@ -25,6 +25,7 @@ class BrandController extends AppController
         $categories = $this->categories;
         $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
+        $this->getView();
     }
 
     /**

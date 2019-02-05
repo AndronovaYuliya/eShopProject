@@ -12,8 +12,8 @@ use Core\View;
 class ProductController extends AppController
 {
     /**
-     * @return void
-     * @param string $param
+     * @param null $param
+     * @throws \Exception
      */
     public function showAction($param = null): void
     {
@@ -22,6 +22,7 @@ class ProductController extends AppController
         $product = ProductsModel::getProductWithImg('alias', $param);
         $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands', 'product'));
+        $this->getView();
     }
 
     /**

@@ -8,16 +8,8 @@ use App\Mappers\ImagesMapper;
  * Class ImagesModel
  * @package App\Models
  */
-class ImagesModel
+class ImagesModel extends AbstractTableModel
 {
-    /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        ImagesMapper::addFakerData();
-    }
-
     /**
      * @return array
      */

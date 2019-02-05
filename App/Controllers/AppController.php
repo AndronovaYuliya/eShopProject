@@ -20,13 +20,33 @@ class AppController extends Controller
     /**
      * AppController constructor.
      * @param $route
+     * @throws \Exception
      */
     public function __construct($route)
     {
         parent::__construct($route);
-        $this->brands = ProductsModel::query();
-        $this->categories = CategoriesModel::query();
-        $this->products = ProductsModel::getFullData();
-        $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
+        try {
+            $this->brands = ProductsModel::query();
+        } catch (\PDOException $exception) {
+            throw new \Exception("Sql wrong: {$exception}", 100);
+        }
+
+        try {
+            $this->categories = CategoriesModel::query();
+        } catch (\PDOException $exception) {
+            throw new \Exception("Sql wrong: {$exception}", 100);
+        }
+
+        try {
+            $this->products = ProductsModel::getFullData();
+        } catch (\PDOException $exception) {
+            throw new \Exception("Sql wrong: {$exception}", 100);
+        }
+
+        try {
+            $this->setMeta(App::$app->getProperty('title'), 'Shop', 'cheap');
+        } catch (\PDOException $exception) {
+            throw new \Exception("Sql wrong: {$exception}", 100);
+        }
     }
 }

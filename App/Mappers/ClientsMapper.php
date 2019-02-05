@@ -12,20 +12,6 @@ use Core\Cache;
 class ClientsMapper extends AbstractTableMapper
 {
     /**
-     * @throws \Exception
-     */
-    public static function addFakerData(): void
-    {
-        try {
-            $sql = "INSERT INTO `clients` (name, login, email, phone,city,address,born,password,created_at,updated_at) 
-                                    VALUE (:name, :login, :email, :phone, :city, :address, NOW(),:password,NOW(),NOW())";
-            Database::addFakerData('fakerClients', $sql, 10);
-        } catch (PDOException $e) {
-            throw new \Exception(["Faker table clients: {$e->getTraceAsString()}"], 500);
-        }
-    }
-
-    /**
      * @return array
      */
     public static function query(): array

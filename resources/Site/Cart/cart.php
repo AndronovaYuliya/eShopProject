@@ -96,6 +96,9 @@
                         <div class="cart-collaterals">
                             <div class="cart_totals ">
                                 <h2>Cart Totals</h2>
+                                <div class="cart">
+
+                                </div>
                                 <table cellspacing="0">
                                     <tbody>
                                     <tr class="cart-subtotal">
