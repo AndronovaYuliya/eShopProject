@@ -21,7 +21,7 @@
                     <h2 class="sidebar-title">Search Products</h2>
                     <form action="/search" method="post">
                         <input type="text" placeholder="Search products...">
-                        <input type="submit" value="Search">
+                        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                     </form>
                 </div>
                 <div class="single-sidebar">
@@ -73,10 +73,10 @@
                                                    value="0" name="qty" min="1" id="currency"
                                                    max="<?php echo($product[0]['count']) ?>" step="1">
                                         </div>
-                                        <a class="cart add-to-cart-button" data-id="<?php echo($product[0]['id']) ?>"
+                                        <button class="cart btn btn-outline-success my-2 my-sm-0 add-to-cart-button" data-id="<?php echo($product[0]['id']) ?>"
                                            href="/cart/add?id=<?php echo($product[0]['id']) ?>"
                                            type="submit">Add to cart
-                                        </a>
+                                        </button>
                                         <div class="product-inner-price">
                                             <ins>
                                                 <span><?php echo $product[0]['price'] . ' $'; ?></span>

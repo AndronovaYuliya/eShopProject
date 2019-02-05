@@ -37,6 +37,7 @@ class CartModel
             $currentSum = Session::getData('cart', $ID)['sum'] + $qty * $price;
             Session::addData('cart', $ID, 'sum', $currentSum);
         }
+
         $total = 0;
         $qtyTotal = 0;
         foreach (Session::get('cart') as $key => $value) {
@@ -45,6 +46,8 @@ class CartModel
         }
         Session::addData('cart', 0, 'total', $total);
         Session::addData('cart', 0, 'qtyTotal', $qtyTotal);
+
+
         $table = [];
         foreach (Session::get('cart') as $key => $item) {
             if ($key) {
@@ -55,8 +58,6 @@ class CartModel
                         <td>{$item['qty']}</td>
                         <td>{$item['price']} $</td>
                         <td>{$item['sum']} $</td>
-                        <td><span data-id="{$key}" class="glyphicon glyphicon-remove text-danger del-item" 
-                            aria-hidden="true"></span></td>
                     </tr>
 HTML;
             }

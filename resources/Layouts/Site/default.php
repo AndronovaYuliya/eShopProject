@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php echo $this->getMeta() ?>
-    <link rel="shortcut icon" href="">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/page/style.css">        <!-- Custom CSS -->
@@ -78,7 +78,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a id="getCart" href="/Cart/index">Cart - <span class="cart-amunt">$000</span>
+                    <a id="getCart" href="/cart">Cart - <span class="cart-amunt">$000</span>
                         <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                 </div>
             </div>

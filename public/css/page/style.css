@@ -238,18 +238,6 @@ Start maincontent-area
     font-size: 14px;
 }
 
-.add-to-cart-button:before {
-    content: "\f07a";
-}
-
-.add-to-wishlist-button:before {
-    content: "\f004";
-}
-
-.add-to-compare-button:before {
-    content: "\f079";
-}
-
 .quikview-button:before {
     content: "\f002";
 }

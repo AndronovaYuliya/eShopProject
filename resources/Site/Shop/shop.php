@@ -32,7 +32,7 @@
                                 <del><?php echo $product['price'] ?></del>
                             </div>
                             <div class="product-option-shop">
-                                <button class="cart add-to-cart-button" data-id="<?php echo($product['id']) ?>"
+                                <button class="btn btn-outline-success my-2 my-sm-0" data-id="<?php echo($product['id']) ?>"
                                         type="submit">
                                     Add to cart
                                 </button>
