@@ -55,4 +55,20 @@ class CartController extends AppController
 
         echo json_encode($table);
     }
+
+    /**
+     * @throws \Exception
+     */
+    public function getQtyTotalAction()
+    {
+        echo Session::getData('cart', 0)['qtyTotal'];
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function getTotalAction()
+    {
+        echo '$ ' . Session::getData('cart', 0)['total'];
+    }
 }

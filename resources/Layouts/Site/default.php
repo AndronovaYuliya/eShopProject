@@ -78,8 +78,8 @@
             </div>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a id="getCart" href="/cart">Cart - <span class="cart-amunt">$000</span>
-                        <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="/cart">Cart - <span class="cart-amunt">$000</span>
+                        <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
                 </div>
             </div>
         </div>
@@ -276,7 +276,8 @@
 </div>
 <!--End Modal-->
 <!--Start Modal-->
-<div class="modal fade" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="CartModalLabel" aria-hidden="true">
+<div class="modal fade modal-lg" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="CartModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -304,7 +305,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
                 <a href="cart/" type="button" class="btn btn-primary">Checkout cart</a>
             </div>
         </div>
