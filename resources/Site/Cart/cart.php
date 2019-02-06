@@ -51,72 +51,24 @@
                 <div class="product-content-right">
                     <div class="woocommerce">
                         <form method="post" action="#">
-                            <table cellspacing="0" class="shop_table cart">
+                            <table class="table table-hover table-striped">
                                 <thead>
                                 <tr>
-                                    <th class="product-remove">&nbsp;</th>
-                                    <th class="product-thumbnail">&nbsp;</th>
-                                    <th class="product-name">Product</th>
-                                    <th class="product-price">Price</th>
-                                    <th class="product-quantity">Quantity</th>
-                                    <th class="product-subtotal">Total</th>
+                                    <th>Title</th>
+                                    <th>Brand</th>
+                                    <th>Count</th>
+                                    <th>Price</th>
+                                    <th>Sum</th>
+                                    <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr class="cart_item">
-                                    <td class="product-remove">
-                                        <a title="Remove this item" class="remove" href="#">×</a>
-                                    </td>
-                                    <td class="product-thumbnail">
-                                        <a href="single-product.html"><img width="145" height="145" alt="poster_1_up"
-                                                                           class="shop_thumbnail"
-                                                                           src="img/product-thumb-2.jpg"></a>
-                                    </td>
-                                    <td class="product-name">
-                                        <a href="single-product.html">Ship Your Idea</a>
-                                    </td>
-                                    <td class="product-price">
-                                        <span class="amount">£15.00</span>
-                                    </td>
-                                    <td class="product-quantity">
-                                        <div class="quantity buttons_added">
-                                            <input type="button" class="minus" value="-">
-                                            <input type="number" size="4" class="input-text qty text" title="Qty"
-                                                   value="1" min="0" step="1">
-                                            <input type="button" class="plus" value="+">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="amount">£15.00</span>
-                                    </td>
-                                </tr>
+                                <tbody class="table-cart">
+                                <?php foreach ($table as $part): ?>
+                                    <?php print($part) ?>
+                                <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </form>
-                        <div class="cart-collaterals">
-                            <div class="cart_totals ">
-                                <h2>Cart Totals</h2>
-                                <div class="cart">
-
-                                </div>
-                                <table cellspacing="0">
-                                    <tbody>
-                                    <tr class="cart-subtotal">
-                                        <th>Cart Subtotal</th>
-                                        <td><span class="amount">£15.00</span></td>
-                                    </tr>
-                                    <tr class="shipping">
-                                        <th>Shipping and Handling</th>
-                                        <td>Free Shipping</td>
-                                    </tr>
-                                    <tr class="order-total">
-                                        <th>Order Total</th>
-                                        <td><strong><span class="amount">£15.00</span></strong></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

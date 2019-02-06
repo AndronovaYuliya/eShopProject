@@ -73,9 +73,10 @@
                                                    value="0" name="qty" min="1" id="currency"
                                                    max="<?php echo($product[0]['count']) ?>" step="1">
                                         </div>
-                                        <button class="cart btn btn-outline-success my-2 my-sm-0 add-to-cart-button" data-id="<?php echo($product[0]['id']) ?>"
-                                           href="/cart/add?id=<?php echo($product[0]['id']) ?>"
-                                           type="submit">Add to cart
+                                        <button class="cart btn btn-outline-success my-2 my-sm-0 add-to-cart-button"
+                                                data-id="<?php echo($product[0]['id']) ?>"
+                                                href="/cart/add?id=<?php echo($product[0]['id']) ?>"
+                                                type="submit">Add to cart
                                         </button>
                                         <div class="product-inner-price">
                                             <ins>

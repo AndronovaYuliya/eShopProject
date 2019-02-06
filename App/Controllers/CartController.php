@@ -21,7 +21,9 @@ class CartController extends AppController
         $products = $this->products;
         $categories = $this->categories;
         $brands = $this->brands;
-        $this->set(compact('products', 'categories', 'brands'));
+        $cartModel = new CartModel();
+        $table = $cartModel->printCart();
+        $this->set(compact('products', 'categories', 'brands', 'table'));
         $this->getView();
     }
 
@@ -70,5 +72,15 @@ class CartController extends AppController
     public function getTotalAction()
     {
         echo '$ ' . Session::getData('cart', 0)['total'];
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function clearAction()
+    {
+        if (Session::get('cart')) {
+            Session::delete('cart');
+        }
     }
 }
