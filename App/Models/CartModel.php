@@ -35,6 +35,7 @@ class CartModel
             Session::addData('cart', $ID, 'sum', $price * $qty);
         } else {
             $currentQty = Session::getData('cart', $ID)['qty'] + $qty;
+            $currentQty = $currentQty > $countToSell ? $countToSell : $currentQty;
             Session::addData('cart', $ID, 'qty', $currentQty);
             $currentSum = Session::getData('cart', $ID)['sum'] + $qty * $price;
             Session::addData('cart', $ID, 'sum', $currentSum);
@@ -62,6 +63,7 @@ class CartModel
         $total = 0;
         $qtyTotal = 0;
 
+
         foreach (Session::get('cart') as $key => $value) {
             $total += Session::getData('cart', $key)['sum'];
             $qtyTotal += Session::getData('cart', $key)['qty'];
@@ -80,7 +82,7 @@ class CartModel
                         <td class="product-quantity">
                             <div class="quantity buttons_added">
                                 <input type="number" size="4" class="input-text qty text" title="Qty"
-                                    value="1" min="0" step="1">
+                                    value="{$item['qty']}" min="1" max="{$item['countToSell']}" step="1">
                             </div>
                         </td>
                         <td class="product-remove">
