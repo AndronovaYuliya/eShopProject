@@ -83,6 +83,8 @@ $('button.clear-cart').on('click', function (e) {
             showCart(res);
         }
     });
+    getQtyTotal();
+    getTotal();
 })
 /*\Clear cart*/
 
