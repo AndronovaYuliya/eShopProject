@@ -17,6 +17,7 @@ $('body').on('click', '.add-to-cart-button', function (e) {
         type: 'POST',
         success: function (res) {
             showCart(res);
+            showModalCart(res);
         },
         errors: function () {
             alert("ERROR");
@@ -60,6 +61,9 @@ function getTotal() {
 
 function showCart(cart) {
     $("tbody.table-cart").html(jQuery.parseJSON(cart));
+};
+
+function showModalCart(cart) {
     $("#CartModal").modal('show');
 };
 
@@ -67,6 +71,21 @@ $('body').on('click', '#getCart', function (e) {
     getCart();
 });
 /*/Cart*/
+
+
+/*Clear cart*/
+$('button.clear-cart').on('click', function (e) {
+    e.preventDefault();
+    jQuery.ajax({
+        url: 'cart/clear'
+        , type: 'POST'
+        , success: function (res) {
+            showCart(res);
+        }
+    });
+})
+/*\Clear cart*/
+
 
 /*subscribe*/
 $('button.client-subscribe').on('click', function (e) {
@@ -128,4 +147,3 @@ $('button.signupClient').on('click', function (e) {
         }
     });
 });
-

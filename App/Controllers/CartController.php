@@ -82,5 +82,8 @@ class CartController extends AppController
         if (Session::get('cart')) {
             Session::delete('cart');
         }
+        $cartModel = new CartModel();
+        $table = $cartModel->printCart();
+        echo json_encode($table);
     }
 }

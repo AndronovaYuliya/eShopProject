@@ -49,29 +49,32 @@
             </div>
             <div class="col-md-8">
                 <div class="product-content-right">
-                    <div class="woocommerce">
-                        <form method="post" action="#">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Brand</th>
-                                    <th>Count</th>
-                                    <th>Price</th>
-                                    <th>Sum</th>
-                                    <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
-                                </tr>
-                                </thead>
-                                <tbody class="table-cart">
-                                <?php foreach ($table as $part): ?>
-                                    <?php print($part) ?>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </form>
+                    <form method="post">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Brand</th>
+                                <th>Count</th>
+                                <th>Price</th>
+                                <th>Sum</th>
+                                <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-cart">
+                            <?php foreach ($table as $part): ?>
+                                <?php print($part) ?>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </form>
+                    <div class="container text-right">
+                        <button type="button" class="btn btn-outline-dark clear-cart">Clear cart</button>
+                        <button type="button" class="btn btn-primary">To order</button>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

@@ -94,12 +94,12 @@ HTML;
                 <tr>
                     <td>Cart Subtotal</td>
                     <td colspan="5" class="text-right cart-qty">{$qtyTotal}</td>
-                    <td></td>
+                    <td colspan="2"></td>
                 </tr>
                 <tr>
                     <td>Order Total</td>
                     <td colspan="5" class="text-right cart-sum">{$total} $</td>
-                    <td></td>
+                    <td colspan="2"></td>
                 </tr>
 
 HTML;
