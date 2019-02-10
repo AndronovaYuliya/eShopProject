@@ -24,6 +24,7 @@ Router::add('cart\/add$', ['controller' => 'Cart', 'action' => 'add']);
 Router::add('cart\/getQtyTotal', ['controller' => 'Cart', 'action' => 'getQtyTotal']);
 Router::add('cart\/getTotal', ['controller' => 'Cart', 'action' => 'getTotal']);
 Router::add('cart\/clear', ['controller' => 'Cart', 'action' => 'clear']);
+Router::add('cart\/removeProduct', ['controller' => 'Cart', 'action' => 'removeProduct']);
 Router::add('cart\/?$', ['controller' => 'Cart', 'action' => 'cart']);
 Router::add('key\?([a-z0-9-]+)?$', ['controller' => 'Product', 'action' => 'key']);
 Router::add('sender\/letter$', ['controller' => 'Sender', 'action' => 'letter']);

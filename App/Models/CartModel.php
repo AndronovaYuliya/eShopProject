@@ -16,29 +16,57 @@ class CartModel
      * @return array
      * @throws \Exception
      */
-    public function addToCart($product, $qty = 1): array
+    public static function addToCart($product, $qty = 1): array
     {
         $ID = $product[0]['id'];
-        $title = $product[0]['title'];
-        $price = $product[0]['price'];
-        $alias = $product[0]['alias'];
-        $brand = $product[0]['brand'];
-        $countToSell = $product[0]['count'];
+        if (Session::getData('cart', $ID)) {
+            $qty = $qty > $product[0]['id'] ? $product[0]['id'] : $qty;
+        }
+
+        self::saveChanges($product, $qty);
+
+        return self::printCart();
+    }
+
+    /**
+     * @param $product
+     * @param int $qty
+     * @return array
+     * @throws \Exception
+     */
+    public static function changeCount($product, $qty = 1): array
+    {
+        $ID = $product[0]['id'];
+
+        if (Session::getData('cart', $ID)) {
+            $qty = $qty > $product[0]['id'] ? $product[0]['id'] : $qty;
+        }
+
+        self::saveChanges($product, $qty);
+
+        return self::printCart();
+    }
+
+    /**
+     * @param $product
+     * @param $currentQty
+     * @throws \Exception
+     */
+    public static function saveChanges($product, $qty)
+    {
+        $ID = $product[0]['id'];
 
         if (!Session::getData('cart', $ID)) {
             Session::addData('cart', $ID, 'qty', $qty);
-            Session::addData('cart', $ID, 'title', $title);
-            Session::addData('cart', $ID, 'price', $price);
-            Session::addData('cart', $ID, 'alias', $alias);
-            Session::addData('cart', $ID, 'brand', $brand);
-            Session::addData('cart', $ID, 'countToSell', $countToSell);
-            Session::addData('cart', $ID, 'sum', $price * $qty);
+            Session::addData('cart', $ID, 'title', $product[0]['title']);
+            Session::addData('cart', $ID, 'price', $product[0]['price']);
+            Session::addData('cart', $ID, 'alias', $product[0]['alias']);
+            Session::addData('cart', $ID, 'brand', $product[0]['brand']);
+            Session::addData('cart', $ID, 'countToSell', $product[0]['count']);
+            Session::addData('cart', $ID, 'sum', $product[0]['price'] * $qty);
         } else {
-            $currentQty = Session::getData('cart', $ID)['qty'] + $qty;
-            $currentQty = $currentQty > $countToSell ? $countToSell : $currentQty;
-            Session::addData('cart', $ID, 'qty', $currentQty);
-            $currentSum = Session::getData('cart', $ID)['sum'] + $qty * $price;
-            Session::addData('cart', $ID, 'sum', $currentSum);
+            Session::addData('cart', $ID, 'qty', $qty);
+            Session::addData('cart', $ID, 'sum', $product[0]['price'] * $qty);
         }
 
         $total = 0;
@@ -49,15 +77,14 @@ class CartModel
         }
         Session::addData('cart', 0, 'total', $total);
         Session::addData('cart', 0, 'qtyTotal', $qtyTotal);
-
-        return $this->printCart();
     }
+
 
     /**
      * @return array
      * @throws \Exception
      */
-    public function printCart()
+    public static function printCart()
     {
         $table = [];
         $total = 0;
@@ -81,12 +108,13 @@ class CartModel
                         <td>{$item['sum']} $</td>
                         <td class="product-quantity">
                             <div class="quantity buttons_added">
-                                <input type="number" size="4" class="input-text qty text" title="Qty"
-                                    value="{$item['qty']}" min="1" max="{$item['countToSell']}" step="1">
+                                <input type="number" size="4" class="input-text qty text remove-item" title="Qty"
+                                    value="{$item['qty']}" min="1" max="{$item['countToSell']}" step="1"
+                                     name="qty" data-id="{$key}">
                             </div>
                         </td>
                         <td class="product-remove">
-                            <a title="Remove this item" class="remove" href="#">×</a>
+                            <a title="Remove this item" class="remove-product" href="#" data-id="{$key}">×</a>
                         </td>
                     </tr>
 HTML;
@@ -107,4 +135,5 @@ HTML;
 HTML;
         return $table;
     }
+
 }

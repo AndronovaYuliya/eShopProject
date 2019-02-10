@@ -70,7 +70,7 @@
                     </form>
                     <div class="container text-right">
                         <button type="button" class="btn btn-outline-dark clear-cart">Clear cart</button>
-                        <button type="button" class="btn btn-primary">To order</button>
+                        <button type="button" class="btn btn-primary order-cart">To order</button>
                     </div>
                 </div>
             </div>

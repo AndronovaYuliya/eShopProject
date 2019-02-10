@@ -21,8 +21,7 @@ class CartController extends AppController
         $products = $this->products;
         $categories = $this->categories;
         $brands = $this->brands;
-        $cartModel = new CartModel();
-        $table = $cartModel->printCart();
+        $table = CartModel::printCart();
         $this->set(compact('products', 'categories', 'brands', 'table'));
         $this->getView();
     }
@@ -43,8 +42,8 @@ class CartController extends AppController
      */
     public function addAction()
     {
-        $id = !empty($_POST['id']) ? (int)$_POST['id'] : null;
-        $qty = !empty($_POST['qty']) ? (int)$_POST['qty'] : 1;
+        $id = !empty($_POST['id']) ? $_POST['id'] : null;
+        $qty = !empty($_POST['qty']) ? $_POST['qty'] : 1;
         if ($id) {
             $product = ProductsModel::getDataWhere('id', $id);
         }
@@ -52,8 +51,7 @@ class CartController extends AppController
             return false;
         }
 
-        $cart = new CartModel();
-        $table = $cart->addToCart($product, $qty);
+        $table = CartModel::addToCart($product, $qty);
 
         echo json_encode($table);
     }
@@ -82,8 +80,37 @@ class CartController extends AppController
         if (Session::get('cart')) {
             Session::delete('cart');
         }
-        $cartModel = new CartModel();
-        $table = $cartModel->printCart();
+        $table = CartModel::printCart();
+        echo json_encode($table);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function removeProductAction()
+    {
+        Session::deleteData('cart', $_POST['id']);
+        $table = CartModel::printCart();
+        echo json_encode($table);
+    }
+
+    /**
+     * @return bool
+     * @throws \Exception
+     */
+    public function changeCountAction()
+    {
+        $id = !empty($_POST['id']) ? (int)$_POST['id'] : null;
+        $qty = !empty($_POST['qty']) ? (int)$_POST['qty'] : 1;
+        if ($id) {
+            $product = ProductsModel::getDataWhere('id', $id);
+        }
+        if (!$product) {
+            return false;
+        }
+
+        $table = CartModel::changeCount($product, $qty);
+
         echo json_encode($table);
     }
 }

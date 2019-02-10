@@ -88,8 +88,28 @@ abstract class Session
             }
         }
 
-        if (isset($item) && isset($_SESSION[$key][$item])) {
+        if (isset($_SESSION[$key][$item])) {
             return $_SESSION[$key][$item];
+        }
+        return null;
+    }
+
+    /**
+     * @param $key
+     * @param $item
+     * @return null
+     * @throws \Exception
+     */
+    public static function deleteData($key, $item)
+    {
+        if (Session::checkCookie()) {
+            if (!self::$_sessionStarted) {
+                return null;
+            }
+        }
+
+        if (isset($_SESSION[$key][$item])) {
+            unset($_SESSION[$key][$item]);
         }
         return null;
     }
