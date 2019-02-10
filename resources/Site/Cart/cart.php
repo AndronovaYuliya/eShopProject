@@ -49,6 +49,13 @@
             </div>
             <div class="col-md-8">
                 <div class="product-content-right">
+
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="error-auth"></p>
+                            </div>
+                        </div>
+
                     <form method="post">
                         <table class="table table-hover table-striped">
                             <thead>

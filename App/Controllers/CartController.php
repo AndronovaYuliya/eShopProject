@@ -2,8 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Mappers\ClientsMapper;
 use App\Models\CartModel;
+use App\Models\OrderModel;
 use App\Models\ProductsModel;
+use Core\Authorization;
 use Core\Session;
 use Core\View;
 
@@ -22,6 +25,7 @@ class CartController extends AppController
         $categories = $this->categories;
         $brands = $this->brands;
         $table = CartModel::printCart();
+        $this->setMeta('Cart');
         $this->set(compact('products', 'categories', 'brands', 'table'));
         $this->getView();
     }
@@ -92,5 +96,28 @@ class CartController extends AppController
         Session::deleteData('cart', $_POST['id']);
         $table = CartModel::printCart();
         echo json_encode($table);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function checkoutAction()
+    {
+        if (!Authorization::isAuth('login')) {
+            echo 'You are not logged';
+        } else {
+            echo json_encode(true);
+        }
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function saveOrderAction()
+    {
+        $login = Session::get('login');
+        $client = ClientsMapper::getDataWhere('login', $login);
+        $orderId = OrderModel::saveOrder($client[0]);
+        OrderModel::mailOrder($orderId, $orderId[0]['email']);
     }
 }

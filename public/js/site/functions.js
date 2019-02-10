@@ -4,6 +4,40 @@ $(document).ready(function () {
 });
 
 /*Cart*/
+function getQtyTotal() {
+    jQuery.ajax({
+        url: '/cart/getQtyTotal',
+        type: 'POST',
+        success: function (res) {
+            $('span.product-count').text(res);
+        },
+        errors: function () {
+            alert("ERROR");
+        }
+    });
+}
+
+function getTotal() {
+    jQuery.ajax({
+        url: '/cart/getTotal',
+        type: 'POST',
+        success: function (res) {
+            $('span.cart-amunt').text(res);
+        },
+        errors: function () {
+            alert("ERROR");
+        }
+    });
+}
+
+function showCart(cart) {
+    $("tbody.table-cart").html(jQuery.parseJSON(cart));
+};
+
+function showModalCart(cart) {
+    $("#CartModal").modal('show');
+};
+
 $('body').on('click', '.add-to-cart-button,input.remove-item', function (e) {
     e.preventDefault();
     var id = $(this).attr('data-id'),
@@ -31,52 +65,11 @@ $('body').on('click', '.add-to-cart-button,input.remove-item', function (e) {
     getTotal();
 });
 
-/*Get Cart*/
-function getQtyTotal() {
-    jQuery.ajax({
-        url: '/cart/getQtyTotal',
-        type: 'POST',
-        success: function (res) {
-            $('span.product-count').text(res);
-        },
-        errors: function () {
-            alert("ERROR");
-        }
-    });
-}
-
-/*Get Cart*/
-function getTotal() {
-    jQuery.ajax({
-        url: '/cart/getTotal',
-        type: 'POST',
-        success: function (res) {
-            $('span.cart-amunt').text(res);
-        },
-        errors: function () {
-            alert("ERROR");
-        }
-    });
-}
-
-/*/Get Cart*/
-
-function showCart(cart) {
-    $("tbody.table-cart").html(jQuery.parseJSON(cart));
-};
-
-function showModalCart(cart) {
-    $("#CartModal").modal('show');
-};
-
 $('body').on('click', '#getCart', function (e) {
     getCart();
 });
-/*/Cart*/
 
-
-/*Clear cart*/
-$('button.clear-cart').on('click', function (e) {
+$('body').on('click', 'button.clear-cart', function (e) {
     e.preventDefault();
     jQuery.ajax({
         url: 'cart/clear'
@@ -88,9 +81,7 @@ $('button.clear-cart').on('click', function (e) {
     getQtyTotal();
     getTotal();
 })
-/*\Clear cart*/
 
-/*remove-product*/
 $('body').on('click', '.remove-product', function (e) {
     e.preventDefault();
     id = $(this).attr('data-id');
@@ -107,10 +98,10 @@ $('body').on('click', '.remove-product', function (e) {
     getQtyTotal();
     getTotal();
 })
-/*Remove-product*/
+/*/Cart*/
 
 /*subscribe*/
-$('button.client-subscribe').on('click', function (e) {
+$('body').on('click', 'button.client-subscribe', function (e) {
     e.preventDefault();
     var email = $('input#letterInputEmail').val();
     var login = $('input#letterInputName').val();
@@ -125,14 +116,14 @@ $('button.client-subscribe').on('click', function (e) {
         type: 'POST',
         success: function (data) {
             $("#dangerSignup").text(data);
-            $("#dangerSignup").show();
+            $("#dangerSignup").modal(show);
             $("#letterModal").modal('toggle');
         }
     });
 });
 
 /*Signup*/
-$('button.signupClient').on('click', function (e) {
+$('body').on('click', 'button.signupClient', function (e) {
     e.preventDefault();
 
     var userName = $("input#signupInputName").val();
@@ -161,7 +152,7 @@ $('button.signupClient').on('click', function (e) {
         type: 'POST',
         success: function (data) {
             $("#dangerSignup").text(data);
-            $("#dangerSignup").show();
+            $("#dangerSignup").modal('show');
             $("#signupModal").modal('toggle');
         },
         errors: function () {
@@ -169,3 +160,32 @@ $('button.signupClient').on('click', function (e) {
         }
     });
 });
+
+/*Order*/
+$('body').on('click', 'button.order-cart', function (e) {
+    e.preventDefault();
+    jQuery.ajax({
+        url: 'checkout'
+        , type: 'POST'
+        , success: function (res) {
+            if (jQuery.parseJSON(res) != true) {
+                $('p.error-auth').text(res);
+                $("#loginModal").modal('show');
+            } else {
+                saveOrder();
+            }
+        }
+    })
+})
+
+function saveOrder() {
+    jQuery.ajax({
+        url: 'saveOrder'
+        , type: 'POST'
+        , success: function (res) {
+
+        }
+    })
+}
+
+/*/Order*/
