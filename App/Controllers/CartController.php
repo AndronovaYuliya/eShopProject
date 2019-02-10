@@ -93,24 +93,4 @@ class CartController extends AppController
         $table = CartModel::printCart();
         echo json_encode($table);
     }
-
-    /**
-     * @return bool
-     * @throws \Exception
-     */
-    public function changeCountAction()
-    {
-        $id = !empty($_POST['id']) ? (int)$_POST['id'] : null;
-        $qty = !empty($_POST['qty']) ? (int)$_POST['qty'] : 1;
-        if ($id) {
-            $product = ProductsModel::getDataWhere('id', $id);
-        }
-        if (!$product) {
-            return false;
-        }
-
-        $table = CartModel::changeCount($product, $qty);
-
-        echo json_encode($table);
-    }
 }
