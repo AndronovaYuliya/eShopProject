@@ -52,11 +52,6 @@ class OrdersModel extends AbstractTableModel
         OrdersMapper::saveOrderProduct($orders, $orderId);
     }
 
-    public static function mailOrder($orderId, $userEmail)
-    {
-
-    }
-
     /**
      * @return array|mixed|null
      * @throws \Exception

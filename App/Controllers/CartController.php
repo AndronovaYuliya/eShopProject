@@ -6,9 +6,11 @@ use App\Mappers\ClientsMapper;
 use App\Models\CartModel;
 use App\Models\OrdersModel;
 use App\Models\ProductsModel;
+use Core\App;
 use Core\Authorization;
 use Core\Session;
 use Core\View;
+use Sender\Sender;
 
 /**
  * Class CartController
@@ -120,9 +122,11 @@ class CartController extends AppController
     public function saveOrderAction()
     {
         $login = Session::get('login');
-        $client = ClientsMapper::getDataWhere('login', $login);
-        $orderId = OrdersModel::saveOrder($client[0]);
-        OrdersModel::mailOrder($orderId, $orderId[0]['email']);
+        $client = ClientsMapper::getDataWhere('login', $login)[0];
+        $orderId = OrdersModel::saveOrder($client);
+        $client['email'] = 'andronovayuliyatest@gmail.com';
+        App::$sender->mailOrder($orderId, $client['email'], $client['name']);
+        App::$sender->mailOrderToAdmin($orderId, $client['email'], $client['name']);
     }
 
     /**

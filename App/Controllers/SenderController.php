@@ -2,31 +2,82 @@
 
 namespace App\Controllers;
 
+use Core\App;
+use Core\Session;
+use Core\TSingletone;
 use Sender\Sender;
-use Core\View;
 
 /**
  * Class SenderController
  * @package App\Controllers
  */
-class SenderController extends AppController
+class SenderController
 {
+    use TSingletone;
+
+    protected $data;
+
     /**
      * @throws \Exception
      */
     public function letterAction(): void
     {
-        Sender::sendMsg();
-        echo json_encode("Sent!");
+        ob_start();
 
+        $emailSubscriber = $_POST['email'];
+        $name = $_POST['name'];
+        $email = 'andronovayuliyatest@gmail.com';
+
+        require RESOURCES . '/Sender/subscribe.php';
+
+        $template = ob_get_clean();
+
+        $config = App::$app->getProperies();
+        $data = ['emailTo' => $email, 'nameTo' => $name
+            , 'emailFrom' => $config['email'], 'nameFrom' => $config['title']];
+
+        Sender::sendMsg($config, $template, 'New subscriber', $data);
+
+        echo "Sent!";
     }
 
     /**
+     * @param $orderId
+     * @param $email
+     * @param $name
      * @throws \Exception
      */
-    public function getView(): void
+    public function mailOrder($orderId, $email, $name)
     {
-        $viewObj = new View(["controller" => "Site/Main", "action" => "index"], 'Site/default', 'index');
-        $viewObj->rendor($this->data);
+        $config = App::$app->getProperies();
+        $data = ['emailTo' => $email, 'nameTo' => $name
+            , 'emailFrom' => $config['email'], 'nameFrom' => $config['title']];
+
+        ob_start();
+        $cart = Session::get('cart');
+        require RESOURCES . '/Sender/mailOrder.php';
+        $template = ob_get_clean();
+
+        Sender::sendMsg($config, $template, 'Order: ' . $orderId, $data);
+    }
+
+    /**
+     * @param $orderId
+     * @param $email
+     * @param $name
+     * @throws \Exception
+     */
+    public function mailOrderToAdmin($orderId, $email, $name)
+    {
+        $config = App::$app->getProperies();
+        $data = ['emailFrom' => $email, 'nameFrom' => $name
+            , 'emailTo' => $config['email'], 'nameto' => $config['title']];
+
+        ob_start();
+        $cart = Session::get('cart');
+        require RESOURCES . '/Sender/mailOrder.php';
+        $template = ob_get_clean();
+
+        Sender::sendMsg($config, $template, 'Order: ' . $orderId, $data);
     }
 }

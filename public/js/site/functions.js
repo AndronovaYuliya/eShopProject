@@ -108,19 +108,16 @@ $('body').on('click', '.remove-product', function (e) {
 $('body').on('click', 'button.client-subscribe', function (e) {
     e.preventDefault();
     var email = $('input#letterInputEmail').val();
-    var login = $('input#letterInputName').val();
-    var template = $(this).attr('name');
+    var name = $('input#letterInputName').val();
     jQuery.ajax({
         url: '/sender/letter',
         data: {
             email: email
-            , login: login
-            , template: template
+            , name: name
         },
         type: 'POST',
         success: function (data) {
             $("#dangerSignup").text(data);
-            $("#dangerSignup").modal(show);
             $("#letterModal").modal('toggle');
         }
     });
@@ -156,7 +153,6 @@ $('body').on('click', 'button.signupClient', function (e) {
         type: 'POST',
         success: function (data) {
             $("#dangerSignup").text(data);
-            $("#dangerSignup").modal('show');
             $("#signupModal").modal('toggle');
         },
         errors: function () {
