@@ -2,12 +2,14 @@
 
 namespace Core;
 
+use App\Controllers\SenderController;
 use App\Models\FakerModel;
 
 class App
 {
     public static $app;
     public $faker;
+    public static $sender;
 
     /**
      * App constructor.
@@ -16,6 +18,8 @@ class App
     public function __construct()
     {
         self::$app = Registry::getInstance();
+        self::$sender = SenderController::getInstance();
+
         $this->getParams();
         Session::start();
 

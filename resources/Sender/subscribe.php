@@ -1,0 +1,1 @@
+<h1>New subscriber <?php echo $name ?>, email: <?php echo $emailSubscriber ?>!</h1>

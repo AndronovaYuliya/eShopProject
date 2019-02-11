@@ -6,7 +6,7 @@ namespace Core;
  * Class Registry
  * @package Core
  */
-class   Registry
+class Registry
 {
     use TSingletone;
 
