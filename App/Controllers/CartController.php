@@ -105,9 +105,13 @@ class CartController extends AppController
     {
         if (!Authorization::isAuth('login')) {
             echo 'You are not logged';
-        } else {
-            echo json_encode(true);
+            die();
         }
+        if (!Session::get('cart')) {
+            echo 'The cart is empty';
+            die();
+        }
+        echo json_encode(true);
     }
 
     /**

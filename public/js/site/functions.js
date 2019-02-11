@@ -15,7 +15,7 @@ function getQtyTotal() {
             alert("ERROR");
         }
     });
-}
+};
 
 function getTotal() {
     jQuery.ajax({
@@ -28,7 +28,7 @@ function getTotal() {
             alert("ERROR");
         }
     });
-}
+};
 
 function showCart(cart) {
     $("tbody.table-cart").html(jQuery.parseJSON(cart));
@@ -71,6 +71,10 @@ $('body').on('click', '#getCart', function (e) {
 
 $('body').on('click', 'button.clear-cart', function (e) {
     e.preventDefault();
+    clearCart();
+});
+
+function clearCart() {
     jQuery.ajax({
         url: 'cart/clear'
         , type: 'POST'
@@ -80,7 +84,7 @@ $('body').on('click', 'button.clear-cart', function (e) {
     });
     getQtyTotal();
     getTotal();
-})
+};
 
 $('body').on('click', '.remove-product', function (e) {
     e.preventDefault();
@@ -168,24 +172,31 @@ $('body').on('click', 'button.order-cart', function (e) {
         url: 'checkout'
         , type: 'POST'
         , success: function (res) {
-            if (jQuery.parseJSON(res) != true) {
-                $('p.error-auth').text(res);
-                $("#loginModal").modal('show');
-            } else {
-                saveOrder();
+            switch (res) {
+                case 'You are not logged':
+                    $('p.error-auth').text(res);
+                    $("#loginModal").modal('show');
+                    break;
+                case 'The cart is empty':
+                    $('p.error-auth').text(res);
+                    alert(res);
+                    break;
+                default:
+                    saveOrder();
             }
         }
     })
-})
+});
 
 function saveOrder() {
     jQuery.ajax({
         url: 'saveOrder'
         , type: 'POST'
-        , success: function (res) {
-
+        , success: function () {
+            clearCart();
+            $('.done-order').modal('show');
         }
     })
-}
+};
 
 /*/Order*/
