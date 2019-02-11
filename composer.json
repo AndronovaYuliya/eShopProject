@@ -1,0 +1,27 @@
+{
+    "name": "phpstudent/e-shop-project",
+    "description": "TestProject",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Andronova Yuliya",
+            "email": "andron39933993@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4":
+        {
+            "Core\\": "Core/",
+            "App\\": "App/",
+            "phpUnit\\": "phpUnit/"
+        }
+    },
+    "require": {
+        "andronova-yuliya/sender-packagist": "dev-master",
+        "fzaninotto/faker": "^1.8",
+        "vlucas/valitron": "^1.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    }
+}
