@@ -107,10 +107,8 @@ abstract class AdminValidator
             return 'Please, enter the correct password';
         }
 
-        if (isset($data['adminAddConfirmPassword'])) {
-            if (!Validator::confirmPassword($data['adminAddPassword'], $data['adminAddConfirmPassword'])) {
-                return 'Passwords do not match';
-            }
+        if (!Validator::confirmPassword($data['adminAddPassword'], $data['adminAddConfirmPassword'])) {
+            return 'Passwords do not match';
         }
 
         return true;
