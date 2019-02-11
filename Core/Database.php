@@ -46,8 +46,6 @@ class Database
 
     }
 
-    // Get mysqli connection
-
     /**
      * @return PDO
      */

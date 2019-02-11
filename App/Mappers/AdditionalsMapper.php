@@ -9,7 +9,7 @@ use Core\Database;
  * Class AdditionalsMapper
  * @package App\Mappers
  */
-class AdditionalsMapper extends AbstractTableMapper
+class AdditionalsMapper
 {
     /**
      * @return array

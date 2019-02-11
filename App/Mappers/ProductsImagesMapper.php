@@ -9,8 +9,7 @@ use Core\Database;
  * Class ProductsImagesMapper
  * @package App\Mappers
  */
-class ProductsImagesMapper extends AbstractTableMapper
-{
+class ProductsImagesMapper
     /**
      * @return array
      */

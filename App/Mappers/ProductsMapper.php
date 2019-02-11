@@ -9,7 +9,7 @@ use Core\Database;
  * Class ProductsMapper
  * @package App\Mappers
  */
-class ProductsMapper extends AbstractTableMapper
+class ProductsMapper
 {
     /**
      * @return array

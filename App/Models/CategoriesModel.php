@@ -8,7 +8,7 @@ use App\Mappers\CategoriesMapper;
  * Class CategoriesModel
  * @package App\Models
  */
-class CategoriesModel extends AbstractTableModel
+class CategoriesModel
 {
     /**
      * @return array

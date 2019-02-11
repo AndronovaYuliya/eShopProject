@@ -9,7 +9,7 @@ use Core\Database;
  * Class OrdersMapper
  * @package App\Mappers
  */
-class OrdersMapper extends AbstractTableMapper
+class OrdersMapper
 {
     /**
      * @return array

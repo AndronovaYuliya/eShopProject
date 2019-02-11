@@ -8,7 +8,7 @@ use App\Mappers\ProductsKeyWordsMapper;
  * Class ProductsKeyWordsModel
  * @package App\Models
  */
-class ProductsKeyWordsModel extends AbstractTableModel
+class ProductsKeyWordsModel
 {
     /**
      * @return array

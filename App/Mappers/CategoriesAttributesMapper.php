@@ -9,7 +9,7 @@ use Core\Database;
  * Class CategoriesAttributesMapper
  * @package App\Mappers
  */
-class CategoriesAttributesMapper extends AbstractTableMapper
+class CategoriesAttributesMapper
 {
     /**
      * @return array

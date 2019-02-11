@@ -31,7 +31,7 @@ class Controller
         $this->view = $route['action'];
         $this->prefix = $route['prefix'];
 
-        new Model();
+       // new Model();
     }
 
     /**

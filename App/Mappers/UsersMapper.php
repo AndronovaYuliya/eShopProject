@@ -8,7 +8,7 @@ use Core\Database;
  * Class UsersMapper
  * @package App\Mappers
  */
-class UsersMapper extends AbstractTableMapper
+class UsersMapper
 {
     /**
      * @return array
