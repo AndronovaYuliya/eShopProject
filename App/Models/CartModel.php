@@ -79,7 +79,6 @@ class CartModel
         Session::addData('cart', 0, 'qtyTotal', $qtyTotal);
     }
 
-
     /**
      * @return array
      * @throws \Exception
@@ -90,12 +89,10 @@ class CartModel
         $total = 0;
         $qtyTotal = 0;
 
-
         foreach (Session::get('cart') as $key => $value) {
             $total += Session::getData('cart', $key)['sum'];
             $qtyTotal += Session::getData('cart', $key)['qty'];
         }
-
 
         foreach (Session::get('cart') as $key => $item) {
             if ($key) {
@@ -131,9 +128,7 @@ HTML;
                     <td colspan="5" class="text-right cart-sum">{$total} $</td>
                     <td colspan="2"></td>
                 </tr>
-
 HTML;
         return $table;
     }
-
 }

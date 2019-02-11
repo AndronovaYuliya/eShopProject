@@ -167,7 +167,7 @@ $('body').on('click', 'button.signupClient', function (e) {
 
 /*Order*/
 $('body').on('click', 'button.order-cart', function (e) {
-    e.preventDefault();
+    //e.preventDefault();
     jQuery.ajax({
         url: 'checkout'
         , type: 'POST'
@@ -182,6 +182,7 @@ $('body').on('click', 'button.order-cart', function (e) {
                     alert(res);
                     break;
                 default:
+                    $('p.error-auth').empty();
                     saveOrder();
             }
         }
@@ -198,5 +199,21 @@ function saveOrder() {
         }
     })
 };
+
+$('body').on('click', 'tr.cart-order', function (e) {
+    var id = $(this).attr('data-id');
+    jQuery.ajax({
+        url: 'orderDetail'
+        , type: 'POST'
+        , data: {
+            id: id
+        }
+        , success: function (res) {
+            $('p.error-auth').empty();
+            $('.cart-detail').modal('show');
+            $("tbody.table-cart-detail").html(jQuery.parseJSON(res));
+        }
+    });
+})
 
 /*/Order*/

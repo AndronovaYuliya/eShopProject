@@ -111,7 +111,7 @@ class Database
      * @return array
      * @throws \Exception
      */
-    public static function queryData(string $sql, array $data): array
+    public static function queryData($sql, $data): array
     {
         $stmt = self::getConnection()->prepare($sql);
         if ($stmt !== false) {

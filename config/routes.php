@@ -36,4 +36,6 @@ Router::add('logout\/?$', ['controller' => 'Users', 'action' => 'logout']);
 Router::add('account\/?$', ['controller' => 'Account', 'action' => 'account']);
 Router::add('checkout\/?$', ['controller' => 'Cart', 'action' => 'checkout']);
 Router::add('saveOrder\/?$', ['controller' => 'Cart', 'action' => 'saveOrder']);
+Router::add('checkCart\/?$', ['controller' => 'Cart', 'action' => 'checkCart']);
+Router::add('orderDetail\/?$', ['controller' => 'Cart', 'action' => 'orderDetail']);
 

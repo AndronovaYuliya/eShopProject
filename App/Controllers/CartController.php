@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Mappers\ClientsMapper;
 use App\Models\CartModel;
-use App\Models\OrderModel;
+use App\Models\OrdersModel;
 use App\Models\ProductsModel;
 use Core\Authorization;
 use Core\Session;
@@ -121,7 +121,34 @@ class CartController extends AppController
     {
         $login = Session::get('login');
         $client = ClientsMapper::getDataWhere('login', $login);
-        $orderId = OrderModel::saveOrder($client[0]);
-        OrderModel::mailOrder($orderId, $orderId[0]['email']);
+        $orderId = OrdersModel::saveOrder($client[0]);
+        OrdersModel::mailOrder($orderId, $orderId[0]['email']);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function checkCartAction()
+    {
+        if (Session::get('cart')) {
+            echo json_encode(true);
+            die();
+        }
+        echo json_encode(false);
+        die();
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function orderDetailAction()
+    {
+        $id = $_POST['id'];
+        if ($id) {
+            echo json_encode(OrdersModel::orderDetail($id));
+            die();
+        }
+        echo json_encode(false);
+        die();
     }
 }
