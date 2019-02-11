@@ -9,7 +9,7 @@ use Core\Cache;
  * Class ClientsMapper
  * @package App\Mappers
  */
-class ClientsMapper extends AbstractTableMapper
+class ClientsMapper
 {
     /**
      * @return array

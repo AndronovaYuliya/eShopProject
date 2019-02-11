@@ -8,7 +8,7 @@ use App\Mappers\AdditionalsMapper;
  * Class AdditionalsModel
  * @package App\Models
  */
-class AdditionalsModel extends AbstractTableModel
+class AdditionalsModel
 {
     /**
      * @return array

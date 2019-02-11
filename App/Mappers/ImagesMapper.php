@@ -9,7 +9,7 @@ use Core\Database;
  * Class ImagesMapper
  * @package App\Mappers
  */
-class ImagesMapper extends AbstractTableMapper
+class ImagesMapper
 {
     /**
      * @return array

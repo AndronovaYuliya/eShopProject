@@ -8,7 +8,7 @@ use App\Mappers\CommentsMapper;
  * Class CommentsModel
  * @package App\Models
  */
-class CommentsModel extends AbstractTableModel
+class CommentsModel
 {
     /**
      * @return array

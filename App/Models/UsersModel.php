@@ -10,7 +10,7 @@ use Core\Validator;
  * Class UsersModel
  * @package App\Models
  */
-class UsersModel extends AbstractTableModel
+class UsersModel
 {
     protected static $errors;
 

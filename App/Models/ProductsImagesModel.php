@@ -8,7 +8,7 @@ use App\Mappers\ProductsImagesMapper;
  * Class ProductsImagesModel
  * @package App\Models
  */
-class ProductsImagesModel extends AbstractTableModel
+class ProductsImagesModel
 {
     /**
      * @return array

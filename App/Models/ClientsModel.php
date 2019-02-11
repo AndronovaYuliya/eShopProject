@@ -12,7 +12,7 @@ use Core\Validator;
  * Class ClientsModel
  * @package App\Models
  */
-class ClientsModel extends AbstractTableModel
+class ClientsModel
 {
     protected static $errors;
 

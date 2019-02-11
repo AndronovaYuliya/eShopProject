@@ -9,7 +9,7 @@ use Core\Database;
  * Class CommentsMapper
  * @package App\Mappers
  */
-class CommentsMapper extends AbstractTableMapper
+class CommentsMapper
 {
     /**
      * @return array

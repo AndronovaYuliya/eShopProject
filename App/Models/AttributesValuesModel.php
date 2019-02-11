@@ -8,7 +8,7 @@ use App\Mappers\AttributesValuesMapper;
  * Class AttributesValuesModel
  * @package App\Models
  */
-class AttributesValuesModel extends AbstractTableModel
+class AttributesValuesModel
 {
     /**
      * @return array

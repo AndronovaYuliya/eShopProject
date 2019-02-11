@@ -9,7 +9,7 @@ use Core\Session;
  * Class OrdersModel
  * @package App\Models
  */
-class OrdersModel extends AbstractTableModel
+class OrdersModel
 {
     /**
      * @return array

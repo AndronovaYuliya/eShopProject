@@ -171,16 +171,6 @@ abstract class Session
     }
 
     /**
-     * @return void
-     */
-    public static function display(): void
-    {
-        echo "<pre>";
-        var_dump($_SESSION);
-        echo "</pre>";
-    }
-
-    /**
      * @return bool
      * @throws \Exception
      */

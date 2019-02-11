@@ -9,7 +9,7 @@ use Core\Database;
  * Class AttributesValuesMapper
  * @package App\Mappers
  */
-class AttributesValuesMapper extends AbstractTableMapper
+class AttributesValuesMapper
 {
     /**
      * @return array
