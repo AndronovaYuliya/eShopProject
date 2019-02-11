@@ -69,14 +69,28 @@
                                         <h2 class="product-name">
                                             <?php echo $product[0]['title'] ?></h2>
                                         <div class="quantity">
-                                            <input type="number" size="4" class="input-text qty text" title="Qty"
-                                                   value="0" name="qty" min="1" id="currency"
-                                                   max="<?php echo($product[0]['count']) ?>" step="1">
+                                            <input type="number" size="4" class="input-text qty text remove-item" title="Qty"
+                                                   value="<?php if ($product[0]['count'] > 0) {
+                                                       echo 1;
+                                                   } else {
+                                                       echo 0;
+                                                   } ?>" name="qty" min="1" id="currency"
+                                                   max="<?php echo($product[0]['count']) ?>" step="1"
+                                                   data-id="<?php echo $product[0]['id']?>">
                                         </div>
-                                        <button class="cart btn btn-outline-success my-2 my-sm-0 add-to-cart-button" data-id="<?php echo($product[0]['id']) ?>"
-                                           href="/cart/add?id=<?php echo($product[0]['id']) ?>"
-                                           type="submit">Add to cart
+                                        <button class="cart btn btn-outline-success my-2 my-sm-0 add-to-cart-button"
+                                                data-id="<?php echo($product[0]['id']) ?>"
+                                                href="#"
+                                            <?php if ($product[0]['count'] == 0) {
+                                                echo 'disabled';
+                                            } ?>><?php if ($product[0]['count'] == 0) {
+                                                echo "Out of stock";
+                                            }else{
+                                                echo 'Add to cart';
+                                            }?>
                                         </button>
+                                        <button href="#" class="cart btn btn-outline-success my-2 my-sm-0 recount-cart" disabled>Recount</button>
+
                                         <div class="product-inner-price">
                                             <ins>
                                                 <span><?php echo $product[0]['price'] . ' $'; ?></span>

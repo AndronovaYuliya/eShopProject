@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Mappers\ClientsMapper;
 use App\Models\ClientsModel;
+use App\Models\OrderModel;
+use App\Models\OrdersModel;
 use Core\Authorization;
 use Core\Session;
 use Core\View;
@@ -31,8 +33,9 @@ class AccountController extends AppController
             $client = ClientsModel::getDataWhere('login', $login);
         }
         $session = Session::getSession();
+        $orders = OrdersModel::getOrders();
 
-        $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
+        $this->set(compact('products', 'categories', 'brands', 'client', 'session', 'orders'));
         $this->getView();
     }
 

@@ -23,6 +23,8 @@ Router::add('show\/?([a-z0-9-]+)?$', ['controller' => 'Product', 'action' => 'sh
 Router::add('cart\/add$', ['controller' => 'Cart', 'action' => 'add']);
 Router::add('cart\/getQtyTotal', ['controller' => 'Cart', 'action' => 'getQtyTotal']);
 Router::add('cart\/getTotal', ['controller' => 'Cart', 'action' => 'getTotal']);
+Router::add('cart\/clear', ['controller' => 'Cart', 'action' => 'clear']);
+Router::add('cart\/removeProduct', ['controller' => 'Cart', 'action' => 'removeProduct']);
 Router::add('cart\/?$', ['controller' => 'Cart', 'action' => 'cart']);
 Router::add('key\?([a-z0-9-]+)?$', ['controller' => 'Product', 'action' => 'key']);
 Router::add('sender\/letter$', ['controller' => 'Sender', 'action' => 'letter']);
@@ -32,4 +34,8 @@ Router::add('login\/?$', ['controller' => 'Users', 'action' => 'login']);
 Router::add('signup\/?$', ['controller' => 'Users', 'action' => 'signup']);
 Router::add('logout\/?$', ['controller' => 'Users', 'action' => 'logout']);
 Router::add('account\/?$', ['controller' => 'Account', 'action' => 'account']);
+Router::add('checkout\/?$', ['controller' => 'Cart', 'action' => 'checkout']);
+Router::add('saveOrder\/?$', ['controller' => 'Cart', 'action' => 'saveOrder']);
+Router::add('checkCart\/?$', ['controller' => 'Cart', 'action' => 'checkCart']);
+Router::add('orderDetail\/?$', ['controller' => 'Cart', 'action' => 'orderDetail']);
 

@@ -25,7 +25,6 @@
                 </div>
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
-
                     <?php if (count($products) > 0): ?>
                         <?php for ($i = 0; $i < 6; $i++): ?>
                             <div class="thubmnail-recent">
@@ -43,13 +42,11 @@
                             </div>
                         <?php endfor; ?>
                     <?php endif; ?>
-
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="container">
-
                         <?php if (isset($session)): ?>
                             <div class="row">
                                 <div class="col-sm">
@@ -57,7 +54,6 @@
                                 </div>
                             </div>
                         <?php endif; ?>
-
                         <?php if (isset($client)): ?>
                             <div class="row">
                                 <div class="col-sm">
@@ -116,9 +112,67 @@
                                 </div>
                             </div>
                         <?php endif; ?>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Sum</th>
+                                <th scope="col">ttn</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($orders as $key => $order): ?>
+                                <tr class="cart-order" data-id="<?php echo $order['id'] ?>">
+                                    <th scope="row"><?php echo ++$key ?></th>
+                                    <td><?php echo $order['date'] ?></td>
+                                    <td><?php echo $order['sum'] ?></td>
+                                    <td><?php echo $order['ttn'] ?></td>
+                                    <td><?php if (!$order['status']) {
+                                            echo "wait";
+                                        } else {
+                                            echo "done";
+                                        } ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
 
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal cart-detail" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Brand</th>
+                            <th>Count</th>
+                            <th>Sum</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-cart-detail">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
