@@ -3,13 +3,19 @@
 namespace Core;
 
 use App\Controllers\SenderController;
-use App\Models\FakerModel;
+use App\Controllers\ShopController;
+use App\Controllers\UsersController;
+use App\Controllers\CartController;
+use App\Controllers\MainController;
+use App\Controllers\ProductController;
+use App\Controllers\Admin\AdminMainController;
 
 class App
 {
     public static $app;
     public $faker;
     public static $sender;
+    protected $route = [];
 
     /**
      * App constructor.
@@ -30,7 +36,8 @@ class App
         } else {
             $query = trim($_SERVER['REQUEST_URI'], '/');
         }
-        Router::dispatch($query);
+        $this->route = Router::dispatch($query);
+        $this->routeAction();
     }
 
     /**
@@ -44,5 +51,26 @@ class App
                 self::$app->setProperty($key, $value);
             }
         }
+    }
+
+    protected function routeAction()
+    {
+        if (is_string($this->route)) {
+            throw new \Exception("Page {$this->route} not found", 404);
+        }
+
+        $controller = 'App\Controllers\\' . $this->route['prefix'] . $this->route['controller'] . 'Controller';
+
+        if (!class_exists($controller)) {
+            throw new \Exception("Controller {$controller} not found", 404);
+        }
+
+        $cObj = new $controller($this->route);
+
+        $action = $this->route['action'] . 'Action';
+        if (!method_exists($cObj, $action)) {
+            throw new \Exception("Action {$action} not found", 404);
+        }
+        $cObj->$action($this->route['query']);
     }
 }

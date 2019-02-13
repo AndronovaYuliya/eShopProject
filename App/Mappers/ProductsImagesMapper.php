@@ -10,6 +10,7 @@ use Core\Database;
  * @package App\Mappers
  */
 class ProductsImagesMapper
+{
     /**
      * @return array
      */

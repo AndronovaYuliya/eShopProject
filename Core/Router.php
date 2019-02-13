@@ -2,8 +2,6 @@
 
 namespace Core;
 
-use App\Controllers\Admin\AdminPageController;
-use App\Controllers\Admin\TestC;
 use App\Controllers\ShopController;
 use App\Controllers\UsersController;
 use App\Controllers\CartController;
@@ -86,9 +84,9 @@ class Router
 
     /**
      * @param $url
-     * @throws \Exception
+     * @return array|string
      */
-    public static function dispatch($url): void
+    public static function dispatch($url)
     {
         $query = explode('?', $url);
         $query = isset($query[1]) ? $query[1] : null;
@@ -96,23 +94,10 @@ class Router
         $url = self::removeQueryString($url);
 
         if (!self::matchRoute($url)) {
-            throw new \Exception("Page {$url} not found", 404);
+            return $url;
         }
-
-        $controller = 'App\Controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
-
-        if (!class_exists($controller)) {
-            throw new \Exception("Controller {$controller} not found", 404);
-        }
-
-        $cObj = new $controller(self::$route);
-
-        $action = self::$route['action'] . 'Action';
-        if (method_exists($cObj, $action)) {
-            $cObj->$action($query);
-        } else {
-            throw new \Exception("Action {$action} not found", 404);
-        }
+        self::$route['query'] = $query;
+        return self::$route;
     }
 
     /**
