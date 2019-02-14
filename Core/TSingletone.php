@@ -8,16 +8,16 @@ namespace Core;
  */
 trait TSingletone
 {
-    protected static $_instance; //The single instance
+    protected static $instance; //The single instance
 
     /**
      * @return TSingletone
      */
     public static function getInstance()
     {
-        if (!self::$_instance) { // If no instance then make one
-            self::$_instance = new self();
+        if (!self::$instance) { // If no instance then make one
+            self::$instance = new self();
         }
-        return self::$_instance;
+        return self::$instance;
     }
 }

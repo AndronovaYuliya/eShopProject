@@ -2,29 +2,60 @@
 
 namespace App\Models;
 
-use App\Mappers\KeyWordsMapper;
+use Core\AbstractModel;
 
 /**
  * Class KeyWordsModel
  * @package App\Models
  */
-class KeyWordsModel
+class KeyWordsModel extends AbstractModel
 {
     /**
-     * @return array
+     * @var int
      */
-    public static function query(): array
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return KeyWordsMapper::query();
+        return $this->id;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return string
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public function getName(): string
     {
-        return KeyWordsMapper::getDataWhere($byWhat, $name);
+        return $this->name;
+    }
+
+    /**
+     * @param $name
+     * @return KeyWordsModel
+     */
+    public function setName($name): KeyWordsModel
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return KeyWordsModel
+     */
+    public function fromState(array $data): KeyWordsModel
+    {
+        parent::baseFromState($data);
+        $this->id = $data['id'];
+        $this->name = $data['name'];
+
+        return $this;
     }
 }

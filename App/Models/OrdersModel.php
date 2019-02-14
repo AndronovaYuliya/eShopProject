@@ -3,30 +3,156 @@
 namespace App\Models;
 
 use App\Mappers\OrdersMapper;
+use Core\AbstractModel;
 use Core\Session;
+use Faker\Provider\DateTime;
 
 /**
  * Class OrdersModel
  * @package App\Models
  */
-class OrdersModel
+class OrdersModel extends AbstractModel
 {
     /**
-     * @return array
+     * @var int
      */
-    public static function query(): array
+    protected $id;
+
+    protected $date;
+
+    /**
+     * @var float
+     */
+    protected $sum;
+
+    /**
+     * @var int
+     */
+    protected $status;
+
+    /**
+     * @var string
+     */
+    protected $ttn;
+
+    /**
+     * @var int
+     */
+    protected $id_client;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return OrdersMapper::query();
+        return $this->id;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return DateTime
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public function getDate(): DateTime
     {
-        return OrdersMapper::getDataWhere($byWhat, $name);
+        return $this->date;
+    }
+
+    /**
+     * @param $date
+     * @return OrdersModel
+     */
+    public function setDate($date): OrdersModel
+    {
+        $this->date = $date;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getSum(): float
+    {
+        return $this->sum;
+    }
+
+    /**
+     * @param $sum
+     * @return OrdersModel
+     */
+    public function setSum($sum): OrdersModel
+    {
+        $this->sum = $sum;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param $status
+     * @return OrdersModel
+     */
+    public function setStatus($status): OrdersModel
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTtn(): string
+    {
+        return $this->ttn;
+    }
+
+    /**
+     * @param $ttn
+     * @return OrdersModel
+     */
+    public function setTtn($ttn): OrdersModel
+    {
+        $this->ttn = $ttn;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdClient(): int
+    {
+        return $this->id_client;
+    }
+
+    /**
+     * @param $id_client
+     * @return OrdersModel
+     */
+    public function setIdClient($id_client): OrdersModel
+    {
+        $this->id_client = $id_client;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return OrdersModel
+     */
+    public function fromState(array $data): OrdersModel
+    {
+        parent::baseFromState($data);
+        $this->id = $data['id'];
+        $this->date = $data['date'];
+        $this->sum = $data['sum'];
+        $this->status = $data['status'];
+        $this->ttn = $data['ttn'];
+        $this->id_client = $data['id_client'];
+
+        return $this;
     }
 
     /**
@@ -34,54 +160,54 @@ class OrdersModel
      * @return mixed
      * @throws \Exception
      */
-    public static function saveOrder($data)
+    /*public static function saveOrder($data)
     {
         $sum = Session::getData('cart', 0)['total'];
         $orderId = OrdersMapper::addOrder([':sum' => $sum, ':id_client' => $data['id']]);
         self::saveOrderProduct($orderId);
         return $orderId;
-    }
+    }*/
 
     /**
      * @param $orderId
      * @throws \Exception
      */
-    private static function saveOrderProduct($orderId)
+    /*private static function saveOrderProduct($orderId)
     {
         $orders = Session::get('cart');
         OrdersMapper::saveOrderProduct($orders, $orderId);
-    }
+    }*/
 
     /**
      * @return array|mixed|null
      * @throws \Exception
      */
-    public static function getOrders()
+    /*public static function getOrders()
     {
         $login = Session::get('login');
         if ($login) {
             return OrdersMapper::getDataByClient('login', '22nell92');
         }
         return null;
-    }
+    }*/
 
     /**
      * @param $id
      * @throws \Exception
      */
-    public static function orderDetail($id)
-    {
-        $data = OrdersMapper::getOrderDetail('id', $id);
-        $table = self::printOrder($data);
-        echo json_encode($table);
-        die();
-    }
+    /* public static function orderDetail($id)
+     {
+         $data = OrdersMapper::getOrderDetail('id', $id);
+         $table = self::printOrder($data);
+         echo json_encode($table);
+         die();
+     }*/
 
     /**
      * @param $data
      * @return array
      */
-    public static function printOrder($data)
+    /*public static function printOrder($data)
     {
         $table = [];
         foreach ($data as $key => $value) {
@@ -95,5 +221,5 @@ class OrdersModel
 HTML;
         }
         return $table;
-    }
+    }*/
 }

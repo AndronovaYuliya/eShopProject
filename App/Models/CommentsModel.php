@@ -2,29 +2,114 @@
 
 namespace App\Models;
 
-use App\Mappers\CommentsMapper;
+use Core\AbstractModel;
 
 /**
  * Class CommentsModel
  * @package App\Models
  */
-class CommentsModel
+class CommentsModel extends AbstractModel
 {
     /**
-     * @return array
+     * @var int
      */
-    public static function query(): array
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $msg;
+
+    /**
+     * @var string
+     */
+    protected $user;
+
+    /**
+     * @var int
+     */
+    protected $id_product;
+
+    /**
+     * @var string
+     */
+    protected $stars;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return CommentsMapper::query();
+        return $this->id;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return string
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public function getMsg(): string
     {
-        return CommentsMapper::getDataWhere($byWhat, $name);
+        return $this->msg;
+    }
+
+    /**
+     * @param $msg
+     * @return CommentsModel
+     */
+    public function setMsg($msg): CommentsModel
+    {
+        $this->msg = $msg;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUser(): string
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param $user
+     * @return CommentsModel
+     */
+    public function setUser($user): CommentsModel
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStars(): string
+    {
+        return $this->stars;
+    }
+
+    /**
+     * @param $stars
+     * @return CommentsModel
+     */
+    public function setStars($stars): CommentsModel
+    {
+        $this->stars = $stars;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return CommentsModel
+     */
+    public function fromState(array $data): CommentsModel
+    {
+        parent::baseFromState($data);
+        $this->id = $data['id'];
+        $this->msg = $data['msg'];
+        $this->user = $data['user'];
+        $this->id_product = $data['id_product'];
+        $this->stars = $data['stars'];
+
+        return $this;
     }
 }

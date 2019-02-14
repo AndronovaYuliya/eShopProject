@@ -2,29 +2,84 @@
 
 namespace App\Models;
 
-use App\Mappers\ProductsImagesMapper;
+use Core\AbstractModel;
 
 /**
  * Class ProductsImagesModel
  * @package App\Models
  */
-class ProductsImagesModel
+class ProductsImagesModel extends AbstractModel
 {
     /**
-     * @return array
+     * @var int
      */
-    public static function query(): array
+    protected $id;
+
+    /**
+     * @var int
+     */
+    protected $id_galary;
+
+    /**
+     * @var int
+     */
+    protected $id_product;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return ProductsImagesMapper::query();
+        return $this->id;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return int
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public function getIdGalary(): int
     {
-        return ProductsImagesMapper::getDataWhere($byWhat, $name);
+        return $this->id_galary;
+    }
+
+    /**
+     * @param $idGalary
+     * @return ProductsImagesModel
+     */
+    public function setIdGalary($idGalary): ProductsImagesModel
+    {
+        $this->id_galary = $idGalary;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduct(): int
+    {
+        return $this->id_product;
+    }
+
+    /**
+     * @param $idProduct
+     * @return ProductsImagesModel
+     */
+    public function setProduct($idProduct): ProductsImagesModel
+    {
+        $this->id_product = $idProduct;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return ProductsImagesModel
+     */
+    public function fromState(array $data): ProductsImagesModel
+    {
+        parent::baseFromState($data);
+        $this->id = $data['id'];
+        $this->id_galary = $data['id_galary'];
+        $this->id_product = $data['id_product'];
+
+        return $this;
     }
 }

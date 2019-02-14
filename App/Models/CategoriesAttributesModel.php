@@ -2,29 +2,84 @@
 
 namespace App\Models;
 
-use App\Mappers\CategoriesAttributesMapper;
+use Core\AbstractModel;
 
 /**
  * Class CategoriesAttributesModel
  * @package App\Models
  */
-class CategoriesAttributesModel
+class CategoriesAttributesModel extends AbstractModel
 {
     /**
-     * @return array
+     * @var int
      */
-    public static function query(): array
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $id_category;
+
+    /**
+     * @var string
+     */
+    protected $id_attribute;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return CategoriesAttributesMapper::query();
+        return $this->id;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return int
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public function getIdCategory(): int
     {
-        return CategoriesAttributesMapper::getDataWhere($byWhat, $name);
+        return $this->id_category;
+    }
+
+    /**
+     * @param $id_category
+     * @return CategoriesAttributesModel
+     */
+    public function setIdCategory($id_category): CategoriesAttributesModel
+    {
+        $this->id_category = $id_category;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdAttribute(): int
+    {
+        return $this->id_attribute;
+    }
+
+    /**
+     * @param $id_attribute
+     * @return CategoriesAttributesModel
+     */
+    public function setIdAttribute($id_attribute): CategoriesAttributesModel
+    {
+        $this->id_attribute = $id_attribute;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return CategoriesAttributesModel
+     */
+    public function fromState(array $data): CategoriesAttributesModel
+    {
+        parent::baseFromState($data);
+        $this->id = $data['id'];
+        $this->id_category = $data['id_category'];
+        $this->id_attribute = $data['id_attribute'];
+
+        return $this;
     }
 }

@@ -2,29 +2,84 @@
 
 namespace App\Models;
 
-use App\Mappers\AttributesValuesMapper;
+use Core\AbstractModel;
 
 /**
  * Class AttributesValuesModel
  * @package App\Models
  */
-class AttributesValuesModel
+class AttributesValuesModel extends AbstractModel
 {
     /**
-     * @return array
+     * @var int
      */
-    public static function query(): array
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $value;
+
+    /**
+     * @var int
+     */
+    protected $attributes_id;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return AttributesValuesMapper::query();
+        return $this->id;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return string
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public function getValue(): string
     {
-        return AttributesValuesMapper::getDataWhere($byWhat, $name);
+        return $this->value;
+    }
+
+    /**
+     * @param $value
+     * @return AttributesValuesModel
+     */
+    public function setValue($value): AttributesValuesModel
+    {
+        $this->value = $value;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAttributesId(): int
+    {
+        return $this->attributes_id;
+    }
+
+    /**
+     * @param $attributes_id
+     * @return AttributesValuesModel
+     */
+    public function setAttributesId($attributes_id): AttributesValuesModel
+    {
+        $this->attributes_id = $attributes_id;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return AttributesValuesModel
+     */
+    public function fromState(array $data): AttributesValuesModel
+    {
+        parent::baseFromState($data);
+        $this->id = $data['id'];
+        $this->value = $data['value'];
+        $this->attributes_id = $data['attributes_id'];
+
+        return $this;
     }
 }
