@@ -168,14 +168,14 @@ class OrdersModel extends AbstractModel
      * @return array|mixed|null
      * @throws \Exception
      */
-    /*public static function getOrders()
+    public static function getOrders()
     {
         $login = Session::get('login');
         if ($login) {
-            return OrdersMapper::getDataByClient('login', '22nell92');
+            return OrdersMapper::getInstance()->findOne('login=:login', [':login' => '22nell92']);
         }
         return null;
-    }*/
+    }
 
     /**
      * @param $id

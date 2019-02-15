@@ -204,14 +204,14 @@ abstract class Session
      */
     public static function sessionRead(): string
     {
-        $result = SessionMapper::getDataWhere('session_id', self::$_sess_id);
+        $result = SessionMapper::getInstance()->findOne('session_id=:session_id', [':session_id' => self::$_sess_id]);
 
-        if (count($result) > 0) {
+        if ($result) {
             $date = date("Y-m-d");
             SessionMapper::updateSession('date_touched', $date, self::$_sess_id);
             SessionMapper::updateSession('sess_data', session_encode(), self::$_sess_id);
 
-            return $result[0]['sess_data'];
+            return $result['sess_data'];
         } else {
             SessionMapper::addSession(session_encode(), self::$_sess_id);
 

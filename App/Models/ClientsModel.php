@@ -230,32 +230,33 @@ class ClientsModel extends AbstractModel
      * @return bool
      * @throws \Exception
      */
-    /*  public static function login($data)
-      {
-          //AdminValidator::login return errors or true
-          $errors = ClientsValidator::login($data);
-          if ($errors !== true) {
-              Session::set('errors', $errors);
-              return false;
-          }
+    public static function login($data)
+    {
+        //AdminValidator::login return errors or true
+        $errors = ClientsValidator::login($data);
+        if ($errors !== true) {
+            Session::set('errors', $errors);
+            return false;
+        }
 
-          $client = ClientsMapper::getDataWhere('login', Validator::clean($data['userLogin']));
+        $client = ClientsMapper::getInstance()
+            ->findOne('login=:login', [':login' => Validator::clean($data['userLogin'])]);
 
-          if (empty($client)) {
-              Session::set('errors', "Wrong login");
-              return false;
-          }
+        if (empty($client)) {
+            Session::set('errors', "Wrong login");
+            return false;
+        }
 
-          if (!password_verify($data['userPassword'], $client[0]['password'])) {
-              Session::set('errors', "Wrong password");
-              return false;
-          }
+        if (!password_verify($data['userPassword'], $client['password'])) {
+            Session::set('errors', "Wrong password");
+            return false;
+        }
 
-          Session::delete('errors');
-          Authorization::login('login', $client[0]['login']);
+        Session::delete('errors');
+        Authorization::login('login', $client['login']);
 
-          return $client[0];
-      }*/
+        return $client;
+    }
 
     /**
      * @param $data

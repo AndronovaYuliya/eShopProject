@@ -8,23 +8,11 @@ use Core\Database;
  * Class SessionMapper
  * @package Core
  */
-class SessionMapper
+class SessionMapper extends AbstractMapper
 {
-    /**
-     * @param $byWhat
-     * @param $name
-     * @return array
-     * @throws \Exception
-     */
-    public static function getDataWhere($byWhat, $name): array
-    {
-        try {
-            $sql = "SELECT session_id, date_touched, sess_data FROM sessions WHERE $byWhat = :name";
-        } catch (PDOException $e) {
-            throw new \Exception(["Faker table orders: {$e->getTraceAsString()}"], 500);
-        }
-        return Database::queryData($sql, ['name' => $name]);
-    }
+    use TSingletone;
+
+    protected const SELECT = "SELECT * FROM sessions ";
 
     /**
      * @param $data
@@ -93,25 +81,5 @@ class SessionMapper
     {
         $sql = "DELETE FROM sessions WHERE  session_id =:session_id";
         return Database::queryData($sql, [':session_id' => $session_id]);
-    }
-
-    /**
-     * @return array
-     */
-    public static function query(): array
-    {
-       /* $cache = new Cache();
-        $data = $cache->get('sessions');
-        if (!$data) {*/
-            $sql = "SELECT 
-                        id
-                        ,session_id
-                        ,date_touched
-                        ,sess_data 
-                FROM `sessions`;";
-            $data = Database::query($sql);
-           /* $cache->set('sessions', $data);
-        }*/
-        return $data;
     }
 }

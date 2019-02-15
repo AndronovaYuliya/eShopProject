@@ -141,10 +141,10 @@ class Database
     /**
      * @param string $sql
      * @param array $data
-     * @return array
+     * @return mixed
      * @throws \Exception
      */
-    public function findOne(string $sql, array $data): array
+    public function findOne(string $sql, array $data)
     {
         try {
             $stmt = self::getConnection()->prepare($sql);

@@ -28,7 +28,7 @@ class UsersController extends AppController
         $client = ClientsModel::login($_POST);
         $products = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
+        $brands = $products;
         $session = Session::getSession();
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
         $this->getView();

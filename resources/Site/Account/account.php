@@ -123,19 +123,21 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($orders as $key => $order): ?>
-                                <tr class="cart-order" data-id="<?php echo $order['id'] ?>">
-                                    <th scope="row"><?php echo ++$key ?></th>
-                                    <td><?php echo $order['date'] ?></td>
-                                    <td><?php echo $order['sum'] ?></td>
-                                    <td><?php echo $order['ttn'] ?></td>
-                                    <td><?php if (!$order['status']) {
-                                            echo "wait";
-                                        } else {
-                                            echo "done";
-                                        } ?></td>
-                                </tr>
-                            <?php endforeach; ?>
+                            <?php if (isset($orders)): ?>
+                                <?php foreach ($orders as $key => $order): ?>
+                                    <tr class="cart-order" data-id="<?php echo $order['id'] ?>">
+                                        <th scope="row"><?php echo ++$key ?></th>
+                                        <td><?php echo $order['date'] ?></td>
+                                        <td><?php echo $order['sum'] ?></td>
+                                        <td><?php echo $order['ttn'] ?></td>
+                                        <td><?php if (!$order['status']) {
+                                                echo "wait";
+                                            } else {
+                                                echo "done";
+                                            } ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                             </tbody>
                         </table>
 
