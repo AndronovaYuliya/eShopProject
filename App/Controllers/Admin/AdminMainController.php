@@ -9,7 +9,7 @@ use Core\Session;
 
 /**
  * Class MainController
- * @package App\Controllers\Admin
+ * @package AppModel\Controllers\Admin
  */
 class AdminMainController extends AdminAppController
 {

@@ -12,7 +12,7 @@ use Core\View;
 
 /**
  * Class AccountController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class AccountController extends AppController
 {

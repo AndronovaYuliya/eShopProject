@@ -6,7 +6,7 @@ use Core\Validator;
 
 /**
  * Class ClientsValidator
- * @package App\Validators
+ * @package AppModel\Validators
  */
 class ClientsValidator
 {

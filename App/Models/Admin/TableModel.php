@@ -7,7 +7,7 @@ use Core\App;
 
 /**
  * Class TableModel
- * @package App\Models\Admin
+ * @package AppModel\Models\Admin
  */
 class TableModel
 {

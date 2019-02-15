@@ -2,107 +2,228 @@
 
 namespace App\Models;
 
-use App\Mappers\ProductsMapper;
+use Core\AbstractMapper;
 
 /**
  * Class ProductsModel
- * @package App\Models
+ * @package AppModel\Models
  */
-class ProductsModel
+class ProductsModel extends AbstractMapper
 {
     /**
-     * @return array
+     * @var int
      */
-    public static function getFullData(): array
-    {
-        $data = ProductsMapper::getFullData();
-        $data = self::myExploded('file_name', $data);
-        $data = self::myExploded('key_words', $data);
-        $data = self::myExploded('id_key_word', $data);
+    protected $id;
 
-        return $data;
+    /**
+     * @var string
+     */
+    protected $brand;
+
+    /**
+     * @var string
+     */
+    protected $alias;
+
+    /**
+     * @var string
+     */
+    protected $description;
+
+    /**
+     * @var float
+     */
+    protected $price;
+
+    /**
+     * @var float
+     */
+    protected $old_price;
+
+    /**
+     * @var string
+     */
+    protected $url;
+
+    /**
+     * @var int
+     */
+    protected $count;
+
+    /**
+     * @var int
+     */
+    protected $id_category;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return string
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public function getBrand(): string
     {
-        return ProductsMapper::getDataWhere($byWhat, $name);
+        return $this->brand;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @param $brand
+     * @return ProductsModel
      */
-    public static function getProductWithImg(string $byWhat, string $name): array
+    public function setBrand($brand): ProductsModel
     {
-        $data = ProductsMapper::getProductWithImg($byWhat, $name);
-        $data = self::myExploded('file_name', $data);
-        $data = self::myExploded('key_words', $data);
-
-        return $data;
+        $this->brand = $brand;
+        return $this;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return string
      */
-    public function getDataByCategory(string $byWhat, string $name): array
+    public function getAlias(): string
     {
-        $data = ProductsMapper::getDataByCategory($byWhat, $name);
-        $data = self::myExploded('file_name', $data);
-
-        return $data;
+        return $this->alias;
     }
 
     /**
-     * @param array $search
-     * @return array
+     * @param $alias
+     * @return ProductsModel
      */
-    public static function getDataLike(array $search): array
+    public function setAlias($alias): ProductsModel
     {
-        $data = ProductsMapper::getDataLike($search);
-        return self::myExploded('file_name', $data);
+        $this->alias = $alias;
+        return $this;
     }
 
     /**
-     * @param string $name
-     * @param $data
-     * @return array
+     * @return string
      */
-    private static function myExploded(string $name, $data): array
+    public function getDescription(): string
     {
-        $count = count($data);
-
-        for ($i = 0; $i < $count; $i++) {
-            $data[$i][$name] = explode(',', $data[$i][$name]);
-        }
-
-        return $data;
+        return $this->description;
     }
 
     /**
-     * @return array
+     * @param $description
+     * @return ProductsModel
      */
-    public static function query(): array
+    public function setDescription($description): ProductsModel
     {
-        return ProductsMapper::query();
+        $this->description = $description;
+        return $this;
     }
 
     /**
-     * @param $data
-     * @return array
+     * @return float
      */
-    public static function getKeyData($data): array
+    public function getPrice(): float
     {
-        $data = ProductsMapper::getKeyData('name', $data);
-        $data = self::myExploded('file_name', $data);
+        return $this->price;
+    }
 
-        return $data;
+    /**
+     * @param $price
+     * @return ProductsModel
+     */
+    public function setPrice($price): ProductsModel
+    {
+        $this->price = $price;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getOldPrice(): float
+    {
+        return $this->old_price;
+    }
+
+    /**
+     * @param $oldPrice
+     * @return ProductsModel
+     */
+    public function setOldPrice($oldPrice): ProductsModel
+    {
+        $this->old_price = $oldPrice;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param $url
+     * @return ProductsModel
+     */
+    public function setUrl($url): ProductsModel
+    {
+        $this->url = $url;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCount(): int
+    {
+        return $this->count;
+    }
+
+    /**
+     * @param $count
+     * @return ProductsModel
+     */
+    public function setCount($count): ProductsModel
+    {
+        $this->count = $count;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdCategory(): int
+    {
+        return $this->id_category;
+    }
+
+    /**
+     * @param $id_category
+     * @return ProductsModel
+     */
+    public function setIdCategory($id_category): ProductsModel
+    {
+        $this->id_category = $id_category;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return ProductsModel
+     */
+    public function fromState(array $data): ProductsModel
+    {
+        parent::baseFromState($data);
+        $this->id = $data['id'];
+        $this->brand = $data['brand'];
+        $this->alias = $data['alias'];
+        $this->description = $data['description'];
+        $this->price = $data['price'];
+        $this->old_price = $data['old_price'];
+        $this->url = $data['url'];
+        $this->count = $data['count'];
+        $this->id_category = $data['id_category'];
+
+        return $this;
     }
 }

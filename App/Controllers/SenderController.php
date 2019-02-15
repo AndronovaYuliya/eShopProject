@@ -9,7 +9,7 @@ use Sender\Sender;
 
 /**
  * Class SenderController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class SenderController
 {

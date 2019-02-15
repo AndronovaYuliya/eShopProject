@@ -2,29 +2,60 @@
 
 namespace App\Models;
 
-use App\Mappers\AttributesMapper;
+use Core\AbstractModel;
 
 /**
  * Class AttributesModel
- * @package App\Models
+ * @package AppModel\Models
  */
-class AttributesModel
+class AttributesModel extends AbstractModel
 {
     /**
-     * @return array
+     * @var int
      */
-    public static function query(): array
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $title;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return AttributesMapper::query();
+        return $this->id;
     }
 
     /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array
+     * @return string
      */
-    public static function getDataWhere(string $byWhat, string $name): array
+    public function getTitle(): string
     {
-        return AttributesMapper::getDataWhere($byWhat, $name);
+        return $this->title;
+    }
+
+    /**
+     * @param $title
+     * @return AttributesModel
+     */
+    public function setIdProduct($title): AttributesModel
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return AttributesModel
+     */
+    public function fromState(array $data): AttributesModel
+    {
+        parent::baseFromState($data);
+        $this->id = $data['id'];
+        $this->title = $data['title'];
+
+        return $this;
     }
 }

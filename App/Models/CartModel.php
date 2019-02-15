@@ -6,7 +6,7 @@ use Core\Session;
 
 /**
  * Class CartModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class CartModel
 {

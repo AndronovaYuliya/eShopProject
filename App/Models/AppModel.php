@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace App\Models;
 
 use App\Controllers\SenderController;
 use App\Controllers\ShopController;
@@ -9,48 +9,44 @@ use App\Controllers\CartController;
 use App\Controllers\MainController;
 use App\Controllers\ProductController;
 use App\Controllers\Admin\AdminMainController;
+use Core\Router;
+use Core\Session;
+use Core\Registry;
+use Core\Database;
+use Core\MyException;
 
-class App
+/**
+ * Class AppModel
+ * @package AppModel\Models
+ */
+class AppModel
 {
     public static $app;
+    public static $db;
     public $faker;
-    public static $sender;
     protected $route = [];
+    protected $query;
+    public static $sender;
 
     /**
-     * App constructor.
+     * AppModel constructor.
      * @throws \Exception
      */
     public function __construct()
     {
-        self::$app = Registry::getInstance();
         self::$sender = SenderController::getInstance();
-
+        self::$app = Registry::getInstance();
         $this->getParams();
+        self::$db = Database::getInstance();
         Session::start();
-
         new MyException();
-        // Get the current URL, differents depending on platform/server software
         if (!empty($_SERVER['REQUEST_URL'])) {
-            $query = trim($_SERVER['REQUEST_URL'], '/');
+            $this->query = trim($_SERVER['REQUEST_URL'], '/');
         } else {
-            $query = trim($_SERVER['REQUEST_URI'], '/');
+            $this->query = trim($_SERVER['REQUEST_URI'], '/');
         }
-        $this->route = Router::dispatch($query);
+        $this->route = Router::dispatch($this->query);
         $this->routeAction();
-    }
-
-    /**
-     * @return void
-     */
-    protected function getParams(): void
-    {
-        $params = parse_ini_file(CONF . '/config.ini');
-        if (!empty($params)) {
-            foreach ($params as $key => $value) {
-                self::$app->setProperty($key, $value);
-            }
-        }
     }
 
     protected function routeAction()
@@ -72,5 +68,19 @@ class App
             throw new \Exception("Action {$action} not found", 404);
         }
         $cObj->$action($this->route['query']);
+    }
+
+
+    /**
+     * @return void
+     */
+    protected function getParams(): void
+    {
+        $params = parse_ini_file(CONF . '/config.ini');
+        if (!empty($params)) {
+            foreach ($params as $key => $value) {
+                self::$app->setProperty($key, $value);
+            }
+        }
     }
 }

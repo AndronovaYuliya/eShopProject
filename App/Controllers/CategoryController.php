@@ -7,7 +7,7 @@ use Core\View;
 
 /**
  * Class CategoryController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class CategoryController extends AppController
 {

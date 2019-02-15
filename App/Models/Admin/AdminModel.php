@@ -10,7 +10,7 @@ use App\Mappers\Admin\AdminMappers;
 
 /**
  * Class AdminModel
- * @package App\Models\Admin
+ * @package AppModel\Models\Admin
  */
 class AdminModel
 {

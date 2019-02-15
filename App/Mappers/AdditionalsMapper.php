@@ -2,55 +2,16 @@
 
 namespace App\Mappers;
 
-use Core\Cache;
-use Core\Database;
+use Core\AbstractMapper;
+use Core\TSingletone;
 
 /**
  * Class AdditionalsMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
-class AdditionalsMapper
+class AdditionalsMapper extends AbstractMapper
 {
-    /**
-     * @return array
-     */
-    public static function query(): array
-    {
-        /* $cache = new Cache();
-         $data = $cache->get('additionals');
-         if (!$data) {*/
-        $sql = "SELECT 
-                        id
-                        ,id_product
-                        ,id_order
-                        ,count
-                        ,price
-                        ,created_at
-                        ,updated_at
-                FROM `additionals`;";
-        $data = Database::query($sql);
-        /* $cache->set('additionals', $data);
-     }*/
-        return Database::query($sql);
-    }
+    use TSingletone;
 
-    /**
-     * @param string $byWhat
-     * @param string $name
-     * @return array|mixed
-     */
-    public static function getDataWhere(string $byWhat, string $name)
-    {
-        $sql = "SELECT 
-                        id
-                        ,id_product
-                        ,id_order
-                        ,count
-                        ,price
-                        ,created_at
-                        ,updated_at 
-              FROM `additionals`
-              WHERE $byWhat=$name;";
-        return Database::query($sql);
-    }
+    protected const SELECT = "SELECT * FROM additionals";
 }

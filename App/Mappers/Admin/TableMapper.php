@@ -6,7 +6,7 @@ use Core\Database;
 
 /**
  * Class TableMapper
- * @package App\Mappers\Admin
+ * @package AppModel\Mappers\Admin
  */
 class TableMapper
 {

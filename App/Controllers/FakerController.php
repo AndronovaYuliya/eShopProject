@@ -9,7 +9,7 @@ use Core\FakerData;
 
 /**
  * Class FakerModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class FakerController
 {

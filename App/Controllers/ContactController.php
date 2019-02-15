@@ -6,7 +6,7 @@ use Core\View;
 
 /**
  * Class ContactController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class ContactController extends AppController
 {

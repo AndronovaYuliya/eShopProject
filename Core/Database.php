@@ -2,9 +2,11 @@
 
 namespace Core;
 
+use App\Models\AppModel;
 use PDO;
 use PDOException;
 use CostumLogger\CostumLogger;
+use Core\Registry;
 
 /**
  * Class Database
@@ -14,14 +16,14 @@ class Database
 {
     use TSingletone;
 
-    private static $_pdo;
-    private static $_host;
-    private static $_username;
-    private static $_password;
-    private static $_database;
-    private static $_charset;
-    private static $_dsn;
-    private static $_options = [
+    private static $pdo;
+    private static $host;
+    private static $username;
+    private static $password;
+    private static $database;
+    private static $charset;
+    private static $dsn;
+    private static $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES => false,
@@ -32,18 +34,17 @@ class Database
      */
     private function __construct()
     {
-        $config = App::$app->getProperies();
+        $config = AppModel::$app->getProperies();
 
-        self::$_host = $config['host'];
-        self::$_username = $config['username'];
-        self::$_password = $config['password'];
-        self::$_database = $config['database'];
-        self::$_charset = $config['charset'];
-        self::$_dsn = "mysql:host=" . self::$_host . ";dbname=" . self::$_database . ";charset=" . self::$_charset;
-        if (!self::$_pdo = new PDO(self::$_dsn, self::$_username, self::$_password, self::$_options)) {
+        self::$host = $config['host'];
+        self::$username = $config['username'];
+        self::$password = $config['password'];
+        self::$database = $config['database'];
+        self::$charset = $config['charset'];
+        self::$dsn = "mysql:host=" . self::$host . ";dbname=" . self::$database . ";charset=" . self::$charset;
+        if (!self::$pdo = new PDO(self::$dsn, self::$username, self::$password, self::$options)) {
             throw new \Exception("Тo connection to the database", 500);
         }
-
     }
 
     /**
@@ -52,7 +53,7 @@ class Database
     public static function getConnection(): PDO
     {
         self::getInstance();
-        return self::$_pdo;
+        return self::$pdo;
     }
 
     /**
@@ -135,6 +136,39 @@ class Database
         } catch (PDOException $ex) {
             return "Incorrect data";
         }
+    }
 
+    /**
+     * @param string $sql
+     * @param array $data
+     * @return array
+     * @throws \Exception
+     */
+    public function findOne(string $sql, array $data): array
+    {
+        try {
+            $stmt = self::getConnection()->prepare($sql);
+            $stmt->execute($data);
+            return $stmt->fetch();
+        } catch (PDOException $ex) {
+            throw new \Exception("Sql wrong: {$sql},{$ex->getTraceAsString()}", 500);
+        }
+    }
+
+    /**
+     * @param string $sql
+     * @param array $data
+     * @return array
+     * @throws \Exception
+     */
+    public function findAll(string $sql, array $data): array
+    {
+        try {
+            $stmt = self::getConnection()->prepare($sql);
+            $stmt->execute($data);
+            return $stmt->fetchAll();
+        } catch (PDOException $ex) {
+            throw new \Exception("Sql wrong: {$sql},{$ex->getTraceAsString()}", 500);
+        }
     }
 }

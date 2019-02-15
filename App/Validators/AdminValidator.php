@@ -6,7 +6,7 @@ use Core\Validator;
 
 /**
  * Class AdminValidator
- * @package App\Validators
+ * @package AppModel\Validators
  */
 abstract class AdminValidator
 {
