@@ -12,8 +12,6 @@ use App\Models\AppModel;
  */
 class AbstractMapper
 {
-    use TSingletone;
-
     protected const SELECT = "";
 
     private $data = [];
@@ -29,10 +27,7 @@ class AbstractMapper
         $sql = static::SELECT;
         $sql .= empty($where) ? ";" : "WHERE {$where};";
         $result = AppModel::$db->findOne($sql, $attributes);
-        if (isset($result)) {
-            return $this->setData($result);
-        }
-        return null;
+        return isset($result) ?: null;
     }
 
     /**
@@ -46,25 +41,6 @@ class AbstractMapper
         $sql = static::SELECT;
         $sql .= empty($where) ? ";" : "WHERE {$where};";
         $result = AppModel::$db->findAll($sql, $attributes);
-        if (isset($result)) {
-            return $this->setData($result);
-        }
-        return null;
-    }
-
-    /**
-     * @param array $result
-     * @return AbstractModel
-     * @throws \Exception
-     */
-    protected function setData(array $result): AbstractModel
-    {
-        try {
-            $result['create_at'] = $this->makeDateTime($result['create_at']);
-            $result['update_at'] = $this->makeDateTime($result['update_at']);
-            return new AbstractModel($result);
-        } catch (MyException $myException) {
-            throw new \Exception(["{$myException->getTraceAsString()}"], 500);
-        }
+        return isset($result) ? $result : null;
     }
 }

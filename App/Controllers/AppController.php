@@ -50,18 +50,18 @@ class AppController extends Controller
     {
         parent::__construct($route);
 
-        $this->additionals=AdditionalsMapper::getInstance()->findAll();
-        $this->attributes=AttributesMapper::getInstance()->findAll();
-        $this->attributesValues=AttributesValuesMapper::getInstance()->findAll();
-        $this->categoriesAttributes=CategoriesAttributesMapper::getInstance()->findAll();
-        $this->categories=CategoriesMapper::getInstance()->findAll();
-        $this->clients=ClientsMapper::getInstance()->findAll();
-        $this->comments=CommentsMapper::getInstance()->findAll();
-        $this->images=ImagesMapper::getInstance()->findAll();
-        $this->keyWords=KeyWordsMapper::getInstance()->findAll();
-        $this->orders=OrdersMapper::getInstance()->findAll();
-        $this->productsImages=ProductsImagesMapper::getInstance()->findAll();
-        $this->productsKeyWords=ProductsKeyWordsMapper::getInstance()->findAll();
-        $this->products=ProductsMapper::getInstance()->findAll();
+        $this->additionals = AdditionalsMapper::getInstance()->findAll();
+        $this->attributes = AttributesMapper::getInstance()->findAll();
+        $this->attributesValues = AttributesValuesMapper::getInstance()->findAll();
+        $this->categoriesAttributes = CategoriesAttributesMapper::getInstance()->findAll();
+        $this->categories = CategoriesMapper::getInstance()->findAll();
+        $this->clients = ClientsMapper::getInstance()->findAll();
+        $this->comments = CommentsMapper::getInstance()->findAll();
+        $this->images = ImagesMapper::getInstance()->findAll();
+        $this->keyWords = KeyWordsMapper::getInstance()->findAll();
+        $this->orders = OrdersMapper::getInstance()->findAll();
+        $this->productsImages = ProductsImagesMapper::getInstance()->findAll();
+        $this->productsKeyWords = ProductsKeyWordsMapper::getInstance()->findAll();
+        $this->products = ProductsMapper::getInstance()->findAll();
     }
 }

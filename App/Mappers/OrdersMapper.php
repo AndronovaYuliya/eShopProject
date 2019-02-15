@@ -3,6 +3,7 @@
 namespace App\Mappers;
 
 use Core\AbstractMapper;
+use Core\TSingletone;
 
 /**
  * Class OrdersMapper
@@ -10,5 +11,7 @@ use Core\AbstractMapper;
  */
 class OrdersMapper extends AbstractMapper
 {
+    use TSingletone;
+
     protected const SELECT = "SELECT * FROM orders";
 }

@@ -3,6 +3,7 @@
 namespace App\Mappers;
 
 use Core\AbstractMapper;
+use Core\TSingletone;
 
 /**
  * Class KeyWordsMapper
@@ -10,5 +11,7 @@ use Core\AbstractMapper;
  */
 class KeyWordsMapper extends AbstractMapper
 {
+    use TSingletone;
+
     protected const SELECT = "SELECT * FROM key_words";
 }

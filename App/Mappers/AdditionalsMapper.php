@@ -3,8 +3,7 @@
 namespace App\Mappers;
 
 use Core\AbstractMapper;
-use Core\Cache;
-use Core\Database;
+use Core\TSingletone;
 
 /**
  * Class AdditionalsMapper
@@ -12,5 +11,7 @@ use Core\Database;
  */
 class AdditionalsMapper extends AbstractMapper
 {
+    use TSingletone;
+
     protected const SELECT = "SELECT * FROM additionals";
 }

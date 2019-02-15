@@ -3,7 +3,7 @@
 namespace App\Mappers;
 
 use Core\AbstractMapper;
-use Core\Cache;
+use Core\TSingletone;
 
 /**
  * Class CommentsMapper
@@ -11,5 +11,7 @@ use Core\Cache;
  */
 class CommentsMapper extends AbstractMapper
 {
+    use TSingletone;
+
     protected const SELECT = "SELECT * FROM comments";
 }

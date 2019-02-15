@@ -3,6 +3,7 @@
 namespace App\Mappers;
 
 use Core\AbstractMapper;
+use Core\TSingletone;
 
 /**
  * Class UsersMapper
@@ -10,5 +11,7 @@ use Core\AbstractMapper;
  */
 class UsersMapper extends AbstractMapper
 {
+    use TSingletone;
+
     protected const SELECT = "SELECT * FROM users";
 }

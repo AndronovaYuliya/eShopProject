@@ -2,7 +2,7 @@
 
 namespace App\Mappers;
 
-
+use Core\TSingletone;
 use Core\AbstractMapper;
 
 /**
@@ -11,5 +11,7 @@ use Core\AbstractMapper;
  */
 class SessionMapper extends AbstractMapper
 {
+    use TSingletone;
+
     protected const SELECT = "SELECT * FROM sessions";
 }
