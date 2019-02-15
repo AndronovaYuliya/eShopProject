@@ -7,7 +7,7 @@ use Core\App;
 
 /**
  * Class AppAdminController
- * @package App\Controllers\Admin
+ * @package AppModel\Controllers\Admin
  */
 class AdminAppController extends Controller
 {

@@ -7,7 +7,7 @@ use Core\Cache;
 
 /**
  * Class CommentsMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class CommentsMapper extends AbstractMapper
 {

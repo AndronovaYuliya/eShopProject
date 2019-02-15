@@ -8,7 +8,7 @@ use Core\Database;
 
 /**
  * Class AdditionalsMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class AdditionalsMapper extends AbstractMapper
 {

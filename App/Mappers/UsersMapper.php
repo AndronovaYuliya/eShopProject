@@ -6,7 +6,7 @@ use Core\AbstractMapper;
 
 /**
  * Class UsersMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class UsersMapper extends AbstractMapper
 {

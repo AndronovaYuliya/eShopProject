@@ -2,9 +2,11 @@
 
 namespace Core;
 
+use App\Models\AppModel;
 use PDO;
 use PDOException;
 use CostumLogger\CostumLogger;
+use Core\Registry;
 
 /**
  * Class Database
@@ -32,7 +34,7 @@ class Database
      */
     private function __construct()
     {
-        $config = App::$app->getProperies();
+        $config = AppModel::$app->getProperies();
 
         self::$host = $config['host'];
         self::$username = $config['username'];
@@ -145,7 +147,7 @@ class Database
     public function findOne(string $sql, array $data): array
     {
         try {
-            $stmt = App::$db->prepare($sql);
+            $stmt = self::getConnection()->prepare($sql);
             $stmt->execute($data);
             return $stmt->fetch();
         } catch (PDOException $ex) {
@@ -162,7 +164,7 @@ class Database
     public function findAll(string $sql, array $data): array
     {
         try {
-            $stmt = App::$db->prepare($sql);
+            $stmt = self::getConnection()->prepare($sql);
             $stmt->execute($data);
             return $stmt->fetchAll();
         } catch (PDOException $ex) {

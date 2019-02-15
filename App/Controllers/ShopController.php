@@ -7,7 +7,7 @@ use Core\View;
 
 /**
  * Class ShopController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class ShopController extends AppController
 {

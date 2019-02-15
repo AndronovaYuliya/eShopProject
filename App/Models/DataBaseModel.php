@@ -6,7 +6,7 @@ use Core\MyException;
 
 /**
  * Class DataBaseModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class DataBaseModel
 {

@@ -7,7 +7,7 @@ use Core\View;
 
 /**
  * Class BrandController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class BrandController extends AppController
 {

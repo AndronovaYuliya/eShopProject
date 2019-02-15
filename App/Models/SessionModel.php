@@ -7,7 +7,7 @@ use Faker\Provider\DateTime;
 
 /**
  * Class SessionModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class SessionModel extends AbstractModel
 {

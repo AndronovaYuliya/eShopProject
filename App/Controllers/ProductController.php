@@ -7,7 +7,7 @@ use Core\View;
 
 /**
  * Class ProductController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class ProductController extends AppController
 {

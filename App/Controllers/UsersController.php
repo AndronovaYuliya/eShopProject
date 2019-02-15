@@ -13,7 +13,7 @@ use http\Client;
 
 /**
  * Class UserController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class UsersController extends AppController
 {

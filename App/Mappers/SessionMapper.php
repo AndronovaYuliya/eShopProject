@@ -7,7 +7,7 @@ use Core\AbstractMapper;
 
 /**
  * Class SessionMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class SessionMapper extends AbstractMapper
 {

@@ -6,7 +6,7 @@ use Core\AbstractModel;
 
 /**
  * Class KeyWordsModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class KeyWordsModel extends AbstractModel
 {

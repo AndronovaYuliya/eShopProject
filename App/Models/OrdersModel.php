@@ -9,7 +9,7 @@ use Faker\Provider\DateTime;
 
 /**
  * Class OrdersModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class OrdersModel extends AbstractModel
 {

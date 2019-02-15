@@ -6,7 +6,7 @@ use Core\AbstractMapper;
 
 /**
  * Class AttributesValuesMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class AttributesValuesMapper extends AbstractMapper
 {

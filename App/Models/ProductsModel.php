@@ -6,7 +6,7 @@ use Core\AbstractMapper;
 
 /**
  * Class ProductsModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class ProductsModel extends AbstractMapper
 {

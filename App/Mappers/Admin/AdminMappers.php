@@ -7,7 +7,7 @@ use Core\Database;
 
 /**
  * Class AdminMappers
- * @package App\Mappers\Admin
+ * @package AppModel\Mappers\Admin
  */
 class AdminMappers
 {

@@ -6,7 +6,7 @@ use Core\View;
 
 /**
  * Class MainController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class MainController extends AppController
 {

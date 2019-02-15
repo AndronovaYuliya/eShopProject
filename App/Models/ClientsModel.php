@@ -12,7 +12,7 @@ use Faker\Provider\DateTime;
 
 /**
  * Class ClientsModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class ClientsModel extends AbstractModel
 {

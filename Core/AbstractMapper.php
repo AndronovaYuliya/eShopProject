@@ -4,6 +4,7 @@ namespace Core;
 
 use Core\MyException;
 use Core\Database;
+use App\Models\AppModel;
 
 /**
  * Class Storage
@@ -11,16 +12,11 @@ use Core\Database;
  */
 class AbstractMapper
 {
+    use TSingletone;
+
     protected const SELECT = "";
 
     private $data = [];
-
-    /**
-     * AbstractMapper constructor.
-     */
-    public function __construct()
-    {
-    }
 
     /**
      * @param string $where
@@ -32,7 +28,7 @@ class AbstractMapper
     {
         $sql = static::SELECT;
         $sql .= empty($where) ? ";" : "WHERE {$where};";
-        $result = App::$db->findOne($sql, $attributes);
+        $result = AppModel::$db->findOne($sql, $attributes);
         if (isset($result)) {
             return $this->setData($result);
         }
@@ -49,7 +45,7 @@ class AbstractMapper
     {
         $sql = static::SELECT;
         $sql .= empty($where) ? ";" : "WHERE {$where};";
-        $result = App::$db->findAll($sql, $attributes);
+        $result = AppModel::$db->findAll($sql, $attributes);
         if (isset($result)) {
             return $this->setData($result);
         }

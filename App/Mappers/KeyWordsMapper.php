@@ -6,7 +6,7 @@ use Core\AbstractMapper;
 
 /**
  * Class KeyWordsMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class KeyWordsMapper extends AbstractMapper
 {

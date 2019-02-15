@@ -6,7 +6,7 @@ use Core\AbstractMapper;
 
 /**
  * Class OrdersMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class OrdersMapper extends AbstractMapper
 {

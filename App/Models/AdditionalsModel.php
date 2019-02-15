@@ -6,7 +6,7 @@ use Core\AbstractModel;
 
 /**
  * Class AdditionalsModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class AdditionalsModel extends AbstractModel
 {

@@ -14,7 +14,7 @@ use Sender\Sender;
 
 /**
  * Class CartController
- * @package App\Controllers
+ * @package AppModel\Controllers
  */
 class CartController extends AppController
 {

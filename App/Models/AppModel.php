@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Controllers\SenderController;
-use Core\App;
 use App\Controllers\ShopController;
 use App\Controllers\UsersController;
 use App\Controllers\CartController;
@@ -11,13 +10,22 @@ use App\Controllers\MainController;
 use App\Controllers\ProductController;
 use App\Controllers\Admin\AdminMainController;
 use Core\Router;
+use Core\Session;
+use Core\Registry;
+use Core\Database;
+use Core\MyException;
 
 /**
  * Class AppModel
- * @package App\Models
+ * @package AppModel\Models
  */
-class AppModel extends App
+class AppModel
 {
+    public static $app;
+    public static $db;
+    public $faker;
+    protected $route = [];
+    protected $query;
     public static $sender;
 
     /**
@@ -27,7 +35,16 @@ class AppModel extends App
     public function __construct()
     {
         self::$sender = SenderController::getInstance();
-        parent::__construct();
+        self::$app = Registry::getInstance();
+        $this->getParams();
+        self::$db = Database::getInstance();
+        Session::start();
+        new MyException();
+        if (!empty($_SERVER['REQUEST_URL'])) {
+            $this->query = trim($_SERVER['REQUEST_URL'], '/');
+        } else {
+            $this->query = trim($_SERVER['REQUEST_URI'], '/');
+        }
         $this->route = Router::dispatch($this->query);
         $this->routeAction();
     }
@@ -51,5 +68,19 @@ class AppModel extends App
             throw new \Exception("Action {$action} not found", 404);
         }
         $cObj->$action($this->route['query']);
+    }
+
+
+    /**
+     * @return void
+     */
+    protected function getParams(): void
+    {
+        $params = parse_ini_file(CONF . '/config.ini');
+        if (!empty($params)) {
+            foreach ($params as $key => $value) {
+                self::$app->setProperty($key, $value);
+            }
+        }
     }
 }

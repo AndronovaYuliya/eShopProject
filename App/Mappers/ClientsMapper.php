@@ -6,7 +6,7 @@ use Core\AbstractMapper;
 
 /**
  * Class ClientsMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class ClientsMapper extends AbstractMapper
 {

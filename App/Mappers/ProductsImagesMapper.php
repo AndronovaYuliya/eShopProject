@@ -6,7 +6,7 @@ use Core\AbstractMapper;
 
 /**
  * Class ProductsImagesMapper
- * @package App\Mappers
+ * @package AppModel\Mappers
  */
 class ProductsImagesMapper extends AbstractMapper
 {

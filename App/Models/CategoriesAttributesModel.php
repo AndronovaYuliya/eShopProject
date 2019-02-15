@@ -6,7 +6,7 @@ use Core\AbstractModel;
 
 /**
  * Class CategoriesAttributesModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class CategoriesAttributesModel extends AbstractModel
 {

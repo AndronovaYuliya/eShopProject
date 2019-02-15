@@ -6,7 +6,7 @@ use Core\AbstractModel;
 
 /**
  * Class CommentsModel
- * @package App\Models
+ * @package AppModel\Models
  */
 class CommentsModel extends AbstractModel
 {

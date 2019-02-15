@@ -25,7 +25,7 @@ use Core\Session;
 
 /**
  * Class AdminAppController
- * @package App\Controllers\Admin
+ * @package AppModel\Controllers\Admin
  */
 class AdminAppController extends Controller
 {

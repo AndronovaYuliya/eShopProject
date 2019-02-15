@@ -7,7 +7,7 @@ use Core\Session;
 
 /**
  * Class ClientsAuthrization
- * @package App\Models
+ * @package AppModel\Models
  */
 class ClientsAuthrization extends Authorization
 {
