@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class UsersModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class UsersModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -158,24 +161,6 @@ class UsersModel extends AbstractModel
     public function setRole($role): UsersModel
     {
         $this->role = $role;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return UsersModel
-     */
-    public function fromState(array $data): UsersModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->login = $data['login'];
-        $this->password = $data['password'];
-        $this->email = $data['email'];
-        $this->first_name = $data['first_name'];
-        $this->last_name = $data['last_name'];
-        $this->role = $data['role'];
-
         return $this;
     }
 }

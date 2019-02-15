@@ -69,4 +69,12 @@ class AbstractModel
         $this->create_at = $data['create_at'];
         $this->update_at = $data['update_at'];
     }
+
+    /**
+     * @return $this
+     */
+    public function getData()
+    {
+        return $this;
+    }
 }

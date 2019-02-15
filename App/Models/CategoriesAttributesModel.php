@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class CategoriesAttributesModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class CategoriesAttributesModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -66,20 +69,6 @@ class CategoriesAttributesModel extends AbstractModel
     public function setIdAttribute($id_attribute): CategoriesAttributesModel
     {
         $this->id_attribute = $id_attribute;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return CategoriesAttributesModel
-     */
-    public function fromState(array $data): CategoriesAttributesModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->id_category = $data['id_category'];
-        $this->id_attribute = $data['id_attribute'];
-
         return $this;
     }
 }

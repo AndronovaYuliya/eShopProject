@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class ProductsKeyWordsModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class ProductsKeyWordsModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -66,20 +69,6 @@ class ProductsKeyWordsModel extends AbstractModel
     public function setIdKeyWord($idKeyWord): ProductsKeyWordsModel
     {
         $this->id_key_word = $idKeyWord;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return ProductsImagesModel
-     */
-    public function fromState(array $data): ProductsKeyWordsModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->id_product = $data['id_product'];
-        $this->id_key_word = $data['id_key_word'];
-
         return $this;
     }
 }

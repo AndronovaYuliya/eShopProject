@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Mappers\CategoriesMapper;
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class CategoriesModel
@@ -11,6 +12,8 @@ use Core\AbstractModel;
  */
 class CategoriesModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -113,22 +116,6 @@ class CategoriesModel extends AbstractModel
     public function setParentId($parent_id): CategoriesModel
     {
         $this->parent_id = $parent_id;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return CategoriesModel
-     */
-    public function fromState(array $data): CategoriesModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->title = $data['title'];
-        $this->description = $data['description'];
-        $this->alias = $data['alias'];
-        $this->parent_id = $data['parent_id'];
-
         return $this;
     }
 }

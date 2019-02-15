@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class ImagesModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class ImagesModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -43,19 +46,6 @@ class ImagesModel extends AbstractModel
     public function setFileName($fileName): ImagesModel
     {
         $this->file_name = $fileName;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return ImagesModel
-     */
-    public function fromState(array $data): ImagesModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->file_name = $data['file_name'];
-
         return $this;
     }
 }

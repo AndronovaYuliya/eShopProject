@@ -9,6 +9,7 @@ use Core\Authorization;
 use Core\Session;
 use Core\Validator;
 use Faker\Provider\DateTime;
+use Core\TSingletone;
 
 /**
  * Class ClientsModel
@@ -16,6 +17,8 @@ use Faker\Provider\DateTime;
  */
 class ClientsModel extends AbstractModel
 {
+    use TSingletone;
+
     protected static $errors;
 
     /**
@@ -219,26 +222,6 @@ class ClientsModel extends AbstractModel
     public function setBorn($born): ClientsModel
     {
         $this->born = $born;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return ClientsModel
-     */
-    public function fromState(array $data): ClientsModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->name = $data['name'];
-        $this->login = $data['login'];
-        $this->password = $data['password'];
-        $this->email = $data['email'];
-        $this->phone = $data['phone'];
-        $this->city = $data['city'];
-        $this->address = $data['address'];
-        $this->born = $data['born'];
-
         return $this;
     }
 

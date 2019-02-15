@@ -18,9 +18,10 @@ class ProductController extends AppController
     public function showAction($param = null): void
     {
         $products = $this->products;
+        $brands = $products;
         $categories = $this->categories;
+
         $product = ProductsModel::getProductWithImg('alias', $param);
-        $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands', 'product'));
         $this->getView();
     }

@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Controllers\AppController;
+use App\Mappers\ProductsMapper;
 use Core\AbstractMapper;
+use Core\TSingletone;
 
 /**
  * Class ProductsModel
@@ -10,6 +13,8 @@ use Core\AbstractMapper;
  */
 class ProductsModel extends AbstractMapper
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -208,22 +213,62 @@ class ProductsModel extends AbstractMapper
     }
 
     /**
-     * @param array $data
-     * @return ProductsModel
+     * @param $products
+     * @return mixed
      */
-    public function fromState(array $data): ProductsModel
+    public function getImages($products)
     {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->brand = $data['brand'];
-        $this->alias = $data['alias'];
-        $this->description = $data['description'];
-        $this->price = $data['price'];
-        $this->old_price = $data['old_price'];
-        $this->url = $data['url'];
-        $this->count = $data['count'];
-        $this->id_category = $data['id_category'];
+        $productsImages = ProductsImagesModel::getInstance()->getData();
+        $images = ImagesModel::getInstance()->getData();
 
-        return $this;
+        foreach ($products as $key => $value) {
+            foreach ($productsImages as $productsImage) {
+                if ($value['id'] == $productsImage['id_product']) {
+                    foreach ($images as $image) {
+                        if ($image['id'] == $productsImage['id_galary']) {
+                            $products[$key]['file_name'][] = $image['file_name'];
+                        }
+                    }
+                }
+            }
+        }
+        return $products;
+    }
+
+    /**
+     * @param $products
+     * @return mixed
+     */
+    public function getCategories($products)
+    {
+        $categories = CategoriesModel::getInstance()->getData();
+
+        foreach ($products as $key => $value) {
+            foreach ($categories as $category) {
+                if ($value['id_category'] == $category['id']) {
+                    $products[$key]['category'] = $category['title'];
+                    $products[$key]['category_alias'] = $category['alias'];
+                }
+            }
+        }
+        return $products;
+    }
+
+    /**
+     * @param $products
+     * @return mixed
+     */
+    public function getKeyWords($products)
+    {
+        $keyWords = KeyWordsModel::getInstance()->getData();
+        foreach ($products as $key => $value) {
+            foreach ($keyWords as $keyWord) {
+                if ($value['id_key_word'] == $keyWord['id']) {
+                    $products[$key]['id_key_word'][] = $keyWord['id'];
+                    $products[$key]['key_words'][] = $keyWord['name'];
+                }
+            }
+        }
+        return $products;
     }
 }

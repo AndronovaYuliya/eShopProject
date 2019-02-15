@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 use Faker\Provider\DateTime;
 
 /**
@@ -11,6 +12,8 @@ use Faker\Provider\DateTime;
  */
 class SessionModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -87,21 +90,6 @@ class SessionModel extends AbstractModel
     public function setDateTouched($dateTouched): SessionModel
     {
         $this->date_touched = $dateTouched;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return ProductsImagesModel
-     */
-    public function fromState(array $data): SessionModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->session_id = $data['session_id'];
-        $this->sess_data = $data['sess_data'];
-        $this->date_touched = $data['date_touched'];
-
         return $this;
     }
 }

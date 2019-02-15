@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class ProductsImagesModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class ProductsImagesModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -66,20 +69,6 @@ class ProductsImagesModel extends AbstractModel
     public function setProduct($idProduct): ProductsImagesModel
     {
         $this->id_product = $idProduct;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return ProductsImagesModel
-     */
-    public function fromState(array $data): ProductsImagesModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->id_galary = $data['id_galary'];
-        $this->id_product = $data['id_product'];
-
         return $this;
     }
 }

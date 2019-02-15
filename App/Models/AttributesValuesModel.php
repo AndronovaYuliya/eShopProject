@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class AttributesValuesModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class AttributesValuesModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -66,20 +69,6 @@ class AttributesValuesModel extends AbstractModel
     public function setAttributesId($attributes_id): AttributesValuesModel
     {
         $this->attributes_id = $attributes_id;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return AttributesValuesModel
-     */
-    public function fromState(array $data): AttributesValuesModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->value = $data['value'];
-        $this->attributes_id = $data['attributes_id'];
-
         return $this;
     }
 }

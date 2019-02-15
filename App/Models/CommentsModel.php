@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class CommentsModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class CommentsModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -94,22 +97,6 @@ class CommentsModel extends AbstractModel
     public function setStars($stars): CommentsModel
     {
         $this->stars = $stars;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return CommentsModel
-     */
-    public function fromState(array $data): CommentsModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->msg = $data['msg'];
-        $this->user = $data['user'];
-        $this->id_product = $data['id_product'];
-        $this->stars = $data['stars'];
-
         return $this;
     }
 }

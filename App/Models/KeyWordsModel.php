@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class KeyWordsModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class KeyWordsModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -43,19 +46,6 @@ class KeyWordsModel extends AbstractModel
     public function setName($name): KeyWordsModel
     {
         $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return KeyWordsModel
-     */
-    public function fromState(array $data): KeyWordsModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->name = $data['name'];
-
         return $this;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductsModel;
 use Core\View;
 
 /**
@@ -15,9 +16,11 @@ class MainController extends AppController
      */
     public function indexAction(): void
     {
+        $brands = $this->products;
         $products = $this->products;
+        $products=ProductsModel::getInstance()->getImages($products);
+        $products=ProductsModel::getInstance()->getCategories($products);
         $categories = $this->categories;
-        $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();
     }

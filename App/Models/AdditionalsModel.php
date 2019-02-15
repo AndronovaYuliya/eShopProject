@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\AbstractModel;
+use Core\TSingletone;
 
 /**
  * Class AdditionalsModel
@@ -10,6 +11,8 @@ use Core\AbstractModel;
  */
 class AdditionalsModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -112,22 +115,6 @@ class AdditionalsModel extends AbstractModel
     public function setPrice($price): AdditionalsModel
     {
         $this->price = $price;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return AdditionalsModel
-     */
-    public function fromState(array $data): AdditionalsModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->id_product = $data['id_product'];
-        $this->id_order = $data['id_order'];
-        $this->count = $data['count'];
-        $this->price = $data['price'];
-
         return $this;
     }
 }

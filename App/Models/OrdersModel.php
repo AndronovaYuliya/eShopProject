@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Mappers\OrdersMapper;
 use Core\AbstractModel;
 use Core\Session;
+use Core\TSingletone;
 use Faker\Provider\DateTime;
 
 /**
@@ -13,6 +14,8 @@ use Faker\Provider\DateTime;
  */
 class OrdersModel extends AbstractModel
 {
+    use TSingletone;
+
     /**
      * @var int
      */
@@ -135,23 +138,6 @@ class OrdersModel extends AbstractModel
     public function setIdClient($id_client): OrdersModel
     {
         $this->id_client = $id_client;
-        return $this;
-    }
-
-    /**
-     * @param array $data
-     * @return OrdersModel
-     */
-    public function fromState(array $data): OrdersModel
-    {
-        parent::baseFromState($data);
-        $this->id = $data['id'];
-        $this->date = $data['date'];
-        $this->sum = $data['sum'];
-        $this->status = $data['status'];
-        $this->ttn = $data['ttn'];
-        $this->id_client = $data['id_client'];
-
         return $this;
     }
 
