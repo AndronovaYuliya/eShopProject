@@ -13,5 +13,5 @@ class AdditionalsMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM additionals";
+    protected const SELECT = "SELECT * FROM additionals ";
 }

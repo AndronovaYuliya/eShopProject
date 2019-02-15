@@ -13,5 +13,5 @@ class KeyWordsMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM key_words";
+    protected const SELECT = "SELECT * FROM key_words ";
 }

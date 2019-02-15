@@ -218,8 +218,8 @@ class ProductsModel extends AbstractMapper
      */
     public function getImages($products)
     {
-        $productsImages = ProductsImagesModel::getInstance()->getData();
-        $images = ImagesModel::getInstance()->getData();
+        $productsImages = AppController::getInstance()->getProductsImages();
+        $images = AppController::getInstance()->getImages();
 
         foreach ($products as $key => $value) {
             foreach ($productsImages as $productsImage) {
@@ -236,12 +236,33 @@ class ProductsModel extends AbstractMapper
     }
 
     /**
+     * @param $product
+     * @return mixed
+     */
+    public function getImage($product)
+    {
+        $productsImages = AppController::getInstance()->getProductsImages();
+        $images = AppController::getInstance()->getImages();
+        foreach ($productsImages as $productsImage) {
+            if ($product['id'] == $productsImage['id_product']) {
+                foreach ($images as $image) {
+                    if ($image['id'] == $productsImage['id_galary']) {
+                        $product['file_name'][] = $image['file_name'];
+                    }
+                }
+            }
+        }
+
+        return $product;
+    }
+
+    /**
      * @param $products
      * @return mixed
      */
     public function getCategories($products)
     {
-        $categories = CategoriesModel::getInstance()->getData();
+        $categories = AppController::getInstance()->getCategories();
 
         foreach ($products as $key => $value) {
             foreach ($categories as $category) {
@@ -255,12 +276,29 @@ class ProductsModel extends AbstractMapper
     }
 
     /**
+     * @param $product
+     * @return mixed
+     */
+    public function getCategory($product)
+    {
+        $categories = AppController::getInstance()->getCategories();
+
+        foreach ($categories as $category) {
+            if ($product['id_category'] == $category['id']) {
+                $product['category'] = $category['title'];
+                $product['category_alias'] = $category['alias'];
+            }
+        }
+        return $product;
+    }
+
+    /**
      * @param $products
      * @return mixed
      */
     public function getKeyWords($products)
     {
-        $keyWords = KeyWordsModel::getInstance()->getData();
+        $keyWords = AppController::getInstance()->getKeyWords();
         foreach ($products as $key => $value) {
             foreach ($keyWords as $keyWord) {
                 if ($value['id_key_word'] == $keyWord['id']) {
@@ -270,5 +308,21 @@ class ProductsModel extends AbstractMapper
             }
         }
         return $products;
+    }
+
+    /**
+     * @param $product
+     * @return mixed
+     */
+    public function getKeyWord($product)
+    {
+        $keyWords = AppController::getInstance()->getKeyWords();
+        foreach ($keyWords as $keyWord) {
+            if ($product['id_key_word'] == $keyWord['id']) {
+                $product['id_key_word'][] = $keyWord['id'];
+                $product['key_words'][] = $keyWord['name'];
+            }
+        }
+        return $product;
     }
 }

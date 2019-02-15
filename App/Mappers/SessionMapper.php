@@ -13,5 +13,5 @@ class SessionMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM sessions";
+    protected const SELECT = "SELECT * FROM sessions ";
 }

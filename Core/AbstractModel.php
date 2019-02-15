@@ -60,21 +60,4 @@ class AbstractModel
     {
         $this->update_at = $update_at;
     }
-
-    /**
-     * @param array $data
-     */
-    protected function baseFromState(array $data)
-    {
-        $this->create_at = $data['create_at'];
-        $this->update_at = $data['update_at'];
-    }
-
-    /**
-     * @return $this
-     */
-    public function getData()
-    {
-        return $this;
-    }
 }

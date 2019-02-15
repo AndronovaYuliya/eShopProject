@@ -13,5 +13,5 @@ class AttributesValuesMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM attributes_values";
+    protected const SELECT = "SELECT * FROM attributes_values ";
 }

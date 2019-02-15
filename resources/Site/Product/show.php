@@ -26,10 +26,10 @@
                 </div>
                 <div class="single-sidebar">
                     <h2 class="sidebar-title">Products</h2>
-                    <?php if (count($products) > 0): ?>
+                    <?php if (count($products) > 6): ?>
                         <?php for ($i = 0; $i < 6; $i++): ?>
                             <div class="thubmnail-recent">
-                                <img src="<?php echo $products[$i]['file_name'][0] ?>" class="recent-thumb grow"
+                                <img src="<?php if(isset($products[$i]['file_name'][0]))echo $products[$i]['file_name'][0] ?>" class="recent-thumb grow"
                                      alt="img">
                                 <h3><a href="/show?<?php echo $products[$i]['alias'] ?>">
                                         <?php echo $products[$i]['title'] ?></a></h3>
@@ -45,20 +45,20 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <?php if (isset($product[0])): ?>
+                <?php if (isset($product)): ?>
                     <div class="product-content-right">
                         <div class="product-breadcroumb">
                             <a href="/">Home</a>
-                            <a href="/category?<?php echo $product[0]['category_alias'] ?>"><?php echo($product[0]['category']) ?></a>
-                            <a href="/brand?<?php echo $product[0]['brand'] ?>"><?php echo($product[0]['brand']) ?></a>
+                            <a href="/category?<?php echo $product['category_alias'] ?>"><?php echo($product['category']) ?></a>
+                            <a href="/brand?<?php echo $product['brand'] ?>"><?php echo($product['brand']) ?></a>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="product-images">
                                         <div class="product-main-img">
-                                            <img src="<?php echo $product[0]['file_name'][0] ?>" alt="img">
+                                            <img src="<?php if(isset($product['file_name']))echo $product['file_name'][0] ?>" alt="img">
                                         </div>
                                         <div class="product-gallery">
-                                            <?php foreach ($product[0]['file_name'] as $img): ?>
+                                            <?php foreach ($product['file_name'] as $img): ?>
                                                 <img class="grow" src=<?php echo $img ?> alt="img">
                                             <?php endforeach; ?>
                                         </div>
@@ -67,23 +67,23 @@
                                 <div class="col-sm-6">
                                     <div class="product-inner">
                                         <h2 class="product-name">
-                                            <?php echo $product[0]['title'] ?></h2>
+                                            <?php echo $product['title'] ?></h2>
                                         <div class="quantity">
                                             <input type="number" size="4" class="input-text qty text remove-item" title="Qty"
-                                                   value="<?php if ($product[0]['count'] > 0) {
+                                                   value="<?php if ($product['count'] > 0) {
                                                        echo 1;
                                                    } else {
                                                        echo 0;
                                                    } ?>" name="qty" min="1" id="currency"
-                                                   max="<?php echo($product[0]['count']) ?>" step="1"
-                                                   data-id="<?php echo $product[0]['id']?>">
+                                                   max="<?php echo($product['count']) ?>" step="1"
+                                                   data-id="<?php echo $product['id']?>">
                                         </div>
                                         <button class="cart btn btn-outline-success my-2 my-sm-0 add-to-cart-button"
-                                                data-id="<?php echo($product[0]['id']) ?>"
+                                                data-id="<?php echo($product['id']) ?>"
                                                 href="#"
-                                            <?php if ($product[0]['count'] == 0) {
+                                            <?php if ($product['count'] == 0) {
                                                 echo 'disabled';
-                                            } ?>><?php if ($product[0]['count'] == 0) {
+                                            } ?>><?php if ($product['count'] == 0) {
                                                 echo "Out of stock";
                                             }else{
                                                 echo 'Add to cart';
@@ -93,25 +93,27 @@
 
                                         <div class="product-inner-price">
                                             <ins>
-                                                <span><?php echo $product[0]['price'] . ' $'; ?></span>
+                                                <span><?php echo $product['price'] . ' $'; ?></span>
                                             </ins>
                                             <del>
-                                                <?php echo $product[0]['old_price'] . ' $'; ?>
+                                                <?php echo $product['old_price'] . ' $'; ?>
                                             </del>
                                         </div>
                                         <p class="product-inner-category">
                                         <p>Category: <a
-                                                    href="/category?<?php echo $product[0]['category_alias'] ?>">
-                                                <?php echo($product[0]['category']) ?></a>
+                                                    href="/category?<?php echo $product['category_alias'] ?>">
+                                                <?php echo($product['category']) ?></a>
                                             Brand: <a
-                                                    href="/brand?<?php echo $product[0]['brand'] ?>">
-                                                <?php echo($product[0]['brand']) ?></a>
+                                                    href="/brand?<?php echo $product['brand'] ?>">
+                                                <?php echo($product['brand']) ?></a>
                                             Tags:
-                                            <?php foreach ($product[0]['key_words'] as $key_words): ?>
+                                            <?php if(isset($product['key_words'] )):?>
+
+                                                <?php foreach ($product['key_words'] as $key_words): ?>
                                                 <a href="/key?<?php echo $key_words ?>"><?php echo $key_words ?></a>
-                                            <?php endforeach; ?>
+                                            <?php endforeach; ?><?php endif;?>
                                         <p class="text-justify">
-                                            <?php echo $product[0]['description'] ?>
+                                            <?php echo $product['description'] ?>
                                         </p>
                                         </p>
                                     </div>

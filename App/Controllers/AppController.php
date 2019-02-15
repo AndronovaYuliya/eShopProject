@@ -19,6 +19,7 @@ use App\Models\ProductsModel;
 use App\Models\CategoriesModel;
 use Core\Controller;
 use Core\App;
+use Core\TSingletone;
 
 
 /**
@@ -27,6 +28,8 @@ use Core\App;
  */
 class AppController extends Controller
 {
+    use TSingletone;
+
     protected $additionals;
     protected $attributes;
     protected $attributesValues;
@@ -46,9 +49,11 @@ class AppController extends Controller
      * @param $route
      * @throws \Exception
      */
-    public function __construct($route)
+    public function __construct($route = '')
     {
-        parent::__construct($route);
+        if ($route) {
+            parent::__construct($route);
+        }
 
         $this->additionals = AdditionalsMapper::getInstance()->findAll();
         $this->attributes = AttributesMapper::getInstance()->findAll();
@@ -63,5 +68,109 @@ class AppController extends Controller
         $this->productsImages = ProductsImagesMapper::getInstance()->findAll();
         $this->productsKeyWords = ProductsKeyWordsMapper::getInstance()->findAll();
         $this->products = ProductsMapper::getInstance()->findAll();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdditionals()
+    {
+        return $this->additionals;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAttributesValues()
+    {
+        return $this->attributesValues;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoriesAttributes()
+    {
+        return $this->categoriesAttributes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClients()
+    {
+        return $this->clients;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKeyWords()
+    {
+        return $this->keyWords;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductsImages()
+    {
+        return $this->productsImages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductsKeyWords()
+    {
+        return $this->productsKeyWords;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

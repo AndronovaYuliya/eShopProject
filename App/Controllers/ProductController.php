@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Mappers\ProductsMapper;
 use App\Models\ProductsModel;
 use Core\View;
 
@@ -17,11 +18,18 @@ class ProductController extends AppController
      */
     public function showAction($param = null): void
     {
+        $product = ProductsMapper::getInstance()->findOne(' alias=:alias', [':alias' => $param]);
+        $product = ProductsModel::getInstance()->getImage($product);
+        $product = ProductsModel::getInstance()->getCategory($product);
+
         $products = $this->products;
         $brands = $products;
+
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
+
         $categories = $this->categories;
 
-        $product = ProductsModel::getProductWithImg('alias', $param);
         $this->set(compact('products', 'categories', 'brands', 'product'));
         $this->getView();
     }

@@ -27,7 +27,7 @@ class AbstractMapper
         $sql = static::SELECT;
         $sql .= empty($where) ? ";" : "WHERE {$where};";
         $result = AppModel::$db->findOne($sql, $attributes);
-        return isset($result) ?: null;
+        return isset($result) ? $result : null;
     }
 
     /**

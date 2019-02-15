@@ -83,18 +83,4 @@ class View
         $output .= '<meta name="keywords" content="' . $this->meta['keywords'] . '">' . PHP_EOL;
         return $output;
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        if (isset($this->meta['title'])) {
-            $title = $this->meta['title'];
-            $output = $title[0] . '<span>' . substr($title, 1) . '</span>';
-        } else {
-            $output = 'e<span>Shop</span>';
-        }
-        return $output;
-    }
 }

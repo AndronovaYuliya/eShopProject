@@ -13,5 +13,5 @@ class CategoriesAttributesMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM categories_attributes";
+    protected const SELECT = "SELECT * FROM categories_attributes ";
 }

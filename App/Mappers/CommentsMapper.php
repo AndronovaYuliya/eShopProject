@@ -13,5 +13,5 @@ class CommentsMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM comments";
+    protected const SELECT = "SELECT * FROM comments ";
 }

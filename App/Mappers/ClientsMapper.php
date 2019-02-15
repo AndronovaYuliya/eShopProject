@@ -13,5 +13,5 @@ class ClientsMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM categories";
+    protected const SELECT = "SELECT * FROM categories ";
 }

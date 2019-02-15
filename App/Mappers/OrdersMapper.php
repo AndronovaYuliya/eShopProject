@@ -13,5 +13,5 @@ class OrdersMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM orders";
+    protected const SELECT = "SELECT * FROM orders ";
 }

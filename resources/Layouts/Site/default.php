@@ -73,7 +73,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="/"><?php echo $this->getName() ?></a></h1>
+                    <h1><a href="/"></a></h1>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -108,12 +108,10 @@
                         Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <?php if ($categories > 0): ?>
-                            <?php foreach ($categories as $category): ?>
-                                <a class="dropdown-item"
-                                   href="/category?<?php echo $category['alias'] ?>"><?php echo $category['title']; ?></a>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                        <?php foreach ($categories as $category): ?>
+                            <a class="dropdown-item"
+                               href="/category?<?php echo $category['alias'] ?>"><?php echo $category['title']; ?></a>
+                        <?php endforeach; ?>
 
                         <div class="dropdown-divider"></div>
                     </div>
@@ -125,12 +123,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <?php if (count($brands) > 0): ?>
-                            <?php foreach ($brands as $brand): ?>
-                                <a class="dropdown-item"
-                                   href="/brand?<?php echo $brand['brand'] ?>"><?php echo $brand['brand']; ?></a>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                        <?php foreach ($brands as $brand): ?>
+                            <a class="dropdown-item"
+                               href="/brand?<?php echo $brand['brand'] ?>"><?php echo $brand['brand']; ?></a>
+                        <?php endforeach; ?>
 
                         <div class="dropdown-divider"></div>
                     </div>

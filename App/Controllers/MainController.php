@@ -18,8 +18,8 @@ class MainController extends AppController
     {
         $brands = $this->products;
         $products = $this->products;
-        $products=ProductsModel::getInstance()->getImages($products);
-        $products=ProductsModel::getInstance()->getCategories($products);
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
         $categories = $this->categories;
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();

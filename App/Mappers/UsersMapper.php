@@ -13,5 +13,5 @@ class UsersMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM users";
+    protected const SELECT = "SELECT * FROM users ";
 }

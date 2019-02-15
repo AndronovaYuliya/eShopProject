@@ -13,5 +13,5 @@ class ImagesMapper extends AbstractMapper
 {
     use TSingletone;
 
-    protected const SELECT = "SELECT * FROM images";
+    protected const SELECT = "SELECT * FROM images ";
 }
