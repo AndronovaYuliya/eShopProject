@@ -40,7 +40,7 @@ class ImagesModel extends AbstractModel
     }
 
     /**
-     * @param $name
+     * @param $fileName
      * @return ImagesModel
      */
     public function setFileName($fileName): ImagesModel

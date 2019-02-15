@@ -46,6 +46,7 @@ class Router
     }
 
     /**
+     * @param $url
      * @return bool
      */
     public static function matchRoute($url): bool

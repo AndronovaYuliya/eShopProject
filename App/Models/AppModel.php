@@ -49,6 +49,9 @@ class AppModel
         $this->routeAction();
     }
 
+    /**
+     * @throws \Exception
+     */
     protected function routeAction()
     {
         if (is_string($this->route)) {

@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Core\App;
+use App\Models\AppModel;
 use Core\Session;
 use Core\TSingletone;
 use Sender\Sender;
@@ -32,7 +32,7 @@ class SenderController
 
         $template = ob_get_clean();
 
-        $config = App::$app->getProperies();
+        $config = AppModel::$app->getProperies();
         $data = ['emailTo' => $email, 'nameTo' => $name
             , 'emailFrom' => $config['email'], 'nameFrom' => $config['title']];
 
@@ -49,7 +49,7 @@ class SenderController
      */
     public function mailOrder($orderId, $email, $name)
     {
-        $config = App::$app->getProperies();
+        $config = AppModel::$app->getProperies();
         $data = ['emailTo' => $email, 'nameTo' => $name
             , 'emailFrom' => $config['email'], 'nameFrom' => $config['title']];
 

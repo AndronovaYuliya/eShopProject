@@ -15,10 +15,7 @@ use App\Mappers\OrdersMapper;
 use App\Mappers\ProductsImagesMapper;
 use App\Mappers\ProductsKeyWordsMapper;
 use App\Mappers\ProductsMapper;
-use App\Models\ProductsModel;
-use App\Models\CategoriesModel;
 use Core\Controller;
-use Core\App;
 use Core\TSingletone;
 
 

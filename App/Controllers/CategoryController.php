@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Mappers\ProductsMapper;
-use App\Models\ProductsModel;
 use Core\View;
 
 /**

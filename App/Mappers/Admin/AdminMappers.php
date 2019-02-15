@@ -2,7 +2,6 @@
 
 namespace App\Mappers\Admin;
 
-use Core\Cache;
 use Core\Database;
 
 /**

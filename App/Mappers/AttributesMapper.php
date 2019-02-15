@@ -11,6 +11,7 @@ use Core\TSingletone;
  */
 class AttributesMapper extends AbstractMapper
 {
+
     use TSingletone;
 
     protected const SELECT = "SELECT * FROM attributes ";

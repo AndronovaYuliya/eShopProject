@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\AppController;
 use App\Mappers\UsersMapper;
 use App\Models\ClientsModel;
 use App\Models\ProductsModel;

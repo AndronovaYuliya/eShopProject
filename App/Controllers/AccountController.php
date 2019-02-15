@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Mappers\ClientsMapper;
 use App\Models\ClientsModel;
-use App\Models\OrderModel;
 use App\Models\OrdersModel;
 use Core\Authorization;
 use Core\Session;

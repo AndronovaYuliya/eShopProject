@@ -76,7 +76,7 @@ class View
     /**
      * @return string
      */
-    public function getMeta()
+    public function getMeta(): string
     {
         $output = '<title>' . $this->meta['title'] . '</title>' . PHP_EOL;
         $output .= '<meta name="description" content="' . $this->meta['desc'] . '">' . PHP_EOL;

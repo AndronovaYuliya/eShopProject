@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\AttributesModel;
 use Core\Database;
 use PDOException;
 use Core\FakerData;

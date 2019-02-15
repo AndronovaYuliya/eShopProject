@@ -2,8 +2,6 @@
 
 namespace Core;
 
-use Core\MyException;
-use Core\Database;
 use App\Models\AppModel;
 
 /**

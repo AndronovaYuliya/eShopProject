@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Controllers\AppController;
-use App\Mappers\ProductsMapper;
 use Core\AbstractMapper;
 use Core\TSingletone;
 
