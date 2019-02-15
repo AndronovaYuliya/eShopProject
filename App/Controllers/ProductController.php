@@ -21,6 +21,7 @@ class ProductController extends AppController
         $product = ProductsMapper::getInstance()->findOne(' alias=:alias', [':alias' => $param]);
         $product = ProductsModel::getInstance()->getImage($product);
         $product = ProductsModel::getInstance()->getCategory($product);
+        $product = ProductsModel::getInstance()->getKeyWord($product);
 
         $products = $this->products;
         $brands = $products;

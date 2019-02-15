@@ -29,7 +29,8 @@
                     <?php if (count($products) > 6): ?>
                         <?php for ($i = 0; $i < 6; $i++): ?>
                             <div class="thubmnail-recent">
-                                <img src="<?php if(isset($products[$i]['file_name'][0]))echo $products[$i]['file_name'][0] ?>" class="recent-thumb grow"
+                                <img src="<?php if (isset($products[$i]['file_name'][0])) echo $products[$i]['file_name'][0] ?>"
+                                     class="recent-thumb grow"
                                      alt="img">
                                 <h3><a href="/show?<?php echo $products[$i]['alias'] ?>">
                                         <?php echo $products[$i]['title'] ?></a></h3>
@@ -55,7 +56,8 @@
                                 <div class="col-sm-6">
                                     <div class="product-images">
                                         <div class="product-main-img">
-                                            <img src="<?php if(isset($product['file_name']))echo $product['file_name'][0] ?>" alt="img">
+                                            <img src="<?php if (isset($product['file_name'])) echo $product['file_name'][0] ?>"
+                                                 alt="img">
                                         </div>
                                         <div class="product-gallery">
                                             <?php foreach ($product['file_name'] as $img): ?>
@@ -69,14 +71,15 @@
                                         <h2 class="product-name">
                                             <?php echo $product['title'] ?></h2>
                                         <div class="quantity">
-                                            <input type="number" size="4" class="input-text qty text remove-item" title="Qty"
+                                            <input type="number" size="4" class="input-text qty text remove-item"
+                                                   title="Qty"
                                                    value="<?php if ($product['count'] > 0) {
                                                        echo 1;
                                                    } else {
                                                        echo 0;
                                                    } ?>" name="qty" min="1" id="currency"
                                                    max="<?php echo($product['count']) ?>" step="1"
-                                                   data-id="<?php echo $product['id']?>">
+                                                   data-id="<?php echo $product['id'] ?>">
                                         </div>
                                         <button class="cart btn btn-outline-success my-2 my-sm-0 add-to-cart-button"
                                                 data-id="<?php echo($product['id']) ?>"
@@ -85,11 +88,13 @@
                                                 echo 'disabled';
                                             } ?>><?php if ($product['count'] == 0) {
                                                 echo "Out of stock";
-                                            }else{
+                                            } else {
                                                 echo 'Add to cart';
-                                            }?>
+                                            } ?>
                                         </button>
-                                        <button href="#" class="cart btn btn-outline-success my-2 my-sm-0 recount-cart" disabled>Recount</button>
+                                        <button href="#" class="cart btn btn-outline-success my-2 my-sm-0 recount-cart"
+                                                disabled>Recount
+                                        </button>
 
                                         <div class="product-inner-price">
                                             <ins>
@@ -107,11 +112,9 @@
                                                     href="/brand?<?php echo $product['brand'] ?>">
                                                 <?php echo($product['brand']) ?></a>
                                             Tags:
-                                            <?php if(isset($product['key_words'] )):?>
-
-                                                <?php foreach ($product['key_words'] as $key_words): ?>
+                                            <?php foreach ($product['key_words'] as $key_words): ?>
                                                 <a href="/key?<?php echo $key_words ?>"><?php echo $key_words ?></a>
-                                            <?php endforeach; ?><?php endif;?>
+                                            <?php endforeach; ?>
                                         <p class="text-justify">
                                             <?php echo $product['description'] ?>
                                         </p>

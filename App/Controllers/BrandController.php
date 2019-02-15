@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Mappers\ProductsMapper;
 use App\Models\ProductsModel;
 use Core\View;
 
@@ -20,10 +21,10 @@ class BrandController extends AppController
         if (!$param) {
             $products = $this->products;
         } else {
-            $products = ProductsModel::getProductWithImg('brand', $param);
+            $products = ProductsMapper::getInstance()->findAll(' brand=:brand', [':brand' => $param]);
         }
+        $brands = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();
     }

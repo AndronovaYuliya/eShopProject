@@ -317,10 +317,16 @@ class ProductsModel extends AbstractMapper
     public function getKeyWord($product)
     {
         $keyWords = AppController::getInstance()->getKeyWords();
-        foreach ($keyWords as $keyWord) {
-            if ($product['id_key_word'] == $keyWord['id']) {
-                $product['id_key_word'][] = $keyWord['id'];
-                $product['key_words'][] = $keyWord['name'];
+        $productsKeyWords = AppController::getInstance()->getProductsKeyWords();
+
+        foreach ($productsKeyWords as $productsKeyWord) {
+            if ($product['id'] == $productsKeyWord['id_product']) {
+                foreach ($keyWords as $keyWord) {
+                    if ($productsKeyWord['id_key_word'] == $keyWord['id']) {
+                        $product['id_key_word'][] = $keyWord['id'];
+                        $product['key_words'][] = $keyWord['name'];
+                    }
+                }
             }
         }
         return $product;
