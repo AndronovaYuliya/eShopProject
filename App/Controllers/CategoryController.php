@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Mappers\ProductsMapper;
 use App\Models\ProductsModel;
 use Core\View;
 
@@ -20,10 +21,10 @@ class CategoryController extends AppController
         if (!$param) {
             $products = $this->products;
         } else {
-            $products = ProductsModel::getDataByCategory('alias', $param);
+            $products = ProductsMapper::getInstance()->findAll(' alias=:alias', [':alias' => $param]);
         }
         $categories = $this->categories;
-        $brands = $this->brands;
+        $brands = $this->products;
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();
     }
