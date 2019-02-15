@@ -17,7 +17,7 @@ class ContactController extends AppController
     {
         $products = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
+        $brands = $products;
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();
     }
