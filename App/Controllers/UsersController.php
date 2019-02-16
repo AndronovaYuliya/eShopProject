@@ -29,6 +29,8 @@ class UsersController extends AppController
         $products = $this->products;
         $categories = $this->categories;
         $brands = $products;
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
         $session = Session::getSession();
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
         $this->getView();

@@ -47,7 +47,7 @@
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="container">
-                        <?php if (isset($session)): ?>
+                        <?php if (isset($session['errors'])): ?>
                             <div class="row">
                                 <div class="col-sm">
                                     <p><?php echo $session['errors'] ?></p>
@@ -60,7 +60,7 @@
                                     <p>Name</p>
                                 </div>
                                 <div class="col-sm">
-                                    <p><?php echo $client[0]['name'] ?></p>
+                                    <p><?php echo $client['name'] ?></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -68,7 +68,7 @@
                                     <p>login</p>
                                 </div>
                                 <div class="col-sm">
-                                    <p><?php echo $client[0]['login'] ?></p>
+                                    <p><?php echo $client['login'] ?></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -76,7 +76,7 @@
                                     <p>email</p>
                                 </div>
                                 <div class="col-sm">
-                                    <p><?php echo $client[0]['email'] ?></p>
+                                    <p><?php echo $client['email'] ?></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -84,7 +84,7 @@
                                     <p>phone</p>
                                 </div>
                                 <div class="col-sm">
-                                    <p><?php echo $client[0]['phone'] ?></p>
+                                    <p><?php echo $client['phone'] ?></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -92,7 +92,7 @@
                                     <p>city</p>
                                 </div>
                                 <div class="col-sm">
-                                    <p><?php echo $client[0]['city'] ?></p>
+                                    <p><?php echo $client['city'] ?></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -100,7 +100,7 @@
                                     <p>address</p>
                                 </div>
                                 <div class="col-sm">
-                                    <p><?php echo $client[0]['address'] ?></p>
+                                    <p><?php echo $client['address'] ?></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -108,7 +108,7 @@
                                     <p>born</p>
                                 </div>
                                 <div class="col-sm">
-                                    <p><?php echo $client[0]['born'] ?></p>
+                                    <p><?php echo $client['born'] ?></p>
                                 </div>
                             </div>
                         <?php endif; ?>

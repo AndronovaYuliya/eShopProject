@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Mappers\ClientsMapper;
+use App\Mappers\OrdersMapper;
 use App\Models\ClientsModel;
 use App\Models\OrdersModel;
 use App\Models\ProductsModel;
@@ -37,7 +38,7 @@ class AccountController extends AppController
             $client = ClientsMapper::getInstance()->findOne('login=:login', [':login' => $login]);
         }
         $session = Session::getSession();
-        $orders = OrdersModel::getOrders();
+        $orders = OrdersMapper::getInstance()->findAll('id_client=:id_client', [':id_client' => $client['id']]);
 
         $this->set(compact('products', 'categories', 'brands', 'client', 'session', 'orders'));
         $this->getView();

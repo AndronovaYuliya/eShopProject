@@ -156,13 +156,13 @@
                 <form method="post" action="/login">
                     <div class="form-group">
                         <label for="userInputLogin">Login</label>
-                        <input type="text" required name="userLogin" class="form-control" id="adminInputLogin"
+                        <input type="text" required name="userLogin" class="form-control" id="loginInputLogin"
                                aria-describedby="loginHelp"
                                placeholder="Enter login">
                     </div>
                     <div class="form-group">
                         <label for="userInputPassword">Password</label>
-                        <input type="password" required name="userPassword" class="form-control" id="userInputPassword"
+                        <input type="password" required name="userPassword" class="form-control" id="loginInputPassword"
                                placeholder="Password">
                     </div>
                     <button type="submit" name="loginClient" class="btn btn-primary loginClient">Submit</button>

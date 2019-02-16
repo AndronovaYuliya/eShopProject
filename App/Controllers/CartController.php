@@ -25,7 +25,7 @@ class CartController extends AppController
     {
         $products = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
+        $brands =  $products;
         $table = CartModel::printCart();
         $this->setMeta('Cart');
         $this->set(compact('products', 'categories', 'brands', 'table'));

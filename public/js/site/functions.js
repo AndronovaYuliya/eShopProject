@@ -117,7 +117,7 @@ $('body').on('click', 'button.client-subscribe', function (e) {
         },
         type: 'POST',
         success: function (data) {
-            $("#dangerSignup").text(data);
+            alert(data);
             $("#letterModal").modal('toggle');
         }
     });
