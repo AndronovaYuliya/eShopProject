@@ -14,4 +14,7 @@ class SessionMapper extends AbstractMapper
     use TSingletone;
 
     protected const SELECT = "SELECT * FROM sessions ";
+    protected const INSERT = "INSERT INTO 'sessions' 
+            ( created_at, updated_at)
+            VALUE ( NOW(), NOW())";
 }

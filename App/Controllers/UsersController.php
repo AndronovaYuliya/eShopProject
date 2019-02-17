@@ -44,12 +44,15 @@ class UsersController extends AppController
         if (empty($_POST) && $_SERVER['REQUEST_METHOD'] != 'POST') {
             Session::set('errors', 'Enter data');
             echo json_encode(Session::get('errors'));
+            exit();
         }
         ClientsModel::signup($_POST);
         if (Session::get('errors')) {
             echo json_encode(Session::get('errors'));
+            exit();
         } else {
             echo json_encode("Welcome!");
+            exit();
         }
     }
 
@@ -75,7 +78,9 @@ class UsersController extends AppController
         }
         $products = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
+        $brands = $products;
         $session = Session::getSession();
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
         $this->getView();

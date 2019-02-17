@@ -84,7 +84,7 @@ class Database
      * @param array $data
      * @throws \Exception
      */
-    public static function addData(string $sql, array $data): void
+    public static function addOne(string $sql, array $data): void
     {
         $stmt = self::getConnection()->prepare($sql);
         if ($stmt !== false) {

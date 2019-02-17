@@ -14,4 +14,7 @@ class AdditionalsMapper extends AbstractMapper
     use TSingletone;
 
     protected const SELECT = "SELECT * FROM additionals ";
+    protected const INSERT = "INSERT INTO 'additionals' 
+            ( created_at, updated_at)
+            VALUE ( NOW(), NOW())";
 }

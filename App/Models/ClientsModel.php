@@ -263,44 +263,45 @@ class ClientsModel extends AbstractModel
      * @return bool
      * @throws \Exception
      */
-    /* public static function signup($data): bool
-     {
-         $errors = ClientsValidator::signup($data);
+    public static function signup($data): bool
+    {
+        $errors = ClientsValidator::signup($data);
 
-         if ($errors !== true) {
-             Session::set('errors', $errors);
-             return false;
-         }
+        if ($errors !== true) {
+            Session::set('errors', $errors);
+            return false;
+        }
 
-         $result = ClientsModel::checkUniqueClients($data);
-         if ($result !== true) {
-             Session::set('errors', $result);
-             return false;
-         }
-         unset($data['userConfirmPassword']);
-         unset($data['subscribe']);
+        $result = ClientsModel::checkUniqueClients($data);
+        if ($result !== true) {
+            Session::set('errors', $result);
+            return false;
+        }
+        unset($data['userConfirmPassword']);
+        $data['userPassword'] = password_hash($data['userPassword'], PASSWORD_DEFAULT);
+        ClientsMapper::getInstance()->addOne($data);
+        Session::delete('errors');
 
-         ClientsModel::addClient($data);
-         Session::delete('errors');
-
-         return true;
-     }*/
+        return true;
+    }
 
     /**
      * @param array $data
      * @return bool|string
      * @throws \Exception
      */
-    /*public static function checkUniqueClients(array $data)
+    public static function checkUniqueClients(array $data)
     {
-        if (!empty(ClientsMapper::checkUnique('email', $data['userEmail']))) {
+        if (!empty(ClientsMapper::getInstance()
+            ->findOne('email=:email', ['email' => $data['userEmail']]))) {
             return "Enter another email";
         }
 
-        if (!empty(ClientsMapper::checkUnique('login', $data['userLogin']))) {
+        if (!empty(ClientsMapper::getInstance()
+            ->findOne('login=:login', ['login' => $data['userLogin']]))) {
             return "Enter another login";
         }
 
         return true;
-    }*/
+    }
 }

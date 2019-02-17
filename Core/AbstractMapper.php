@@ -11,7 +11,7 @@ use App\Models\AppModel;
 class AbstractMapper
 {
     protected const SELECT = "";
-
+    protected const INSERT = "";
     private $data = [];
 
     /**
@@ -40,5 +40,14 @@ class AbstractMapper
         $sql .= empty($where) ? ";" : "WHERE {$where};";
         $result = AppModel::$db->findAll($sql, $attributes);
         return isset($result) ? $result : [];
+    }
+
+    /**
+     * @param array $attributes
+     */
+    public function addOne(array $attributes = [])
+    {
+        $sql = static::INSERT;
+        AppModel::$db->addOne($sql, $attributes);
     }
 }

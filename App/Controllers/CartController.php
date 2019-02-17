@@ -107,11 +107,11 @@ class CartController extends AppController
     {
         if (!Authorization::isAuth('login')) {
             echo 'You are not logged';
-            die();
+            exit();
         }
         if (!Session::get('cart')) {
             echo 'The cart is empty';
-            die();
+            exit();
         }
         echo json_encode(true);
     }
@@ -136,10 +136,10 @@ class CartController extends AppController
     {
         if (Session::get('cart')) {
             echo json_encode(true);
-            die();
+            exit();
         }
         echo json_encode(false);
-        die();
+        exit();
     }
 
     /**
@@ -150,9 +150,9 @@ class CartController extends AppController
         $id = $_POST['id'];
         if ($id) {
             echo json_encode(OrdersModel::orderDetail($id));
-            die();
+            exit();
         }
         echo json_encode(false);
-        die();
+        exit();
     }
 }
