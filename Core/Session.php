@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use App\Models\SessionModel;
+
 /**
  * Class Session
  * @package Core
@@ -213,8 +215,8 @@ abstract class Session
 
             return $result['sess_data'];
         } else {
-            SessionMapper::addSession(session_encode(), self::$_sess_id);
-
+            SessionModel::getInstance()->addOne(
+                [':session_id'=>self::$_sess_id,':sess_data'=>session_encode()]);
             return '';
         }
     }

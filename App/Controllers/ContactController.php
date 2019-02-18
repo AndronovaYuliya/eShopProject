@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductsModel;
 use Core\View;
 
 /**
@@ -18,6 +19,8 @@ class ContactController extends AppController
         $products = $this->products;
         $categories = $this->categories;
         $brands = $products;
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();
     }

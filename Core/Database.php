@@ -86,10 +86,10 @@ class Database
      */
     public static function addOne(string $sql, array $data): void
     {
+
         $stmt = self::getConnection()->prepare($sql);
         if ($stmt !== false) {
             $stmt->execute($data);
-            $stmt->fetchAll();
         } else {
             throw new \Exception("Sql wrong: {$sql}", 100);
         }

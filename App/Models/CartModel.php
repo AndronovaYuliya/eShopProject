@@ -18,9 +18,9 @@ class CartModel
      */
     public static function addToCart($product, $qty = 1): array
     {
-        $ID = $product[0]['id'];
+        $ID = $product['id'];
         if (Session::getData('cart', $ID)) {
-            $qty = $qty > $product[0]['id'] ? $product[0]['id'] : $qty;
+            $qty = $qty > $product['id'] ? $product['id'] : $qty;
         }
 
         self::saveChanges($product, $qty);
@@ -54,19 +54,19 @@ class CartModel
      */
     public static function saveChanges($product, $qty)
     {
-        $ID = $product[0]['id'];
+        $ID = $product['id'];
 
         if (!Session::getData('cart', $ID)) {
             Session::addData('cart', $ID, 'qty', $qty);
-            Session::addData('cart', $ID, 'title', $product[0]['title']);
-            Session::addData('cart', $ID, 'price', $product[0]['price']);
-            Session::addData('cart', $ID, 'alias', $product[0]['alias']);
-            Session::addData('cart', $ID, 'brand', $product[0]['brand']);
-            Session::addData('cart', $ID, 'countToSell', $product[0]['count']);
-            Session::addData('cart', $ID, 'sum', $product[0]['price'] * $qty);
+            Session::addData('cart', $ID, 'title', $product['title']);
+            Session::addData('cart', $ID, 'price', $product['price']);
+            Session::addData('cart', $ID, 'alias', $product['alias']);
+            Session::addData('cart', $ID, 'brand', $product['brand']);
+            Session::addData('cart', $ID, 'countToSell', $product['count']);
+            Session::addData('cart', $ID, 'sum', $product['price'] * $qty);
         } else {
             Session::addData('cart', $ID, 'qty', $qty);
-            Session::addData('cart', $ID, 'sum', $product[0]['price'] * $qty);
+            Session::addData('cart', $ID, 'sum', $product['price'] * $qty);
         }
 
         $total = 0;

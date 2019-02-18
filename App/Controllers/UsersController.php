@@ -2,13 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Mappers\UsersMapper;
 use App\Models\ClientsModel;
 use App\Models\ProductsModel;
 use Core\Session;
 use Core\View;
 use Core\Authorization;
-use http\Client;
 
 /**
  * Class UserController
