@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Mappers\ProductsMapper;
 use App\Models\ProductsModel;
 use Core\View;
 
@@ -18,7 +19,10 @@ class ShopController extends AppController
     {
         $products = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
+        $brands = $products;
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
+
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();
     }
@@ -29,11 +33,10 @@ class ShopController extends AppController
     public function searchAction(): void
     {
         $categories = $this->categories;
-        $brands = $this->brands;
-        $pattern = '/\\W/';
-        $search = preg_replace($pattern, ' ', trim($_POST['search']));
-        $search = explode(' ', $search);
-        $products = ProductsModel::getDataLike($search);
+        $brands = $this->products;
+        $products = ProductsModel::getInstance()->getLike(trim($_POST['search']));
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();
     }

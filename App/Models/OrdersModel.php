@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Mappers\AdditionalsMapper;
 use App\Mappers\OrdersMapper;
 use Core\AbstractModel;
 use Core\Session;
@@ -146,54 +147,66 @@ class OrdersModel extends AbstractModel
      * @return mixed
      * @throws \Exception
      */
-    /*public static function saveOrder($data)
+    public static function saveOrder($data)
     {
         $sum = Session::getData('cart', 0)['total'];
-        $orderId = OrdersMapper::addOrder([':sum' => $sum, ':id_client' => $data['id']]);
+        OrdersMapper::getInstance()->addOne([':sum' => $sum, ':id_client' => $data['id']]);
+        $orderId = AppModel::$db->getConnection()->lastInsertId();
         self::saveOrderProduct($orderId);
         return $orderId;
-    }*/
+    }
 
     /**
      * @param $orderId
      * @throws \Exception
      */
-    /*private static function saveOrderProduct($orderId)
+    private static function saveOrderProduct($orderId)
     {
         $orders = Session::get('cart');
-        OrdersMapper::saveOrderProduct($orders, $orderId);
-    }*/
+
+        foreach ($orders as $key => $item) {
+            if ($key != 0) {
+                AdditionalsMapper::getInstance()->addOne([
+                    ':id_product' => $key
+                    , ':id_order' => $orderId
+                    , ':count' => (int)$item['qty']
+                    , ':price' => $item['sum']
+                ]);
+
+            }
+        }
+    }
 
     /**
      * @return array|mixed|null
      * @throws \Exception
      */
-    /*public static function getOrders()
+    public static function getOrders()
     {
         $login = Session::get('login');
         if ($login) {
-            return OrdersMapper::getDataByClient('login', '22nell92');
+            return OrdersMapper::getInstance()->findOne('login=:login', [':login' => '22nell92']);
         }
         return null;
-    }*/
+    }
 
     /**
      * @param $id
      * @throws \Exception
      */
-    /* public static function orderDetail($id)
-     {
-         $data = OrdersMapper::getOrderDetail('id', $id);
-         $table = self::printOrder($data);
-         echo json_encode($table);
-         die();
-     }*/
+    public static function orderDetail($id)
+    {
+        $data = OrdersMapper::getOrderDetail('id', $id);
+        $table = self::printOrder($data);
+        echo json_encode($table);
+        exit();
+    }
 
     /**
      * @param $data
      * @return array
      */
-    /*public static function printOrder($data)
+    public static function printOrder($data)
     {
         $table = [];
         foreach ($data as $key => $value) {
@@ -207,5 +220,5 @@ class OrdersModel extends AbstractModel
 HTML;
         }
         return $table;
-    }*/
+    }
 }

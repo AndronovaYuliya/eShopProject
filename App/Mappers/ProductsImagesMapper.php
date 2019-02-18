@@ -14,4 +14,7 @@ class ProductsImagesMapper extends AbstractMapper
     use TSingletone;
 
     protected const SELECT = "SELECT * FROM products_images ";
+    protected const INSERT = "INSERT INTO 'products_images' 
+            ( created_at, updated_at)
+            VALUE ( NOW(), NOW())";
 }

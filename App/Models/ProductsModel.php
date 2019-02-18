@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Controllers\AppController;
+use App\Mappers\ProductsMapper;
 use Core\AbstractMapper;
 use Core\TSingletone;
 
@@ -329,5 +330,19 @@ class ProductsModel extends AbstractMapper
             }
         }
         return $product;
+    }
+
+    /**
+     * @param string $search
+     * @return array
+     */
+    public function getLike(string $search): array
+    {
+        $products = [];
+        $data = ProductsMapper::getInstance()->findAll("title LIKE '%$search%'");
+        if ($data) {
+            $products = $data;
+        }
+        return $products;
     }
 }

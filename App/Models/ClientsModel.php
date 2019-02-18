@@ -230,76 +230,78 @@ class ClientsModel extends AbstractModel
      * @return bool
      * @throws \Exception
      */
-    /*  public static function login($data)
-      {
-          //AdminValidator::login return errors or true
-          $errors = ClientsValidator::login($data);
-          if ($errors !== true) {
-              Session::set('errors', $errors);
-              return false;
-          }
+    public static function login($data)
+    {
+        //AdminValidator::login return errors or true
+        $errors = ClientsValidator::login($data);
+        if ($errors !== true) {
+            Session::set('errors', $errors);
+            return false;
+        }
 
-          $client = ClientsMapper::getDataWhere('login', Validator::clean($data['userLogin']));
+        $client = ClientsMapper::getInstance()
+            ->findOne('login=:login', [':login' => Validator::clean($data['userLogin'])]);
 
-          if (empty($client)) {
-              Session::set('errors', "Wrong login");
-              return false;
-          }
+        if (empty($client)) {
+            Session::set('errors', "Wrong login");
+            return false;
+        }
 
-          if (!password_verify($data['userPassword'], $client[0]['password'])) {
-              Session::set('errors', "Wrong password");
-              return false;
-          }
+        if (!password_verify($data['userPassword'], $client['password'])) {
+            Session::set('errors', "Wrong password");
+            return false;
+        }
 
-          Session::delete('errors');
-          Authorization::login('login', $client[0]['login']);
+        Session::delete('errors');
+        Authorization::login('login', $client['login']);
 
-          return $client[0];
-      }*/
+        return $client;
+    }
 
     /**
      * @param $data
      * @return bool
      * @throws \Exception
      */
-    /* public static function signup($data): bool
-     {
-         $errors = ClientsValidator::signup($data);
+    public static function signup($data): bool
+    {
+        $errors = ClientsValidator::signup($data);
 
-         if ($errors !== true) {
-             Session::set('errors', $errors);
-             return false;
-         }
+        if ($errors !== true) {
+            Session::set('errors', $errors);
+            return false;
+        }
 
-         $result = ClientsModel::checkUniqueClients($data);
-         if ($result !== true) {
-             Session::set('errors', $result);
-             return false;
-         }
-         unset($data['userConfirmPassword']);
-         unset($data['subscribe']);
+        $result = ClientsModel::checkUniqueClients($data);
+        if ($result !== true) {
+            Session::set('errors', $result);
+            return false;
+        }
+        unset($data['userConfirmPassword']);
+        $data['userPassword'] = password_hash($data['userPassword'], PASSWORD_DEFAULT);
+        ClientsMapper::getInstance()->addOne($data);
+        Session::delete('errors');
 
-         ClientsModel::addClient($data);
-         Session::delete('errors');
-
-         return true;
-     }*/
+        return true;
+    }
 
     /**
      * @param array $data
      * @return bool|string
      * @throws \Exception
      */
-    /*public static function checkUniqueClients(array $data)
+    public static function checkUniqueClients(array $data)
     {
-        if (!empty(ClientsMapper::checkUnique('email', $data['userEmail']))) {
+        if (!empty(ClientsMapper::getInstance()
+            ->findOne('email=:email', ['email' => $data['userEmail']]))) {
             return "Enter another email";
         }
 
-        if (!empty(ClientsMapper::checkUnique('login', $data['userLogin']))) {
+        if (!empty(ClientsMapper::getInstance()
+            ->findOne('login=:login', ['login' => $data['userLogin']]))) {
             return "Enter another login";
         }
 
         return true;
-    }*/
+    }
 }

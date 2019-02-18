@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 use App\Mappers\ClientsMapper;
+use App\Models\AppModel;
 use App\Models\CartModel;
 use App\Models\OrdersModel;
+use App\Mappers\ProductsMapper;
 use App\Models\ProductsModel;
 use Core\App;
 use Core\Authorization;
@@ -25,7 +27,9 @@ class CartController extends AppController
     {
         $products = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
+        $brands = $products;
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
         $table = CartModel::printCart();
         $this->setMeta('Cart');
         $this->set(compact('products', 'categories', 'brands', 'table'));
@@ -51,7 +55,7 @@ class CartController extends AppController
         $id = !empty($_POST['id']) ? $_POST['id'] : null;
         $qty = !empty($_POST['qty']) ? $_POST['qty'] : 1;
         if ($id) {
-            $product = ProductsModel::getDataWhere('id', $id);
+            $product = ProductsMapper::getInstance()->findOne('id=:id', [':id' => $id]);
         }
         if (!$product) {
             return false;
@@ -60,6 +64,7 @@ class CartController extends AppController
         $table = CartModel::addToCart($product, $qty);
 
         echo json_encode($table);
+        exit();
     }
 
     /**
@@ -68,6 +73,7 @@ class CartController extends AppController
     public function getQtyTotalAction()
     {
         echo Session::getData('cart', 0)['qtyTotal'];
+        exit();
     }
 
     /**
@@ -76,6 +82,7 @@ class CartController extends AppController
     public function getTotalAction()
     {
         echo '$ ' . Session::getData('cart', 0)['total'];
+        exit();
     }
 
     /**
@@ -88,6 +95,7 @@ class CartController extends AppController
         }
         $table = CartModel::printCart();
         echo json_encode($table);
+        exit();
     }
 
     /**
@@ -98,6 +106,7 @@ class CartController extends AppController
         Session::deleteData('cart', $_POST['id']);
         $table = CartModel::printCart();
         echo json_encode($table);
+        exit();
     }
 
     /**
@@ -107,11 +116,11 @@ class CartController extends AppController
     {
         if (!Authorization::isAuth('login')) {
             echo 'You are not logged';
-            die();
+            exit();
         }
         if (!Session::get('cart')) {
             echo 'The cart is empty';
-            die();
+            exit();
         }
         echo json_encode(true);
     }
@@ -122,11 +131,11 @@ class CartController extends AppController
     public function saveOrderAction()
     {
         $login = Session::get('login');
-        $client = ClientsMapper::getDataWhere('login', $login)[0];
+        $client = ClientsMapper::getInstance()->findOne('login=:login', [':login' => $login]);
         $orderId = OrdersModel::saveOrder($client);
         $client['email'] = 'andronovayuliyatest@gmail.com';
-        App::$sender->mailOrder($orderId, $client['email'], $client['name']);
-        App::$sender->mailOrderToAdmin($orderId, $client['email'], $client['name']);
+        AppModel::$sender->mailOrder($orderId, $client['email'], $client['name']);
+        AppModel::$sender->mailOrderToAdmin($orderId, $client['email'], $client['name']);
     }
 
     /**
@@ -136,10 +145,10 @@ class CartController extends AppController
     {
         if (Session::get('cart')) {
             echo json_encode(true);
-            die();
+            exit();
         }
         echo json_encode(false);
-        die();
+        exit();
     }
 
     /**
@@ -150,9 +159,9 @@ class CartController extends AppController
         $id = $_POST['id'];
         if ($id) {
             echo json_encode(OrdersModel::orderDetail($id));
-            die();
+            exit();
         }
         echo json_encode(false);
-        die();
+        exit();
     }
 }

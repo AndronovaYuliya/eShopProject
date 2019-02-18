@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Mappers\ProductsMapper;
+use App\Models\ProductsModel;
 use Core\View;
 
 /**
@@ -23,6 +24,8 @@ class BrandController extends AppController
             $products = ProductsMapper::getInstance()->findAll(' brand=:brand', [':brand' => $param]);
         }
         $brands = $this->products;
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
         $categories = $this->categories;
         $this->set(compact('products', 'categories', 'brands'));
         $this->getView();

@@ -84,12 +84,12 @@ class Database
      * @param array $data
      * @throws \Exception
      */
-    public static function addData(string $sql, array $data): void
+    public static function addOne(string $sql, array $data): void
     {
+
         $stmt = self::getConnection()->prepare($sql);
         if ($stmt !== false) {
             $stmt->execute($data);
-            $stmt->fetchAll();
         } else {
             throw new \Exception("Sql wrong: {$sql}", 100);
         }
@@ -141,10 +141,10 @@ class Database
     /**
      * @param string $sql
      * @param array $data
-     * @return array
+     * @return mixed
      * @throws \Exception
      */
-    public function findOne(string $sql, array $data): array
+    public function findOne(string $sql, array $data)
     {
         try {
             $stmt = self::getConnection()->prepare($sql);

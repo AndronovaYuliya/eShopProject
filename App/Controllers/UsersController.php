@@ -2,13 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Mappers\UsersMapper;
 use App\Models\ClientsModel;
 use App\Models\ProductsModel;
 use Core\Session;
 use Core\View;
 use Core\Authorization;
-use http\Client;
 
 /**
  * Class UserController
@@ -28,7 +26,9 @@ class UsersController extends AppController
         $client = ClientsModel::login($_POST);
         $products = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
+        $brands = $products;
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
         $session = Session::getSession();
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
         $this->getView();
@@ -42,12 +42,15 @@ class UsersController extends AppController
         if (empty($_POST) && $_SERVER['REQUEST_METHOD'] != 'POST') {
             Session::set('errors', 'Enter data');
             echo json_encode(Session::get('errors'));
+            exit();
         }
         ClientsModel::signup($_POST);
         if (Session::get('errors')) {
             echo json_encode(Session::get('errors'));
+            exit();
         } else {
             echo json_encode("Welcome!");
+            exit();
         }
     }
 
@@ -73,7 +76,9 @@ class UsersController extends AppController
         }
         $products = $this->products;
         $categories = $this->categories;
-        $brands = $this->brands;
+        $products = ProductsModel::getInstance()->getImages($products);
+        $products = ProductsModel::getInstance()->getCategories($products);
+        $brands = $products;
         $session = Session::getSession();
         $this->set(compact('products', 'categories', 'brands', 'client', 'session'));
         $this->getView();

@@ -69,7 +69,7 @@ class SenderController
      */
     public function mailOrderToAdmin($orderId, $email, $name)
     {
-        $config = App::$app->getProperies();
+        $config = AppModel::$app->getProperies();
         $data = ['emailFrom' => $email, 'nameFrom' => $name
             , 'emailTo' => $config['email'], 'nameto' => $config['title']];
 

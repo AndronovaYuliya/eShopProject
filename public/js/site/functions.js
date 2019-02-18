@@ -117,7 +117,7 @@ $('body').on('click', 'button.client-subscribe', function (e) {
         },
         type: 'POST',
         success: function (data) {
-            $("#dangerSignup").text(data);
+            alert(data);
             $("#letterModal").modal('toggle');
         }
     });
@@ -136,7 +136,6 @@ $('body').on('click', 'button.signupClient', function (e) {
     var userBorn = $("input#signupInputBorn").val();
     var userPassword = $("input#signupInputPassword").val();
     var userConfirmPassword = $("input#signupInputConfirmPassword").val();
-
     jQuery.ajax({
         url: '/signup',
         data: {
@@ -152,6 +151,7 @@ $('body').on('click', 'button.signupClient', function (e) {
         },
         type: 'POST',
         success: function (data) {
+            alert(data);
             $("#dangerSignup").text(data);
             $("#signupModal").modal('toggle');
         },
